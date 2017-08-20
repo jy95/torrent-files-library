@@ -1,0 +1,19 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  slack:
+      on_success: change
+      on_failure: always
+node_js:
+  - '7'
+  - '6'
+  - '4'
+before_script:
+  - npm prune
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

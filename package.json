@@ -1,0 +1,31 @@
+{
+  "name": "torrent-files-library",
+  "version": "0.0.0-development",
+  "description": "Enables to get a library of downloaded torrent files (movie or tv show) from a directory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Warning : no test specified\" && exit 0",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "transpile": "babel src -d lib"
+  },
+  "keywords": [
+    "torrent",
+    "library",
+    "parser"
+  ],
+  "author": "jy95",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jy95/torrent-files-library.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "semantic-release": "^7.0.2"
+  },
+  "dependencies": {
+    "filehound": "^1.16.2",
+    "video-extensions": "^1.1.0"
+  }
+}
