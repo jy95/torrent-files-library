@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# babel src to lib
+lib
+
+# intellij files
+*.iml
+.idea
