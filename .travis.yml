@@ -13,6 +13,8 @@ node_js:
 before_script:
   - npm prune
 after_success:
+  - npm run coverage
+  - cat coverage/lcov.info | node_modules/.bin/coveralls
   - npm run semantic-release
 branches:
   except:
