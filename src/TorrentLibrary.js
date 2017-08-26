@@ -1,3 +1,69 @@
+// JSDoc custom typedef
+/**
+ * The result of parsing file name
+ * @typedef {Object} TPN
+ * @see {@link https://github.com/jy95/torrent-name-parser}
+ * @property {(string)} title - The file title
+ * @property {(number|undefined)} season - The season number
+ * @property {(number|undefined)} episode - The episode number
+ * @property {(string|undefined)} episodeName - The episode name
+ * @property {(number|undefined)} year - The year
+ * @property {(string|undefined)} resolution - The resolution
+ * @property {(string|undefined)} quality - The quality
+ * @property {(string|undefined)} codec - The codec
+ * @property {(string|undefined)} audio - The audio
+ * @property {(string|undefined)} group - The group that releases this file
+ * @property {(string|undefined)} region - The quality
+ * @property {(string|undefined)} extended - extended ?
+ * @property {(string|undefined)} hardcoded - hardcoded ?
+ * @property {(string|undefined)} proper - proper ?
+ * @property {(string|undefined)} repack - repack ?
+ * @property {(string|undefined)} container - The container
+ * @property {(string|undefined)} website - The website that releases this file
+ * @property {(string|undefined)} language - The file language
+ * @property {(string|undefined)} excess - Unmatched text from filename
+ */
+
+/**
+ * The extended TPN object
+ * @typedef {TPN} TPN_Extended
+ * @property {string} filePath - additionnal property useful for this library
+ */
+
+/**
+ * The variable where we store all kind of media files found in paths
+ * @typedef {Map.<string, {(TPN_Extended[]| Map.<string,TPN_Extended[]> )}>} StoreVar
+ * @example
+ * // An example of the variable after the scan method
+ * [
+ *      "MOVIES" : [
+ *         {
+ *            "year": 2014,
+ *            "resolution": '1080p',
+ *            "quality": 'BrRip',
+ *            "codec": 'x264',
+ *            "container": 'MKV',
+ *            "title": 'Captain Russia The Summer Soldier',
+ *            "filePath": "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV"
+ *         }
+ *      ],
+ *      "TV_SERIES" : [
+ *          "The Blacklist" : [
+ *              {
+ *                  "season": 4,
+ *                  "episode": 21,
+ *                  "quality": "WEBRip",
+ *                  "codec": "XviD",
+ *                  "container": "avi",
+ *                  "language": "FRENCH"
+ *                  "filePath" : "D:\somePath\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
+ *              }
+ *          ]
+ *      ]
+ * ]
+ */
+
+
 /**
  * module for exploring directories
  * @see {@link https://nspragg.github.io/filehound/}
@@ -35,22 +101,46 @@ import {
 class TorrentLibrary extends EventEmitter {
 
     /**
+     * constant for movie category
+     * @since 0.0.0
+     * @return {string}
+     */
+    static get MOVIES_TYPE() { return "MOVIES" }
+
+    /**
+     * constant for tv series category
+     * @return {string}
+     */
+    static get TV_SERIES_TYPE() { return "TV_SERIES"}
+
+    /**
      * Create a TorrentLibrary
      */
     constructor() {
         super();
         /**
          * just an easy way to scan the current directory path, if not other paths provided
-         * @member  {string} defaultPath
+         * @member  {string}
          * @default the directory from which you invoked the node command
          */
         this.defaultPath = process.cwd();
         /**
          * the paths where we are looking the media files
-         * @member {String[]} paths
+         * @member {String[]}
          * @default []
+         * @example
+         * // after have added some paths ...
+         * [ "D:\somePath", "D:\anotherPath" ]
          */
         this.paths = [];
+        /**
+         * The variable where we store all kind of media files found in paths
+         * @member {StoreVar}
+         */
+        this.stores = new Map([
+            [ TorrentLibrary.MOVIES_TYPE , [] ],
+            [ TorrentLibrary.TV_SERIES_TYPE, new Map()]
+        ])
     }
 
     /**
@@ -114,14 +204,13 @@ class TorrentLibrary extends EventEmitter {
      * @todo Implement this function.
      */
     scan(){
-
+        /*
         const files = FileHound.create()
             .paths( (this.paths.length === 0) ? this.defaultPath : this.paths)
             .ext(videosExtension)
             .find();
-
-        return files;
-
+        */
+        return null;
     }
 
 }
