@@ -366,6 +366,17 @@ class TorrentLibrary extends EventEmitter {
         return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
     }
 
+    /**
+     * return the mapping between filepaths and category
+     * @return {Map}
+     * @since 0.0.0
+     * @example
+     * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
+     */
+    get allFilesWithCategory() {
+        return this.categoryForFile;
+    }
+
 }
 
 // rejected promise when someone doesn't provide

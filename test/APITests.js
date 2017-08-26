@@ -3,6 +3,8 @@ import videosExtension from 'video-extensions';
 import assert from "assert";
 import path from "path";
 import fs from "fs";
+import nameParser from 'torrent-name-parser';
+import _ from "lodash";
 
 // just a cross plateform way to remove folder recursively
 function deleteFolderRecursive(path) {
@@ -109,15 +111,44 @@ describe("TorrentLibrary tests", function () {
             });
         });
 
-        context("scan()", function () {
+        context("scan() (and sub methos related)", function () {
             this.timeout(10000);
 
-            it("Must work without error", function (done) {
+            it("Scan must work without error", function (done) {
                 libInstance.scan().then(function () {
                     done();
                 }).catch((err) => {
                     done(err);
                 });
+            });
+
+            it("allMovies()",function () {
+                let expectedSet = new Set([
+                    Object.assign(nameParser( path.basename(files[2])), {"filePath": files[2]})
+                ]);
+                let resultedSet = libInstance.allMovies;
+                assert.equal(_.isEqual(expectedSet,resultedSet),true, "Not the same");
+            });
+
+            it("allTvSeries()", function () {
+                let expectedMap = new Map([
+                   [ nameParser(path.basename(files[0])).title, new Set([
+                       Object.assign(nameParser( path.basename(files[0])), {"filePath": files[0]}),
+                       Object.assign(nameParser( path.basename(files[1])), {"filePath": files[1]})
+                   ]) ]
+                ]);
+                let resultedMap = libInstance.allTvSeries;
+                assert.equal(_.isEqual(expectedMap,resultedMap),true ,"Not the same");
+            });
+
+            it("allFiles()", function () {
+                let expectedMap = new Map([
+                   [ files[0], TorrentLibrary.TV_SERIES_TYPE ],
+                    [ files[1], TorrentLibrary.TV_SERIES_TYPE ],
+                    [ files[2], TorrentLibrary.MOVIES_TYPE ],
+                ]);
+                let resultedMap = libInstance.allFilesWithCategory;
+                assert.equal(_.isEqual(expectedMap,resultedMap),true ,"Not the same");
             });
         })
 
