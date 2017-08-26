@@ -1,4 +1,6 @@
 language: node_js
+dist: trusty
+sudo: required
 cache:
   directories:
     - node_modules
@@ -9,7 +11,6 @@ notifications:
 node_js:
   - 'node'
   - '7'
-  - '6'
 before_script:
   - npm prune
 after_success:
