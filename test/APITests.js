@@ -34,22 +34,6 @@ describe("TorrentLibrary tests", function () {
     // initialization
     before(function () {
         libInstance = new TorrentLibrary();
-
-        // removes previously folders for test and recreate them
-        folders.forEach(function (folder) {
-            deleteFolderRecursive(folder);
-            fs.mkdir(folder, (err) => {
-                if (err) throw err;
-            });
-        });
-
-        // create the files for scan methods
-        files.forEach(function (file) {
-            fs.writeFile(file, "", (err) => {
-                if (err) throw err;
-            });
-        });
-
     });
 
     describe("Static methods", function () {
