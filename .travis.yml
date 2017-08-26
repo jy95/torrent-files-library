@@ -7,9 +7,9 @@ notifications:
       on_success: change
       on_failure: always
 node_js:
+  - 'node'
   - '7'
   - '6'
-  - '4'
 before_script:
   - npm prune
 after_success:
