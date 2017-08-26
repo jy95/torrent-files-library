@@ -98,16 +98,15 @@ describe("TorrentLibrary tests", function () {
                     })
             });
 
-            /*
+
             it("existent paths", function (done) {
-                libInstance.addNewPath(folders)
+                libInstance.addNewPath(...folders)
                     .then(() => {
                         done()
                     }).catch((err) => {
                         done(err);
                     })
             });
-            */
         });
 
         context("scan()", function () {

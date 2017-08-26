@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-access.html">access</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-difference.html">difference</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-FileHound.html">FileHound</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-nameParser.html">nameParser</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-uniq.html">uniq</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-videosExtension.html">videosExtension</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-access.html">access</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-basename.html">basename</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-difference.html">difference</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-FileHound.html">FileHound</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-nameParser.html">nameParser</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-uniq.html">uniq</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-videosExtension.html">videosExtension</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -118,6 +118,13 @@ import FileHound from 'filehound';
  * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}
  */
 import {access} from 'fs';
+
+/**
+ * Basename method from module path (node)
+ * @external basename
+ * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}
+ */
+import {basename} from 'path';
 
 /**
  * uniq method from Lodash
@@ -245,7 +252,8 @@ class TorrentLibrary extends EventEmitter {
             // process each file
             for (let file of newFiles) {
                 // get data from nameParser lib
-                let jsonFile = nameParser(file);
+                // what we need is only the basename, not the full path
+                let jsonFile = nameParser(basename(file));
                 // extend this object in order to be used by this library
                 Object.assign(jsonFile, {"filePath": file});
                 // find out which type of this file
@@ -297,7 +305,6 @@ class TorrentLibrary extends EventEmitter {
             // updates the stores var
             this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
             this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
-
         }
     }
 
@@ -320,7 +327,7 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @example
      * // return resolved Promise "All paths were added!"
-     * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder");
+     * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
      * @return {external:Promise}  On success the promise will be resolved with "All paths were added!"&lt;br>
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing&lt;br>
      * or an Error object from fs &lt;br>
@@ -334,7 +341,7 @@ class TorrentLibrary extends EventEmitter {
         return new PromiseLib(function (resolve, reject) {
 
             PromiseLib.map(paths, function (path) {
-                return access(path, FsConstants.F_OK | FsConstants.R_OK);
+                return promisifiedAccess(path);
             }).then(function () {
                 // keep only unique paths
                 that.paths = uniq([...that.paths, ...paths]);
@@ -357,8 +364,10 @@ class TorrentLibrary extends EventEmitter {
     }
 
     /**
-     * @todo Write the documentation.
-     * @todo Implement this function.
+     * Scans the paths in search for new files to be added inside this lib
+     * @since 0.0.0
+     * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"&lt;br>
+     * On error the promise will be rejected with an Error object from sub modules&lt;br>
      */
     scan() {
 
@@ -380,6 +389,24 @@ class TorrentLibrary extends EventEmitter {
         });
     }
 
+    /**
+     * Getter for all found movies
+     * @since 0.0.0
+     * @return {Set.&lt;TPN_Extended>}
+     */
+    get allMovies() {
+        return this.stores.get(TorrentLibrary.MOVIES_TYPE);
+    }
+
+    /**
+     * Getter for all found tv-series
+     * @since 0.0.0
+     * @return {Map.&lt;string, Set.&lt;TPN_Extended>>}
+     */
+    get allTvSeries() {
+        return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+    }
+
 }
 
 // rejected promise when someone doesn't provide
@@ -396,6 +423,21 @@ function checkProperties(obj, properties) {
     })
 }
 
+/**
+ * Bluebird seems to have an issue with fs.access - Workaround function
+ * @private
+ * @param path {string}
+ * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}
+ */
+function promisifiedAccess(path) {
+    return new PromiseLib(function (resolve,reject) {
+        access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {
+           if (err) reject(err);
+           resolve();
+        });
+    })
+}
+
 export default TorrentLibrary;</code></pre>
         </article>
     </section>
@@ -408,7 +450,7 @@ export default TorrentLibrary;</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sat Aug 26 2017 19:02:13 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sat Aug 26 2017 23:46:39 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

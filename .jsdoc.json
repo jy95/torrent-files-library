@@ -13,6 +13,9 @@
     "recurse": true
   },
   "templates": {
-    "cleverLinks": false
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "useLongnameInNav": false,
+    "showInheritedInNav": true
   }
 }

@@ -79,6 +79,13 @@ import FileHound from 'filehound';
 import {access} from 'fs';
 
 /**
+ * Basename method from module path (node)
+ * @external basename
+ * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}
+ */
+import {basename} from 'path';
+
+/**
  * uniq method from Lodash
  * @external uniq
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
@@ -204,7 +211,8 @@ class TorrentLibrary extends EventEmitter {
             // process each file
             for (let file of newFiles) {
                 // get data from nameParser lib
-                let jsonFile = nameParser(file);
+                // what we need is only the basename, not the full path
+                let jsonFile = nameParser(basename(file));
                 // extend this object in order to be used by this library
                 Object.assign(jsonFile, {"filePath": file});
                 // find out which type of this file
@@ -256,7 +264,6 @@ class TorrentLibrary extends EventEmitter {
             // updates the stores var
             this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
             this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
-
         }
     }
 
@@ -279,7 +286,7 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @example
      * // return resolved Promise "All paths were added!"
-     * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder");
+     * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
      * @return {external:Promise}  On success the promise will be resolved with "All paths were added!"<br>
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing<br>
      * or an Error object from fs <br>
@@ -293,7 +300,7 @@ class TorrentLibrary extends EventEmitter {
         return new PromiseLib(function (resolve, reject) {
 
             PromiseLib.map(paths, function (path) {
-                return access(path, FsConstants.F_OK | FsConstants.R_OK);
+                return promisifiedAccess(path);
             }).then(function () {
                 // keep only unique paths
                 that.paths = uniq([...that.paths, ...paths]);
@@ -316,8 +323,10 @@ class TorrentLibrary extends EventEmitter {
     }
 
     /**
-     * @todo Write the documentation.
-     * @todo Implement this function.
+     * Scans the paths in search for new files to be added inside this lib
+     * @since 0.0.0
+     * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
+     * On error the promise will be rejected with an Error object from sub modules<br>
      */
     scan() {
 
@@ -339,6 +348,24 @@ class TorrentLibrary extends EventEmitter {
         });
     }
 
+    /**
+     * Getter for all found movies
+     * @since 0.0.0
+     * @return {Set.<TPN_Extended>}
+     */
+    get allMovies() {
+        return this.stores.get(TorrentLibrary.MOVIES_TYPE);
+    }
+
+    /**
+     * Getter for all found tv-series
+     * @since 0.0.0
+     * @return {Map.<string, Set.<TPN_Extended>>}
+     */
+    get allTvSeries() {
+        return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+    }
+
 }
 
 // rejected promise when someone doesn't provide
@@ -352,6 +379,21 @@ function missingParam() {
 function checkProperties(obj, properties) {
     return properties.every(function (x) {
         return x in obj && obj[x];
+    })
+}
+
+/**
+ * Bluebird seems to have an issue with fs.access - Workaround function
+ * @private
+ * @param path {string}
+ * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}
+ */
+function promisifiedAccess(path) {
+    return new PromiseLib(function (resolve,reject) {
+        access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {
+           if (err) reject(err);
+           resolve();
+        });
     })
 }
 
