@@ -32,7 +32,7 @@
 
 /**
  * The variable where we store all kind of media files found in paths
- * @typedef {Map.<string, {(TPN_Extended[]| Map.<string,TPN_Extended[]> )}>} StoreVar
+ * @typedef {Map.<string, {( Set<TPN_Extended>| Map.<string,Set<TPN_Extended>> )}>} StoreVar
  * @example
  * // An example of the variable after the scan method
  * [
@@ -66,15 +66,30 @@
 
 /**
  * module for exploring directories
+ * @external FileHound
  * @see {@link https://nspragg.github.io/filehound/}
  */
-import FileHound  from 'filehound';
+import FileHound from 'filehound';
 
 /**
- * module fs from node
- * @see {@link https://nodejs.org/api/fs.html}
+ * Access method from module fs (node)
+ * @external access
+ * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}
  */
 import {access} from 'fs';
+
+/**
+ * uniq method from Lodash
+ * @external uniq
+ * @see {@link https://lodash.com/docs/4.17.4#uniq}
+ */
+import {uniq} from 'lodash';
+/**
+ * difference method from lodash
+ * @external difference
+ * @see {@link https://lodash.com/docs/4.17.4#difference}
+ */
+import {difference} from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
@@ -85,9 +100,24 @@ import PromiseLib from 'bluebird'
 
 /**
  * List of video file extensions
+ * @external videosExtension
  * @see {@link https://github.com/sindresorhus/video-extensions}
  */
 import videosExtension from 'video-extensions';
+
+/**
+ * Parser for media files name
+ * @external nameParser
+ * @see {@link https://github.com/jy95/torrent-name-parser}
+ */
+import nameParser from 'torrent-name-parser'
+
+/**
+ * Constants for fs access
+ */
+import {
+    constants as FsConstants
+} from 'fs'
 
 import {
     EventEmitter
@@ -105,13 +135,17 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @return {string}
      */
-    static get MOVIES_TYPE() { return "MOVIES" }
+    static get MOVIES_TYPE() {
+        return "MOVIES"
+    }
 
     /**
      * constant for tv series category
      * @return {string}
      */
-    static get TV_SERIES_TYPE() { return "TV_SERIES"}
+    static get TV_SERIES_TYPE() {
+        return "TV_SERIES"
+    }
 
     /**
      * Create a TorrentLibrary
@@ -138,9 +172,92 @@ class TorrentLibrary extends EventEmitter {
          * @member {StoreVar}
          */
         this.stores = new Map([
-            [ TorrentLibrary.MOVIES_TYPE , [] ],
-            [ TorrentLibrary.TV_SERIES_TYPE, new Map()]
-        ])
+            [TorrentLibrary.MOVIES_TYPE, new Set()],
+            [TorrentLibrary.TV_SERIES_TYPE, new Map()]
+        ]);
+        /**
+         * Mapping filepath => category
+         * @type {Map}
+         * @example
+         * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
+         */
+        this.categoryForFile = new Map();
+        /**
+         * Private method for adding new files
+         * @private
+         * @param files {string[]} An array of filePath
+         */
+        this.addNewFiles = function (files) {
+
+            // find the new files to be added
+            let alreadyFoundFiles = [...this.categoryForFile.keys()];
+            let newFiles = difference(files, alreadyFoundFiles);
+
+            // temp var for new files before adding them to stores var
+            let moviesSet = new Set();
+            let tvSeriesSet = new Set();
+
+            // get previous result of stores var
+            let newMovies = this.stores.get(TorrentLibrary.MOVIES_TYPE);
+            let newTvSeries = this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+
+            // process each file
+            for (let file of newFiles) {
+                // get data from nameParser lib
+                let jsonFile = nameParser(file);
+                // extend this object in order to be used by this library
+                Object.assign(jsonFile, {"filePath": file});
+                // find out which type of this file
+                // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE
+                let fileCategory = ( checkProperties(jsonFile, ["season", "episode"]) )
+                    ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
+                // add it in found files
+                this.categoryForFile.set(file, fileCategory);
+                // also in temp var
+                (fileCategory === TorrentLibrary.TV_SERIES_TYPE) ? tvSeriesSet.add(jsonFile) : moviesSet.add(jsonFile);
+            }
+
+            // add the movies into newMovies
+            newMovies = new Set([...newMovies, ...moviesSet]);
+
+            // add the tv series into newTvSeries
+            // First step : find all the series not in newTvSeries and add them to newTvSeries
+            difference(
+                uniq(
+                    [...tvSeriesSet].map(function (tvSeries) {
+                        return tvSeries.title;
+                    })
+                ),
+                ...newTvSeries.keys()
+            ).forEach(function (tvSeriesToInsert) {
+                newTvSeries.set(tvSeriesToInsert, new Set());
+            });
+
+            // Second step : add the new files into the correct tvSeries Set
+            uniq(
+                [...tvSeriesSet].map(function (tvSeries) {
+                    return tvSeries.title;
+                })
+            ).forEach(function (tvSerie) {
+
+                // get the current set for this tvSerie
+                let currentTvSerie = newTvSeries.get(tvSerie);
+
+                // find all the episodes in the new one for this serie
+                let episodes = [...tvSeriesSet].filter(function (episode) {
+                    return episode.title === tvSerie;
+                });
+
+                // add them and updates newTvSeries
+                newTvSeries.set(tvSerie, new Set([...currentTvSerie,...episodes]));
+
+            });
+
+            // updates the stores var
+            this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
+            this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
+
+        }
     }
 
     /**
@@ -152,7 +269,7 @@ class TorrentLibrary extends EventEmitter {
      * TorrentLibrary.listVideosExtension()
      * @static
      */
-    static listVideosExtension(){
+    static listVideosExtension() {
         return videosExtension;
     }
 
@@ -164,26 +281,25 @@ class TorrentLibrary extends EventEmitter {
      * // return resolved Promise "All paths were added!"
      * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder");
      * @return {external:Promise}  On success the promise will be resolved with "All paths were added!"<br>
-     * On error the promise will be rejected with an "Missing parameter" if the argument is missing<br>
-     * or "Cannot find/read a path" if one of the provided paths doesn't exist or is not readable<br>
+     * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing<br>
+     * or an Error object from fs <br>
      */
-    addNewPath(...paths){
+    addNewPath(...paths) {
         // the user should provide us at lest a path
         if (paths.length === 0)
             return missingParam();
 
         let that = this;
-        return new PromiseLib(function (resolve,reject) {
+        return new PromiseLib(function (resolve, reject) {
 
-            return new PromiseLib.map(paths, function (path) {
-                // https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback
-                // check if directory exists and is readable
-                return access(path, fs.constants.F_OK | fs.constants.R_OK);
+            PromiseLib.map(paths, function (path) {
+                return access(path, FsConstants.F_OK | FsConstants.R_OK);
             }).then(function () {
-                that.paths = [...that.paths, ...paths];
+                // keep only unique paths
+                that.paths = uniq([...that.paths, ...paths]);
                 resolve("All paths were added!");
             }).catch(e => {
-                reject("Cannot find/read a path");
+                reject(e);
             })
 
         });
@@ -195,7 +311,7 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @returns {boolean}
      */
-    hasPathsProvidedByUser(){
+    hasPathsProvidedByUser() {
         return this.paths.length === 0;
     }
 
@@ -203,23 +319,40 @@ class TorrentLibrary extends EventEmitter {
      * @todo Write the documentation.
      * @todo Implement this function.
      */
-    scan(){
-        /*
-        const files = FileHound.create()
-            .paths( (this.paths.length === 0) ? this.defaultPath : this.paths)
+    scan() {
+
+        const foundFiles = FileHound.create()
+            .paths((this.paths.length === 0) ? this.defaultPath : this.paths)
             .ext(videosExtension)
             .find();
-        */
-        return null;
+        let that = this;
+
+        return new PromiseLib(function (resolve, reject) {
+            foundFiles
+                .then(function (files) {
+                    that.addNewFiles(files);
+                    resolve("Scanning completed");
+                })
+                .catch(function (err) {
+                    reject(err);
+                });
+        });
     }
 
 }
 
 // rejected promise when someone doesn't provide
 function missingParam() {
-    return new PromiseLib(function (resolve,reject) {
-       reject("Missing parameter");
+    return new PromiseLib(function (resolve, reject) {
+        reject(new Error("Missing parameter"));
     });
+}
+
+// check if an object has these properties and they are not undefined
+function checkProperties(obj, properties) {
+    return properties.every(function (x) {
+        return x in obj && obj[x];
+    })
 }
 
 export default TorrentLibrary;

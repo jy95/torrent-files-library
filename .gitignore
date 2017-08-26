@@ -63,3 +63,7 @@ lib
 # intellij files
 *.iml
 .idea
+
+# test folders
+test/folder1
+test/folder2
