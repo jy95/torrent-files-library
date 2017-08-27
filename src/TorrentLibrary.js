@@ -132,6 +132,7 @@ import {
 
 /**
  * Class representing the TorrentLibrary
+ * @class
  * @extends EventEmitter
  * @see {@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information.
  */
@@ -140,7 +141,8 @@ class TorrentLibrary extends EventEmitter {
     /**
      * constant for movie category
      * @since 0.0.0
-     * @return {string}
+     * @return {string} the movies constant
+     * @static
      */
     static get MOVIES_TYPE() {
         return "MOVIES"
@@ -148,7 +150,9 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * constant for tv series category
-     * @return {string}
+     * @return {string} tv series constant
+     * @since 0.0.0
+     * @static
      */
     static get TV_SERIES_TYPE() {
         return "TV_SERIES"
@@ -184,7 +188,7 @@ class TorrentLibrary extends EventEmitter {
         ]);
         /**
          * Mapping filepath => category
-         * @type {Map}
+         * @type {Map.<string,string>}
          * @example
          * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
          */
@@ -282,7 +286,9 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * Add the path(s) to be analyzed by the library if they exist and are readable
-     * @param {(string|string[])} paths - A path or an array of paths
+     * @param {string} paths - A or more path(s)
+     * @instance
+     * @method
      * @since 0.0.0
      * @example
      * // return resolved Promise "All paths were added!"
@@ -315,8 +321,10 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * Tell us if the user has provided us paths
+     * @instance
+     * @method
      * @since 0.0.0
-     * @returns {boolean}
+     * @returns {boolean} Has user provided us paths ?
      */
     hasPathsProvidedByUser() {
         return this.paths.length === 0;
@@ -324,6 +332,8 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * Scans the paths in search for new files to be added inside this lib
+     * @instance
+     * @method
      * @since 0.0.0
      * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
@@ -350,8 +360,25 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * Getter for all found movies
+     * @instance
+     * @method
      * @since 0.0.0
      * @return {Set.<TPN_Extended>}
+     * @example
+     * // an JSON stringified example of this method
+     * [
+     *  {
+     *   "year":2012,
+     *   "quality":"DVDRiP",
+     *   "codec":"XviD",
+     *   "group":"-www.zone-telechargement.ws.avi",
+     *   "container":"avi",
+     *   "language":"TRUEFRENCH",
+     *   "title":"Bad Ass",
+     *   "excess":"LiMiTED",
+     *   "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi"
+     *  }
+     * ]
      */
     get allMovies() {
         return this.stores.get(TorrentLibrary.MOVIES_TYPE);
@@ -359,8 +386,36 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * Getter for all found tv-series
+     * @instance
+     * @method
      * @since 0.0.0
      * @return {Map.<string, Set.<TPN_Extended>>}
+     * @example
+     * // an JSON stringified example of this method
+     * {
+   * "The Blacklist":[
+   *    {
+   *      "season":4,
+   *      "episode":21,
+   *      "quality":"WEBRip",
+   *      "codec":"XviD",
+   *      "container":"avi",
+   *      "language":"FRENCH",
+   *      "title":"The Blacklist",
+   *      "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
+   *   },
+   *   {
+   *      "season":4,
+   *      "episode":14,
+   *      "quality":"WEBRip",
+   *      "codec":"XviD",
+   *      "container":"avi",
+   *      "language":"FRENCH",
+   *      "title":"The Blacklist",
+   *      "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi"
+   *   }
+   * ]
+* }
      */
     get allTvSeries() {
         return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
@@ -368,7 +423,9 @@ class TorrentLibrary extends EventEmitter {
 
     /**
      * return the mapping between filepaths and category
-     * @return {Map}
+     * @return {Map.<string,string>}
+     * @instance
+     * @method
      * @since 0.0.0
      * @example
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
