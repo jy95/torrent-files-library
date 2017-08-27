@@ -11,6 +11,10 @@
     "test": "npm run compile && mocha",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
   },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=4"
+  },
   "keywords": [
     "torrent",
     "library",
