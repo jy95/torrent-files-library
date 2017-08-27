@@ -96,9 +96,18 @@ describe("TorrentLibrary tests", function () {
         });
 
         context("scan() (and sub methos related)", function () {
-            this.timeout(10000);
+            this.timeout(15000);
 
-            it("Scan must work without error", function (done) {
+            it("Scan without user provided paths must work",function (done) {
+               let tempInstance = new TorrentLibrary();
+                tempInstance.scan().then(function () {
+                    done();
+                }).catch((err) => {
+                    done(err);
+                });
+            });
+
+            it("Scan with user provided paths must work", function (done) {
                 libInstance.scan().then(function () {
                     done();
                 }).catch((err) => {
