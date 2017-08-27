@@ -12,6 +12,8 @@ node_js:
   - 'node'
   - '7'
   - '6'
+before_install:
+  - npm i -g npm@latest
 before_script:
   - npm prune
 after_success:
