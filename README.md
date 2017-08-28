@@ -5,12 +5,14 @@ WIP
 
 ## Usage
 
+### Get category for each file
+
 ```node
 const TorrentLibrary = require("torrent-files-library");
 
 let paths = [
-	"D:\DDL\FILMS", // a path where I can find both movies and tv-series
-	"D:\DDL\SERIES TV\Le juge et le pilote" // a path where I can find episodes of a tv-serie
+	"D:\\DDL\\FILMS", // a path where I can find both movies and tv-series
+	"D:\\DDL\\SERIES TV\\Le juge et le pilote" // a path where I can find episodes of a tv-serie
 ];
 
 // create an instance
@@ -29,13 +31,14 @@ libInstance
 		setTimeout(function(){
 			// display the found files and their category
 			libInstance
-				.allFilesWithCategory()
+				.allFilesWithCategory
 				.forEach(function(value,key){
 					console.log(key + " : " + value);
 				});
-		}, 2500);
+		}, 1000);
 	})
 	.catch( (err) => {
 		console.log(err.message);
 	});
 ```
+![fileMappingDemo](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/fileMapping.gif)
