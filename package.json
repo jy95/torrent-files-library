@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "Enables to get a library of downloaded torrent files (movie or tv show) from a directory",
   "main": "index.js",
+  "files": ["index.js", "lib/"],
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
