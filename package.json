@@ -3,7 +3,10 @@
   "version": "0.0.0-development",
   "description": "Enables to get a library of downloaded torrent files (movie or tv show) from a directory",
   "main": "index.js",
-  "files": ["index.js", "lib/"],
+  "files": [
+    "index.js",
+    "lib/"
+  ],
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
@@ -21,6 +24,9 @@
     "library",
     "parser"
   ],
+  "release": {
+    "analyzeCommits": "sgc-commit-analyzer"
+  },
   "author": "jy95",
   "license": "MIT",
   "repository": {
@@ -37,7 +43,8 @@
     "jsdoc": "^3.5.4",
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
-    "semantic-release": "^8.0.0"
+    "semantic-release": "^8.0.0",
+    "sgc-commit-analyzer": "^1.0.1"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

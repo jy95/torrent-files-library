@@ -86,6 +86,13 @@ import {access} from 'fs';
 import {basename} from 'path';
 
 /**
+ * Normalize  method from module path (node)
+ * @external normalize
+ * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}
+ */
+import {normalize} from 'path';
+
+/**
  * uniq method from Lodash
  * @external uniq
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
@@ -309,7 +316,8 @@ class TorrentLibrary extends EventEmitter {
                 return promisifiedAccess(path);
             }).then(function () {
                 // keep only unique paths
-                that.paths = uniq([...that.paths, ...paths]);
+                // use normalize for cross plateform code
+                that.paths = uniq([...that.paths, ...paths.map(normalize)]);
                 resolve("All paths were added!");
             }).catch(e => {
                 reject(e);
