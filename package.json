@@ -25,7 +25,14 @@
     "parser"
   ],
   "release": {
-    "analyzeCommits": "sgc-commit-analyzer"
+    "analyzeCommits": {
+      "path": "sr-commit-analyzer",
+      "preset": "eslint"
+    },
+    "generateNotes": {
+      "path": "sr-release-notes-generator",
+      "preset": "eslint"
+    }
   },
   "author": "jy95",
   "license": "MIT",
@@ -38,13 +45,15 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
+    "conventional-changelog-eslint": "^0.2.0",
     "coveralls": "^2.13.1",
     "istanbul": "^1.1.0-alpha.1",
     "jsdoc": "^3.5.4",
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
     "semantic-release": "^8.0.0",
-    "sgc-commit-analyzer": "^1.0.1"
+    "sr-commit-analyzer": "^2.0.2",
+    "sr-release-notes-generator": "^1.1.2"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
