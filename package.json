@@ -14,7 +14,7 @@
     "prepare": "npm run compile",
     "test": "mocha",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
-    "lint" : "./node_modules/.bin/eslint ./src --fix"
+    "lint" : "./node_modules/.bin/eslint ./src ./test --fix"
   },
   "engines": {
     "node": ">=6",
