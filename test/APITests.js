@@ -79,7 +79,7 @@ describe('TorrentLibrary tests', () => {
       });
     });
 
-    context('scan() (and sub methos related)', () => {
+    context('scan() (and sub methos related)', function test() {
       this.timeout(15000);
 
       it('Scan without user provided paths must work', (done) => {
