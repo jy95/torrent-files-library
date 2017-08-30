@@ -13,7 +13,8 @@
     "compile": "babel -d lib/ src/ --source-maps both",
     "prepare": "npm run compile",
     "test": "mocha",
-    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
+    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
+    "lint" : "./node_modules/.bin/eslint ./src --fix"
   },
   "engines": {
     "node": ">=6",
@@ -47,6 +48,9 @@
     "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^0.2.0",
     "coveralls": "^2.13.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdoc": "^3.5.4",
     "minami": "^1.2.3",
