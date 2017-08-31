@@ -1,7 +1,7 @@
 {
   "name": "torrent-files-library",
   "version": "0.0.0-development",
-  "description": "Enables to get a library of downloaded torrent files (movie or tv show) from a directory",
+  "description": "Enables to get a library of downloaded torrent files (movie or tv show) from directories",
   "main": "index.js",
   "files": [
     "index.js",
@@ -23,7 +23,14 @@
   "keywords": [
     "torrent",
     "library",
-    "parser"
+    "parser",
+    "torrent file",
+    "torrent files",
+    "parse torrent",
+    "parse torrent file",
+    "parse torrent files",
+    "parse torrent name",
+    "torrent library"
   ],
   "release": {
     "analyzeCommits": {
