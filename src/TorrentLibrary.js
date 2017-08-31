@@ -159,6 +159,7 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @return {string} the movies constant
      * @static
+     * @memberOf TorrentLibrary
      */
   static get MOVIES_TYPE() {
     return 'MOVIES';
@@ -169,6 +170,7 @@ class TorrentLibrary extends EventEmitter {
      * @return {string} tv series constant
      * @since 0.0.0
      * @static
+     * @memberOf TorrentLibrary
      */
   static get TV_SERIES_TYPE() {
     return 'TV_SERIES';
@@ -204,7 +206,7 @@ class TorrentLibrary extends EventEmitter {
     ]);
     /**
          * Mapping filepath => category
-         * @type {Map.<string,string>}
+         * @member {Map.<string,string>}
          * @example
          * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
          */
@@ -214,6 +216,7 @@ class TorrentLibrary extends EventEmitter {
          * @private
          * @returns {undefined}
          * @param {string[]} files An array of filePath
+         * @memberOf TorrentLibrary
          */
     this.addNewFiles = function addNewFiles(files) {
       // find the new files to be added
@@ -292,6 +295,7 @@ class TorrentLibrary extends EventEmitter {
      * // Returns [..., 'webm', 'wmv']
      * TorrentLibrary.listVideosExtension()
      * @static
+     * @memberOf TorrentLibrary
      */
   static listVideosExtension() {
     return videosExtension;
@@ -303,6 +307,7 @@ class TorrentLibrary extends EventEmitter {
      * @instance
      * @method
      * @since 0.0.0
+     * @memberOf TorrentLibrary
      * @example
      * // return resolved Promise "All paths were added!"
      * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
@@ -318,7 +323,7 @@ class TorrentLibrary extends EventEmitter {
     return new PromiseLib(((resolve, reject) => {
       PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {
         // keep only unique paths
-        // use normalize for cross plateform code
+        // use normalize for cross platform's code
         that.paths = uniq([...that.paths, ...paths.map(normalize)]);
         resolve('All paths were added!');
       }).catch((e) => {
@@ -331,6 +336,7 @@ class TorrentLibrary extends EventEmitter {
      * Tell us if the user has provided us paths
      * @instance
      * @method
+     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @returns {boolean} Has user provided us paths ?
      */
@@ -342,6 +348,7 @@ class TorrentLibrary extends EventEmitter {
      * Scans the paths in search for new files to be added inside this lib
      * @instance
      * @method
+     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
@@ -369,6 +376,7 @@ class TorrentLibrary extends EventEmitter {
      * Getter for all found movies
      * @instance
      * @since 0.0.0
+     * @memberOf TorrentLibrary
      * @type {Set.<TPN_Extended>}
      * @example
      * // an JSON stringified example of this method
@@ -394,6 +402,7 @@ class TorrentLibrary extends EventEmitter {
      * Getter for all found tv-series
      * @instance
      * @since 0.0.0
+     * @memberOf TorrentLibrary
      * @type {Map.<string, Set.<TPN_Extended>>}
      * @example
      * // an JSON stringified example of this method
@@ -428,8 +437,9 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Getter for the mapping between filepaths and category
-     * @tyoe {Map.<string,string>}
+     * @type {Map.<string,string>}
      * @instance
+     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @example
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
