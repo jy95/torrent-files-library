@@ -92,8 +92,9 @@ import { basename, normalize } from 'path';
  * uniq and difference methods from Lodash
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
  * @see {@link https://lodash.com/docs/4.17.4#difference}
+ * @see {@link https://lodash.com/docs/4.17.4#partition}
  */
-import { uniq, difference } from 'lodash';
+import { uniq, difference, partition } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
@@ -284,6 +285,64 @@ class TorrentLibrary extends EventEmitter {
       // updates the stores var
       this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
       this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
+    };
+
+    this.removeOldFiles = function removeOldFiles(files) {
+      const that = this;
+      return new PromiseLib((resolve, reject) => {
+        try {
+        // get the data to handle this case
+        // in the first group, we got all the tv series files and in the second, the movies
+          const processData = partition(files, file =>
+            that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
+
+          // for movies, just an easy removal
+          that.stores.set(TorrentLibrary.MOVIES_TYPE,
+            new Set(
+              [...that.allMovies]
+                .filter(movie => !(processData[1].includes(movie.filePath))),
+            ),
+          );
+
+          // for the tv-series, a bit more complicated
+          // first step : find the unique tv series of these files
+          const tvSeriesShows = uniq(
+            processData[0]
+              .map(file => nameParser(basename(file)).title),
+          );
+
+          // second step : foreach each series in tvSeriesShows
+          const newTvSeriesMap = that.allTvSeries;
+
+          for (const serie of tvSeriesShows) {
+          // get the set for this serie
+            const filteredSet = new Set(
+              [...newTvSeriesMap.get(serie)]
+                .filter(episode =>
+                  !(processData[0].includes(episode.filePath))),
+            );
+            // if the filtered set is empty => no more episodes for this series
+            if (filteredSet.size === 0) {
+              newTvSeriesMap.delete(serie);
+            } else newTvSeriesMap.set(serie, filteredSet);
+          }
+
+          // save the updated map
+          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
+
+          // remove the mapping
+          files.forEach((file) => {
+            that.categoryForFile.delete(file);
+          });
+
+          resolve({
+            message: 'The files have been deleted from the library',
+            files,
+          });
+        } catch (err) {
+          reject(err);
+        }
+      });
     };
   }
 
