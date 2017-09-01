@@ -220,71 +220,81 @@ class TorrentLibrary extends EventEmitter {
          * @memberOf TorrentLibrary
          */
     this.addNewFiles = function addNewFiles(files) {
-      // find the new files to be added
-      const alreadyFoundFiles = [...this.categoryForFile.keys()];
-      const newFiles = difference(files, alreadyFoundFiles);
+      const that = this;
 
-      // temp var for new files before adding them to stores var
-      const moviesSet = new Set();
-      const tvSeriesSet = new Set();
+      return new PromiseLib((resolve, reject) => {
+        try {
+          // find the new files to be added
+          const alreadyFoundFiles = [...that.categoryForFile.keys()];
+          const newFiles = difference(files, alreadyFoundFiles);
 
-      // get previous result of stores var
-      let newMovies = this.stores.get(TorrentLibrary.MOVIES_TYPE);
-      const newTvSeries = this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+          // temp var for new files before adding them to stores var
+          const moviesSet = new Set();
+          const tvSeriesSet = new Set();
 
-      // process each file
-      for (const file of newFiles) {
-        // get data from nameParser lib
-        // what we need is only the basename, not the full path
-        const jsonFile = nameParser(basename(file));
-        // extend this object in order to be used by this library
-        Object.assign(jsonFile, { filePath: file });
-        // find out which type of this file
-        // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE
-        const fileCategory = (checkProperties(jsonFile, ['season', 'episode']))
-          ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
-        // add it in found files
-        this.categoryForFile.set(file, fileCategory);
-        // also in temp var
-        if (fileCategory === TorrentLibrary.TV_SERIES_TYPE) {
-          tvSeriesSet.add(jsonFile);
-        } else {
-          moviesSet.add(jsonFile);
+          // get previous result of stores var
+          let newMovies = that.allMovies;
+          const newTvSeries = that.allTvSeries;
+
+          // process each file
+          for (const file of newFiles) {
+            // get data from nameParser lib
+            // what we need is only the basename, not the full path
+            const jsonFile = nameParser(basename(file));
+            // extend this object in order to be used by this library
+            Object.assign(jsonFile, { filePath: file });
+            // find out which type of this file
+            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE
+            const fileCategory =
+                (checkProperties(jsonFile, ['season', 'episode']))
+                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
+            // add it in found files
+            that.categoryForFile.set(file, fileCategory);
+            // also in temp var
+            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {
+              moviesSet.add(jsonFile);
+            } else {
+              tvSeriesSet.add(jsonFile);
+            }
+          }
+
+          // add the movies into newMovies
+          newMovies = new Set([...newMovies, ...moviesSet]);
+
+          // add the tv series into newTvSeries
+          // First step : find all the series not in newTvSeries and add them to newTvSeries
+          difference(
+            uniq(
+              [...tvSeriesSet].map(tvSeries => tvSeries.title),
+            ),
+            ...newTvSeries.keys(),
+          ).forEach((tvSeriesToInsert) => {
+            newTvSeries.set(tvSeriesToInsert, new Set());
+          });
+
+          // Second step : add the new files into the correct tvSeries Set
+          uniq(
+            [...tvSeriesSet].map(tvSeries => tvSeries.title),
+          ).forEach((tvSerie) => {
+            // get the current set for this tvSerie
+            const currentTvSerie = newTvSeries.get(tvSerie);
+
+            // find all the episodes in the new one for this serie
+            const episodes = [...tvSeriesSet]
+              .filter(episode => episode.title === tvSerie);
+
+            // add them and updates newTvSeries
+            newTvSeries.set(tvSerie, new Set([...currentTvSerie, ...episodes]));
+          });
+
+          // updates the stores var
+          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
+          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
+          resolve();
+        } catch (err) {
+          reject(err);
         }
-      }
-
-      // add the movies into newMovies
-      newMovies = new Set([...newMovies, ...moviesSet]);
-
-      // add the tv series into newTvSeries
-      // First step : find all the series not in newTvSeries and add them to newTvSeries
-      difference(
-        uniq(
-          [...tvSeriesSet].map(tvSeries => tvSeries.title),
-        ),
-        ...newTvSeries.keys(),
-      ).forEach((tvSeriesToInsert) => {
-        newTvSeries.set(tvSeriesToInsert, new Set());
       });
-
-      // Second step : add the new files into the correct tvSeries Set
-      uniq(
-        [...tvSeriesSet].map(tvSeries => tvSeries.title),
-      ).forEach((tvSerie) => {
-        // get the current set for this tvSerie
-        const currentTvSerie = newTvSeries.get(tvSerie);
-
-        // find all the episodes in the new one for this serie
-        const episodes = [...tvSeriesSet]
-          .filter(episode => episode.title === tvSerie);
-
-        // add them and updates newTvSeries
-        newTvSeries.set(tvSerie, new Set([...currentTvSerie, ...episodes]));
-      });
-
-      // updates the stores var
-      this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
-      this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
     };
 
     this.removeOldFiles = function removeOldFiles(files) {
@@ -419,16 +429,14 @@ class TorrentLibrary extends EventEmitter {
       .find();
     const that = this;
 
-    return new PromiseLib(((resolve, reject) => {
+    return new PromiseLib((resolve, reject) => {
       foundFiles
-        .then((files) => {
-          that.addNewFiles(files);
+        .then(files => that.addNewFiles(files)).then(() => {
           resolve('Scanning completed');
-        })
-        .catch((err) => {
+        }).catch((err) => {
           reject(err);
         });
-    }));
+    });
   }
 
   /**
