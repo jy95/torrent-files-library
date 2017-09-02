@@ -143,6 +143,45 @@ describe('TorrentLibrary tests', () => {
         assert.equal(_.isEqual(expectedMap, resultedMap), true, 'Not the same');
       });
     });
+
+    context('Remove Old files', () => {
+      it('Should not be able to remove not present files', () => {
+        const wrongFile = path.join(__dirname, 'folder1',
+          'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi');
+        const allFiles = libInstance.allFilesWithCategory;
+        const expectedTvSeriesMap = libInstance.allTvSeries;
+        libInstance.removeOldFiles(wrongFile);
+        assert.equal(_.isEqual(allFiles, libInstance.allFilesWithCategory),
+          true, 'nothing should have changed!');
+        assert.equal(_.isEqual(expectedTvSeriesMap,
+          libInstance.allTvSeries), true, 'nothing should have changed!');
+      });
+
+      it('Should be able to remove a movie', () => {
+        // files[2] ; Bad Ass
+        const allFilesWithoutMovie = libInstance.allFilesWithCategory;
+        allFilesWithoutMovie.delete(files[2]);
+        const expectedMovieSet = new Set();
+        libInstance.removeOldFiles(files[2]);
+        assert.equal(_.isEqual(allFilesWithoutMovie,
+          libInstance.allFilesWithCategory), true,
+        'The movie should have been removed!');
+        assert.equal(_.isEqual(expectedMovieSet,
+          libInstance.allMovies), true, 'The movie should have been removed!');
+      });
+
+      it('Should be able to remove multiples files : Tv-serie', () => {
+        const allFiles = new Map();
+        const expectedSeriesMap = new Map();
+        libInstance.removeOldFiles(...files.slice(0, 2));
+        assert.equal(_.isEqual(allFiles,
+          libInstance.allFilesWithCategory), true,
+        'The tv-series episodes should have all been removed!');
+        assert.equal(_.isEqual(expectedSeriesMap,
+          libInstance.allTvSeries), true,
+        'The tv-series episodes should have all been removed!');
+      });
+    });
   });
 });
 
