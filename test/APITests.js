@@ -7,6 +7,7 @@ import TorrentLibrary from '../lib/TorrentLibrary';
 
 describe('TorrentLibrary tests', () => {
   let libInstance;
+  let tempInstance;
   const folders = [path.join(__dirname, 'folder1'),
     path.join(__dirname, 'folder2')];
   const files = [
@@ -22,6 +23,7 @@ describe('TorrentLibrary tests', () => {
     // initialization
   before(() => {
     libInstance = new TorrentLibrary();
+    tempInstance = new TorrentLibrary();
   });
 
   describe('Static methods', () => {
@@ -83,7 +85,6 @@ describe('TorrentLibrary tests', () => {
       this.timeout(15000);
 
       it('Scan without user provided paths must work', (done) => {
-        const tempInstance = new TorrentLibrary();
         tempInstance.scan().then(() => {
           done();
         }).catch((err) => {
@@ -148,8 +149,8 @@ describe('TorrentLibrary tests', () => {
       it('Should not be able to remove not present files', () => {
         const wrongFile = path.join(__dirname, 'folder1',
           'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi');
-        const allFiles = libInstance.allFilesWithCategory;
-        const expectedTvSeriesMap = libInstance.allTvSeries;
+        const allFiles = _.cloneDeep(libInstance.allFilesWithCategory);
+        const expectedTvSeriesMap = _.cloneDeep(libInstance.allTvSeries);
         libInstance.removeOldFiles(wrongFile);
         assert.equal(_.isEqual(allFiles, libInstance.allFilesWithCategory),
           true, 'nothing should have changed!');
@@ -159,7 +160,8 @@ describe('TorrentLibrary tests', () => {
 
       it('Should be able to remove a movie', () => {
         // files[2] ; Bad Ass
-        const allFilesWithoutMovie = libInstance.allFilesWithCategory;
+        const allFilesWithoutMovie = _.cloneDeep(
+          libInstance.allFilesWithCategory);
         allFilesWithoutMovie.delete(files[2]);
         const expectedMovieSet = new Set();
         libInstance.removeOldFiles(files[2]);
@@ -168,6 +170,28 @@ describe('TorrentLibrary tests', () => {
         'The movie should have been removed!');
         assert.equal(_.isEqual(expectedMovieSet,
           libInstance.allMovies), true, 'The movie should have been removed!');
+      });
+
+      it('Should be able to remove an tv-serie episode', () => {
+        const allFiles = _.cloneDeep(tempInstance.allFilesWithCategory);
+        allFiles.delete(files[1]);
+        const expectedSeriesMap = new Map([
+          [nameParser(path.basename(files[0])).title, new Set([
+            Object.assign(
+              nameParser(path.basename(files[0])),
+              { filePath: files[0] },
+            ),
+          ])],
+        ]);
+        tempInstance.removeOldFiles(files[1]);
+
+        assert.equal(_.isEqual(allFiles,
+          tempInstance.allFilesWithCategory), true,
+        'The tv-series episode should have been removed!');
+        // Fix ici
+        assert.equal(_.isEqual(expectedSeriesMap,
+          tempInstance.allTvSeries), true,
+        'The tv-series should still exist');
       });
 
       it('Should be able to remove multiples files : Tv-serie', () => {
@@ -184,21 +208,3 @@ describe('TorrentLibrary tests', () => {
     });
   });
 });
-
-// just a cross plateform way to remove folder recursively
-/*
-import fs from 'fs';
-function deleteFolderRecursive(path) {
-    if (fs.existsSync(path)) {
-        fs.readdirSync(path).forEach((file, index) => {
-            const curPath = `${path}/${file}`;
-            if (fs.lstatSync(curPath).isDirectory()) { // recurse
-                deleteFolderRecursive(curPath);
-            } else { // delete file
-                fs.unlinkSync(curPath);
-            }
-        });
-        fs.rmdirSync(path);
-    }
-}
-*/
