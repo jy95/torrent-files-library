@@ -79,7 +79,7 @@ describe('TorrentLibrary tests', () => {
       });
     });
 
-    context('scan() (and sub methos related)', function test() {
+    context('scan()', function test() {
       this.timeout(15000);
 
       it('Scan without user provided paths must work', (done) => {
@@ -98,8 +98,10 @@ describe('TorrentLibrary tests', () => {
           done(err);
         });
       });
+    });
 
-      it('allMovies()', () => {
+    context('Getters', () => {
+      it('allMovies', () => {
         const expectedSet = new Set([
           Object.assign(
             nameParser(path.basename(files[2])),
@@ -114,7 +116,7 @@ describe('TorrentLibrary tests', () => {
         );
       });
 
-      it('allTvSeries()', () => {
+      it('allTvSeries', () => {
         const expectedMap = new Map([
           [nameParser(path.basename(files[0])).title, new Set([
             Object.assign(
@@ -131,7 +133,7 @@ describe('TorrentLibrary tests', () => {
         assert.equal(_.isEqual(expectedMap, resultedMap), true, 'Not the same');
       });
 
-      it('allFiles()', () => {
+      it('allFiles', () => {
         const expectedMap = new Map([
           [files[0], TorrentLibrary.TV_SERIES_TYPE],
           [files[1], TorrentLibrary.TV_SERIES_TYPE],
