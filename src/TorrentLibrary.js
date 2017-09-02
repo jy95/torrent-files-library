@@ -215,7 +215,7 @@ class TorrentLibrary extends EventEmitter {
     /**
          * Private method for adding new files
          * @private
-         * @returns {undefined}
+         * @returns {external:Promise} an resolved or reject promise
          * @param {string[]} files An array of filePath
          * @memberOf TorrentLibrary
          */
@@ -291,64 +291,6 @@ class TorrentLibrary extends EventEmitter {
           that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
           that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
           resolve();
-        } catch (err) {
-          reject(err);
-        }
-      });
-    };
-
-    this.removeOldFiles = function removeOldFiles(files) {
-      const that = this;
-      return new PromiseLib((resolve, reject) => {
-        try {
-        // get the data to handle this case
-        // in the first group, we got all the tv series files and in the second, the movies
-          const processData = partition(files, file =>
-            that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
-
-          // for movies, just an easy removal
-          that.stores.set(TorrentLibrary.MOVIES_TYPE,
-            new Set(
-              [...that.allMovies]
-                .filter(movie => !(processData[1].includes(movie.filePath))),
-            ),
-          );
-
-          // for the tv-series, a bit more complicated
-          // first step : find the unique tv series of these files
-          const tvSeriesShows = uniq(
-            processData[0]
-              .map(file => nameParser(basename(file)).title),
-          );
-
-          // second step : foreach each series in tvSeriesShows
-          const newTvSeriesMap = that.allTvSeries;
-
-          for (const serie of tvSeriesShows) {
-          // get the set for this serie
-            const filteredSet = new Set(
-              [...newTvSeriesMap.get(serie)]
-                .filter(episode =>
-                  !(processData[0].includes(episode.filePath))),
-            );
-            // if the filtered set is empty => no more episodes for this series
-            if (filteredSet.size === 0) {
-              newTvSeriesMap.delete(serie);
-            } else newTvSeriesMap.set(serie, filteredSet);
-          }
-
-          // save the updated map
-          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
-
-          // remove the mapping
-          files.forEach((file) => {
-            that.categoryForFile.delete(file);
-          });
-
-          resolve({
-            message: 'The files have been deleted from the library',
-            files,
-          });
         } catch (err) {
           reject(err);
         }
@@ -436,6 +378,71 @@ class TorrentLibrary extends EventEmitter {
         }).catch((err) => {
           reject(err);
         });
+    });
+  }
+
+
+  /**
+     * Removes files stored in this library
+     * @param {string} files An array of filePath (for example the keys of allFilesWithCategory())
+     * @since 1.0.3
+     * @return {external:Promise} an resolved or reject promise
+     */
+  removeOldFiles(...files) {
+    const that = this;
+    return new PromiseLib((resolve, reject) => {
+      try {
+        // get the data to handle this case
+        // in the first group, we got all the tv series files and in the second, the movies
+        const processData = partition(files, file =>
+          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
+
+        // for movies, just an easy removal
+        that.stores.set(TorrentLibrary.MOVIES_TYPE,
+          new Set(
+            [...that.allMovies]
+              .filter(movie => !(processData[1].includes(movie.filePath))),
+          ),
+        );
+
+        // for the tv-series, a bit more complicated
+        // first step : find the unique tv series of these files
+        const tvSeriesShows = uniq(
+          processData[0]
+            .map(file => nameParser(basename(file)).title),
+        );
+
+        // second step : foreach each series in tvSeriesShows
+        const newTvSeriesMap = that.allTvSeries;
+
+        for (const serie of tvSeriesShows) {
+          // get the set for this serie
+          const filteredSet = new Set(
+            [...newTvSeriesMap.get(serie)]
+              .filter(episode =>
+                !(processData[0].includes(episode.filePath))),
+          );
+          // if the filtered set is empty => no more episodes for this series
+          if (filteredSet.size === 0) {
+            newTvSeriesMap.delete(serie);
+          } else newTvSeriesMap.set(serie, filteredSet);
+        }
+
+        // save the updated map
+        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
+
+        // remove the mapping
+        files.forEach((file) => {
+          that.categoryForFile.delete(file);
+        });
+
+        resolve({
+          message: 'The files have been deleted from the library',
+          files,
+        });
+      } catch (err) {
+        reject(err);
+      }
     });
   }
 

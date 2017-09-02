@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-nameParser.html">nameParser</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-nameParser.html">nameParser</a></span></li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -133,8 +133,9 @@ import { basename, normalize } from 'path';
  * uniq and difference methods from Lodash
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
  * @see {@link https://lodash.com/docs/4.17.4#difference}
+ * @see {@link https://lodash.com/docs/4.17.4#partition}
  */
-import { uniq, difference } from 'lodash';
+import { uniq, difference, partition } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
@@ -255,76 +256,86 @@ class TorrentLibrary extends EventEmitter {
     /**
          * Private method for adding new files
          * @private
-         * @returns {undefined}
+         * @returns {external:Promise} an resolved or reject promise
          * @param {string[]} files An array of filePath
          * @memberOf TorrentLibrary
          */
     this.addNewFiles = function addNewFiles(files) {
-      // find the new files to be added
-      const alreadyFoundFiles = [...this.categoryForFile.keys()];
-      const newFiles = difference(files, alreadyFoundFiles);
+      const that = this;
 
-      // temp var for new files before adding them to stores var
-      const moviesSet = new Set();
-      const tvSeriesSet = new Set();
+      return new PromiseLib((resolve, reject) => {
+        try {
+          // find the new files to be added
+          const alreadyFoundFiles = [...that.categoryForFile.keys()];
+          const newFiles = difference(files, alreadyFoundFiles);
 
-      // get previous result of stores var
-      let newMovies = this.stores.get(TorrentLibrary.MOVIES_TYPE);
-      const newTvSeries = this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+          // temp var for new files before adding them to stores var
+          const moviesSet = new Set();
+          const tvSeriesSet = new Set();
 
-      // process each file
-      for (const file of newFiles) {
-        // get data from nameParser lib
-        // what we need is only the basename, not the full path
-        const jsonFile = nameParser(basename(file));
-        // extend this object in order to be used by this library
-        Object.assign(jsonFile, { filePath: file });
-        // find out which type of this file
-        // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE
-        const fileCategory = (checkProperties(jsonFile, ['season', 'episode']))
-          ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
-        // add it in found files
-        this.categoryForFile.set(file, fileCategory);
-        // also in temp var
-        if (fileCategory === TorrentLibrary.TV_SERIES_TYPE) {
-          tvSeriesSet.add(jsonFile);
-        } else {
-          moviesSet.add(jsonFile);
+          // get previous result of stores var
+          let newMovies = that.allMovies;
+          const newTvSeries = that.allTvSeries;
+
+          // process each file
+          for (const file of newFiles) {
+            // get data from nameParser lib
+            // what we need is only the basename, not the full path
+            const jsonFile = nameParser(basename(file));
+            // extend this object in order to be used by this library
+            Object.assign(jsonFile, { filePath: file });
+            // find out which type of this file
+            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE
+            const fileCategory =
+                (checkProperties(jsonFile, ['season', 'episode']))
+                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
+            // add it in found files
+            that.categoryForFile.set(file, fileCategory);
+            // also in temp var
+            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {
+              moviesSet.add(jsonFile);
+            } else {
+              tvSeriesSet.add(jsonFile);
+            }
+          }
+
+          // add the movies into newMovies
+          newMovies = new Set([...newMovies, ...moviesSet]);
+
+          // add the tv series into newTvSeries
+          // First step : find all the series not in newTvSeries and add them to newTvSeries
+          difference(
+            uniq(
+              [...tvSeriesSet].map(tvSeries => tvSeries.title),
+            ),
+            ...newTvSeries.keys(),
+          ).forEach((tvSeriesToInsert) => {
+            newTvSeries.set(tvSeriesToInsert, new Set());
+          });
+
+          // Second step : add the new files into the correct tvSeries Set
+          uniq(
+            [...tvSeriesSet].map(tvSeries => tvSeries.title),
+          ).forEach((tvSerie) => {
+            // get the current set for this tvSerie
+            const currentTvSerie = newTvSeries.get(tvSerie);
+
+            // find all the episodes in the new one for this serie
+            const episodes = [...tvSeriesSet]
+              .filter(episode => episode.title === tvSerie);
+
+            // add them and updates newTvSeries
+            newTvSeries.set(tvSerie, new Set([...currentTvSerie, ...episodes]));
+          });
+
+          // updates the stores var
+          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
+          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
+          resolve();
+        } catch (err) {
+          reject(err);
         }
-      }
-
-      // add the movies into newMovies
-      newMovies = new Set([...newMovies, ...moviesSet]);
-
-      // add the tv series into newTvSeries
-      // First step : find all the series not in newTvSeries and add them to newTvSeries
-      difference(
-        uniq(
-          [...tvSeriesSet].map(tvSeries => tvSeries.title),
-        ),
-        ...newTvSeries.keys(),
-      ).forEach((tvSeriesToInsert) => {
-        newTvSeries.set(tvSeriesToInsert, new Set());
       });
-
-      // Second step : add the new files into the correct tvSeries Set
-      uniq(
-        [...tvSeriesSet].map(tvSeries => tvSeries.title),
-      ).forEach((tvSerie) => {
-        // get the current set for this tvSerie
-        const currentTvSerie = newTvSeries.get(tvSerie);
-
-        // find all the episodes in the new one for this serie
-        const episodes = [...tvSeriesSet]
-          .filter(episode => episode.title === tvSerie);
-
-        // add them and updates newTvSeries
-        newTvSeries.set(tvSerie, new Set([...currentTvSerie, ...episodes]));
-      });
-
-      // updates the stores var
-      this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
-      this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
     };
   }
 
@@ -401,16 +412,79 @@ class TorrentLibrary extends EventEmitter {
       .find();
     const that = this;
 
-    return new PromiseLib(((resolve, reject) => {
+    return new PromiseLib((resolve, reject) => {
       foundFiles
-        .then((files) => {
-          that.addNewFiles(files);
+        .then(files => that.addNewFiles(files)).then(() => {
           resolve('Scanning completed');
-        })
-        .catch((err) => {
+        }).catch((err) => {
           reject(err);
         });
-    }));
+    });
+  }
+
+
+  /**
+     * Removes files stored in this library
+     * @param {string} files An array of filePath (for example the keys of allFilesWithCategory())
+     * @since 1.0.3
+     * @return {external:Promise} an resolved or reject promise
+     */
+  removeOldFiles(...files) {
+    const that = this;
+    return new PromiseLib((resolve, reject) => {
+      try {
+        // get the data to handle this case
+        // in the first group, we got all the tv series files and in the second, the movies
+        const processData = partition(files, file =>
+          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
+
+        // for movies, just an easy removal
+        that.stores.set(TorrentLibrary.MOVIES_TYPE,
+          new Set(
+            [...that.allMovies]
+              .filter(movie => !(processData[1].includes(movie.filePath))),
+          ),
+        );
+
+        // for the tv-series, a bit more complicated
+        // first step : find the unique tv series of these files
+        const tvSeriesShows = uniq(
+          processData[0]
+            .map(file => nameParser(basename(file)).title),
+        );
+
+        // second step : foreach each series in tvSeriesShows
+        const newTvSeriesMap = that.allTvSeries;
+
+        for (const serie of tvSeriesShows) {
+          // get the set for this serie
+          const filteredSet = new Set(
+            [...newTvSeriesMap.get(serie)]
+              .filter(episode =>
+                !(processData[0].includes(episode.filePath))),
+          );
+          // if the filtered set is empty => no more episodes for this series
+          if (filteredSet.size === 0) {
+            newTvSeriesMap.delete(serie);
+          } else newTvSeriesMap.set(serie, filteredSet);
+        }
+
+        // save the updated map
+        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
+
+        // remove the mapping
+        files.forEach((file) => {
+          that.categoryForFile.delete(file);
+        });
+
+        resolve({
+          message: 'The files have been deleted from the library',
+          files,
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
 
   /**
@@ -503,7 +577,7 @@ export default TorrentLibrary;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Aug 31 2017 23:05:28 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sat Sep 02 2017 02:08:21 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
