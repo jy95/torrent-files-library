@@ -1,7 +1,7 @@
 // JSDoc custom typedef
 /**
  * The result of parsing file name
- * @typedef {Object} TPN
+ * @typedef {Object} TorrentLibrary~TPN
  * @see {@link https://github.com/jy95/torrent-name-parser}
  * @property {(string)} title - The file title
  * @property {(number|undefined)} season - The season number
@@ -26,13 +26,13 @@
 
 /**
  * The extended TPN object
- * @typedef {TPN} TPN_Extended
+ * @typedef {TorrentLibrary~TPN} TorrentLibrary~TPN_Extended
  * @property {string} filePath - additionnal property useful for this library
  */
 
 /**
  * The variable where we store all kind of media files found in paths
- * @typedef {Map.<string, {( Set<TPN_Extended>| Map.<string,Set<TPN_Extended>> )}>} StoreVar
+ * @typedef {Map.<string, {( Set<TorrentLibrary~TPN_Extended>| Map.<string,Set<TorrentLibrary~TPN_Extended>> )}>} TorrentLibrary~StoreVar
  * @example
  * // An example of the variable after the scan method
  * [
@@ -111,7 +111,6 @@ import videosExtension from 'video-extensions';
 
 /**
  * Parser for media files name
- * @external nameParser
  * @see {@link https://github.com/jy95/torrent-name-parser}
  */
 import nameParser from 'torrent-name-parser';
@@ -314,7 +313,7 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Add the path(s) to be analyzed by the library if they exist and are readable
-     * @param {string} paths - A or more path(s)
+     * @param {...string} paths - A or more path(s)
      * @instance
      * @method
      * @since 0.0.0
@@ -350,6 +349,9 @@ class TorrentLibrary extends EventEmitter {
      * @memberOf TorrentLibrary
      * @since 0.0.0
      * @returns {boolean} Has user provided us paths ?
+     * @example
+     * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
+     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE
      */
   hasPathsProvidedByUser() {
     return this.paths.length === 0;
@@ -384,9 +386,17 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Removes files stored in this library
-     * @param {string} files An array of filePath (for example the keys of allFilesWithCategory())
+     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory())
      * @since 1.0.3
-     * @return {external:Promise} an resolved or reject promise
+     * @return {external:Promise} an resolved or rejected promise<br>
+     * On success, the resolve will contain an message and the removed filePaths<br>
+     * On error the promise will be rejected with an Error object from sub modules<br>
+     * @example
+     * // with multiples files
+     * TorrentLibraryInstance.removeOldFiles(
+     *    "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV",
+     *    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
+     * )
      */
   removeOldFiles(...files) {
     const that = this;
@@ -451,7 +461,7 @@ class TorrentLibrary extends EventEmitter {
      * @instance
      * @since 0.0.0
      * @memberOf TorrentLibrary
-     * @type {Set.<TPN_Extended>}
+     * @type {Set.<TorrentLibrary~TPN_Extended>}
      * @example
      * // an JSON stringified example of this method
      * [
@@ -477,7 +487,7 @@ class TorrentLibrary extends EventEmitter {
      * @instance
      * @since 0.0.0
      * @memberOf TorrentLibrary
-     * @type {Map.<string, Set.<TPN_Extended>>}
+     * @type {Map.<string, Set.<TorrentLibrary~TPN_Extended>>}
      * @example
      * // an JSON stringified example of this method
      * {
