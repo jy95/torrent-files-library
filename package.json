@@ -14,7 +14,7 @@
     "prepare": "npm run compile",
     "test": "mocha",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
-    "lint" : "./node_modules/.bin/eslint ./src ./test --fix"
+    "lint": "./node_modules/.bin/eslint ./src ./test --fix"
   },
   "engines": {
     "node": ">=6",
@@ -70,7 +70,7 @@
     "bluebird": "^3.5.0",
     "filehound": "^1.16.2",
     "lodash": "^4.17.4",
-    "torrent-name-parser": "git+https://github.com/jy95/torrent-name-parser.git",
+    "parse-torrent-title": "^1.0.0",
     "video-extensions": "^1.1.0"
   }
 }

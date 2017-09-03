@@ -2,26 +2,27 @@
 /**
  * The result of parsing file name
  * @typedef {Object} TorrentLibrary~TPN
- * @see {@link https://github.com/jy95/torrent-name-parser}
+ * @see {@link https://github.com/clement-escolano/parse-torrent-title}
  * @property {(string)} title - The file title
  * @property {(number|undefined)} season - The season number
  * @property {(number|undefined)} episode - The episode number
- * @property {(string|undefined)} episodeName - The episode name
  * @property {(number|undefined)} year - The year
  * @property {(string|undefined)} resolution - The resolution
- * @property {(string|undefined)} quality - The quality
  * @property {(string|undefined)} codec - The codec
  * @property {(string|undefined)} audio - The audio
  * @property {(string|undefined)} group - The group that releases this file
- * @property {(string|undefined)} region - The quality
- * @property {(string|undefined)} extended - extended ?
- * @property {(string|undefined)} hardcoded - hardcoded ?
- * @property {(string|undefined)} proper - proper ?
- * @property {(string|undefined)} repack - repack ?
+ * @property {(string|undefined)} region - The region
  * @property {(string|undefined)} container - The container
- * @property {(string|undefined)} website - The website that releases this file
  * @property {(string|undefined)} language - The file language
- * @property {(string|undefined)} excess - Unmatched text from filename
+ * @property {(boolean|undefined)} extended - extended ?
+ * @property {(boolean|undefined)} unrated - unrated ?
+ * @property {(boolean|undefined)} proper - proper ?
+ * @property {(boolean|undefined)} repack - repack ?
+ * @property {(boolean|undefined)} convert - convert ?
+ * @property {(boolean|undefined)} hardcoded - hardcoded ?
+ * @property {(boolean|undefined)} retail - retail ?
+ * @property {(boolean|undefined)} remastered - remastered ?
+ * @property {(string|undefined)} source - the source
  */
 
 /**
@@ -40,9 +41,9 @@
  *         {
  *            "year": 2014,
  *            "resolution": '1080p',
- *            "quality": 'BrRip',
+ *            "source": 'brrip',
  *            "codec": 'x264',
- *            "container": 'MKV',
+ *            "container": 'mkv',
  *            "title": 'Captain Russia The Summer Soldier',
  *            "filePath": "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV"
  *         }
@@ -52,10 +53,10 @@
  *              {
  *                  "season": 4,
  *                  "episode": 21,
- *                  "quality": "WEBRip",
- *                  "codec": "XviD",
+ *                  "source": "webrip",
+ *                  "codec": "xvid",
  *                  "container": "avi",
- *                  "language": "FRENCH"
+ *                  "language": "french"
  *                  "filePath" : "D:\somePath\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
  *              }
  *          ]
@@ -111,9 +112,9 @@ import videosExtension from 'video-extensions';
 
 /**
  * Parser for media files name
- * @see {@link https://github.com/jy95/torrent-name-parser}
+ * @see {@link https://github.com/clement-escolano/parse-torrent-title}
  */
-import nameParser from 'torrent-name-parser';
+import { parse as nameParser } from 'parse-torrent-title';
 
 import {
   EventEmitter,
@@ -198,7 +199,7 @@ class TorrentLibrary extends EventEmitter {
     this.paths = [];
     /**
          * The variable where we store all kind of media files found in paths
-         * @member {StoreVar}
+         * @member {TorrentLibrary~StoreVar}
          */
     this.stores = new Map([
       [TorrentLibrary.MOVIES_TYPE, new Set()],
@@ -467,13 +468,12 @@ class TorrentLibrary extends EventEmitter {
      * [
      *  {
      *   "year":2012,
-     *   "quality":"DVDRiP",
-     *   "codec":"XviD",
+     *   "source":"dvdrip",
+     *   "codec":"xvid",
      *   "group":"-www.zone-telechargement.ws.avi",
      *   "container":"avi",
-     *   "language":"TRUEFRENCH",
+     *   "language":"truefrench",
      *   "title":"Bad Ass",
-     *   "excess":"LiMiTED",
      *   "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi"
      *  }
      * ]
@@ -495,20 +495,20 @@ class TorrentLibrary extends EventEmitter {
    *    {
    *      "season":4,
    *      "episode":21,
-   *      "quality":"WEBRip",
-   *      "codec":"XviD",
+   *      "source":"webrip",
+   *      "codec":"xvid",
    *      "container":"avi",
-   *      "language":"FRENCH",
+   *      "language":"french",
    *      "title":"The Blacklist",
    *      "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
    *   },
    *   {
    *      "season":4,
    *      "episode":14,
-   *      "quality":"WEBRip",
-   *      "codec":"XviD",
+   *      "source":"webrip",
+   *      "codec":"xvid",
    *      "container":"avi",
-   *      "language":"FRENCH",
+   *      "language":"french",
    *      "title":"The Blacklist",
    *      "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi"
    *   }
