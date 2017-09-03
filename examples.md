@@ -46,7 +46,7 @@ libInstance
 		console.log(err.message);
 	});
 ```
-![fileMappingDemo](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/fileMapping.gif)
+![fileMappingDemo](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/fileMapping.png)
 
 <h3 id="list-found-movies">
     List found movies
@@ -84,7 +84,7 @@ libInstance
 		console.log(err.message);
 	});
 ```
-![foundMovies](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundMovies.gif)
+![foundMovies](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundMovies.png)
 
 <h3 id="list-each-tv-serie">
     List each tv serie
@@ -133,6 +133,6 @@ libInstance
 	});
 ```
 
-![foundTvSeries](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundTvSeries.gif)
+![foundTvSeries](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundTvSeries.png)
 
 More example are coming ...
