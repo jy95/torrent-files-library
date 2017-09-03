@@ -94,8 +94,9 @@ import { basename, normalize } from 'path';
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
  * @see {@link https://lodash.com/docs/4.17.4#difference}
  * @see {@link https://lodash.com/docs/4.17.4#partition}
+ * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}
  */
-import { uniq, difference, partition } from 'lodash';
+import { uniq, difference, partition, cloneDeep } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
@@ -479,7 +480,7 @@ class TorrentLibrary extends EventEmitter {
      * ]
      */
   get allMovies() {
-    return this.stores.get(TorrentLibrary.MOVIES_TYPE);
+    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));
   }
 
   /**
@@ -516,7 +517,7 @@ class TorrentLibrary extends EventEmitter {
 * }
      */
   get allTvSeries() {
-    return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));
   }
 
   /**
@@ -529,7 +530,7 @@ class TorrentLibrary extends EventEmitter {
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
      */
   get allFilesWithCategory() {
-    return this.categoryForFile;
+    return cloneDeep(this.categoryForFile);
   }
 
   toJSON() {

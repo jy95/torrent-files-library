@@ -164,8 +164,8 @@ describe('TorrentLibrary tests', () => {
       it('Should not be able to remove not present files', () => {
         const wrongFile = path.join(__dirname, 'folder1',
           'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi');
-        const allFiles = _.cloneDeep(libInstance.allFilesWithCategory);
-        const expectedTvSeriesMap = _.cloneDeep(libInstance.allTvSeries);
+        const allFiles = libInstance.allFilesWithCategory;
+        const expectedTvSeriesMap = libInstance.allTvSeries;
         libInstance.removeOldFiles(wrongFile);
         assert.equal(_.isEqual(allFiles, libInstance.allFilesWithCategory),
           true, 'nothing should have changed!');
@@ -175,8 +175,7 @@ describe('TorrentLibrary tests', () => {
 
       it('Should be able to remove a movie', () => {
         // files[2] ; Bad Ass
-        const allFilesWithoutMovie = _.cloneDeep(
-          libInstance.allFilesWithCategory);
+        const allFilesWithoutMovie = libInstance.allFilesWithCategory;
         allFilesWithoutMovie.delete(files[2]);
         const expectedMovieSet = new Set();
         libInstance.removeOldFiles(files[2]);
@@ -188,7 +187,7 @@ describe('TorrentLibrary tests', () => {
       });
 
       it('Should be able to remove an tv-serie episode', () => {
-        const allFiles = _.cloneDeep(tempInstance.allFilesWithCategory);
+        const allFiles = tempInstance.allFilesWithCategory;
         allFiles.delete(files[1]);
         const expectedSeriesMap = new Map([
           [nameParser(path.basename(files[0])).title, new Set([
