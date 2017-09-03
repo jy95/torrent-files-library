@@ -111,9 +111,9 @@ import videosExtension from 'video-extensions';
 
 /**
  * Parser for media files name
- * @see {@link https://github.com/jy95/torrent-name-parser}
+ * @see {@link https://github.com/clement-escolano/parse-torrent-title}
  */
-import nameParser from 'torrent-name-parser';
+import { parse as nameParser } from 'parse-torrent-title';
 
 import {
   EventEmitter,

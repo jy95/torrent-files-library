@@ -1,7 +1,7 @@
 import videosExtension from 'video-extensions';
 import assert from 'assert';
 import path from 'path';
-import nameParser from 'torrent-name-parser';
+import { parse as nameParser } from 'parse-torrent-title';
 import _ from 'lodash';
 import TorrentLibrary from '../lib/TorrentLibrary';
 
