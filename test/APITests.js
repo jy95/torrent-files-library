@@ -3,7 +3,6 @@ import assert from 'assert';
 import path from 'path';
 import { parse as nameParser } from 'parse-torrent-title';
 import _ from 'lodash';
-import * as fs from 'fs';
 import TorrentLibrary from '../lib/TorrentLibrary';
 
 describe('TorrentLibrary tests', () => {
@@ -20,7 +19,63 @@ describe('TorrentLibrary tests', () => {
       'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD' +
         '-www.zone-telechargement.ws.avi'),
   ];
-  const expectedJsonLocation = path.join(__dirname, 'example.json');
+  const expectedJson = {
+    paths: [
+      ...folders,
+    ],
+    allFilesWithCategory: [
+      [
+        files[2],
+        'MOVIES',
+      ],
+      [
+        files[0],
+        'TV_SERIES',
+      ],
+      [
+        files[1],
+        'TV_SERIES',
+      ],
+    ],
+    movies: [
+      {
+        year: 2012,
+        container: 'avi',
+        source: 'dvdrip',
+        codec: 'xvid',
+        language: 'truefrench',
+        title: 'Bad Ass',
+        filePath: files[2],
+      },
+    ],
+    'tv-series': [
+      [
+        'The Blacklist',
+        [
+          {
+            container: 'avi',
+            source: 'webrip',
+            codec: 'xvid',
+            season: 4,
+            episode: 21,
+            language: 'french',
+            title: 'The Blacklist',
+            filePath: files[0],
+          },
+          {
+            container: 'avi',
+            source: 'webrip',
+            codec: 'xvid',
+            season: 4,
+            episode: 14,
+            language: 'french',
+            title: 'The Blacklist',
+            filePath: files[1],
+          },
+        ],
+      ],
+    ],
+  };
 
   // initialization
   before(() => {
@@ -149,11 +204,10 @@ describe('TorrentLibrary tests', () => {
 
     context('toJSON()', () => {
       it('Should return a valid JSON', () => {
-        const data = fs.readFileSync(expectedJsonLocation);
-        const expectedJson = JSON.stringify(JSON.parse(data));
+        const expectedJsonString = JSON.stringify(expectedJson);
         const dataFromInstance = libInstance.toJSON();
         assert.deepEqual(
-          expectedJson,
+          expectedJsonString,
           JSON.stringify(JSON.parse(dataFromInstance)),
           'not the same JSON',
         );
