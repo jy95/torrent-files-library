@@ -35,7 +35,13 @@
   "release": {
     "analyzeCommits": {
       "path": "sr-commit-analyzer",
-      "preset": "eslint"
+      "preset": "eslint",
+      "releaseRules": [
+        {"type": "Feat", "release": "minor"},
+        {"type": "Refactor", "release": "patch"},
+        {"tag": "Fix", "release": "patch"},
+        {"type": "Perf", "release": "patch"}
+      ]
     },
     "generateNotes": {
       "path": "sr-release-notes-generator",
