@@ -531,6 +531,18 @@ class TorrentLibrary extends EventEmitter {
   get allFilesWithCategory() {
     return this.categoryForFile;
   }
+
+  toJSON() {
+    const tvSeries = this.allTvSeries;
+    return `{
+    "paths":${JSON.stringify([...this.paths])},
+    "allFilesWithCategory":${JSON.stringify([...this.allFilesWithCategory])},
+    "movies":${JSON.stringify([...this.allMovies])},
+    "tv-series":${JSON.stringify([...tvSeries].map(serie =>
+    // serie[0] contains the title and [1] the wrong JSON ; let fix it
+    [serie[0], [...tvSeries.get(serie[0])]]))}
+    }`;
+  }
 }
 
 export default TorrentLibrary;

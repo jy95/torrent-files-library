@@ -1,0 +1,58 @@
+{
+  "paths":[
+    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1",
+    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2"
+  ],
+  "allFilesWithCategory":[
+    [
+      "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi",
+      "MOVIES"
+    ],
+    [
+      "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi",
+      "TV_SERIES"
+    ],
+    [
+      "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi",
+      "TV_SERIES"
+    ]
+  ],
+  "movies":[
+    {
+      "year":2012,
+      "container":"avi",
+      "source":"dvdrip",
+      "codec":"xvid",
+      "language":"truefrench",
+      "title":"Bad Ass",
+      "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi"
+    }
+  ],
+  "tv-series":[
+    [
+      "The Blacklist",
+      [
+        {
+          "container":"avi",
+          "source":"webrip",
+          "codec":"xvid",
+          "season":4,
+          "episode":21,
+          "language":"french",
+          "title":"The Blacklist",
+          "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
+        },
+        {
+          "container":"avi",
+          "source":"webrip",
+          "codec":"xvid",
+          "season":4,
+          "episode":14,
+          "language":"french",
+          "title":"The Blacklist",
+          "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi"
+        }
+      ]
+    ]
+  ]
+}
