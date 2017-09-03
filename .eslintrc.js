@@ -6,7 +6,8 @@ module.exports = {
         "max-len": ["error", { "ignoreComments": true }],
         "import/extensions": ['off', 'never'],
         "no-bitwise": ["error", { "allow": ["|"] }],
-        "no-restricted-syntax": ['off', "ForInStatement"]
+        "no-restricted-syntax": ['off', "ForInStatement"],
+        "prefer-const" : "off"
     },
     "env" : {
         "es6" : true,

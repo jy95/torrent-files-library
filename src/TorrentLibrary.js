@@ -4,25 +4,25 @@
  * @typedef {Object} TorrentLibrary~TPN
  * @see {@link https://github.com/clement-escolano/parse-torrent-title}
  * @property {(string)} title - The file title
- * @property {(number|undefined)} season - The season number
- * @property {(number|undefined)} episode - The episode number
- * @property {(number|undefined)} year - The year
- * @property {(string|undefined)} resolution - The resolution
- * @property {(string|undefined)} codec - The codec
- * @property {(string|undefined)} audio - The audio
- * @property {(string|undefined)} group - The group that releases this file
- * @property {(string|undefined)} region - The region
- * @property {(string|undefined)} container - The container
- * @property {(string|undefined)} language - The file language
- * @property {(boolean|undefined)} extended - extended ?
- * @property {(boolean|undefined)} unrated - unrated ?
- * @property {(boolean|undefined)} proper - proper ?
- * @property {(boolean|undefined)} repack - repack ?
- * @property {(boolean|undefined)} convert - convert ?
- * @property {(boolean|undefined)} hardcoded - hardcoded ?
- * @property {(boolean|undefined)} retail - retail ?
- * @property {(boolean|undefined)} remastered - remastered ?
- * @property {(string|undefined)} source - the source
+ * @property {(number)} [season] - The season number
+ * @property {(number)} [episode] - The episode number
+ * @property {(number)} [year] - The year
+ * @property {(string)} [resolution] - The resolution
+ * @property {(string)} [codec] - The codec
+ * @property {(string)} [audio] - The audio
+ * @property {(string)} [group] - The group that releases this file
+ * @property {(string)} [region] - The region
+ * @property {(string)} [container] - The container
+ * @property {(string)} [language] - The file language
+ * @property {(boolean)} [extended] - extended ?
+ * @property {(boolean)} [unrated] - unrated ?
+ * @property {(boolean)} [proper] - proper ?
+ * @property {(boolean)} [repack] - repack ?
+ * @property {(boolean)} [convert] - convert ?
+ * @property {(boolean)} [hardcoded] - hardcoded ?
+ * @property {(boolean)} [retail] - retail ?
+ * @property {(boolean)} [remastered] - remastered ?
+ * @property {(string)} [source] - the source
  */
 
 /**
@@ -180,15 +180,28 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Create a TorrentLibrary
+     * @param {Object} [config] - the config object
+     * @param {(String)} [config.defaultPath] - the default path
+     * @param {(String[])} [config.paths] - the paths where we are looking the media files
+     * @param {(Map.<string,string>)} [config.allFilesWithCategory] - Mapping filepath => category
+     * @param {(Set.<TorrentLibrary~TPN_Extended>)} [config.movies] - the movies files
+     * @param {(Map.<string, Set.<TorrentLibrary~TPN_Extended>>)} [config.series] - the serie files
      */
-  constructor() {
+  constructor(
+    {
+      defaultPath = process.cwd(),
+      paths = [],
+      allFilesWithCategory = new Map(),
+      movies = new Set(),
+      series = new Map(),
+    } = {}) {
     super();
     /**
          * just an easy way to scan the current directory path, if not other paths provided
          * @member  {string}
          * @default the directory from which you invoked the node command
          */
-    this.defaultPath = process.cwd();
+    this.defaultPath = defaultPath;
     /**
          * the paths where we are looking the media files
          * @member {String[]}
@@ -197,14 +210,14 @@ class TorrentLibrary extends EventEmitter {
          * // after have added some paths ...
          * [ "D:\somePath", "D:\anotherPath" ]
          */
-    this.paths = [];
+    this.paths = paths;
     /**
          * The variable where we store all kind of media files found in paths
          * @member {TorrentLibrary~StoreVar}
          */
     this.stores = new Map([
-      [TorrentLibrary.MOVIES_TYPE, new Set()],
-      [TorrentLibrary.TV_SERIES_TYPE, new Map()],
+      [TorrentLibrary.MOVIES_TYPE, movies],
+      [TorrentLibrary.TV_SERIES_TYPE, series],
     ]);
     /**
          * Mapping filepath => category
@@ -212,7 +225,7 @@ class TorrentLibrary extends EventEmitter {
          * @example
          * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
          */
-    this.categoryForFile = new Map();
+    this.categoryForFile = allFilesWithCategory;
     /**
          * Private method for adding new files
          * @private
@@ -552,6 +565,33 @@ class TorrentLibrary extends EventEmitter {
     [serie[0], [...tvSeries.get(serie[0])]]))}
     }`;
   }
+
+  /**
+     * Creates an instance of TorrentLibrary
+     * @param {Object} [json] - the JSON object of toJSON() string
+     * @param {(String[])} json.paths - the paths where we are looking the media files
+     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category
+     * @param {(TorrentLibrary~TPN_Extended[])} json.movies - the movies files
+     * @param {(Array.<Array.<String,TorrentLibrary~TPN_Extended[]>>)} json.tv-series - the serie files
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
+     * @return {TorrentLibrary} an TorrentLibrary instance
+     */
+  /*
+  static createFromJSON(json) {
+    let config = json;
+    // transform the param
+    if (json.allFilesWithCategory) {
+      config.allFilesWithCategory = new Map(json.allFilesWithCategory);
+    }
+    if (json.movies) {
+      config.movies = new Set(json.movies);
+    }
+    if (json['tv-series']) {
+      config.series = new Map(json['tv-series']);
+    }
+    return new TorrentLibrary(config);
+  }
+  */
 }
 
 export default TorrentLibrary;
