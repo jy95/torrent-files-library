@@ -533,6 +533,14 @@ class TorrentLibrary extends EventEmitter {
     return cloneDeep(this.categoryForFile);
   }
 
+  /**
+     * Returns an JSON stringified of the current state
+     * @since 1.0.3
+     * @instance
+     * @memberOf TorrentLibrary
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json}
+     * @return {string} json - the JSON stringified
+     */
   toJSON() {
     const tvSeries = this.allTvSeries;
     return `{

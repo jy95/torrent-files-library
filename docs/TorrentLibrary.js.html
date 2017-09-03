@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li>
 </nav>
 
 <div id="main">
@@ -135,8 +135,9 @@ import { basename, normalize } from 'path';
  * @see {@link https://lodash.com/docs/4.17.4#uniq}
  * @see {@link https://lodash.com/docs/4.17.4#difference}
  * @see {@link https://lodash.com/docs/4.17.4#partition}
+ * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}
  */
-import { uniq, difference, partition } from 'lodash';
+import { uniq, difference, partition, cloneDeep } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
@@ -520,7 +521,7 @@ class TorrentLibrary extends EventEmitter {
      * ]
      */
   get allMovies() {
-    return this.stores.get(TorrentLibrary.MOVIES_TYPE);
+    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));
   }
 
   /**
@@ -557,7 +558,7 @@ class TorrentLibrary extends EventEmitter {
 * }
      */
   get allTvSeries() {
-    return this.stores.get(TorrentLibrary.TV_SERIES_TYPE);
+    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));
   }
 
   /**
@@ -570,7 +571,27 @@ class TorrentLibrary extends EventEmitter {
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
      */
   get allFilesWithCategory() {
-    return this.categoryForFile;
+    return cloneDeep(this.categoryForFile);
+  }
+
+  /**
+     * Returns an JSON stringified of the current state
+     * @since 1.0.3
+     * @instance
+     * @memberOf TorrentLibrary
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json}
+     * @return {string} json - the JSON stringified
+     */
+  toJSON() {
+    const tvSeries = this.allTvSeries;
+    return `{
+    "paths":${JSON.stringify([...this.paths])},
+    "allFilesWithCategory":${JSON.stringify([...this.allFilesWithCategory])},
+    "movies":${JSON.stringify([...this.allMovies])},
+    "tv-series":${JSON.stringify([...tvSeries].map(serie =>
+    // serie[0] contains the title and [1] the wrong JSON ; let fix it
+    [serie[0], [...tvSeries.get(serie[0])]]))}
+    }`;
   }
 }
 
@@ -587,7 +608,7 @@ export default TorrentLibrary;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sun Sep 03 2017 17:36:37 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sun Sep 03 2017 21:28:15 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
