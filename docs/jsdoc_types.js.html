@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Promise - Documentation</title>
+    <title>jsdoc/types.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,107 +29,84 @@
 
 <div id="main">
     
-    <h1 class="page-title">Promise</h1>
+    <h1 class="page-title">jsdoc/types.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        Promise
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// JSDoc custom typedef
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>A promise object provided by the bluebird promise library.</p></div>
-        
+/**
+ * The result of parsing file name
+ * @typedef {Object} TorrentLibrary~TPN
+ * @see {@link https://github.com/clement-escolano/parse-torrent-title}
+ * @property {(string)} title - The file title
+ * @property {(number)} [season] - The season number
+ * @property {(number)} [episode] - The episode number
+ * @property {(number)} [year] - The year
+ * @property {(string)} [resolution] - The resolution
+ * @property {(string)} [codec] - The codec
+ * @property {(string)} [audio] - The audio
+ * @property {(string)} [group] - The group that releases this file
+ * @property {(string)} [region] - The region
+ * @property {(string)} [container] - The container
+ * @property {(string)} [language] - The file language
+ * @property {(boolean)} [extended] - extended ?
+ * @property {(boolean)} [unrated] - unrated ?
+ * @property {(boolean)} [proper] - proper ?
+ * @property {(boolean)} [repack] - repack ?
+ * @property {(boolean)} [convert] - convert ?
+ * @property {(boolean)} [hardcoded] - hardcoded ?
+ * @property {(boolean)} [retail] - retail ?
+ * @property {(boolean)} [remastered] - remastered ?
+ * @property {(string)} [source] - the source
+ */
 
-        
+/**
+ * The extended TPN object
+ * @typedef {TorrentLibrary~TPN} TorrentLibrary~TPN_Extended
+ * @property {string} filePath - additionnal property useful for this library
+ */
 
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TorrentLibrary.js.html">TorrentLibrary.js</a>, <a href="TorrentLibrary.js.html#line34">line 34</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="http://bluebirdjs.com/docs/api-reference.html">http://bluebirdjs.com/docs/api-reference.html</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+/**
+ * The variable where we store all kind of media files found in paths
+ * @typedef {Map.&lt;string, {( Set&lt;TorrentLibrary~TPN_Extended>| Map.&lt;string,Set&lt;TorrentLibrary~TPN_Extended>> )}>} TorrentLibrary~StoreVar
+ * @example
+ * // An example of the variable after the scan method
+ * [
+ *      "MOVIES" : [
+ *         {
+ *            "year": 2014,
+ *            "resolution": '1080p',
+ *            "source": 'brrip',
+ *            "codec": 'x264',
+ *            "container": 'mkv',
+ *            "title": 'Captain Russia The Summer Soldier',
+ *            "filePath": "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV"
+ *         }
+ *      ],
+ *      "TV_SERIES" : [
+ *          "The Blacklist" : [
+ *              {
+ *                  "season": 4,
+ *                  "episode": 21,
+ *                  "source": "webrip",
+ *                  "codec": "xvid",
+ *                  "container": "avi",
+ *                  "language": "french"
+ *                  "filePath" : "D:\somePath\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
+ *              }
+ *          ]
+ *      ]
+ * ]
+ */</code></pre>
+        </article>
+    </section>
 
 
 

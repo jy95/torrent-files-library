@@ -37,11 +37,26 @@
       "path": "sr-commit-analyzer",
       "preset": "eslint",
       "releaseRules": [
-        {"tag": "Feat", "release": "minor"},
-        {"tag": "Refactor", "release": "patch"},
-        {"tag": "Fix", "release": "patch"},
-        {"tag": "Perf", "release": "patch"},
-        {"tag": "Breaking", "release": "major"}
+        {
+          "tag": "Feat",
+          "release": "minor"
+        },
+        {
+          "tag": "Refactor",
+          "release": "patch"
+        },
+        {
+          "tag": "Fix",
+          "release": "patch"
+        },
+        {
+          "tag": "Perf",
+          "release": "patch"
+        },
+        {
+          "tag": "Breaking",
+          "release": "major"
+        }
       ]
     },
     "generateNotes": {
@@ -70,6 +85,7 @@
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
     "semantic-release": "^8.0.0",
+    "sinon": "^3.2.1",
     "sr-commit-analyzer": "^2.0.2",
     "sr-release-notes-generator": "^1.1.2"
   },

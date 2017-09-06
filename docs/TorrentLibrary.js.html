@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error">error</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li>
 </nav>
 
 <div id="main">
@@ -39,74 +39,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// JSDoc custom typedef
-/**
- * The result of parsing file name
- * @typedef {Object} TorrentLibrary~TPN
- * @see {@link https://github.com/clement-escolano/parse-torrent-title}
- * @property {(string)} title - The file title
- * @property {(number)} [season] - The season number
- * @property {(number)} [episode] - The episode number
- * @property {(number)} [year] - The year
- * @property {(string)} [resolution] - The resolution
- * @property {(string)} [codec] - The codec
- * @property {(string)} [audio] - The audio
- * @property {(string)} [group] - The group that releases this file
- * @property {(string)} [region] - The region
- * @property {(string)} [container] - The container
- * @property {(string)} [language] - The file language
- * @property {(boolean)} [extended] - extended ?
- * @property {(boolean)} [unrated] - unrated ?
- * @property {(boolean)} [proper] - proper ?
- * @property {(boolean)} [repack] - repack ?
- * @property {(boolean)} [convert] - convert ?
- * @property {(boolean)} [hardcoded] - hardcoded ?
- * @property {(boolean)} [retail] - retail ?
- * @property {(boolean)} [remastered] - remastered ?
- * @property {(string)} [source] - the source
- */
-
-/**
- * The extended TPN object
- * @typedef {TorrentLibrary~TPN} TorrentLibrary~TPN_Extended
- * @property {string} filePath - additionnal property useful for this library
- */
-
-/**
- * The variable where we store all kind of media files found in paths
- * @typedef {Map.&lt;string, {( Set&lt;TorrentLibrary~TPN_Extended>| Map.&lt;string,Set&lt;TorrentLibrary~TPN_Extended>> )}>} TorrentLibrary~StoreVar
- * @example
- * // An example of the variable after the scan method
- * [
- *      "MOVIES" : [
- *         {
- *            "year": 2014,
- *            "resolution": '1080p',
- *            "source": 'brrip',
- *            "codec": 'x264',
- *            "container": 'mkv',
- *            "title": 'Captain Russia The Summer Soldier',
- *            "filePath": "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV"
- *         }
- *      ],
- *      "TV_SERIES" : [
- *          "The Blacklist" : [
- *              {
- *                  "season": 4,
- *                  "episode": 21,
- *                  "source": "webrip",
- *                  "codec": "xvid",
- *                  "container": "avi",
- *                  "language": "french"
- *                  "filePath" : "D:\somePath\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
- *              }
- *          ]
- *      ]
- * ]
- */
-
-
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * module for exploring directories
  * @see {@link https://nspragg.github.io/filehound/}
  */
@@ -160,7 +93,7 @@ import { parse as nameParser } from 'parse-torrent-title';
 
 import {
   EventEmitter,
-} from 'events';
+} from 'jsdoc/events';
 
 // check if an object has these properties and they are not undefined
 function checkProperties(obj, properties) {
@@ -382,10 +315,17 @@ class TorrentLibrary extends EventEmitter {
      * @return {external:Promise}  On success the promise will be resolved with "All paths were added!"&lt;br>
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing&lt;br>
      * or an Error object from fs &lt;br>
+     * @fires TorrentLibrary#missing_parameter
+     * @fires TorrentLibrary#error
      */
   addNewPath(...paths) {
     // the user should provide us at lest a path
-    if (paths.length === 0) { return missingParam(); }
+    if (paths.length === 0) {
+      this.emit('missing_parameter', {
+        functionName: 'addNewPath',
+      });
+      return missingParam();
+    }
 
     const that = this;
     return new PromiseLib(((resolve, reject) => {
@@ -395,6 +335,10 @@ class TorrentLibrary extends EventEmitter {
         that.paths = uniq([...that.paths, ...paths.map(normalize)]);
         resolve('All paths were added!');
       }).catch((e) => {
+        that.emit('error', {
+          functionName: 'addNewPath',
+          error: e,
+        });
         reject(e);
       });
     }));
@@ -650,7 +594,7 @@ export default TorrentLibrary;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Wed Sep 06 2017 18:18:32 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Wed Sep 06 2017 19:27:16 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
