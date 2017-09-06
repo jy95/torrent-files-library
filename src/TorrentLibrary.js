@@ -287,17 +287,18 @@ class TorrentLibrary extends EventEmitter {
     }
 
     const that = this;
-    return new PromiseLib(((resolve) => {
+    return new PromiseLib(((resolve, reject) => {
       PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {
         // keep only unique paths
         // use normalize for cross platform's code
         that.paths = uniq([...that.paths, ...paths.map(normalize)]);
         resolve('All paths were added!');
       }).catch((e) => {
-        that.emit('error', {
+        that.emit('error_in_function', {
           functionName: 'addNewPath',
-          error: e,
+          error: e.message,
         });
+        reject(e);
       });
     }));
   }

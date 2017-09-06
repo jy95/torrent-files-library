@@ -8,10 +8,10 @@
  */
 
 /**
- * Error event
- * @event TorrentLibrary#error
+ * error_in_function event
+ * @event TorrentLibrary#error_in_function
  * @type {object}
  * @property {string} functionName - Indicates the function name when the error occurs.
- * @property {object} error - The error object
+ * @property {string} error - The error message got by error.message
  */
 
