@@ -287,7 +287,7 @@ class TorrentLibrary extends EventEmitter {
     }
 
     const that = this;
-    return new PromiseLib(((resolve, reject) => {
+    return new PromiseLib(((resolve) => {
       PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {
         // keep only unique paths
         // use normalize for cross platform's code
@@ -298,7 +298,6 @@ class TorrentLibrary extends EventEmitter {
           functionName: 'addNewPath',
           error: e,
         });
-        reject(e);
       });
     }));
   }
