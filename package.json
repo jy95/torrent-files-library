@@ -85,7 +85,6 @@
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
     "semantic-release": "^8.0.0",
-    "sinon": "^3.2.1",
     "sr-commit-analyzer": "^2.0.2",
     "sr-release-notes-generator": "^1.1.2"
   },

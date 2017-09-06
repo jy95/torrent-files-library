@@ -52,7 +52,7 @@ import { parse as nameParser } from 'parse-torrent-title';
 
 import {
   EventEmitter,
-} from 'jsdoc/events';
+} from 'events';
 
 // check if an object has these properties and they are not undefined
 function checkProperties(obj, properties) {
