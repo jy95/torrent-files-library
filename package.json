@@ -37,10 +37,11 @@
       "path": "sr-commit-analyzer",
       "preset": "eslint",
       "releaseRules": [
-        {"type": "Feat", "release": "minor"},
-        {"type": "Refactor", "release": "patch"},
+        {"tag": "Feat", "release": "minor"},
+        {"tag": "Refactor", "release": "patch"},
         {"tag": "Fix", "release": "patch"},
-        {"type": "Perf", "release": "patch"}
+        {"tag": "Perf", "release": "patch"},
+        {"tag": "Breaking", "release": "major"}
       ]
     },
     "generateNotes": {
