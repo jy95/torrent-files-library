@@ -181,11 +181,11 @@ class TorrentLibrary extends EventEmitter {
   /**
      * Create a TorrentLibrary
      * @param {Object} [config] - the config object
-     * @param {(String)} [config.defaultPath] - the default path
-     * @param {(String[])} [config.paths] - the paths where we are looking the media files
-     * @param {(Map.<string,string>)} [config.allFilesWithCategory] - Mapping filepath => category
-     * @param {(Set.<TorrentLibrary~TPN_Extended>)} [config.movies] - the movies files
-     * @param {(Map.<string, Set.<TorrentLibrary~TPN_Extended>>)} [config.series] - the serie files
+     * @param {(String)} [config.defaultPath=process.cwd()] - the default path
+     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files
+     * @param {(Map.<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category
+     * @param {(Set.<TorrentLibrary~TPN_Extended>)} [config.movies=new Set()] - the movies files
+     * @param {(Map.<string, Set.<TorrentLibrary~TPN_Extended>>)} [config.series=new Map()] - the serie files
      */
   constructor(
     {
@@ -403,7 +403,7 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Removes files stored in this library
-     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory())
+     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)
      * @since 1.0.3
      * @return {external:Promise} an resolved or rejected promise<br>
      * On success, the resolve will contain an message and the removed filePaths<br>
