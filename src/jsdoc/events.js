@@ -40,8 +40,8 @@
  * @type {object}
  * @property {...string} files - all the files that were found and added if not yet in lib
  * @example
- * TorrentLibraryInstance.on('addNewPath',function(callback){
- *      console.log('The following files were added : ' + callback.files);
+ * TorrentLibraryInstance.on('scan',function(callback){
+ *      console.log('The following files were found : ' + callback.files);
  * })
  */
 
@@ -49,9 +49,9 @@
  * removeOldFiles event
  * @event TorrentLibrary#removeOldFiles
  * @type {object}
- * @property {...string} files - all the files that were found and added if not yet in lib
+ * @property {...string} files - all the files that were found and removed if not yet in lib
  * @example
- * TorrentLibraryInstance.on('addNewPath',function(callback){
+ * TorrentLibraryInstance.on('removeOldFiles',function(callback){
  *      console.log('The following files were added : ' + callback.files);
  * })
  */

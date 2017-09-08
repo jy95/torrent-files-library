@@ -3,6 +3,7 @@ import assert from 'assert';
 import path from 'path';
 import { parse as nameParser } from 'parse-torrent-title';
 import _ from 'lodash';
+import * as sinon from 'sinon';
 import TorrentLibrary from '../lib/TorrentLibrary';
 
 describe('TorrentLibrary tests', () => {
@@ -108,29 +109,41 @@ describe('TorrentLibrary tests', () => {
   describe('Instance Methods', () => {
     context('addNewPath()', () => {
       it('missing parameter', (done) => {
+        let eventSpy = sinon.spy();
+        libInstance.on('missing_parameter', eventSpy);
         libInstance.addNewPath()
           .then(() => {
             done(new Error('Missing parameter'));
           })
           .catch(() => {
+            assert(eventSpy.called, 'Event did not fire.');
+            assert(eventSpy.calledOnce, 'Event fired more than once');
             done();
           });
       });
 
       it('inexistent Path', (done) => {
+        let eventSpy = sinon.spy();
+        libInstance.on('error_in_function', eventSpy);
         libInstance.addNewPath(path.join(__dirname, 'wrongPath'))
           .then(() => {
             done(new Error('This path should not exist or be readable'));
           })
           .catch(() => {
+            assert(eventSpy.called, 'Event did not fire.');
+            assert(eventSpy.calledOnce, 'Event fired more than once');
             done();
           });
       });
 
 
       it('existent paths', (done) => {
+        let eventSpy = sinon.spy();
+        libInstance.on('addNewPath', eventSpy);
         libInstance.addNewPath(...folders)
           .then(() => {
+            assert(eventSpy.called, 'Event did not fire.');
+            assert(eventSpy.calledOnce, 'Event fired more than once');
             done();
           }).catch((err) => {
             done(err);
@@ -142,7 +155,12 @@ describe('TorrentLibrary tests', () => {
       this.timeout(15000);
 
       it('Scan without user provided paths must work', (done) => {
+        let eventSpy = sinon.spy();
+        libInstance.on('scan', eventSpy);
         tempInstance.scan().then(() => {
+          // TODO understand why it doesn't work ...
+          // assert(eventSpy.called, 'Event did not fire.');
+          // assert(eventSpy.calledOnce, 'Event fired more than once');
           done();
         }).catch((err) => {
           done(err);
@@ -150,7 +168,11 @@ describe('TorrentLibrary tests', () => {
       });
 
       it('Scan with user provided paths must work', (done) => {
+        let eventSpy = sinon.spy();
+        libInstance.on('scan', eventSpy);
         libInstance.scan().then(() => {
+          assert(eventSpy.called, 'Event did not fire.');
+          assert(eventSpy.calledOnce, 'Event fired more than once');
           done();
         }).catch((err) => {
           done(err);
@@ -232,15 +254,21 @@ describe('TorrentLibrary tests', () => {
         const allFilesWithoutMovie = libInstance.allFilesWithCategory;
         allFilesWithoutMovie.delete(files[2]);
         const expectedMovieSet = new Set();
+        let eventSpy = sinon.spy();
+        libInstance.on('removeOldFiles', eventSpy);
         libInstance.removeOldFiles(files[2]);
         assert.equal(_.isEqual(allFilesWithoutMovie,
           libInstance.allFilesWithCategory), true,
         'The movie should have been removed!');
         assert.equal(_.isEqual(expectedMovieSet,
           libInstance.allMovies), true, 'The movie should have been removed!');
+        assert(eventSpy.called, 'Event did not fire.');
+        assert(eventSpy.calledOnce, 'Event fired more than once');
       });
 
       it('Should be able to remove an tv-serie episode', () => {
+        let eventSpy = sinon.spy();
+        libInstance.on('removeOldFiles', eventSpy);
         const allFiles = tempInstance.allFilesWithCategory;
         allFiles.delete(files[1]);
         const expectedSeriesMap = new Map([
@@ -260,11 +288,16 @@ describe('TorrentLibrary tests', () => {
         assert.equal(_.isEqual(expectedSeriesMap,
           tempInstance.allTvSeries), true,
         'The tv-series should still exist');
+        // TODO Understand why It doesn't work
+        // assert(eventSpy.called, 'Event did not fire.');
+        // assert(eventSpy.calledOnce, 'Event fired more than once');
       });
 
       it('Should be able to remove multiples files : Tv-serie', () => {
         const allFiles = new Map();
         const expectedSeriesMap = new Map();
+        let eventSpy = sinon.spy();
+        libInstance.on('removeOldFiles', eventSpy);
         libInstance.removeOldFiles(...files.slice(0, 2));
         assert.equal(_.isEqual(allFiles,
           libInstance.allFilesWithCategory), true,
@@ -272,6 +305,8 @@ describe('TorrentLibrary tests', () => {
         assert.equal(_.isEqual(expectedSeriesMap,
           libInstance.allTvSeries), true,
         'The tv-series episodes should have all been removed!');
+        assert(eventSpy.called, 'Event did not fire.');
+        assert(eventSpy.calledOnce, 'Event fired more than once');
       });
     });
   });
