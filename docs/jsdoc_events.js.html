@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error_in_function">error_in_function</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:addNewPath">addNewPath</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error_in_function">error_in_function</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:removeOldFiles">removeOldFiles</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:scan">scan</a></span></li>
 </nav>
 
 <div id="main">
@@ -46,6 +46,10 @@
  * @event TorrentLibrary#missing_parameter
  * @type {object}
  * @property {string} functionName - Indicates the function name when the error occurs.
+ * @example
+ * TorrentLibraryInstance.on('missing_parameter',function(callback){
+ *      console.log('Parameter is missing in ' + callback.functionName);
+ * })
  */
 
 /**
@@ -54,8 +58,44 @@
  * @type {object}
  * @property {string} functionName - Indicates the function name when the error occurs.
  * @property {string} error - The error message got by error.message
+ * @example
+ * TorrentLibraryInstance.on('error_in_function',function(callback){
+ *      console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);
+ * })
  */
 
+/**
+ * addNewPath event
+ * @event TorrentLibrary#addNewPath
+ * @type {object}
+ * @property {...string} paths - all the paths that were added
+ * @example
+ * TorrentLibraryInstance.on('addNewPath',function(callback){
+ *      console.log('The following files were added : ' + callback.paths);
+ * })
+ */
+
+/**
+ * scan event
+ * @event TorrentLibrary#scan
+ * @type {object}
+ * @property {...string} files - all the files that were found and added if not yet in lib
+ * @example
+ * TorrentLibraryInstance.on('addNewPath',function(callback){
+ *      console.log('The following files were added : ' + callback.files);
+ * })
+ */
+
+/**
+ * removeOldFiles event
+ * @event TorrentLibrary#removeOldFiles
+ * @type {object}
+ * @property {...string} files - all the files that were found and added if not yet in lib
+ * @example
+ * TorrentLibraryInstance.on('addNewPath',function(callback){
+ *      console.log('The following files were added : ' + callback.files);
+ * })
+ */
 </code></pre>
         </article>
     </section>
@@ -68,7 +108,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Wed Sep 06 2017 21:32:40 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Sep 08 2017 11:20:58 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

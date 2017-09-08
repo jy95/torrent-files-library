@@ -275,7 +275,8 @@ class TorrentLibrary extends EventEmitter {
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing<br>
      * or an Error object from fs <br>
      * @fires TorrentLibrary#missing_parameter
-     * @fires TorrentLibrary#error
+     * @fires TorrentLibrary#error_in_function
+     * @fires TorrentLibrary#addNewPath
      */
   addNewPath(...paths) {
     // the user should provide us at lest a path
@@ -292,6 +293,7 @@ class TorrentLibrary extends EventEmitter {
         // keep only unique paths
         // use normalize for cross platform's code
         that.paths = uniq([...that.paths, ...paths.map(normalize)]);
+        that.emit('addNewPath', { paths: that.paths });
         resolve('All paths were added!');
       }).catch((e) => {
         that.emit('error_in_function', {
@@ -326,6 +328,8 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
+     * @fires TorrentLibrary#scan
+     * @fires TorrentLibrary#error_in_function
      */
   scan() {
     const foundFiles = FileHound.create()
@@ -337,8 +341,13 @@ class TorrentLibrary extends EventEmitter {
     return new PromiseLib((resolve, reject) => {
       foundFiles
         .then(files => that.addNewFiles(files)).then(() => {
+          that.emit('scan', { files: foundFiles });
           resolve('Scanning completed');
         }).catch((err) => {
+          that.emit('error_in_function', {
+            functionName: 'scan',
+            error: err.message,
+          });
           reject(err);
         });
     });
@@ -358,6 +367,8 @@ class TorrentLibrary extends EventEmitter {
      *    "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV",
      *    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
      * )
+     * @fires TorrentLibrary#removeOldFiles
+     * @fires TorrentLibrary#error_in_function
      */
   removeOldFiles(...files) {
     const that = this;
@@ -406,12 +417,16 @@ class TorrentLibrary extends EventEmitter {
         files.forEach((file) => {
           that.categoryForFile.delete(file);
         });
-
+        that.emit('removeOldFiles', { files });
         resolve({
           message: 'The files have been deleted from the library',
           files,
         });
       } catch (err) {
+        that.emit('error_in_function', {
+          functionName: 'removeOldFiles',
+          error: err.message,
+        });
         reject(err);
       }
     });

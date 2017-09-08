@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error_in_function">error_in_function</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:addNewPath">addNewPath</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error_in_function">error_in_function</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:removeOldFiles">removeOldFiles</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:scan">scan</a></span></li>
 </nav>
 
 <div id="main">
@@ -316,7 +316,8 @@ class TorrentLibrary extends EventEmitter {
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing&lt;br>
      * or an Error object from fs &lt;br>
      * @fires TorrentLibrary#missing_parameter
-     * @fires TorrentLibrary#error
+     * @fires TorrentLibrary#error_in_function
+     * @fires TorrentLibrary#addNewPath
      */
   addNewPath(...paths) {
     // the user should provide us at lest a path
@@ -333,6 +334,7 @@ class TorrentLibrary extends EventEmitter {
         // keep only unique paths
         // use normalize for cross platform's code
         that.paths = uniq([...that.paths, ...paths.map(normalize)]);
+        that.emit('addNewPath', { paths: that.paths });
         resolve('All paths were added!');
       }).catch((e) => {
         that.emit('error_in_function', {
@@ -367,6 +369,8 @@ class TorrentLibrary extends EventEmitter {
      * @since 0.0.0
      * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"&lt;br>
      * On error the promise will be rejected with an Error object from sub modules&lt;br>
+     * @fires TorrentLibrary#scan
+     * @fires TorrentLibrary#error_in_function
      */
   scan() {
     const foundFiles = FileHound.create()
@@ -378,8 +382,13 @@ class TorrentLibrary extends EventEmitter {
     return new PromiseLib((resolve, reject) => {
       foundFiles
         .then(files => that.addNewFiles(files)).then(() => {
+          that.emit('scan', { files: foundFiles });
           resolve('Scanning completed');
         }).catch((err) => {
+          that.emit('error_in_function', {
+            functionName: 'scan',
+            error: err.message,
+          });
           reject(err);
         });
     });
@@ -399,6 +408,8 @@ class TorrentLibrary extends EventEmitter {
      *    "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV",
      *    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
      * )
+     * @fires TorrentLibrary#removeOldFiles
+     * @fires TorrentLibrary#error_in_function
      */
   removeOldFiles(...files) {
     const that = this;
@@ -447,12 +458,16 @@ class TorrentLibrary extends EventEmitter {
         files.forEach((file) => {
           that.categoryForFile.delete(file);
         });
-
+        that.emit('removeOldFiles', { files });
         resolve({
           message: 'The files have been deleted from the library',
           files,
         });
       } catch (err) {
+        that.emit('error_in_function', {
+          functionName: 'removeOldFiles',
+          error: err.message,
+        });
         reject(err);
       }
     });
@@ -594,7 +609,7 @@ export default TorrentLibrary;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Wed Sep 06 2017 21:32:40 GMT+0200 (Romance Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Sep 08 2017 11:20:58 GMT+0200 (Romance Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
