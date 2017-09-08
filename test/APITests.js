@@ -156,11 +156,10 @@ describe('TorrentLibrary tests', () => {
 
       it('Scan without user provided paths must work', (done) => {
         let eventSpy = sinon.spy();
-        libInstance.on('scan', eventSpy);
+        tempInstance.on('scan', eventSpy);
         tempInstance.scan().then(() => {
-          // TODO understand why it doesn't work ...
-          // assert(eventSpy.called, 'Event did not fire.');
-          // assert(eventSpy.calledOnce, 'Event fired more than once');
+          assert(eventSpy.called, 'Event did not fire.');
+          assert(eventSpy.calledOnce, 'Event fired more than once');
           done();
         }).catch((err) => {
           done(err);
@@ -268,7 +267,7 @@ describe('TorrentLibrary tests', () => {
 
       it('Should be able to remove an tv-serie episode', () => {
         let eventSpy = sinon.spy();
-        libInstance.on('removeOldFiles', eventSpy);
+        tempInstance.on('removeOldFiles', eventSpy);
         const allFiles = tempInstance.allFilesWithCategory;
         allFiles.delete(files[1]);
         const expectedSeriesMap = new Map([
@@ -289,8 +288,8 @@ describe('TorrentLibrary tests', () => {
           tempInstance.allTvSeries), true,
         'The tv-series should still exist');
         // TODO Understand why It doesn't work
-        // assert(eventSpy.called, 'Event did not fire.');
-        // assert(eventSpy.calledOnce, 'Event fired more than once');
+        assert(eventSpy.called, 'Event did not fire.');
+        assert(eventSpy.calledOnce, 'Event fired more than once');
       });
 
       it('Should be able to remove multiples files : Tv-serie', () => {
