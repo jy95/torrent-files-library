@@ -536,8 +536,12 @@ class TorrentLibrary extends EventEmitter {
      * @param {(Array.<Array.<String,TorrentLibrary~TPN_Extended[]>>)} json.tv-series - the serie files
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
      * @return {TorrentLibrary} an TorrentLibrary instance
+     * @example
+     * // creates an new instance from another one
+     *   const createdInstance = TorrentLibrary.createFromJSON(
+     *      JSON.parse(libInstance.toJSON()),
+     *   );
      */
-  /*
   static createFromJSON(json) {
     let config = json;
     // transform the param
@@ -548,11 +552,14 @@ class TorrentLibrary extends EventEmitter {
       config.movies = new Set(json.movies);
     }
     if (json['tv-series']) {
-      config.series = new Map(json['tv-series']);
+      let createdMap = new Map();
+      for (let [serieTitle, setSerie] of json['tv-series']) {
+        createdMap.set(serieTitle, new Set(setSerie));
+      }
+      config.series = createdMap;
     }
     return new TorrentLibrary(config);
   }
-  */
 }
 
 export default TorrentLibrary;

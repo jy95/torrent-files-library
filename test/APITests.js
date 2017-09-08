@@ -1,6 +1,7 @@
 import videosExtension from 'video-extensions';
 import assert from 'assert';
 import path from 'path';
+import * as fs from 'fs';
 import { parse as nameParser } from 'parse-torrent-title';
 import _ from 'lodash';
 import * as sinon from 'sinon';
@@ -20,68 +21,23 @@ describe('TorrentLibrary tests', () => {
       'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD' +
         '-www.zone-telechargement.ws.avi'),
   ];
-  const expectedJson = {
-    paths: [
-      ...folders,
-    ],
-    allFilesWithCategory: [
-      [
-        files[2],
-        'MOVIES',
-      ],
-      [
-        files[0],
-        'TV_SERIES',
-      ],
-      [
-        files[1],
-        'TV_SERIES',
-      ],
-    ],
-    movies: [
-      {
-        year: 2012,
-        container: 'avi',
-        source: 'dvdrip',
-        codec: 'xvid',
-        language: 'truefrench',
-        title: 'Bad Ass',
-        filePath: files[2],
-      },
-    ],
-    'tv-series': [
-      [
-        'The Blacklist',
-        [
-          {
-            container: 'avi',
-            source: 'webrip',
-            codec: 'xvid',
-            season: 4,
-            episode: 21,
-            language: 'french',
-            title: 'The Blacklist',
-            filePath: files[0],
-          },
-          {
-            container: 'avi',
-            source: 'webrip',
-            codec: 'xvid',
-            season: 4,
-            episode: 14,
-            language: 'french',
-            title: 'The Blacklist',
-            filePath: files[1],
-          },
-        ],
-      ],
-    ],
-  };
+  let expectedJson = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'example.json'), 'utf8'),
+  );
 
   // initialization
   before(() => {
     libInstance = new TorrentLibrary();
     tempInstance = new TorrentLibrary();
+    // edit the json so that it is cross platform
+    expectedJson.paths = folders;
+    const filesIndex = [2, 0, 1];
+    expectedJson.allFilesWithCategory.forEach((file, index) => {
+      expectedJson.allFilesWithCategory[index][0] = files[filesIndex[index]];
+    });
+    expectedJson.movies[0].filePath = files[2];
+    expectedJson['tv-series'][0][1][0].filePath = files[0];
+    expectedJson['tv-series'][0][1][1].filePath = files[1];
   });
 
   describe('Static methods', () => {
@@ -235,6 +191,20 @@ describe('TorrentLibrary tests', () => {
       });
     });
 
+    context('createFromJSON()', () => {
+      it('It should create a perfect copy of instance', () => {
+        const createdInstance = TorrentLibrary.createFromJSON(
+          JSON.parse(libInstance.toJSON()),
+        );
+        assert.equal(_.isEqual(createdInstance.allFilesWithCategory,
+          createdInstance.allFilesWithCategory), true);
+        assert.equal(_.isEqual(createdInstance.allMovies,
+          libInstance.allMovies), true);
+        assert.equal(_.isEqual(createdInstance.allTvSeries,
+          libInstance.allTvSeries), true);
+      });
+    });
+
     context('Remove Old files', () => {
       it('Should not be able to remove not present files', () => {
         const wrongFile = path.join(__dirname, 'folder1',
@@ -287,7 +257,6 @@ describe('TorrentLibrary tests', () => {
         assert.equal(_.isEqual(expectedSeriesMap,
           tempInstance.allTvSeries), true,
         'The tv-series should still exist');
-        // TODO Understand why It doesn't work
         assert(eventSpy.called, 'Event did not fire.');
         assert(eventSpy.calledOnce, 'Event fired more than once');
       });
