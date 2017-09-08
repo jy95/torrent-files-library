@@ -10,7 +10,7 @@
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
-    "compile": "babel -d lib/ src/ --source-maps",
+    "compile": "babel -d lib/ src/ --source-maps both",
     "prepare": "npm run compile",
     "test": "mocha",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",

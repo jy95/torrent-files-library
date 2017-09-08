@@ -2,6 +2,5 @@
   "presets": ["env"],
   "ignore": [
     "src/jsdoc/*.js"
-  ],
-  "sourceMaps": "both"
+  ]
 }
