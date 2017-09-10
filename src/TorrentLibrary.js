@@ -317,7 +317,7 @@ class TorrentLibrary extends EventEmitter {
      * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE
      */
   hasPathsProvidedByUser() {
-    return this.paths.length === 0;
+    return this.paths.length !== 0;
   }
 
   /**

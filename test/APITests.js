@@ -74,6 +74,8 @@ describe('TorrentLibrary tests', () => {
           .catch(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
+            assert.equal(libInstance.hasPathsProvidedByUser(), false,
+              'No paths by user should be added');
             done();
           });
       });
@@ -88,6 +90,8 @@ describe('TorrentLibrary tests', () => {
           .catch(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
+            assert.equal(libInstance.hasPathsProvidedByUser(), false,
+              'No paths by user should be added');
             done();
           });
       });
@@ -100,6 +104,8 @@ describe('TorrentLibrary tests', () => {
           .then(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
+            assert.equal(libInstance.hasPathsProvidedByUser(), true,
+              'The path should be added');
             done();
           }).catch((err) => {
             done(err);
