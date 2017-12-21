@@ -84,7 +84,7 @@
     "jsdoc": "^3.5.4",
     "minami": "^1.2.3",
     "mocha": "^4.0.0",
-    "semantic-release": "^8.0.0",
+    "semantic-release": "^11.0.2",
     "sinon": "^4.0.1",
     "sr-commit-analyzer": "^2.0.2",
     "sr-release-notes-generator": "^1.1.2"
