@@ -14,8 +14,12 @@ node_js:
   - '6'
 before_install:
   - npm i -g npm@latest
+  - npm install -g greenkeeper-lockfile
 before_script:
+  - greenkeeper-lockfile-update
   - npm prune
+after_script:
+  - greenkeeper-lockfile-upload
 after_success:
   - npm run coverage
   - cat coverage/lcov.info | node_modules/.bin/coveralls
