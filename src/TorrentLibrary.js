@@ -120,16 +120,15 @@ class TorrentLibrary extends EventEmitter {
      * @param {(Set.<TorrentLibrary~TPN_Extended>)} [config.movies=new Set()] - the movies files
      * @param {(Map.<string, Set.<TorrentLibrary~TPN_Extended>>)} [config.series=new Map()] - the serie files
      */
-  constructor(
-    {
-      defaultPath = process.cwd()
-      /* istanbul ignore next: tired of writing tests */,
-      paths = [] /* istanbul ignore next: tired of writing tests */,
-      allFilesWithCategory = new Map()
-      /* istanbul ignore next: tired of writing tests */,
-      movies = new Set() /* istanbul ignore next: tired of writing tests */,
-      series = new Map() /* istanbul ignore next: tired of writing tests */,
-    } = {} /* istanbul ignore next: tired of writing tests */) {
+  constructor({
+    defaultPath = process.cwd()
+    /* istanbul ignore next: tired of writing tests */,
+    paths = [] /* istanbul ignore next: tired of writing tests */,
+    allFilesWithCategory = new Map()
+    /* istanbul ignore next: tired of writing tests */,
+    movies = new Set() /* istanbul ignore next: tired of writing tests */,
+    series = new Map() /* istanbul ignore next: tired of writing tests */,
+  } = {} /* istanbul ignore next: tired of writing tests */) {
     super();
     /**
          * just an easy way to scan the current directory path, if not other paths provided
@@ -213,18 +212,14 @@ class TorrentLibrary extends EventEmitter {
           // add the tv series into newTvSeries
           // First step : find all the series not in newTvSeries and add them to newTvSeries
           difference(
-            uniq(
-              [...tvSeriesSet].map(tvSeries => tvSeries.title),
-            ),
+            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),
             ...newTvSeries.keys(),
           ).forEach((tvSeriesToInsert) => {
             newTvSeries.set(tvSeriesToInsert, new Set());
           });
 
           // Second step : add the new files into the correct tvSeries Set
-          uniq(
-            [...tvSeriesSet].map(tvSeries => tvSeries.title),
-          ).forEach((tvSerie) => {
+          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)).forEach((tvSerie) => {
             // get the current set for this tvSerie
             const currentTvSerie = newTvSeries.get(tvSerie);
 
@@ -380,30 +375,25 @@ class TorrentLibrary extends EventEmitter {
           that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
 
         // for movies, just an easy removal
-        that.stores.set(TorrentLibrary.MOVIES_TYPE,
-          new Set(
-            [...that.allMovies]
-              .filter(movie => !(processData[1].includes(movie.filePath))),
-          ),
+        that.stores.set(
+          TorrentLibrary.MOVIES_TYPE,
+          new Set([...that.allMovies]
+            .filter(movie => !(processData[1].includes(movie.filePath)))),
         );
 
         // for the tv-series, a bit more complicated
         // first step : find the unique tv series of these files
-        const tvSeriesShows = uniq(
-          processData[0]
-            .map(file => nameParser(basename(file)).title),
-        );
+        const tvSeriesShows = uniq(processData[0]
+          .map(file => nameParser(basename(file)).title));
 
         // second step : foreach each series in tvSeriesShows
         const newTvSeriesMap = that.allTvSeries;
 
         for (const serie of tvSeriesShows) {
           // get the set for this serie
-          const filteredSet = new Set(
-            [...newTvSeriesMap.get(serie)]
-              .filter(episode =>
-                !(processData[0].includes(episode.filePath))),
-          );
+          const filteredSet = new Set([...newTvSeriesMap.get(serie)]
+            .filter(episode =>
+              !(processData[0].includes(episode.filePath))));
           // if the filtered set is empty => no more episodes for this series
           if (filteredSet.size === 0) {
             newTvSeriesMap.delete(serie);

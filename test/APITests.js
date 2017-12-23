@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import videosExtension from 'video-extensions';
 import assert from 'assert';
 import path from 'path';
@@ -13,17 +14,23 @@ describe('TorrentLibrary tests', () => {
   const folders = [path.join(__dirname, 'folder1'),
     path.join(__dirname, 'folder2')];
   const files = [
-    path.join(__dirname, 'folder1',
-      'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi'),
-    path.join(__dirname, 'folder2',
-      'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi'),
-    path.join(__dirname, 'folder1',
+    path.join(
+      __dirname, 'folder1',
+      'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi',
+    ),
+    path.join(
+      __dirname, 'folder2',
+      'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi',
+    ),
+    path.join(
+      __dirname, 'folder1',
       'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD' +
-        '-www.zone-telechargement.ws.avi'),
+        '-www.zone-telechargement.ws.avi',
+    ),
   ];
-  let expectedJson = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'example.json'), 'utf8'),
-  );
+
+  // eslint-disable-next-line max-len
+  let expectedJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'example.json'), 'utf8'));
 
   // initialization
   before(() => {
@@ -43,21 +50,27 @@ describe('TorrentLibrary tests', () => {
   describe('Static methods', () => {
     context('listVideosExtension()', () => {
       it('should provide the same list of videos extensions', () => {
-        assert.deepEqual(JSON.stringify(videosExtension),
+        assert.deepEqual(
+          JSON.stringify(videosExtension),
           JSON.stringify(TorrentLibrary.listVideosExtension()),
-          'Not the same JSON');
+          'Not the same JSON',
+        );
       });
     });
 
     context('Constants', () => {
       it('MOVIES_TYPE', () => {
-        assert.equal(TorrentLibrary.MOVIES_TYPE,
-          'MOVIES', 'Someone changed this constant value !');
+        assert.equal(
+          TorrentLibrary.MOVIES_TYPE,
+          'MOVIES', 'Someone changed this constant value !',
+        );
       });
 
       it('TV_SERIES_TYPE', () => {
-        assert.equal(TorrentLibrary.TV_SERIES_TYPE,
-          'TV_SERIES', 'Someone changed this constant value !');
+        assert.equal(
+          TorrentLibrary.TV_SERIES_TYPE,
+          'TV_SERIES', 'Someone changed this constant value !',
+        );
       });
     });
   });
@@ -74,8 +87,10 @@ describe('TorrentLibrary tests', () => {
           .catch(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
-            assert.equal(libInstance.hasPathsProvidedByUser(), false,
-              'No paths by user should be added');
+            assert.equal(
+              libInstance.hasPathsProvidedByUser(), false,
+              'No paths by user should be added',
+            );
             done();
           });
       });
@@ -90,8 +105,10 @@ describe('TorrentLibrary tests', () => {
           .catch(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
-            assert.equal(libInstance.hasPathsProvidedByUser(), false,
-              'No paths by user should be added');
+            assert.equal(
+              libInstance.hasPathsProvidedByUser(), false,
+              'No paths by user should be added',
+            );
             done();
           });
       });
@@ -104,8 +121,10 @@ describe('TorrentLibrary tests', () => {
           .then(() => {
             assert(eventSpy.called, 'Event did not fire.');
             assert(eventSpy.calledOnce, 'Event fired more than once');
-            assert.equal(libInstance.hasPathsProvidedByUser(), true,
-              'The path should be added');
+            assert.equal(
+              libInstance.hasPathsProvidedByUser(), true,
+              'The path should be added',
+            );
             done();
           }).catch((err) => {
             done(err);
@@ -199,29 +218,40 @@ describe('TorrentLibrary tests', () => {
 
     context('createFromJSON()', () => {
       it('It should create a perfect copy of instance', () => {
-        const createdInstance = TorrentLibrary.createFromJSON(
-          JSON.parse(libInstance.toJSON()),
-        );
-        assert.equal(_.isEqual(createdInstance.allFilesWithCategory,
-          createdInstance.allFilesWithCategory), true);
-        assert.equal(_.isEqual(createdInstance.allMovies,
-          libInstance.allMovies), true);
-        assert.equal(_.isEqual(createdInstance.allTvSeries,
-          libInstance.allTvSeries), true);
+        const jsonFromLib = JSON.parse(libInstance.toJSON());
+        const createdInstance = TorrentLibrary.createFromJSON(jsonFromLib);
+        assert.equal(_.isEqual(
+          createdInstance.allFilesWithCategory,
+          createdInstance.allFilesWithCategory,
+        ), true);
+        assert.equal(_.isEqual(
+          createdInstance.allMovies,
+          libInstance.allMovies,
+        ), true);
+        assert.equal(_.isEqual(
+          createdInstance.allTvSeries,
+          libInstance.allTvSeries,
+        ), true);
       });
     });
 
     context('Remove Old files', () => {
       it('Should not be able to remove not present files', () => {
-        const wrongFile = path.join(__dirname, 'folder1',
-          'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi');
+        const wrongFile = path.join(
+          __dirname, 'folder1',
+          'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi',
+        );
         const allFiles = libInstance.allFilesWithCategory;
         const expectedTvSeriesMap = libInstance.allTvSeries;
         libInstance.removeOldFiles(wrongFile);
-        assert.equal(_.isEqual(allFiles, libInstance.allFilesWithCategory),
-          true, 'nothing should have changed!');
-        assert.equal(_.isEqual(expectedTvSeriesMap,
-          libInstance.allTvSeries), true, 'nothing should have changed!');
+        assert.equal(
+          _.isEqual(allFiles, libInstance.allFilesWithCategory),
+          true, 'nothing should have changed!',
+        );
+        assert.equal(_.isEqual(
+          expectedTvSeriesMap,
+          libInstance.allTvSeries,
+        ), true, 'nothing should have changed!');
       });
 
       it('Should be able to remove a movie', () => {
@@ -232,11 +262,17 @@ describe('TorrentLibrary tests', () => {
         let eventSpy = sinon.spy();
         libInstance.on('removeOldFiles', eventSpy);
         libInstance.removeOldFiles(files[2]);
-        assert.equal(_.isEqual(allFilesWithoutMovie,
-          libInstance.allFilesWithCategory), true,
-        'The movie should have been removed!');
-        assert.equal(_.isEqual(expectedMovieSet,
-          libInstance.allMovies), true, 'The movie should have been removed!');
+        assert.equal(
+          _.isEqual(
+            allFilesWithoutMovie,
+            libInstance.allFilesWithCategory,
+          ), true,
+          'The movie should have been removed!',
+        );
+        assert.equal(_.isEqual(
+          expectedMovieSet,
+          libInstance.allMovies,
+        ), true, 'The movie should have been removed!');
         assert(eventSpy.called, 'Event did not fire.');
         assert(eventSpy.calledOnce, 'Event fired more than once');
       });
@@ -256,13 +292,21 @@ describe('TorrentLibrary tests', () => {
         ]);
         tempInstance.removeOldFiles(files[1]);
 
-        assert.equal(_.isEqual(allFiles,
-          tempInstance.allFilesWithCategory), true,
-        'The tv-series episode should have been removed!');
+        assert.equal(
+          _.isEqual(
+            allFiles,
+            tempInstance.allFilesWithCategory,
+          ), true,
+          'The tv-series episode should have been removed!',
+        );
         // Fix ici
-        assert.equal(_.isEqual(expectedSeriesMap,
-          tempInstance.allTvSeries), true,
-        'The tv-series should still exist');
+        assert.equal(
+          _.isEqual(
+            expectedSeriesMap,
+            tempInstance.allTvSeries,
+          ), true,
+          'The tv-series should still exist',
+        );
         assert(eventSpy.called, 'Event did not fire.');
         assert(eventSpy.calledOnce, 'Event fired more than once');
       });
@@ -273,12 +317,20 @@ describe('TorrentLibrary tests', () => {
         let eventSpy = sinon.spy();
         libInstance.on('removeOldFiles', eventSpy);
         libInstance.removeOldFiles(...files.slice(0, 2));
-        assert.equal(_.isEqual(allFiles,
-          libInstance.allFilesWithCategory), true,
-        'The tv-series episodes should have all been removed!');
-        assert.equal(_.isEqual(expectedSeriesMap,
-          libInstance.allTvSeries), true,
-        'The tv-series episodes should have all been removed!');
+        assert.equal(
+          _.isEqual(
+            allFiles,
+            libInstance.allFilesWithCategory,
+          ), true,
+          'The tv-series episodes should have all been removed!',
+        );
+        assert.equal(
+          _.isEqual(
+            expectedSeriesMap,
+            libInstance.allTvSeries,
+          ), true,
+          'The tv-series episodes should have all been removed!',
+        );
         assert(eventSpy.called, 'Event did not fire.');
         assert(eventSpy.calledOnce, 'Event fired more than once');
       });
