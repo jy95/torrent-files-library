@@ -8,7 +8,7 @@
     "lib/"
   ],
   "scripts": {
-    "semantic-release": "semantic-release",
+    "semantic-release": "semantic-release -e ./config/release.config.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "compile": "babel -d lib/ src/ --source-maps both",
     "prepare": "npm run compile",
@@ -32,15 +32,6 @@
     "parse torrent name",
     "torrent library"
   ],
-  "release": {
-    "analyzeCommits": {
-      "preset": "eslint",
-      "releaseRules": "./config/release-rules.js"
-    },
-    "generateNotes": {
-      "preset": "eslint"
-    }
-  },
   "author": "jy95",
   "license": "MIT",
   "repository": {
@@ -61,7 +52,7 @@
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
     "mocha": "^4.0.0",
-    "semantic-release": "^11.0.2",
+    "semantic-release": "^11.1.0",
     "sinon": "^4.0.1"
   },
   "dependencies": {
