@@ -1,7 +1,7 @@
 {
   "scope": false,
   "body": true,
-  "emoji": false,
+  "emoji": true,
   "lowercaseTypes": false,
   "initial-commit": {
     "isEnabled": true,
@@ -35,7 +35,7 @@
       "description": "Bug fix"
     },
     {
-      "emoji": ":zapr:",
+      "emoji": ":zap:",
       "type": "Perf:",
       "description": "Code change that improves performance"
     },
