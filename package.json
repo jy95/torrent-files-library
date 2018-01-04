@@ -41,13 +41,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^0.3.0",
     "coveralls": "^3.0.0",
-    "eslint": "^4.13.1",
+    "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.8.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
@@ -56,7 +56,7 @@
     "sinon": "^4.0.1"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.5.1",
     "filehound": "^1.16.2",
     "lodash": "^4.17.4",
     "parse-torrent-title": "^1.0.0",
