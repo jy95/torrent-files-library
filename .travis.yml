@@ -12,18 +12,18 @@ node_js:
   - 'node'
   - '7'
   - '6'
+os:
+  - osx
+  - linux
 before_install:
   - npm i -g npm@latest
-  - npm install -g greenkeeper-lockfile
+  - npm i -g travis-deploy-once
 before_script:
-  - greenkeeper-lockfile-update
   - npm prune
-after_script:
-  - greenkeeper-lockfile-upload
 after_success:
   - npm run coverage
   - cat coverage/lcov.info | node_modules/.bin/coveralls
-  - npx -p node@8 npm run semantic-release
+  - travis-deploy-once && npx -p node@8 npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
