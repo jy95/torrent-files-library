@@ -13,7 +13,6 @@ node_js:
   - '7'
   - '6'
 os:
-  - osx
   - linux
 before_install:
   - npm i -g npm@latest
