@@ -7,12 +7,23 @@
     "index.js",
     "lib/"
   ],
+  "ava": {
+    "files": [
+      "tests/**/*.js"
+    ],
+    "babel": "inherit",
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "failFast": true
+  },
   "scripts": {
     "semantic-release": "semantic-release -e ./config/release.config.js",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "compile": "babel -d lib/ src/ --source-maps both",
     "prepare": "npm run compile",
-    "test": "mocha",
+    "test": "nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "generate-docs": "node_modules/.bin/jsdoc --configure config/.jsdoc.json --verbose",
     "lint": "./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix"
   },
@@ -39,8 +50,11 @@
     "url": "https://github.com/jy95/torrent-files-library.git"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^1.0.0",
+    "ava": "^0.24.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^0.3.0",
@@ -48,10 +62,9 @@
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
-    "istanbul": "^1.1.0-alpha.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
-    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
     "semantic-release": "^12.2.1",
     "sinon": "^4.1.4"
   },

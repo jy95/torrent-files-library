@@ -219,17 +219,21 @@ class TorrentLibrary extends EventEmitter {
           });
 
           // Second step : add the new files into the correct tvSeries Set
-          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)).forEach((tvSerie) => {
+          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))
+            .forEach((tvSerie) => {
             // get the current set for this tvSerie
-            const currentTvSerie = newTvSeries.get(tvSerie);
+              const currentTvSerie = newTvSeries.get(tvSerie);
 
-            // find all the episodes in the new one for this serie
-            const episodes = [...tvSeriesSet]
-              .filter(episode => episode.title === tvSerie);
+              // find all the episodes in the new one for this serie
+              const episodes = [...tvSeriesSet]
+                .filter(episode => episode.title === tvSerie);
 
-            // add them and updates newTvSeries
-            newTvSeries.set(tvSerie, new Set([...currentTvSerie, ...episodes]));
-          });
+              // add them and updates newTvSeries
+              newTvSeries.set(
+                tvSerie,
+                new Set([...currentTvSerie, ...episodes]),
+              );
+            });
 
           // updates the stores var
           that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
@@ -338,11 +342,14 @@ class TorrentLibrary extends EventEmitter {
         .then(files => that.addNewFiles(files)).then(() => {
           that.emit('scan', { files: foundFiles });
           resolve('Scanning completed');
+          /* istanbul ignore next */
         }).catch((err) => {
+          /* istanbul ignore next */
           that.emit('error_in_function', {
             functionName: 'scan',
             error: err.message,
           });
+          /* istanbul ignore next */
           reject(err);
         });
     });
@@ -412,11 +419,14 @@ class TorrentLibrary extends EventEmitter {
           message: 'The files have been deleted from the library',
           files,
         });
+        /* istanbul ignore next */
       } catch (err) {
+        /* istanbul ignore next */
         that.emit('error_in_function', {
           functionName: 'removeOldFiles',
           error: err.message,
         });
+        /* istanbul ignore next */
         reject(err);
       }
     });
@@ -502,7 +512,7 @@ class TorrentLibrary extends EventEmitter {
      * @since 1.0.3
      * @instance
      * @memberOf TorrentLibrary
-     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json}
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}
      * @return {string} json - the JSON stringified
      */
   toJSON() {
@@ -535,12 +545,15 @@ class TorrentLibrary extends EventEmitter {
   static createFromJSON(json) {
     let config = json;
     // transform the param
+    /* istanbul ignore else */
     if (json.allFilesWithCategory) {
       config.allFilesWithCategory = new Map(json.allFilesWithCategory);
     }
+    /* istanbul ignore else */
     if (json.movies) {
       config.movies = new Set(json.movies);
     }
+    /* istanbul ignore else */
     if (json['tv-series']) {
       let createdMap = new Map();
       for (let [serieTitle, setSerie] of json['tv-series']) {
