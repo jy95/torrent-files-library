@@ -4,7 +4,7 @@ module.exports = {
     preset: 'eslint',
     releaseRules: './config/release-rules.js',
     parserOpts: {
-      headerPattern: /^(?:\:(\w*)\:)?\s(\w*)\:\s(.*?)(?:\((.*)\))?$/,
+      headerPattern: /^(?::([\w-]*):)?\s*(\w*):\s*(.*)$/,
       headerCorrespondence: [
         'emoji',
         'tag',
@@ -15,7 +15,7 @@ module.exports = {
   generateNotes: {
     preset: 'eslint',
     parserOpts: {
-      headerPattern: /^(?:\:(\w*)\:)?\s(\w*)\:\s(.*?)(?:\((.*)\))?$/,
+      headerPattern: /^(?::([\w-]*):)?\s*(\w*):\s*(.*)$/,
       headerCorrespondence: [
         'emoji',
         'tag',
