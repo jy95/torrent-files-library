@@ -23,4 +23,10 @@ module.exports = {
       ],
     },
   },
+  release: {
+    // eslint-disable-next-line max-len
+    verifyConditions: ['@semantic-release/changelog', '@semantic-release/npm', '@semantic-release/github'],
+    // eslint-disable-next-line max-len
+    publish: ['@semantic-release/changelog', '@semantic-release/npm', '@semantic-release/github'],
+  },
 };
