@@ -545,12 +545,15 @@ class TorrentLibrary extends EventEmitter {
   static createFromJSON(json) {
     let config = json;
     // transform the param
+    /* istanbul ignore else */
     if (json.allFilesWithCategory) {
       config.allFilesWithCategory = new Map(json.allFilesWithCategory);
     }
+    /* istanbul ignore else */
     if (json.movies) {
       config.movies = new Set(json.movies);
     }
+    /* istanbul ignore else */
     if (json['tv-series']) {
       let createdMap = new Map();
       for (let [serieTitle, setSerie] of json['tv-series']) {
