@@ -20,7 +20,7 @@
   },
   "scripts": {
     "semantic-release": "semantic-release -e ./config/release.config.js",
-    "compile": "babel -d lib/ src/ --source-maps both",
+    "compile": "babel -d lib/ src/ --source-maps both --no-comments",
     "prepare": "npm run compile",
     "test": "nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
