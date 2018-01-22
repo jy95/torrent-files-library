@@ -1,9 +1,8 @@
-// TODO
 import test from 'ava';
 import path from 'path';
 import * as sinon from 'sinon';
 import { parse as nameParser } from 'parse-torrent-title';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
 test('Should not be able to remove not present files', async (t) => {

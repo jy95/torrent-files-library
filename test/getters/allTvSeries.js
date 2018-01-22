@@ -1,7 +1,7 @@
 import test from 'ava';
 import path from 'path';
 import { parse as nameParser } from 'parse-torrent-title';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
 // TESTS

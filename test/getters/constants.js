@@ -1,6 +1,6 @@
 import test from 'ava';
 import videosExtension from 'video-extensions';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 
 test('Constant MOVIES_TYPE', (t) => {
   t.is(

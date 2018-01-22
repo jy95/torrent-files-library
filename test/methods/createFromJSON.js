@@ -1,5 +1,5 @@
 import test from 'ava';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { folders } from '../_constants';
 
 test('create a perfect copy of instance', async (t) => {
