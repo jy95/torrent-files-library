@@ -46,14 +46,14 @@
     "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^0.3.0",
     "coveralls": "^3.0.0",
-    "eslint": "^4.15.0",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
     "nyc": "^11.4.1",
-    "semantic-release": "^12.2.1",
-    "sinon": "^4.1.4"
+    "semantic-release": "^12.2.4",
+    "sinon": "^4.2.0"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
