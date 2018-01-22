@@ -1,6 +1,6 @@
 import test from 'ava';
 import * as sinon from 'sinon';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { folders } from '../_constants';
 
 // TESTS

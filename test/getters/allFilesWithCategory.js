@@ -1,5 +1,5 @@
 import test from 'ava';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
 

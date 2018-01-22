@@ -1,5 +1,5 @@
 import test from 'ava';
-import TorrentLibrary from '../../src/TorrentLibrary';
+import TorrentLibrary from '../../index';
 import { expectedJson, folders } from '../_constants';
 
 test('return a valid stringified JSON', async (t) => {
