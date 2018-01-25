@@ -1,19 +1,27 @@
 /* eslint-disable max-len */
-import path from 'path';
+import { basename, join } from 'path';
+import { parse as nameParser } from 'parse-torrent-title';
 
-export const folders = [path.join(__dirname, 'fixtures', 'folder1'),
-  path.join(__dirname, 'fixtures', 'folder2')];
+export const folders = [join(__dirname, 'fixtures', 'folder1'),
+  join(__dirname, 'fixtures', 'folder2')];
 
+/**
+ TODO Add this new test for filter Movies
+ join(
+ folders[1],
+ 'Identity.Thief.2013.Vostfr.UNRATED.BluRay.720p.DTS.x264-Nenuko.mkv',
+ ),
+ */
 export const files = [
-  path.join(
+  join(
     folders[0],
     'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi',
   ),
-  path.join(
+  join(
     folders[1],
     'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi',
   ),
-  path.join(
+  join(
     folders[0],
     'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD' +
         '-www.zone-telechargement.ws.avi',
@@ -27,53 +35,33 @@ export const expectedJson = {
   ],
   allFilesWithCategory: [
     [
-      path.join(folders[0], 'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi'),
+      join(folders[0], 'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi'),
       'MOVIES',
     ],
     [
-      path.join(folders[0], 'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi'),
+      join(folders[0], 'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi'),
       'TV_SERIES',
     ],
     [
-      path.join(folders[1], 'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi'),
+      join(folders[1], 'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi'),
       'TV_SERIES',
     ],
   ],
   movies: [
-    {
-      year: 2012,
-      container: 'avi',
-      source: 'dvdrip',
-      codec: 'xvid',
-      language: 'truefrench',
-      title: 'Bad Ass',
-      filePath: path.join(folders[0], 'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi'),
-    },
+    Object.assign(nameParser(basename(files[2])), {
+      filePath: files[2],
+    }),
   ],
   'tv-series': [
     [
       'The Blacklist',
       [
-        {
-          container: 'avi',
-          source: 'webrip',
-          codec: 'xvid',
-          season: 4,
-          episode: 21,
-          language: 'french',
-          title: 'The Blacklist',
-          filePath: path.join(folders[0], 'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi'),
-        },
-        {
-          container: 'avi',
-          source: 'webrip',
-          codec: 'xvid',
-          season: 4,
-          episode: 14,
-          language: 'french',
-          title: 'The Blacklist',
-          filePath: path.join(folders[1], 'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi'),
-        },
+        Object.assign(nameParser(basename(files[0])), {
+          filePath: files[0],
+        }),
+        Object.assign(nameParser(basename(files[1])), {
+          filePath: files[1],
+        }),
       ],
     ],
   ],
