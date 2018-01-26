@@ -54,6 +54,34 @@ import {
   EventEmitter,
 } from 'events';
 
+/**
+ * Boolean properties filter
+ */
+import {
+  filterDefaultBooleanProperties,
+  filterByBoolean,
+  excludeDefaultBooleanProperties,
+} from './filters/filterBooleanProperty';
+
+/**
+ * Number properties filter
+ */
+import {
+  convertToValidExpression,
+  excludeDefaultNumberProperties,
+  filterDefaultNumberProperties,
+  filterByNumber,
+} from './filters/filterNumberProperty';
+
+/**
+ * String properties filter
+ */
+import {
+  excludeDefaultStringProperties,
+  filterDefaultStringProperties,
+  filterByString,
+} from './filters/filterStringProperty';
+
 // check if an object has these properties and they are not undefined
 function checkProperties(obj, properties) {
   return properties.every(x => x in obj && obj[x]);
@@ -92,9 +120,8 @@ class TorrentLibrary extends EventEmitter {
   /**
      * constant for movie category
      * @since 0.0.0
-     * @return {string} the movies constant
+     * @type {string}
      * @static
-     * @memberOf TorrentLibrary
      */
   static get MOVIES_TYPE() {
     return 'MOVIES';
@@ -102,10 +129,9 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * constant for tv series category
-     * @return {string} tv series constant
+     * @type {string}
      * @since 0.0.0
      * @static
-     * @memberOf TorrentLibrary
      */
   static get TV_SERIES_TYPE() {
     return 'TV_SERIES';
@@ -165,7 +191,6 @@ class TorrentLibrary extends EventEmitter {
          * @private
          * @returns {external:Promise} an resolved or reject promise
          * @param {string[]} files An array of filePath
-         * @memberOf TorrentLibrary
          */
     this.addNewFiles = function addNewFiles(files) {
       const that = this;
@@ -240,7 +265,7 @@ class TorrentLibrary extends EventEmitter {
           that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
           resolve();
         } catch (err) {
-          reject(err);
+          /* istanbul ignore next */ reject(err);
         }
       });
     };
@@ -254,7 +279,6 @@ class TorrentLibrary extends EventEmitter {
      * // Returns [..., 'webm', 'wmv']
      * TorrentLibrary.listVideosExtension()
      * @static
-     * @memberOf TorrentLibrary
      */
   static listVideosExtension() {
     return videosExtension;
@@ -266,7 +290,6 @@ class TorrentLibrary extends EventEmitter {
      * @instance
      * @method
      * @since 0.0.0
-     * @memberOf TorrentLibrary
      * @example
      * // return resolved Promise "All paths were added!"
      * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
@@ -308,7 +331,6 @@ class TorrentLibrary extends EventEmitter {
      * Tell us if the user has provided us paths
      * @instance
      * @method
-     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @returns {boolean} Has user provided us paths ?
      * @example
@@ -323,7 +345,6 @@ class TorrentLibrary extends EventEmitter {
      * Scans the paths in search for new files to be added inside this lib
      * @instance
      * @method
-     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
@@ -342,9 +363,8 @@ class TorrentLibrary extends EventEmitter {
         .then(files => that.addNewFiles(files)).then(() => {
           that.emit('scan', { files: foundFiles });
           resolve('Scanning completed');
-          /* istanbul ignore next */
-        }).catch((err) => {
-          /* istanbul ignore next */
+        }).catch(/* istanbul ignore next */ (err) => {
+        /* istanbul ignore next */
           that.emit('error_in_function', {
             functionName: 'scan',
             error: err.message,
@@ -421,13 +441,11 @@ class TorrentLibrary extends EventEmitter {
         });
         /* istanbul ignore next */
       } catch (err) {
-        /* istanbul ignore next */
-        that.emit('error_in_function', {
+        /* istanbul ignore next */ that.emit('error_in_function', {
           functionName: 'removeOldFiles',
           error: err.message,
         });
-        /* istanbul ignore next */
-        reject(err);
+        /* istanbul ignore next */ reject(err);
       }
     });
   }
@@ -436,7 +454,6 @@ class TorrentLibrary extends EventEmitter {
      * Getter for all found movies
      * @instance
      * @since 0.0.0
-     * @memberOf TorrentLibrary
      * @type {Set.<TorrentLibrary~TPN_Extended>}
      * @example
      * // an JSON stringified example of this method
@@ -461,7 +478,6 @@ class TorrentLibrary extends EventEmitter {
      * Getter for all found tv-series
      * @instance
      * @since 0.0.0
-     * @memberOf TorrentLibrary
      * @type {Map.<string, Set.<TorrentLibrary~TPN_Extended>>}
      * @example
      * // an JSON stringified example of this method
@@ -498,7 +514,6 @@ class TorrentLibrary extends EventEmitter {
      * Getter for the mapping between filepaths and category
      * @type {Map.<string,string>}
      * @instance
-     * @memberOf TorrentLibrary
      * @since 0.0.0
      * @example
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
@@ -511,7 +526,7 @@ class TorrentLibrary extends EventEmitter {
      * Returns an JSON stringified of the current state
      * @since 1.0.3
      * @instance
-     * @memberOf TorrentLibrary
+
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}
      * @return {string} json - the JSON stringified
      */
@@ -562,6 +577,81 @@ class TorrentLibrary extends EventEmitter {
       config.series = createdMap;
     }
     return new TorrentLibrary(config);
+  }
+
+  filterMovies(searchParameters = {
+    // boolean properties
+    extended: undefined,
+    unrated: undefined,
+    proper: undefined,
+    repack: undefined,
+    convert: undefined,
+    hardcoded: undefined,
+    retail: undefined,
+    remastered: undefined,
+    // number properties
+    season: undefined,
+    episode: undefined,
+    year: undefined,
+    // string properties
+    title: undefined,
+    resolution: undefined,
+    codec: undefined,
+    audio: undefined,
+    group: undefined,
+    region: undefined,
+    container: undefined,
+    language: undefined,
+    source: undefined,
+    // new properties
+    additionalProperties: [],
+  }) {
+    // organize search based on field type : boolean - string - number
+    // eslint-disable-next-line max-len
+    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);
+    // eslint-disable-next-line max-len
+    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);
+
+    // eslint-disable-next-line max-len
+    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);
+    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);
+
+    // eslint-disable-next-line max-len
+    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);
+    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);
+
+    let { additionalProperties } = leftSearchParameters;
+    // add the optional new properties , optionally provided by user
+    /* istanbul ignore else */
+    if (additionalProperties !== undefined) {
+      additionalProperties
+        .filter(newProperty => newProperty.type === 'boolean')
+        .forEach((newProperty) => {
+          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);
+        });
+
+      additionalProperties
+        .filter(newProperty => newProperty.type === 'number')
+        .forEach((newProperty) => {
+          let expression = convertToValidExpression(newProperty.value);
+          /* istanbul ignore else */
+          if (expression !== undefined) {
+            numberFieldsSearchMap.set(newProperty.name, expression);
+          }
+        });
+
+      additionalProperties
+        .filter(newProperty => newProperty.type === 'string')
+        .forEach((newProperty) => {
+          booleanFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
+        });
+    }
+
+    // apply params based on types
+    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);
+    result = filterByNumber(result, numberFieldsSearchMap);
+    result = filterByString(result, stringFieldsSearchMap);
+    return result;
   }
 }
 

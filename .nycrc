@@ -1,5 +1,0 @@
-{
-    "reporter": ["lcov","html"],
-    "include": ["src/**/*.js"],
-    "exclude": ["tests/**/*.js"]
-}

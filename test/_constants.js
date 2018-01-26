@@ -5,13 +5,6 @@ import { parse as nameParser } from 'parse-torrent-title';
 export const folders = [join(__dirname, 'fixtures', 'folder1'),
   join(__dirname, 'fixtures', 'folder2')];
 
-/**
- TODO Add this new test for filter Movies
- join(
- folders[1],
- 'Identity.Thief.2013.Vostfr.UNRATED.BluRay.720p.DTS.x264-Nenuko.mkv',
- ),
- */
 export const files = [
   join(
     folders[0],
@@ -23,7 +16,7 @@ export const files = [
   ),
   join(
     folders[0],
-    'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD' +
+    'Bad.Ass.2012.REMASTERED.TRUEFRENCH.DVDRiP.XviD' +
         '-www.zone-telechargement.ws.avi',
   ),
 ];
@@ -35,15 +28,15 @@ export const expectedJson = {
   ],
   allFilesWithCategory: [
     [
-      join(folders[0], 'Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi'),
+      files[2],
       'MOVIES',
     ],
     [
-      join(folders[0], 'The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi'),
+      files[0],
       'TV_SERIES',
     ],
     [
-      join(folders[1], 'The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi'),
+      files[1],
       'TV_SERIES',
     ],
   ],
