@@ -26,13 +26,8 @@ export function excludeDefaultStringProperties(searchObject) {
 }
 
 function filterFunctionByType(property, expected, object) {
-  switch (Array.isArray(expected)) {
-    case true:
-      return expected.includes(object[property]);
-    default:
-      // simple equal
-      return object[property] === expected;
-  }
+  if (Array.isArray(expected)) { return expected.includes(object[property]); }
+  return object[property] === expected;
 }
 
 export function filterByString(set, propertiesMap) {

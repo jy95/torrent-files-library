@@ -1,13 +1,16 @@
+import { isString } from 'lodash';
+
 export function convertToValidExpression(myString) {
   const validExpression = /^(=|>|<|>=|<=)(\d+)$/;
-  let result = myString.match(validExpression);
   let returnValue;
-  /* istanbul ignore else */
-  if (result.length === 3) {
-    returnValue = {
-      operator: result[1],
-      number: Number(result[2]),
-    };
+  if (isString(myString)) {
+    let result = myString.match(validExpression);
+    if (result.length === 3) {
+      returnValue = {
+        operator: result[1],
+        number: Number(result[2]),
+      };
+    }
   }
   return returnValue;
 }

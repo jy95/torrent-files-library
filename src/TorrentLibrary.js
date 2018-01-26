@@ -265,7 +265,8 @@ class TorrentLibrary extends EventEmitter {
           that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
           resolve();
         } catch (err) {
-          /* istanbul ignore next */ reject(err);
+          /* istanbul ignore next */
+          reject(err);
         }
       });
     };
@@ -441,11 +442,13 @@ class TorrentLibrary extends EventEmitter {
         });
         /* istanbul ignore next */
       } catch (err) {
-        /* istanbul ignore next */ that.emit('error_in_function', {
+        /* istanbul ignore next */
+        that.emit('error_in_function', {
           functionName: 'removeOldFiles',
           error: err.message,
         });
-        /* istanbul ignore next */ reject(err);
+        /* istanbul ignore next */
+        reject(err);
       }
     });
   }
@@ -643,7 +646,7 @@ class TorrentLibrary extends EventEmitter {
       additionalProperties
         .filter(newProperty => newProperty.type === 'string')
         .forEach((newProperty) => {
-          booleanFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
+          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
         });
     }
 

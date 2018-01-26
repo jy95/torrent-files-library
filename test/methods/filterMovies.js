@@ -101,9 +101,10 @@ test('default number parameters search', async (t) => {
       year: '>=2012',
       additionalProperties: [
         { type: 'number', name: "whateverFieldThatDoesn'tExist", value: '<50' },
-        { type: 'number', name: 'AnotherField', value: '=25' },
+        { type: 'number', name: 'AnotherField', value: undefined },
         { type: 'number', name: 'AnotherField2', value: '<=25' },
         { type: 'number', name: 'AnotherField3', value: '>25' },
+        { type: 'number', name: 'AnotherField4', value: '=25' },
       ],
     }),
     'Not the same',
@@ -142,7 +143,7 @@ test('default string parameters search', async (t) => {
       additionalProperties: [
         {
           type: 'string',
-          name: "whateverFieldThatDoesn'tExist",
+          name: 'whateverField',
           value: ['NothingExists'],
         },
         {
