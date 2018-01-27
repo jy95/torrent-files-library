@@ -748,7 +748,7 @@
     "__docId__": 54,
     "kind": "file",
     "name": "src/docs/types.js",
-    "content": "// ESDoc custom typedef\r\n\r\n/**\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n */\r\n\r\n/**\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n */\r\n\r\n/**\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n */\r\n\r\n/**\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n */\r\n\r\n/**\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n */\r\n",
+    "content": "// ESDoc custom typedef\r\n\r\n/**\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n */\r\n\r\n/**\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n */\r\n\r\n/**\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n */\r\n\r\n/**\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n */\r\n\r\n/**\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n */\r\n\r\n/**\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n */\r\n// TODO add the additionalProperties fields for new properties\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/src/docs/types.js",
     "access": "public",
@@ -1050,6 +1050,45 @@
   {
     "__docId__": 59,
     "kind": "typedef",
+    "name": "numberExpressionObject",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~numberExpressionObject",
+    "access": "public",
+    "description": "Number expression for number filtering",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "operator",
+        "description": "The operator for matching process"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": "The extracted number for matching process"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "numberExpressionObject"
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "typedef",
     "name": "searchParameters",
     "memberof": "src/docs/types.js",
     "static": true,
@@ -1156,6 +1195,7 @@
       {
         "nullable": null,
         "types": [
+          "number",
           "numberSearchSyntax"
         ],
         "spread": false,
@@ -1168,6 +1208,7 @@
       {
         "nullable": null,
         "types": [
+          "number",
           "numberSearchSyntax"
         ],
         "spread": false,
@@ -1180,6 +1221,7 @@
       {
         "nullable": null,
         "types": [
+          "number",
           "numberSearchSyntax"
         ],
         "spread": false,
@@ -1316,7 +1358,7 @@
     }
   },
   {
-    "__docId__": 60,
+    "__docId__": 61,
     "kind": "file",
     "name": "src/filters/filterBooleanProperty.js",
     "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, boolean>} the result map\r\n */\r\nexport function filterDefaultBooleanProperties(searchObject) {\r\n  const {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [extended, unrated, proper,\r\n    repack, convert, hardcoded, retail, remastered];\r\n  const propertiesNames = ['extended', 'unrated', 'proper', 'repack', 'convert',\r\n    'hardcoded', 'retail', 'remastered'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    // eslint-disable-next-line max-len\r\n    if (val === true || val === false) { propertiesMap.set(propertiesNames[index], val); }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default boolean properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultBooleanProperties(searchObject) {\r\n  let {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter the set based on boolean properties\r\n * @param {TPN[]} set The TPN set\r\n * @param {Map<string, boolean>} propertiesMap The map from filterDefaultBooleanProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByBoolean(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => TPN[val[0]] === val[1])\r\n      , [...set],\r\n    ));\r\n}\r\n",
@@ -1327,7 +1369,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 61,
+    "__docId__": 62,
     "kind": "function",
     "name": "filterDefaultBooleanProperties",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1363,7 +1405,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 63,
     "kind": "function",
     "name": "excludeDefaultBooleanProperties",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1399,7 +1441,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 64,
     "kind": "function",
     "name": "filterByBoolean",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1445,10 +1487,10 @@
     }
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "file",
     "name": "src/filters/filterNumberProperty.js",
-    "content": "import { isString } from 'lodash';\r\n\r\nexport function convertToValidExpression(myString) {\r\n  const validExpression = /^(=|>|<|>=|<=)(\\d+)$/;\r\n  let returnValue;\r\n  if (isString(myString)) {\r\n    let result = myString.match(validExpression);\r\n    if (result.length === 3) {\r\n      returnValue = {\r\n        operator: result[1],\r\n        number: Number(result[2]),\r\n      };\r\n    }\r\n  }\r\n  return returnValue;\r\n}\r\n\r\nfunction resolveExpression(property, expressionObject, object) {\r\n  let { operator, number } = expressionObject;\r\n  // No : eval is not all evil but you should know what you are doing\r\n  // eslint-disable-next-line no-eval\r\n  return eval(`${object[property]}${operator}${number}`);\r\n}\r\n\r\nexport function filterDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [season, episode, year];\r\n  const propertiesNames = ['season', 'episode', 'year'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], convertToValidExpression(val));\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\nexport function excludeDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\nexport function filterByNumber(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => resolveExpression(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
+    "content": "import { isString } from 'lodash';\r\n\r\n/**\r\n * Convert the param to valid expression object for filter function\r\n * @param {number|numberSearchSyntax} param The param to be converted\r\n * @return {Object} If valid, returns a object. If not, returns undefined\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n * @example\r\n * // returns { operator: '=' , number: 5 }\r\n * convertToValidExpression(5);\r\n * @example\r\n * // returns { operator: '>=' , number: 5 }\r\n * convertToValidExpression(\">5\");\r\n * @example\r\n * // returns undefined\r\n * convertToValidExpression(undefined);\r\n */\r\nexport function convertToValidExpression(param) {\r\n  const validExpression = /^(=|>|<|>=|<=)(\\d+)$/;\r\n  let returnValue;\r\n  // if it is a valid number expression like the regex\r\n  if (isString(param)) {\r\n    let result = param.match(validExpression);\r\n    if (result.length === 3) {\r\n      returnValue = {\r\n        operator: result[1],\r\n        number: Number(result[2]),\r\n      };\r\n    }\r\n  }\r\n  // if the param is a number\r\n  if (Number.isInteger(param)) {\r\n    returnValue = {\r\n      operator: '=',\r\n      number: param,\r\n    };\r\n  }\r\n  return returnValue;\r\n}\r\n\r\n/**\r\n * Filter function for filterByNumber\r\n * @param {string} property The property to be checked\r\n * @param {Object} expressionObject The object from convertToValidExpression\r\n * @param {string} expressionObject.operator The operator for matching process\r\n * @param {number} expressionObject.number  The extracted number for matching process\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction resolveExpression(property, expressionObject, object) {\r\n  let { operator, number } = expressionObject;\r\n  // No : eval is not all evil but you should know what you are doing\r\n  // eslint-disable-next-line no-eval\r\n  return eval(`${object[property]}${operator}${number}`);\r\n}\r\n\r\n/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, numberExpressionObject>} the result map\r\n */\r\nexport function filterDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [season, episode, year];\r\n  const propertiesNames = ['season', 'episode', 'year'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], convertToValidExpression(val));\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default number properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {TPN[]} set The TPN set\r\n * @param {Map<string, numberExpressionObject>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByNumber(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => resolveExpression(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/src/filters/filterNumberProperty.js",
     "access": "public",
@@ -1456,7 +1498,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 65,
+    "__docId__": 66,
     "kind": "function",
     "name": "convertToValidExpression",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1468,25 +1510,59 @@
     "export": true,
     "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
     "importStyle": "{convertToValidExpression}",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Convert the param to valid expression object for filter function",
+    "examples": [
+      "// returns { operator: '=' , number: 5 }\nconvertToValidExpression(5);",
+      "// returns { operator: '>=' , number: 5 }\nconvertToValidExpression(\">5\");",
+      "// returns undefined\nconvertToValidExpression(undefined);"
+    ],
+    "lineNumber": 19,
     "params": [
       {
-        "name": "myString",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number",
+          "numberSearchSyntax"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "param",
+        "description": "The param to be converted"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "operator",
+        "description": "The operator for matching process"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": "The extracted number for matching process"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": "If valid, returns a object. If not, returns undefined"
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "function",
     "name": "resolveExpression",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1498,38 +1574,72 @@
     "export": false,
     "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
     "importStyle": null,
-    "description": null,
-    "lineNumber": 18,
-    "undocument": true,
+    "description": "Filter function for filterByNumber",
+    "lineNumber": 51,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "property",
-        "types": [
-          "*"
-        ]
+        "description": "The property to be checked"
       },
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "expressionObject",
-        "types": [
-          "*"
-        ]
+        "description": "The object from convertToValidExpression"
       },
       {
-        "name": "object",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expressionObject.operator",
+        "description": "The operator for matching process"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expressionObject.number",
+        "description": "The extracted number for matching process"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "TPN"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": "the object to be checked"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "boolean"
+      ],
+      "spread": false,
+      "description": "the result"
     },
     "ignore": true
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
     "kind": "function",
     "name": "filterDefaultNumberProperties",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1541,25 +1651,31 @@
     "export": true,
     "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
     "importStyle": "{filterDefaultNumberProperties}",
-    "description": null,
-    "lineNumber": 25,
-    "undocument": true,
+    "description": "Provides a map with valid default properties",
+    "lineNumber": 63,
     "params": [
       {
-        "name": "searchObject",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Map<string, numberExpressionObject>"
+      ],
+      "spread": false,
+      "description": "the result map"
     }
   },
   {
-    "__docId__": 68,
+    "__docId__": 69,
     "kind": "function",
     "name": "excludeDefaultNumberProperties",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1571,25 +1687,31 @@
     "export": true,
     "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
     "importStyle": "{excludeDefaultNumberProperties}",
-    "description": null,
-    "lineNumber": 42,
-    "undocument": true,
+    "description": "Remove the default number properties",
+    "lineNumber": 85,
     "params": [
       {
-        "name": "searchObject",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "searchParameters"
+      ],
+      "spread": false,
+      "description": "searchParameters without these properties"
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 70,
     "kind": "function",
     "name": "filterByNumber",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1601,31 +1723,41 @@
     "export": true,
     "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
     "importStyle": "{filterByNumber}",
-    "description": null,
-    "lineNumber": 50,
-    "undocument": true,
+    "description": "Filter the set based on string properties",
+    "lineNumber": 99,
     "params": [
       {
-        "name": "set",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "TPN[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "set",
+        "description": "The TPN set"
       },
       {
-        "name": "propertiesMap",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map<string, numberExpressionObject>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "propertiesMap",
+        "description": "The map from filterDefaultStringProperties"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set<TPN>"
+      ],
+      "spread": false,
+      "description": "the filtered set"
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 71,
     "kind": "file",
     "name": "src/filters/filterStringProperty.js",
     "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, string|string[]>} the result map\r\n */\r\nexport function filterDefaultStringProperties(searchObject) {\r\n  const {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [title, resolution, codec, audio, group,\r\n    region, container, language, source];\r\n  const propertiesNames = ['title', 'resolution', 'codec', 'audio', 'group',\r\n    'region', 'container', 'language', 'source'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], val);\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default string properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultStringProperties(searchObject) {\r\n  let {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter function for filterByString\r\n * @param {string} property The property to be checked\r\n * @param {string[]|string} expected The expected result\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction filterFunctionByType(property, expected, object) {\r\n  if (Array.isArray(expected)) { return expected.includes(object[property]); }\r\n  return object[property] === expected;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {TPN[]} set The TPN set\r\n * @param {Map<string, string|string[]>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByString(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => filterFunctionByType(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
@@ -1636,7 +1768,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 72,
     "kind": "function",
     "name": "filterDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1672,7 +1804,7 @@
     }
   },
   {
-    "__docId__": 72,
+    "__docId__": 73,
     "kind": "function",
     "name": "excludeDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1708,7 +1840,7 @@
     }
   },
   {
-    "__docId__": 73,
+    "__docId__": 74,
     "kind": "function",
     "name": "filterFunctionByType",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1766,7 +1898,7 @@
     "ignore": true
   },
   {
-    "__docId__": 74,
+    "__docId__": 75,
     "kind": "function",
     "name": "filterByString",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1812,7 +1944,7 @@
     }
   },
   {
-    "__docId__": 75,
+    "__docId__": 76,
     "kind": "file",
     "name": "src/TorrentLibrary.js",
     "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external Promise\r\n * @see {@link http://bluebirdjs.com/docs/api-reference.html}\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Parser for media files name\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\nimport {\r\n  EventEmitter,\r\n} from 'events';\r\n\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filters/filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filters/filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filters/filterStringProperty';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends EventEmitter\r\n * @see {@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information.\r\n */\r\nclass TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map.<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set.<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map.<string, Set.<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     */\r\n  constructor({\r\n    defaultPath = process.cwd()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    paths = [] /* istanbul ignore next: tired of writing tests */,\r\n    allFilesWithCategory = new Map()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n    series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n  } = {} /* istanbul ignore next: tired of writing tests */) {\r\n    super();\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @default the directory from which you invoked the node command\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @default []\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      const that = this;\r\n\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...that.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = that.allMovies;\r\n          const newTvSeries = that.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = nameParser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            that.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        }\r\n      });\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    const that = this;\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        that.paths = uniq([...that.paths, ...paths.map(normalize)]);\r\n        that.emit('addNewPath', { paths: that.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        that.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    }));\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n    const that = this;\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => that.addNewFiles(files)).then(() => {\r\n          that.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch(/* istanbul ignore next */ (err) => {\r\n        /* istanbul ignore next */\r\n          that.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        });\r\n    });\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    const that = this;\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        that.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...that.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => nameParser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = that.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          that.categoryForFile.delete(file);\r\n        });\r\n        that.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n        /* istanbul ignore next */\r\n      } catch (err) {\r\n        /* istanbul ignore next */\r\n        that.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        /* istanbul ignore next */\r\n        reject(err);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     */\r\n  static createFromJSON(json) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN_Extended>} the filtered movie set\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // organize search based on field type : boolean - string - number\r\n    // eslint-disable-next-line max-len\r\n    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n    // eslint-disable-next-line max-len\r\n    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n    let { additionalProperties } = leftSearchParameters;\r\n    // add the optional new properties , optionally provided by user\r\n    /* istanbul ignore else */\r\n    if (additionalProperties !== undefined) {\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'boolean')\r\n        .forEach((newProperty) => {\r\n          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'number')\r\n        .forEach((newProperty) => {\r\n          let expression = convertToValidExpression(newProperty.value);\r\n          /* istanbul ignore else */\r\n          if (expression !== undefined) {\r\n            numberFieldsSearchMap.set(newProperty.name, expression);\r\n          }\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'string')\r\n        .forEach((newProperty) => {\r\n          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n        });\r\n    }\r\n\r\n    // apply params based on types\r\n    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);\r\n    result = filterByNumber(result, numberFieldsSearchMap);\r\n    result = filterByString(result, stringFieldsSearchMap);\r\n    return result;\r\n  }\r\n}\r\n\r\nexport default TorrentLibrary;\r\n",
@@ -1823,7 +1955,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 76,
+    "__docId__": 77,
     "kind": "external",
     "name": "*",
     "externalLink": "Promise",
@@ -1838,7 +1970,7 @@
     "lineNumber": 39
   },
   {
-    "__docId__": 77,
+    "__docId__": 78,
     "kind": "function",
     "name": "checkProperties",
     "memberof": "src/TorrentLibrary.js",
@@ -1885,7 +2017,7 @@
     "ignore": true
   },
   {
-    "__docId__": 78,
+    "__docId__": 79,
     "kind": "function",
     "name": "missingParam",
     "memberof": "src/TorrentLibrary.js",
@@ -1911,7 +2043,7 @@
     "ignore": true
   },
   {
-    "__docId__": 79,
+    "__docId__": 80,
     "kind": "function",
     "name": "promisifiedAccess",
     "memberof": "src/TorrentLibrary.js",
@@ -1957,7 +2089,7 @@
     "ignore": true
   },
   {
-    "__docId__": 80,
+    "__docId__": 81,
     "kind": "class",
     "name": "TorrentLibrary",
     "memberof": "src/TorrentLibrary.js",
@@ -1978,7 +2110,7 @@
     ]
   },
   {
-    "__docId__": 81,
+    "__docId__": 82,
     "kind": "get",
     "name": "MOVIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2000,7 +2132,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 83,
     "kind": "get",
     "name": "TV_SERIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2022,7 +2154,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 84,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2107,7 +2239,7 @@
     ]
   },
   {
-    "__docId__": 84,
+    "__docId__": 85,
     "kind": "member",
     "name": "defaultPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2132,7 +2264,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 86,
     "kind": "member",
     "name": "paths",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2160,7 +2292,7 @@
     }
   },
   {
-    "__docId__": 86,
+    "__docId__": 87,
     "kind": "member",
     "name": "stores",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2179,7 +2311,7 @@
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 88,
     "kind": "member",
     "name": "categoryForFile",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2201,7 +2333,7 @@
     }
   },
   {
-    "__docId__": 88,
+    "__docId__": 89,
     "kind": "method",
     "name": "listVideosExtension",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2227,7 +2359,7 @@
     "params": []
   },
   {
-    "__docId__": 89,
+    "__docId__": 90,
     "kind": "method",
     "name": "addNewPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2284,7 +2416,7 @@
     ]
   },
   {
-    "__docId__": 90,
+    "__docId__": 91,
     "kind": "method",
     "name": "hasPathsProvidedByUser",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2316,7 +2448,7 @@
     "params": []
   },
   {
-    "__docId__": 91,
+    "__docId__": 92,
     "kind": "method",
     "name": "scan",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2353,7 +2485,7 @@
     "params": []
   },
   {
-    "__docId__": 92,
+    "__docId__": 93,
     "kind": "method",
     "name": "removeOldFiles",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2404,7 +2536,7 @@
     ]
   },
   {
-    "__docId__": 93,
+    "__docId__": 94,
     "kind": "get",
     "name": "allMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2429,7 +2561,7 @@
     }
   },
   {
-    "__docId__": 94,
+    "__docId__": 95,
     "kind": "get",
     "name": "allTvSeries",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2454,7 +2586,7 @@
     }
   },
   {
-    "__docId__": 95,
+    "__docId__": 96,
     "kind": "get",
     "name": "allFilesWithCategory",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2479,7 +2611,7 @@
     }
   },
   {
-    "__docId__": 96,
+    "__docId__": 97,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2505,7 +2637,7 @@
     "params": []
   },
   {
-    "__docId__": 97,
+    "__docId__": 98,
     "kind": "method",
     "name": "createFromJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2584,7 +2716,7 @@
     }
   },
   {
-    "__docId__": 98,
+    "__docId__": 99,
     "kind": "method",
     "name": "filterMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",

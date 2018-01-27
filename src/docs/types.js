@@ -75,6 +75,13 @@
  */
 
 /**
+ * Number expression for number filtering
+ * @typedef {Object} numberExpressionObject
+ * @property {string} operator The operator for matching process
+ * @property {number} number  The extracted number for matching process
+ */
+
+/**
  * search parameters object
  * @typedef {Object} searchParameters - search parameters.
  * @property {boolean} [extended=undefined] - extended ?
@@ -85,9 +92,9 @@
  * @property {boolean} [hardcoded=undefined] - hardcoded ?
  * @property {boolean} [retail=undefined] - retail ?
  * @property {boolean} [remastered=undefined] - remastered ?
- * @property {numberSearchSyntax} [season=undefined] - the season
- * @property {numberSearchSyntax} [episode=undefined] - the episode
- * @property {numberSearchSyntax} [year=undefined] - the year
+ * @property {number|numberSearchSyntax} [season=undefined] - the season
+ * @property {number|numberSearchSyntax} [episode=undefined] - the episode
+ * @property {number|numberSearchSyntax} [year=undefined] - the year
  * @property {string|string[]} [title=undefined] - the title
  * @property {string|string[]} [resolution=undefined] - the resolution
  * @property {string|string[]} [codec=undefined] - the codec
@@ -98,3 +105,4 @@
  * @property {string|string[]} [language=undefined] - the language
  * @property {string|string[]} [source=undefined] - the source
  */
+// TODO add the additionalProperties fields for new properties

@@ -92,7 +92,7 @@ test('default number parameters search', async (t) => {
       ),
     ]),
     libInstance.filterMovies({
-      year: '>=2012',
+      year: 2012,
     }),
     'Not the same',
   );

@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 3944,
+  "end": 4268,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 101,
+      "line": 109,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 3944,
+    "end": 4268,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 101,
+        "line": 109,
         "column": 0
       }
     },
@@ -113,17 +113,49 @@
       },
       {
         "type": "CommentBlock",
-        "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+        "value": "*\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n ",
         "start": 2606,
-        "end": 3942,
+        "end": 2841,
         "loc": {
           "start": {
             "line": 77,
             "column": 0
           },
           "end": {
-            "line": 100,
+            "line": 82,
             "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+        "start": 2845,
+        "end": 4202,
+        "loc": {
+          "start": {
+            "line": 84,
+            "column": 0
+          },
+          "end": {
+            "line": 107,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentLine",
+        "value": " TODO add the additionalProperties fields for new properties",
+        "start": 4204,
+        "end": 4266,
+        "loc": {
+          "start": {
+            "line": 108,
+            "column": 0
+          },
+          "end": {
+            "line": 108,
+            "column": 62
           }
         }
       }
@@ -212,17 +244,49 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "value": "*\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n ",
       "start": 2606,
-      "end": 3942,
+      "end": 2841,
       "loc": {
         "start": {
           "line": 77,
           "column": 0
         },
         "end": {
-          "line": 100,
+          "line": 82,
           "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "start": 2845,
+      "end": 4202,
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 0
+        },
+        "end": {
+          "line": 107,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " TODO add the additionalProperties fields for new properties",
+      "start": 4204,
+      "end": 4266,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 0
+        },
+        "end": {
+          "line": 108,
+          "column": 62
         }
       }
     }
@@ -310,17 +374,49 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "value": "*\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n ",
       "start": 2606,
-      "end": 3942,
+      "end": 2841,
       "loc": {
         "start": {
           "line": 77,
           "column": 0
         },
         "end": {
-          "line": 100,
+          "line": 82,
           "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "start": 2845,
+      "end": 4202,
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 0
+        },
+        "end": {
+          "line": 107,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " TODO add the additionalProperties fields for new properties",
+      "start": 4204,
+      "end": 4266,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 0
+        },
+        "end": {
+          "line": 108,
+          "column": 62
         }
       }
     },
@@ -337,15 +433,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3944,
-      "end": 3944,
+      "start": 4268,
+      "end": 4268,
       "loc": {
         "start": {
-          "line": 101,
+          "line": 109,
           "column": 0
         },
         "end": {
-          "line": 101,
+          "line": 109,
           "column": 0
         }
       }
