@@ -1,5 +1,3 @@
-import { isString } from 'lodash';
-
 /**
  * Convert the param to valid expression object for filter function
  * @param {number|numberSearchSyntax} param The param to be converted
@@ -7,7 +5,7 @@ import { isString } from 'lodash';
  * @property {string} operator The operator for matching process
  * @property {number} number  The extracted number for matching process
  * @example
- * // returns { operator: '=' , number: 5 }
+ * // returns { operator: '==' , number: 5 }
  * convertToValidExpression(5);
  * @example
  * // returns { operator: '>=' , number: 5 }
@@ -20,14 +18,12 @@ export function convertToValidExpression(param) {
   const validExpression = /^(==|>|<|>=|<=)(\d+)$/;
   let returnValue;
   // if it is a valid number expression like the regex
-  if (isString(param)) {
+  if (validExpression.test(param)) {
     let result = param.match(validExpression);
-    if (result.length === 3) {
-      returnValue = {
-        operator: result[1],
-        number: Number(result[2]),
-      };
-    }
+    returnValue = {
+      operator: result[1],
+      number: Number(result[2]),
+    };
   }
   // if the param is a number
   if (Number.isInteger(param)) {

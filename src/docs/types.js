@@ -82,6 +82,19 @@
  */
 
 /**
+ * allows user to provide custom filtering stuff
+ * @typedef {Object} additionalProperties
+ * @property {string} type Filter type - Possible values are 'number' , 'string' , 'number'
+ * @property {string} name The requested property
+ * @property {boolean|string|string[]|number|numberSearchSyntax} value The requested value
+ * @example
+ * { type: 'number', name: 'AnotherField2', value: '<=25' }
+ * { type: 'boolean', name: 'AnotherField', value: true }
+ * { type: 'number', name: 'AnotherField2', value: 25 }
+ * { type: 'string', name: 'AnotherField', value: ['NothingExists', 'NothingExists'] }
+ */
+
+/**
  * search parameters object
  * @typedef {Object} searchParameters - search parameters.
  * @property {boolean} [extended=undefined] - extended ?
@@ -104,5 +117,6 @@
  * @property {string|string[]} [container=undefined] - the container
  * @property {string|string[]} [language=undefined] - the language
  * @property {string|string[]} [source=undefined] - the source
+ * @property {additionalProperties[]} [additionalProperties=[]] - additional Properties
  */
-// TODO add the additionalProperties fields for new properties
+
