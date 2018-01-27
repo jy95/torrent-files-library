@@ -82,12 +82,20 @@ import {
   filterByString,
 } from './filters/filterStringProperty';
 
-// check if an object has these properties and they are not undefined
+/**
+ * check if an object has these properties and they are not undefined
+ * @param {Object} obj The object
+ * @param {Array} properties The properties array
+ * @return {boolean} The result
+ */
 function checkProperties(obj, properties) {
   return properties.every(x => x in obj && obj[x]);
 }
 
-// rejected promise when someone doesn't provide
+/**
+ * rejected promise when someone doesn't provide
+ * @return {Promise} The rejected promise
+ */
 function missingParam() {
   return new PromiseLib(((resolve, reject) => {
     reject(new Error('Missing parameter'));
@@ -112,7 +120,6 @@ function promisifiedAccess(path) {
 
 /**
  * Class representing the TorrentLibrary
- * @class
  * @extends EventEmitter
  * @see {@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information.
  */
@@ -143,8 +150,8 @@ class TorrentLibrary extends EventEmitter {
      * @param {(String)} [config.defaultPath=process.cwd()] - the default path
      * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files
      * @param {(Map.<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category
-     * @param {(Set.<TorrentLibrary~TPN_Extended>)} [config.movies=new Set()] - the movies files
-     * @param {(Map.<string, Set.<TorrentLibrary~TPN_Extended>>)} [config.series=new Map()] - the serie files
+     * @param {(Set.<TPN_Extended>)} [config.movies=new Set()] - the movies files
+     * @param {(Map.<string, Set.<TPN_Extended>>)} [config.series=new Map()] - the serie files
      */
   constructor({
     defaultPath = process.cwd()
@@ -158,13 +165,13 @@ class TorrentLibrary extends EventEmitter {
     super();
     /**
          * just an easy way to scan the current directory path, if not other paths provided
-         * @member  {string}
+         * @type  {string}
          * @default the directory from which you invoked the node command
          */
     this.defaultPath = defaultPath;
     /**
          * the paths where we are looking the media files
-         * @member {String[]}
+         * @type {String[]}
          * @default []
          * @example
          * // after have added some paths ...
@@ -173,7 +180,7 @@ class TorrentLibrary extends EventEmitter {
     this.paths = paths;
     /**
          * The variable where we store all kind of media files found in paths
-         * @member {TorrentLibrary~StoreVar}
+         * @type {StoreVar}
          */
     this.stores = new Map([
       [TorrentLibrary.MOVIES_TYPE, movies],
@@ -181,7 +188,7 @@ class TorrentLibrary extends EventEmitter {
     ]);
     /**
          * Mapping filepath => category
-         * @member {Map.<string,string>}
+         * @type {Map<string,string>}
          * @example
          * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
          */
@@ -189,7 +196,7 @@ class TorrentLibrary extends EventEmitter {
     /**
          * Private method for adding new files
          * @private
-         * @returns {external:Promise} an resolved or reject promise
+         * @returns {Promise} an resolved or reject promise
          * @param {string[]} files An array of filePath
          */
     this.addNewFiles = function addNewFiles(files) {
@@ -279,7 +286,6 @@ class TorrentLibrary extends EventEmitter {
      * @example
      * // Returns [..., 'webm', 'wmv']
      * TorrentLibrary.listVideosExtension()
-     * @static
      */
   static listVideosExtension() {
     return videosExtension;
@@ -288,18 +294,16 @@ class TorrentLibrary extends EventEmitter {
   /**
      * Add the path(s) to be analyzed by the library if they exist and are readable
      * @param {...string} paths - A or more path(s)
-     * @instance
-     * @method
      * @since 0.0.0
      * @example
      * // return resolved Promise "All paths were added!"
      * TorrentLibraryInstance.addNewPath("C:\Users\jy95\Desktop\New folder","C:\Users\jy95\Desktop\New folder2");
-     * @return {external:Promise}  On success the promise will be resolved with "All paths were added!"<br>
+     * @return {Promise}  On success the promise will be resolved with "All paths were added!"<br>
      * On error the promise will be rejected with an Error object "Missing parameter" if the argument is missing<br>
      * or an Error object from fs <br>
-     * @fires TorrentLibrary#missing_parameter
-     * @fires TorrentLibrary#error_in_function
-     * @fires TorrentLibrary#addNewPath
+     * @emits Events#missing_parameter
+     * @emits Events#error_in_function
+     * @emits Events#addNewPath
      */
   addNewPath(...paths) {
     // the user should provide us at lest a path
@@ -330,8 +334,6 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Tell us if the user has provided us paths
-     * @instance
-     * @method
      * @since 0.0.0
      * @returns {boolean} Has user provided us paths ?
      * @example
@@ -344,13 +346,11 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Scans the paths in search for new files to be added inside this lib
-     * @instance
-     * @method
      * @since 0.0.0
-     * @return {external:Promise}  On success the promise will be resolved with "Scanning completed"<br>
+     * @return {Promise}  On success the promise will be resolved with "Scanning completed"<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
-     * @fires TorrentLibrary#scan
-     * @fires TorrentLibrary#error_in_function
+     * @emits Events#scan
+     * @emits Events#error_in_function
      */
   scan() {
     const foundFiles = FileHound.create()
@@ -381,7 +381,7 @@ class TorrentLibrary extends EventEmitter {
      * Removes files stored in this library
      * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)
      * @since 1.0.3
-     * @return {external:Promise} an resolved or rejected promise<br>
+     * @return {Promise} an resolved or rejected promise<br>
      * On success, the resolve will contain an message and the removed filePaths<br>
      * On error the promise will be rejected with an Error object from sub modules<br>
      * @example
@@ -390,8 +390,8 @@ class TorrentLibrary extends EventEmitter {
      *    "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV",
      *    "D:\\workspaceNodeJs\\torrent-files-library\\test\\folder1\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi"
      * )
-     * @fires TorrentLibrary#removeOldFiles
-     * @fires TorrentLibrary#error_in_function
+     * @emits Events#removeOldFiles
+     * @emits Events#error_in_function
      */
   removeOldFiles(...files) {
     const that = this;
@@ -455,9 +455,8 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Getter for all found movies
-     * @instance
      * @since 0.0.0
-     * @type {Set.<TorrentLibrary~TPN_Extended>}
+     * @type {Set<TPN_Extended>}
      * @example
      * // an JSON stringified example of this method
      * [
@@ -479,9 +478,8 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Getter for all found tv-series
-     * @instance
      * @since 0.0.0
-     * @type {Map.<string, Set.<TorrentLibrary~TPN_Extended>>}
+     * @type {Map<string, Set<TPN_Extended>>}
      * @example
      * // an JSON stringified example of this method
      * {
@@ -515,8 +513,7 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Getter for the mapping between filepaths and category
-     * @type {Map.<string,string>}
-     * @instance
+     * @type {Map<string,string>}
      * @since 0.0.0
      * @example
      * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
@@ -528,8 +525,6 @@ class TorrentLibrary extends EventEmitter {
   /**
      * Returns an JSON stringified of the current state
      * @since 1.0.3
-     * @instance
-
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}
      * @return {string} json - the JSON stringified
      */
@@ -550,8 +545,8 @@ class TorrentLibrary extends EventEmitter {
      * @param {Object} [json] - the JSON object of toJSON() string
      * @param {(String[])} json.paths - the paths where we are looking the media files
      * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category
-     * @param {(TorrentLibrary~TPN_Extended[])} json.movies - the movies files
-     * @param {(Array.<Array.<String,TorrentLibrary~TPN_Extended[]>>)} json.tv-series - the serie files
+     * @param {(TPN_Extended[])} json.movies - the movies files
+     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
      * @return {TorrentLibrary} an TorrentLibrary instance
      * @example
@@ -582,6 +577,11 @@ class TorrentLibrary extends EventEmitter {
     return new TorrentLibrary(config);
   }
 
+  /**
+   * Filter the movies based on search parameters
+   * @param {searchParameters} searchParameters - search parameters.
+   * @return {Set<TPN_Extended>} the filtered movie set
+   */
   filterMovies(searchParameters = {
     // boolean properties
     extended: undefined,

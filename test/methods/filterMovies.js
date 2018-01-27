@@ -5,6 +5,7 @@ import path from 'path';
 import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
+/** @test {TorrentLibrary#filterMovies} */
 test('Should work without parameters', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -26,6 +27,7 @@ test('Should work without parameters', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#filterMovies} */
 test('default boolean parameters search', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -70,6 +72,7 @@ test('default boolean parameters search', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#filterMovies} */
 test('default number parameters search', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -111,6 +114,7 @@ test('default number parameters search', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#filterMovies} */
 test('default string parameters search', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();

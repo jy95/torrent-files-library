@@ -15,6 +15,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coverage-html": "nyc report --reporter=html",
     "generate-docs": "node_modules/.bin/jsdoc --configure config/.jsdoc.json --verbose",
+    "esdoc": "node_modules/.bin/esdoc -c config/.esdoc.json",
     "lint": "./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix"
   },
   "engines": {
@@ -48,11 +49,12 @@
     "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^0.3.0",
     "coveralls": "^3.0.0",
+    "esdoc": "^1.0.4",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
-    "jsdoc": "^3.5.5",
-    "minami": "^1.2.3",
     "nyc": "^11.4.1",
     "semantic-release": "^12.2.4",
     "sinon": "^4.2.0"

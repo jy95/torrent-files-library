@@ -5,6 +5,7 @@ import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
 // TESTS
+/** @test {TorrentLibrary#allMovies} */
 test('result after scan()', async (t) => {
   let libInstance = new TorrentLibrary();
   await t.notThrows(libInstance.addNewPath(...folders));

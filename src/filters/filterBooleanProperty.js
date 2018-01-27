@@ -1,3 +1,8 @@
+/**
+ * Provides a map with valid default properties
+ * @param {searchParameters} searchObject - search parameters
+ * @return {Map<string, boolean>} the result map
+ */
 export function filterDefaultBooleanProperties(searchObject) {
   const {
     extended, unrated, proper, repack, convert, hardcoded, retail, remastered,
@@ -16,6 +21,11 @@ export function filterDefaultBooleanProperties(searchObject) {
   }, new Map());
 }
 
+/**
+ * Remove the default boolean properties
+ * @param {searchParameters} searchObject - search parameters
+ * @return {searchParameters} searchParameters without these properties
+ */
 export function excludeDefaultBooleanProperties(searchObject) {
   let {
     extended, unrated, proper, repack, convert, hardcoded, retail, remastered,
@@ -24,6 +34,12 @@ export function excludeDefaultBooleanProperties(searchObject) {
   return rest;
 }
 
+/**
+ * Filter the set based on boolean properties
+ * @param {TPN[]} set The TPN set
+ * @param {Map<string, boolean>} propertiesMap The map from filterDefaultBooleanProperties
+ * @return {Set<TPN>} the filtered set
+ */
 export function filterByBoolean(set, propertiesMap) {
   // first step : get an array so that we can do filter/reduce stuff
   // second step : iterate the propertiesMap and do filter and return the filtered array

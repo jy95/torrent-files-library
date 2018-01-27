@@ -1,0 +1,354 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 1736,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 53,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 1736,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 53,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [],
+    "directives": [],
+    "leadingComments": null,
+    "innerComments": [
+      {
+        "type": "CommentLine",
+        "value": " events",
+        "start": 0,
+        "end": 9,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 9
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * missing_parameter event\r\n * @typedef {Object} Events#missing_parameter\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @example\r\n * TorrentLibraryInstance.on('missing_parameter',function(callback){\r\n *      console.log('Parameter is missing in ' + callback.functionName);\r\n * })\r\n ",
+        "start": 13,
+        "end": 349,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * error_in_function event\r\n * @typedef {Object} Events#error_in_function\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @property {string} error - The error message got by error.message\r\n * @example\r\n * TorrentLibraryInstance.on('error_in_function',function(callback){\r\n *      console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);\r\n * })\r\n ",
+        "start": 353,
+        "end": 793,
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 22,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * addNewPath event\r\n * @typedef {Object} Events#addNewPath\r\n * @property {...string} paths - all the paths that were added\r\n * @example\r\n * TorrentLibraryInstance.on('addNewPath',function(callback){\r\n *      console.log('The following files were added : ' + callback.paths);\r\n * })\r\n ",
+        "start": 797,
+        "end": 1089,
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 0
+          },
+          "end": {
+            "line": 32,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * scan event\r\n * @typedef {object} Events#scan\r\n * @property {...string} files - all the files that were found and added if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('scan',function(callback){\r\n *      console.log('The following files were found : ' + callback.files);\r\n * })\r\n ",
+        "start": 1093,
+        "end": 1395,
+        "loc": {
+          "start": {
+            "line": 34,
+            "column": 0
+          },
+          "end": {
+            "line": 42,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * removeOldFiles event\r\n * @typedef {object}  Events#removeOldFiles\r\n * @property {...string} files - all the files that were found and removed if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('removeOldFiles',function(callback){\r\n *      console.log('The following files were added : ' + callback.files);\r\n * })\r\n ",
+        "start": 1399,
+        "end": 1734,
+        "loc": {
+          "start": {
+            "line": 44,
+            "column": 0
+          },
+          "end": {
+            "line": 52,
+            "column": 3
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " events",
+      "start": 0,
+      "end": 9,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * missing_parameter event\r\n * @typedef {Object} Events#missing_parameter\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @example\r\n * TorrentLibraryInstance.on('missing_parameter',function(callback){\r\n *      console.log('Parameter is missing in ' + callback.functionName);\r\n * })\r\n ",
+      "start": 13,
+      "end": 349,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * error_in_function event\r\n * @typedef {Object} Events#error_in_function\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @property {string} error - The error message got by error.message\r\n * @example\r\n * TorrentLibraryInstance.on('error_in_function',function(callback){\r\n *      console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);\r\n * })\r\n ",
+      "start": 353,
+      "end": 793,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * addNewPath event\r\n * @typedef {Object} Events#addNewPath\r\n * @property {...string} paths - all the paths that were added\r\n * @example\r\n * TorrentLibraryInstance.on('addNewPath',function(callback){\r\n *      console.log('The following files were added : ' + callback.paths);\r\n * })\r\n ",
+      "start": 797,
+      "end": 1089,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * scan event\r\n * @typedef {object} Events#scan\r\n * @property {...string} files - all the files that were found and added if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('scan',function(callback){\r\n *      console.log('The following files were found : ' + callback.files);\r\n * })\r\n ",
+      "start": 1093,
+      "end": 1395,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 0
+        },
+        "end": {
+          "line": 42,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * removeOldFiles event\r\n * @typedef {object}  Events#removeOldFiles\r\n * @property {...string} files - all the files that were found and removed if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('removeOldFiles',function(callback){\r\n *      console.log('The following files were added : ' + callback.files);\r\n * })\r\n ",
+      "start": 1399,
+      "end": 1734,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 0
+        },
+        "end": {
+          "line": 52,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentLine",
+      "value": " events",
+      "start": 0,
+      "end": 9,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * missing_parameter event\r\n * @typedef {Object} Events#missing_parameter\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @example\r\n * TorrentLibraryInstance.on('missing_parameter',function(callback){\r\n *      console.log('Parameter is missing in ' + callback.functionName);\r\n * })\r\n ",
+      "start": 13,
+      "end": 349,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * error_in_function event\r\n * @typedef {Object} Events#error_in_function\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @property {string} error - The error message got by error.message\r\n * @example\r\n * TorrentLibraryInstance.on('error_in_function',function(callback){\r\n *      console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);\r\n * })\r\n ",
+      "start": 353,
+      "end": 793,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * addNewPath event\r\n * @typedef {Object} Events#addNewPath\r\n * @property {...string} paths - all the paths that were added\r\n * @example\r\n * TorrentLibraryInstance.on('addNewPath',function(callback){\r\n *      console.log('The following files were added : ' + callback.paths);\r\n * })\r\n ",
+      "start": 797,
+      "end": 1089,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * scan event\r\n * @typedef {object} Events#scan\r\n * @property {...string} files - all the files that were found and added if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('scan',function(callback){\r\n *      console.log('The following files were found : ' + callback.files);\r\n * })\r\n ",
+      "start": 1093,
+      "end": 1395,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 0
+        },
+        "end": {
+          "line": 42,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * removeOldFiles event\r\n * @typedef {object}  Events#removeOldFiles\r\n * @property {...string} files - all the files that were found and removed if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('removeOldFiles',function(callback){\r\n *      console.log('The following files were added : ' + callback.files);\r\n * })\r\n ",
+      "start": 1399,
+      "end": 1734,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 0
+        },
+        "end": {
+          "line": 52,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1736,
+      "end": 1736,
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 53,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

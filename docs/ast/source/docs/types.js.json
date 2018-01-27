@@ -1,0 +1,354 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 3944,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 101,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 3944,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 101,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [],
+    "directives": [],
+    "leadingComments": null,
+    "innerComments": [
+      {
+        "type": "CommentLine",
+        "value": " ESDoc custom typedef",
+        "start": 0,
+        "end": 23,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 23
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n ",
+        "start": 27,
+        "end": 1178,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n ",
+        "start": 1182,
+        "end": 1329,
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 0
+          },
+          "end": {
+            "line": 33,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n ",
+        "start": 1333,
+        "end": 2425,
+        "loc": {
+          "start": {
+            "line": 35,
+            "column": 0
+          },
+          "end": {
+            "line": 66,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n ",
+        "start": 2429,
+        "end": 2602,
+        "loc": {
+          "start": {
+            "line": 68,
+            "column": 0
+          },
+          "end": {
+            "line": 75,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+        "start": 2606,
+        "end": 3942,
+        "loc": {
+          "start": {
+            "line": 77,
+            "column": 0
+          },
+          "end": {
+            "line": 100,
+            "column": 3
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " ESDoc custom typedef",
+      "start": 0,
+      "end": 23,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n ",
+      "start": 27,
+      "end": 1178,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n ",
+      "start": 1182,
+      "end": 1329,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n ",
+      "start": 1333,
+      "end": 2425,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 0
+        },
+        "end": {
+          "line": 66,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n ",
+      "start": 2429,
+      "end": 2602,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 0
+        },
+        "end": {
+          "line": 75,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "start": 2606,
+      "end": 3942,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 0
+        },
+        "end": {
+          "line": 100,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentLine",
+      "value": " ESDoc custom typedef",
+      "start": 0,
+      "end": 23,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n ",
+      "start": 27,
+      "end": 1178,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n ",
+      "start": 1182,
+      "end": 1329,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n ",
+      "start": 1333,
+      "end": 2425,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 0
+        },
+        "end": {
+          "line": 66,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n ",
+      "start": 2429,
+      "end": 2602,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 0
+        },
+        "end": {
+          "line": 75,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n ",
+      "start": 2606,
+      "end": 3942,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 0
+        },
+        "end": {
+          "line": 100,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3944,
+      "end": 3944,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 0
+        },
+        "end": {
+          "line": 101,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

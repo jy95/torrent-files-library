@@ -1,0 +1,2635 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/docs/events.js",
+    "content": "// events\r\n\r\n/**\r\n * missing_parameter event\r\n * @typedef {Object} Events#missing_parameter\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @example\r\n * TorrentLibraryInstance.on('missing_parameter',function(callback){\r\n *      console.log('Parameter is missing in ' + callback.functionName);\r\n * })\r\n */\r\n\r\n/**\r\n * error_in_function event\r\n * @typedef {Object} Events#error_in_function\r\n * @property {string} functionName - Indicates the function name when the error occurs.\r\n * @property {string} error - The error message got by error.message\r\n * @example\r\n * TorrentLibraryInstance.on('error_in_function',function(callback){\r\n *      console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);\r\n * })\r\n */\r\n\r\n/**\r\n * addNewPath event\r\n * @typedef {Object} Events#addNewPath\r\n * @property {...string} paths - all the paths that were added\r\n * @example\r\n * TorrentLibraryInstance.on('addNewPath',function(callback){\r\n *      console.log('The following files were added : ' + callback.paths);\r\n * })\r\n */\r\n\r\n/**\r\n * scan event\r\n * @typedef {object} Events#scan\r\n * @property {...string} files - all the files that were found and added if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('scan',function(callback){\r\n *      console.log('The following files were found : ' + callback.files);\r\n * })\r\n */\r\n\r\n/**\r\n * removeOldFiles event\r\n * @typedef {object}  Events#removeOldFiles\r\n * @property {...string} files - all the files that were found and removed if not yet in lib\r\n * @example\r\n * TorrentLibraryInstance.on('removeOldFiles',function(callback){\r\n *      console.log('The following files were added : ' + callback.files);\r\n * })\r\n */\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/docs/events.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "typedef",
+    "name": "Events#missing_parameter",
+    "memberof": "src/docs/events.js",
+    "static": true,
+    "longname": "src/docs/events.js~Events#missing_parameter",
+    "access": "public",
+    "description": "missing_parameter event",
+    "examples": [
+      "TorrentLibraryInstance.on('missing_parameter',function(callback){\n     console.log('Parameter is missing in ' + callback.functionName);\n})"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "functionName",
+        "description": "Indicates the function name when the error occurs."
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Events#missing_parameter"
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "typedef",
+    "name": "Events#error_in_function",
+    "memberof": "src/docs/events.js",
+    "static": true,
+    "longname": "src/docs/events.js~Events#error_in_function",
+    "access": "public",
+    "description": "error_in_function event",
+    "examples": [
+      "TorrentLibraryInstance.on('error_in_function',function(callback){\n     console.log('Function ' + callback.functionName + ' has the following error : ' + callback.error);\n})"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "functionName",
+        "description": "Indicates the function name when the error occurs."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "error",
+        "description": "The error message got by error.message"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Events#error_in_function"
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "typedef",
+    "name": "Events#addNewPath",
+    "memberof": "src/docs/events.js",
+    "static": true,
+    "longname": "src/docs/events.js~Events#addNewPath",
+    "access": "public",
+    "description": "addNewPath event",
+    "examples": [
+      "TorrentLibraryInstance.on('addNewPath',function(callback){\n     console.log('The following files were added : ' + callback.paths);\n})"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "...string"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "paths",
+        "description": "all the paths that were added"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Events#addNewPath"
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "typedef",
+    "name": "Events#scan",
+    "memberof": "src/docs/events.js",
+    "static": true,
+    "longname": "src/docs/events.js~Events#scan",
+    "access": "public",
+    "description": "scan event",
+    "examples": [
+      "TorrentLibraryInstance.on('scan',function(callback){\n     console.log('The following files were found : ' + callback.files);\n})"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "...string"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "files",
+        "description": "all the files that were found and added if not yet in lib"
+      }
+    ],
+    "type": {
+      "types": [
+        "object"
+      ],
+      "optional": false,
+      "name": "Events#scan"
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "typedef",
+    "name": "Events#removeOldFiles",
+    "memberof": "src/docs/events.js",
+    "static": true,
+    "longname": "src/docs/events.js~Events#removeOldFiles",
+    "access": "public",
+    "description": "removeOldFiles event",
+    "examples": [
+      "TorrentLibraryInstance.on('removeOldFiles',function(callback){\n     console.log('The following files were added : ' + callback.files);\n})"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "...string"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "files",
+        "description": "all the files that were found and removed if not yet in lib"
+      }
+    ],
+    "type": {
+      "types": [
+        "object"
+      ],
+      "optional": false,
+      "name": "Events#removeOldFiles"
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "src/docs/types.js",
+    "content": "// ESDoc custom typedef\r\n\r\n/**\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n */\r\n\r\n/**\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n */\r\n\r\n/**\r\n * The variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n */\r\n\r\n/**\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n */\r\n\r\n/**\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {numberSearchSyntax} [season=undefined] - the season\r\n * @property {numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n */\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/docs/types.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "typedef",
+    "name": "TPN",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~TPN",
+    "access": "public",
+    "description": "The result of parsing file name",
+    "see": [
+      "{@link https://github.com/clement-escolano/parse-torrent-title}"
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": "The file title"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "season",
+        "description": "The season number"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "episode",
+        "description": "The episode number"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "year",
+        "description": "The year"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "resolution",
+        "description": "The resolution"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "codec",
+        "description": "The codec"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "audio",
+        "description": "The audio"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "group",
+        "description": "The group that releases this file"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "region",
+        "description": "The region"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "container",
+        "description": "The container"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "language",
+        "description": "The file language"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "extended",
+        "description": "extended ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "unrated",
+        "description": "unrated ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "proper",
+        "description": "proper ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "repack",
+        "description": "repack ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "convert",
+        "description": "convert ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "hardcoded",
+        "description": "hardcoded ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "retail",
+        "description": "retail ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "remastered",
+        "description": "remastered ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "source",
+        "description": "the source"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "TPN"
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "typedef",
+    "name": "TPN_Extended",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~TPN_Extended",
+    "access": "public",
+    "description": "The extended TPN object",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "filePath",
+        "description": "additionnal property useful for this library"
+      }
+    ],
+    "type": {
+      "types": [
+        "TPN"
+      ],
+      "optional": false,
+      "name": "TPN_Extended"
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "typedef",
+    "name": "StoreVar",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~StoreVar",
+    "access": "public",
+    "description": "The variable where we store all kind of media files found in paths",
+    "examples": [
+      "// An example of the variable after the scan method\n[\n     \"MOVIES\" : [\n        {\n           \"year\": 2014,\n           \"resolution\": '1080p',\n           \"source\": 'brrip',\n           \"codec\": 'x264',\n           \"container\": 'mkv',\n           \"title\": 'Captain Russia The Summer Soldier',\n           \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\n        }\n     ],\n     \"TV_SERIES\" : [\n         \"The Blacklist\" : [\n             {\n                 \"season\": 4,\n                 \"episode\": 21,\n                 \"source\": \"webrip\",\n                 \"codec\": \"xvid\",\n                 \"container\": \"avi\",\n                 \"language\": \"french\"\n                 \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n             }\n         ]\n     ]\n]"
+    ],
+    "type": {
+      "types": [
+        "Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>"
+      ],
+      "optional": false,
+      "name": "StoreVar"
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "typedef",
+    "name": "numberSearchSyntax",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~numberSearchSyntax",
+    "access": "public",
+    "description": "The search syntax for number properties : a operator follows by a number",
+    "examples": [
+      "'<=25'",
+      "'=25'"
+    ],
+    "type": {
+      "types": [
+        "string"
+      ],
+      "optional": false,
+      "name": "numberSearchSyntax"
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "typedef",
+    "name": "searchParameters",
+    "memberof": "src/docs/types.js",
+    "static": true,
+    "longname": "src/docs/types.js~searchParameters",
+    "access": "public",
+    "description": "search parameters object",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "extended",
+        "description": "extended ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "unrated",
+        "description": "unrated ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "proper",
+        "description": "proper ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "repack",
+        "description": "repack ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "convert",
+        "description": "convert ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "hardcoded",
+        "description": "hardcoded ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "retail",
+        "description": "retail ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "remastered",
+        "description": "remastered ?"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "numberSearchSyntax"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "season",
+        "description": "the season"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "numberSearchSyntax"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "episode",
+        "description": "the episode"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "numberSearchSyntax"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "year",
+        "description": "the year"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "title",
+        "description": "the title"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "resolution",
+        "description": "the resolution"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "codec",
+        "description": "the codec"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "audio",
+        "description": "the audio"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "group",
+        "description": "the group"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "region",
+        "description": "the region"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "container",
+        "description": "the container"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "language",
+        "description": "the language"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "source",
+        "description": "the source"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "searchParameters"
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "file",
+    "name": "src/filters/filterBooleanProperty.js",
+    "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, boolean>} the result map\r\n */\r\nexport function filterDefaultBooleanProperties(searchObject) {\r\n  const {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [extended, unrated, proper,\r\n    repack, convert, hardcoded, retail, remastered];\r\n  const propertiesNames = ['extended', 'unrated', 'proper', 'repack', 'convert',\r\n    'hardcoded', 'retail', 'remastered'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    // eslint-disable-next-line max-len\r\n    if (val === true || val === false) { propertiesMap.set(propertiesNames[index], val); }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default boolean properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultBooleanProperties(searchObject) {\r\n  let {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter the set based on boolean properties\r\n * @param {TPN[]} set The TPN set\r\n * @param {Map<string, boolean>} propertiesMap The map from filterDefaultBooleanProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByBoolean(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => TPN[val[0]] === val[1])\r\n      , [...set],\r\n    ));\r\n}\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/filters/filterBooleanProperty.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "filterDefaultBooleanProperties",
+    "memberof": "src/filters/filterBooleanProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterBooleanProperty.js~filterDefaultBooleanProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterBooleanProperty.js",
+    "importStyle": "{filterDefaultBooleanProperties}",
+    "description": "Provides a map with valid default properties",
+    "lineNumber": 6,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Map<string, boolean>"
+      ],
+      "spread": false,
+      "description": "the result map"
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "function",
+    "name": "excludeDefaultBooleanProperties",
+    "memberof": "src/filters/filterBooleanProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterBooleanProperty.js~excludeDefaultBooleanProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterBooleanProperty.js",
+    "importStyle": "{excludeDefaultBooleanProperties}",
+    "description": "Remove the default boolean properties",
+    "lineNumber": 29,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "searchParameters"
+      ],
+      "spread": false,
+      "description": "searchParameters without these properties"
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "function",
+    "name": "filterByBoolean",
+    "memberof": "src/filters/filterBooleanProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterBooleanProperty.js~filterByBoolean",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterBooleanProperty.js",
+    "importStyle": "{filterByBoolean}",
+    "description": "Filter the set based on boolean properties",
+    "lineNumber": 43,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "TPN[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "set",
+        "description": "The TPN set"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Map<string, boolean>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "propertiesMap",
+        "description": "The map from filterDefaultBooleanProperties"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Set<TPN>"
+      ],
+      "spread": false,
+      "description": "the filtered set"
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "file",
+    "name": "src/filters/filterNumberProperty.js",
+    "content": "import { isString } from 'lodash';\r\n\r\nexport function convertToValidExpression(myString) {\r\n  const validExpression = /^(=|>|<|>=|<=)(\\d+)$/;\r\n  let returnValue;\r\n  if (isString(myString)) {\r\n    let result = myString.match(validExpression);\r\n    if (result.length === 3) {\r\n      returnValue = {\r\n        operator: result[1],\r\n        number: Number(result[2]),\r\n      };\r\n    }\r\n  }\r\n  return returnValue;\r\n}\r\n\r\nfunction resolveExpression(property, expressionObject, object) {\r\n  let { operator, number } = expressionObject;\r\n  // No : eval is not all evil but you should know what you are doing\r\n  // eslint-disable-next-line no-eval\r\n  return eval(`${object[property]}${operator}${number}`);\r\n}\r\n\r\nexport function filterDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [season, episode, year];\r\n  const propertiesNames = ['season', 'episode', 'year'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], convertToValidExpression(val));\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\nexport function excludeDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\nexport function filterByNumber(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => resolveExpression(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/filters/filterNumberProperty.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 65,
+    "kind": "function",
+    "name": "convertToValidExpression",
+    "memberof": "src/filters/filterNumberProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterNumberProperty.js~convertToValidExpression",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
+    "importStyle": "{convertToValidExpression}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "myString",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
+    "name": "resolveExpression",
+    "memberof": "src/filters/filterNumberProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterNumberProperty.js~resolveExpression",
+    "access": "public",
+    "export": false,
+    "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "params": [
+      {
+        "name": "property",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "expressionObject",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "object",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "function",
+    "name": "filterDefaultNumberProperties",
+    "memberof": "src/filters/filterNumberProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterNumberProperty.js~filterDefaultNumberProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
+    "importStyle": "{filterDefaultNumberProperties}",
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [
+      {
+        "name": "searchObject",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "function",
+    "name": "excludeDefaultNumberProperties",
+    "memberof": "src/filters/filterNumberProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterNumberProperty.js~excludeDefaultNumberProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
+    "importStyle": "{excludeDefaultNumberProperties}",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "searchObject",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "function",
+    "name": "filterByNumber",
+    "memberof": "src/filters/filterNumberProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterNumberProperty.js~filterByNumber",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterNumberProperty.js",
+    "importStyle": "{filterByNumber}",
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "params": [
+      {
+        "name": "set",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "propertiesMap",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "file",
+    "name": "src/filters/filterStringProperty.js",
+    "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, string|string[]>} the result map\r\n */\r\nexport function filterDefaultStringProperties(searchObject) {\r\n  const {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [title, resolution, codec, audio, group,\r\n    region, container, language, source];\r\n  const propertiesNames = ['title', 'resolution', 'codec', 'audio', 'group',\r\n    'region', 'container', 'language', 'source'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], val);\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default string properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultStringProperties(searchObject) {\r\n  let {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter function for filterByString\r\n * @param {string} property The property to be checked\r\n * @param {string[]|string} expected The expected result\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction filterFunctionByType(property, expected, object) {\r\n  if (Array.isArray(expected)) { return expected.includes(object[property]); }\r\n  return object[property] === expected;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {TPN[]} set The TPN set\r\n * @param {Map<string, string|string[]>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByString(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => filterFunctionByType(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/filters/filterStringProperty.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 71,
+    "kind": "function",
+    "name": "filterDefaultStringProperties",
+    "memberof": "src/filters/filterStringProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterStringProperty.js~filterDefaultStringProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterStringProperty.js",
+    "importStyle": "{filterDefaultStringProperties}",
+    "description": "Provides a map with valid default properties",
+    "lineNumber": 6,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Map<string, string|string[]>"
+      ],
+      "spread": false,
+      "description": "the result map"
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "function",
+    "name": "excludeDefaultStringProperties",
+    "memberof": "src/filters/filterStringProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterStringProperty.js~excludeDefaultStringProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterStringProperty.js",
+    "importStyle": "{excludeDefaultStringProperties}",
+    "description": "Remove the default string properties",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchObject",
+        "description": "search parameters"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "searchParameters"
+      ],
+      "spread": false,
+      "description": "searchParameters without these properties"
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "function",
+    "name": "filterFunctionByType",
+    "memberof": "src/filters/filterStringProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterStringProperty.js~filterFunctionByType",
+    "access": "public",
+    "export": false,
+    "importPath": "torrent-files-library/src/filters/filterStringProperty.js",
+    "importStyle": null,
+    "description": "Filter function for filterByString",
+    "lineNumber": 45,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "property",
+        "description": "The property to be checked"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string[]",
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expected",
+        "description": "The expected result"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "TPN"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": "the object to be checked"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "the result"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "filterByString",
+    "memberof": "src/filters/filterStringProperty.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterStringProperty.js~filterByString",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterStringProperty.js",
+    "importStyle": "{filterByString}",
+    "description": "Filter the set based on string properties",
+    "lineNumber": 56,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "TPN[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "set",
+        "description": "The TPN set"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Map<string, string|string[]>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "propertiesMap",
+        "description": "The map from filterDefaultStringProperties"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Set<TPN>"
+      ],
+      "spread": false,
+      "description": "the filtered set"
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "file",
+    "name": "src/TorrentLibrary.js",
+    "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external Promise\r\n * @see {@link http://bluebirdjs.com/docs/api-reference.html}\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Parser for media files name\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\nimport {\r\n  EventEmitter,\r\n} from 'events';\r\n\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filters/filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filters/filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filters/filterStringProperty';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends EventEmitter\r\n * @see {@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information.\r\n */\r\nclass TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map.<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set.<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map.<string, Set.<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     */\r\n  constructor({\r\n    defaultPath = process.cwd()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    paths = [] /* istanbul ignore next: tired of writing tests */,\r\n    allFilesWithCategory = new Map()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n    series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n  } = {} /* istanbul ignore next: tired of writing tests */) {\r\n    super();\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @default the directory from which you invoked the node command\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @default []\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      const that = this;\r\n\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...that.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = that.allMovies;\r\n          const newTvSeries = that.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = nameParser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            that.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        }\r\n      });\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    const that = this;\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        that.paths = uniq([...that.paths, ...paths.map(normalize)]);\r\n        that.emit('addNewPath', { paths: that.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        that.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    }));\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n    const that = this;\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => that.addNewFiles(files)).then(() => {\r\n          that.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch(/* istanbul ignore next */ (err) => {\r\n        /* istanbul ignore next */\r\n          that.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        });\r\n    });\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    const that = this;\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        that.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...that.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => nameParser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = that.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          that.categoryForFile.delete(file);\r\n        });\r\n        that.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n        /* istanbul ignore next */\r\n      } catch (err) {\r\n        /* istanbul ignore next */\r\n        that.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        /* istanbul ignore next */\r\n        reject(err);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     */\r\n  static createFromJSON(json) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN_Extended>} the filtered movie set\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // organize search based on field type : boolean - string - number\r\n    // eslint-disable-next-line max-len\r\n    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n    // eslint-disable-next-line max-len\r\n    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n    let { additionalProperties } = leftSearchParameters;\r\n    // add the optional new properties , optionally provided by user\r\n    /* istanbul ignore else */\r\n    if (additionalProperties !== undefined) {\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'boolean')\r\n        .forEach((newProperty) => {\r\n          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'number')\r\n        .forEach((newProperty) => {\r\n          let expression = convertToValidExpression(newProperty.value);\r\n          /* istanbul ignore else */\r\n          if (expression !== undefined) {\r\n            numberFieldsSearchMap.set(newProperty.name, expression);\r\n          }\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'string')\r\n        .forEach((newProperty) => {\r\n          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n        });\r\n    }\r\n\r\n    // apply params based on types\r\n    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);\r\n    result = filterByNumber(result, numberFieldsSearchMap);\r\n    result = filterByString(result, stringFieldsSearchMap);\r\n    return result;\r\n  }\r\n}\r\n\r\nexport default TorrentLibrary;\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/TorrentLibrary.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "name": "*",
+    "externalLink": "Promise",
+    "memberof": "src/TorrentLibrary.js",
+    "static": true,
+    "longname": "src/TorrentLibrary.js~*",
+    "access": "public",
+    "description": "A promise object provided by the bluebird promise library.",
+    "see": [
+      "{@link http://bluebirdjs.com/docs/api-reference.html}"
+    ],
+    "lineNumber": 39
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "checkProperties",
+    "memberof": "src/TorrentLibrary.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~checkProperties",
+    "access": "public",
+    "export": false,
+    "importPath": "torrent-files-library/src/TorrentLibrary.js",
+    "importStyle": null,
+    "description": "check if an object has these properties and they are not undefined",
+    "lineNumber": 91,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "The object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "properties",
+        "description": "The properties array"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "The result"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "missingParam",
+    "memberof": "src/TorrentLibrary.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~missingParam",
+    "access": "public",
+    "export": false,
+    "importPath": "torrent-files-library/src/TorrentLibrary.js",
+    "importStyle": null,
+    "description": "rejected promise when someone doesn't provide",
+    "lineNumber": 99,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "The rejected promise"
+    },
+    "params": [],
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "promisifiedAccess",
+    "memberof": "src/TorrentLibrary.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~promisifiedAccess",
+    "access": "private",
+    "export": false,
+    "importPath": "torrent-files-library/src/TorrentLibrary.js",
+    "importStyle": null,
+    "description": "Bluebird seems to have an issue with fs.access - Workaround function",
+    "see": [
+      "{@link https://github.com/petkaantonov/bluebird/issues/1442}"
+    ],
+    "lineNumber": 112,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise} an Promise object resolved or rejected"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": "a path"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "an Promise object resolved or rejected"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "class",
+    "name": "TorrentLibrary",
+    "memberof": "src/TorrentLibrary.js",
+    "static": true,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/TorrentLibrary.js",
+    "importStyle": "TorrentLibrary",
+    "description": "Class representing the TorrentLibrary",
+    "see": [
+      "{@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information."
+    ],
+    "lineNumber": 126,
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 81,
+    "kind": "get",
+    "name": "MOVIES_TYPE",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary.MOVIES_TYPE",
+    "access": "public",
+    "description": "constant for movie category",
+    "lineNumber": 133,
+    "since": "0.0.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "get",
+    "name": "TV_SERIES_TYPE",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary.TV_SERIES_TYPE",
+    "access": "public",
+    "description": "constant for tv series category",
+    "lineNumber": 143,
+    "since": "0.0.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#constructor",
+    "access": "public",
+    "description": "Create a TorrentLibrary",
+    "lineNumber": 156,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "config",
+        "description": "the config object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "process.cwd()",
+        "defaultRaw": "process.cwd()",
+        "name": "config.defaultPath",
+        "description": "the default path"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "[]",
+        "defaultRaw": [],
+        "name": "config.paths",
+        "description": "the paths where we are looking the media files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Map.<string,string>"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "new Map()",
+        "defaultRaw": "new Map()",
+        "name": "config.allFilesWithCategory",
+        "description": "Mapping filepath => category"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Set.<TPN_Extended>"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "new Set()",
+        "defaultRaw": "new Set()",
+        "name": "config.movies",
+        "description": "the movies files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Map.<string, Set.<TPN_Extended>>"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "new Map()",
+        "defaultRaw": "new Map()",
+        "name": "config.series",
+        "description": "the serie files"
+      }
+    ]
+  },
+  {
+    "__docId__": 84,
+    "kind": "member",
+    "name": "defaultPath",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#defaultPath",
+    "access": "public",
+    "description": "just an easy way to scan the current directory path, if not other paths provided",
+    "lineNumber": 171,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "the directory from which you invoked the node command"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "member",
+    "name": "paths",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#paths",
+    "access": "public",
+    "description": "the paths where we are looking the media files",
+    "examples": [
+      "// after have added some paths ...\n[ \"D:\\somePath\", \"D:\\anotherPath\" ]"
+    ],
+    "lineNumber": 180,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "[]"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "String[]"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "member",
+    "name": "stores",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#stores",
+    "access": "public",
+    "description": "The variable where we store all kind of media files found in paths",
+    "lineNumber": 185,
+    "type": {
+      "nullable": null,
+      "types": [
+        "StoreVar"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 87,
+    "kind": "member",
+    "name": "categoryForFile",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#categoryForFile",
+    "access": "public",
+    "description": "Mapping filepath => category",
+    "examples": [
+      "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
+    ],
+    "lineNumber": 195,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Map<string,string>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "name": "listVideosExtension",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary.listVideosExtension",
+    "access": "public",
+    "description": "Provides the array of files extensions considered to be media extensions",
+    "examples": [
+      "// Returns [..., 'webm', 'wmv']\nTorrentLibrary.listVideosExtension()"
+    ],
+    "lineNumber": 290,
+    "since": "0.0.0",
+    "return": {
+      "nullable": null,
+      "types": [
+        "string[]"
+      ],
+      "spread": false,
+      "description": "array of files extensions"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "addNewPath",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#addNewPath",
+    "access": "public",
+    "description": "Add the path(s) to be analyzed by the library if they exist and are readable",
+    "examples": [
+      "// return resolved Promise \"All paths were added!\"\nTorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");"
+    ],
+    "lineNumber": 308,
+    "since": "0.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "...string"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "paths",
+        "description": "A or more path(s)"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "On success the promise will be resolved with \"All paths were added!\"<br>\nOn error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\nor an Error object from fs <br>"
+    },
+    "emits": [
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#missing_parameter"
+      },
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#error_in_function"
+      },
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#addNewPath"
+      }
+    ]
+  },
+  {
+    "__docId__": 90,
+    "kind": "method",
+    "name": "hasPathsProvidedByUser",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#hasPathsProvidedByUser",
+    "access": "public",
+    "description": "Tell us if the user has provided us paths",
+    "examples": [
+      "TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\nTorrentLibraryInstance.hasPathsProvidedByUser() // TRUE"
+    ],
+    "lineNumber": 343,
+    "since": "0.0.0",
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} Has user provided us paths ?"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "Has user provided us paths ?"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "name": "scan",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#scan",
+    "access": "public",
+    "description": "Scans the paths in search for new files to be added inside this lib",
+    "lineNumber": 355,
+    "since": "0.0.0",
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "On success the promise will be resolved with \"Scanning completed\"<br>\nOn error the promise will be rejected with an Error object from sub modules<br>"
+    },
+    "emits": [
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#scan"
+      },
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#error_in_function"
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "removeOldFiles",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#removeOldFiles",
+    "access": "public",
+    "description": "Removes files stored in this library",
+    "examples": [
+      "// with multiples files\nTorrentLibraryInstance.removeOldFiles(\n   \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\n   \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n)"
+    ],
+    "lineNumber": 396,
+    "since": "1.0.3",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "...string"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "files",
+        "description": "An array of filePath (for example the keys of allFilesWithCategory)"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "an resolved or rejected promise<br>\nOn success, the resolve will contain an message and the removed filePaths<br>\nOn error the promise will be rejected with an Error object from sub modules<br>"
+    },
+    "emits": [
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#removeOldFiles"
+      },
+      {
+        "types": [
+          "*"
+        ],
+        "description": "Events#error_in_function"
+      }
+    ]
+  },
+  {
+    "__docId__": 93,
+    "kind": "get",
+    "name": "allMovies",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#allMovies",
+    "access": "public",
+    "description": "Getter for all found movies",
+    "examples": [
+      "// an JSON stringified example of this method\n[\n {\n  \"year\":2012,\n  \"source\":\"dvdrip\",\n  \"codec\":\"xvid\",\n  \"group\":\"-www.zone-telechargement.ws.avi\",\n  \"container\":\"avi\",\n  \"language\":\"truefrench\",\n  \"title\":\"Bad Ass\",\n  \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\n }\n]"
+    ],
+    "lineNumber": 475,
+    "since": "0.0.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "Set<TPN_Extended>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "get",
+    "name": "allTvSeries",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#allTvSeries",
+    "access": "public",
+    "description": "Getter for all found tv-series",
+    "examples": [
+      "// an JSON stringified example of this method\n{\n\"The Blacklist\":[\n   {\n     \"season\":4,\n     \"episode\":21,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n  },\n  {\n     \"season\":4,\n     \"episode\":14,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\n  }\n]\n}"
+    ],
+    "lineNumber": 510,
+    "since": "0.0.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "Map<string, Set<TPN_Extended>>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "get",
+    "name": "allFilesWithCategory",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#allFilesWithCategory",
+    "access": "public",
+    "description": "Getter for the mapping between filepaths and category",
+    "examples": [
+      "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
+    ],
+    "lineNumber": 521,
+    "since": "0.0.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "Map<string,string>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#toJSON",
+    "access": "public",
+    "description": "Returns an JSON stringified of the current state",
+    "see": [
+      "{@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}"
+    ],
+    "lineNumber": 531,
+    "since": "1.0.3",
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "json - the JSON stringified"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "name": "createFromJSON",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary.createFromJSON",
+    "access": "public",
+    "description": "Creates an instance of TorrentLibrary",
+    "examples": [
+      "// creates an new instance from another one\n  const createdInstance = TorrentLibrary.createFromJSON(\n     JSON.parse(libInstance.toJSON()),\n  );"
+    ],
+    "see": [
+      "{@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example"
+    ],
+    "lineNumber": 558,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "json",
+        "description": "the JSON object of toJSON() string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.paths",
+        "description": "the paths where we are looking the media files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array.<Array.<String,String>>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.allFilesWithCategory",
+        "description": "Mapping filepath => category"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "TPN_Extended[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.movies",
+        "description": "the movies files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array.<Array.<String,TPN_Extended[]>>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.tv-series",
+        "description": "the serie files"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "TorrentLibrary"
+      ],
+      "spread": false,
+      "description": "an TorrentLibrary instance"
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "name": "filterMovies",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#filterMovies",
+    "access": "public",
+    "description": "Filter the movies based on search parameters",
+    "lineNumber": 585,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchParameters",
+        "description": "search parameters."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Set<TPN_Extended>"
+      ],
+      "spread": false,
+      "description": "the filtered movie set"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# torrent-files-library [![Build Status](https://img.shields.io/travis/jy95/torrent-files-library.svg)](https://travis-ci.org/jy95/torrent-files-library)  [![Coveralls branch](https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg)](https://coveralls.io/github/jy95/torrent-files-library?branch=master) [![Dependency Status](https://img.shields.io/david/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library)  [![Dev Dependency Status](https://img.shields.io/david/dev/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Join the chat at https://gitter.im/torrent-files-library-/Lobby](https://badges.gitter.im/torrent-files-library-/Lobby.svg)](https://gitter.im/torrent-files-library-/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  [![Greenkeeper badge](https://badges.greenkeeper.io/jy95/torrent-files-library.svg)](https://greenkeeper.io/)\r\n> Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\r\n\r\n## Installation\r\n\r\nFor npm users :\r\n\r\n```shell\r\n$ npm install --save torrent-files-library\r\n```\r\n\r\nfor Yarn :\r\n```shell\r\n$ yarn add torrent-files-library\r\n```\r\n\r\n## Demo\r\n\r\n```js\r\nconst TorrentLibrary = require(\"torrent-files-library\");\r\n\r\nlet paths = [\r\n    \"D:/DDL/FILMS\", // a path where I can find both movies and tv-series\r\n    \"D:\\\\DDL\\\\SERIES TV\\\\Le juge et le pilote\" // a path where I can find episodes of a tv-serie\r\n];\r\n\r\n// create an instance\r\nlet libInstance = new TorrentLibrary();\r\n\r\n// add these paths inside this lib\r\nlibInstance\r\n    .addNewPath(...paths)\r\n    .then( (message) => {\r\n        console.log(message);\r\n        return libInstance.scan();\r\n    })\r\n    .then( (otherMessage) => {\r\n        console.log(otherMessage);\r\n        console.log(\"I found these tv-series :\");\r\n        let mapSeries = libInstance.allTvSeries;\r\n\r\n        for (let [foundTvShow,episodeSet] of mapSeries.entries() ) {\r\n            console.log(\"\\n\"+foundTvShow);\r\n            console.log(\"\\t Total found episodes : \", episodeSet.size);\r\n            let foundSeasons = new Set([...episodeSet].map( episode => episode.season));\r\n            console.log(\"\\t Found season(s) count : \", foundSeasons.size);\r\n            for (let seasonNumber of foundSeasons){\r\n                console.log(\"\\t\\t Season %d\", seasonNumber);\r\n                let seasonEpisodes = [...episodeSet].filter(episode => episode.season === seasonNumber);\r\n                console.log(\"\\t\\t\\t Season count : \" + seasonEpisodes.length);\r\n                console.log(\"\\t\\t\\t Files : \");\r\n                seasonEpisodes.forEach( episode => console.log(\"\\t\\t\\t \" + episode.filePath));\r\n            }\r\n        }\r\n\r\n    })\r\n    .catch( (err) => {\r\n        console.log(err.message);\r\n    });\r\n```\r\n![foundTvSeries](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundTvSeries.png)\r\n\r\n## Documentation\r\nFor more examples and API details, see [API documentation](https://jy95.github.io/torrent-files-library/)\r\n\r\n## Test\r\n\r\n```shell\r\nnpm test\r\n```\r\n\r\nTo generate a test coverage report:\r\n\r\n```shell\r\nnpm run coverage\r\n```\r\n## Contributing\r\n\r\n* If you're unsure if a feature would make a good addition, you can always [create an issue](https://github.com/jy95/torrent-files-library/issues/new) first.\r\n* We aim for 100% test coverage. Please write tests for any new functionality or changes.\r\n* Any API changes should be fully documented.\r\n* Make sure your code meets our linting standards. Run `npm run lint` to check your code.\r\n* Be mindful of others when making suggestions and/or code reviewing.",
+    "longname": "D:\\workspaceNodeJs\\torrent-files-library\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"torrent-files-library\",\n  \"version\": \"0.0.0-development\",\n  \"description\": \"Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\",\n  \"main\": \"index.js\",\n  \"files\": [\n    \"index.js\",\n    \"lib/\"\n  ],\n  \"scripts\": {\n    \"semantic-release\": \"semantic-release -e ./config/release.config.js\",\n    \"compile\": \"babel -d lib/ src/ --source-maps both --no-comments\",\n    \"prepare\": \"npm run compile\",\n    \"test\": \"nyc ava\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"coverage-html\": \"nyc report --reporter=html\",\n    \"generate-docs\": \"node_modules/.bin/jsdoc --configure config/.jsdoc.json --verbose\",\n    \"esdoc\": \"node_modules/.bin/esdoc -c config/.esdoc.json\",\n    \"lint\": \"./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix\"\n  },\n  \"engines\": {\n    \"node\": \">=6\",\n    \"npm\": \">=5\"\n  },\n  \"keywords\": [\n    \"torrent\",\n    \"library\",\n    \"parser\",\n    \"torrent file\",\n    \"torrent files\",\n    \"parse torrent\",\n    \"parse torrent file\",\n    \"parse torrent files\",\n    \"parse torrent name\",\n    \"torrent library\"\n  ],\n  \"author\": \"jy95\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/jy95/torrent-files-library.git\"\n  },\n  \"devDependencies\": {\n    \"ava\": \"^0.24.0\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"conventional-changelog-eslint\": \"^0.3.0\",\n    \"coveralls\": \"^3.0.0\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.16.0\",\n    \"eslint-config-airbnb-base\": \"^12.0.2\",\n    \"eslint-plugin-import\": \"^2.8.0\",\n    \"nyc\": \"^11.4.1\",\n    \"semantic-release\": \"^12.2.4\",\n    \"sinon\": \"^4.2.0\"\n  },\n  \"dependencies\": {\n    \"bluebird\": \"^3.5.1\",\n    \"filehound\": \"^1.16.2\",\n    \"lodash\": \"^4.17.4\",\n    \"parse-torrent-title\": \"^1.1.0\",\n    \"video-extensions\": \"^1.1.0\"\n  }\n}\n",
+    "longname": "D:\\workspaceNodeJs\\torrent-files-library\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

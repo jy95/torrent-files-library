@@ -2,6 +2,7 @@ import test from 'ava';
 import TorrentLibrary from '../../index';
 import { expectedJson, folders } from '../_constants';
 
+/** @test {TorrentLibrary#toJSON} */
 test('return a valid stringified JSON', async (t) => {
   const expectedJsonString = JSON.stringify(expectedJson);
   let libInstance = new TorrentLibrary();

@@ -5,6 +5,7 @@ import { parse as nameParser } from 'parse-torrent-title';
 import TorrentLibrary from '../../index';
 import { files, folders } from '../_constants';
 
+/** @test {TorrentLibrary#removeOldFiles} */
 test('Should not be able to remove not present files', async (t) => {
   let libInstance = new TorrentLibrary();
   await t.notThrows(libInstance.addNewPath(...folders));
@@ -28,6 +29,7 @@ test('Should not be able to remove not present files', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#removeOldFiles} */
 test('Should be able to remove a movie', async (t) => {
   let libInstance = new TorrentLibrary();
   let eventSpy = sinon.spy();
@@ -55,6 +57,7 @@ test('Should be able to remove a movie', async (t) => {
   t.truthy(eventSpy.calledOnce, 'Event fired more than once');
 });
 
+/** @test {TorrentLibrary#removeOldFiles} */
 test('Should be able to remove an tv-serie episode', async (t) => {
   let libInstance = new TorrentLibrary();
   let eventSpy = sinon.spy();
@@ -89,6 +92,7 @@ test('Should be able to remove an tv-serie episode', async (t) => {
   t.truthy(eventSpy.calledOnce, 'Event fired more than once');
 });
 
+/** @test {TorrentLibrary#removeOldFiles} */
 test('Should be able to remove multiples files : Tv-serie', async (t) => {
   let libInstance = new TorrentLibrary();
   let eventSpy = sinon.spy();

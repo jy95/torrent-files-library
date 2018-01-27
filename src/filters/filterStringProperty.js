@@ -1,3 +1,8 @@
+/**
+ * Provides a map with valid default properties
+ * @param {searchParameters} searchObject - search parameters
+ * @return {Map<string, string|string[]>} the result map
+ */
 export function filterDefaultStringProperties(searchObject) {
   const {
     title, resolution, codec, audio, group, region, container, language, source,
@@ -17,6 +22,11 @@ export function filterDefaultStringProperties(searchObject) {
   }, new Map());
 }
 
+/**
+ * Remove the default string properties
+ * @param {searchParameters} searchObject - search parameters
+ * @return {searchParameters} searchParameters without these properties
+ */
 export function excludeDefaultStringProperties(searchObject) {
   let {
     title, resolution, codec, audio, group, region, container, language, source,
@@ -25,11 +35,24 @@ export function excludeDefaultStringProperties(searchObject) {
   return rest;
 }
 
+/**
+ * Filter function for filterByString
+ * @param {string} property The property to be checked
+ * @param {string[]|string} expected The expected result
+ * @param {TPN} object the object to be checked
+ * @return {boolean} the result
+ */
 function filterFunctionByType(property, expected, object) {
   if (Array.isArray(expected)) { return expected.includes(object[property]); }
   return object[property] === expected;
 }
 
+/**
+ * Filter the set based on string properties
+ * @param {TPN[]} set The TPN set
+ * @param {Map<string, string|string[]>} propertiesMap The map from filterDefaultStringProperties
+ * @return {Set<TPN>} the filtered set
+ */
 export function filterByString(set, propertiesMap) {
   // first step : get an array so that we can do filter/reduce stuff
   // second step : iterate the propertiesMap and do filter and return the filtered array
