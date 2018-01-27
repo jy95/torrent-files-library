@@ -107,7 +107,7 @@ test('default number parameters search', async (t) => {
         { type: 'number', name: 'AnotherField', value: undefined },
         { type: 'number', name: 'AnotherField2', value: '<=25' },
         { type: 'number', name: 'AnotherField3', value: '>25' },
-        { type: 'number', name: 'AnotherField4', value: '=25' },
+        { type: 'number', name: 'AnotherField4', value: '==25' },
       ],
     }),
     'Not the same',

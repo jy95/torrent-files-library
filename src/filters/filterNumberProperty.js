@@ -17,7 +17,7 @@ import { isString } from 'lodash';
  * convertToValidExpression(undefined);
  */
 export function convertToValidExpression(param) {
-  const validExpression = /^(=|>|<|>=|<=)(\d+)$/;
+  const validExpression = /^(==|>|<|>=|<=)(\d+)$/;
   let returnValue;
   // if it is a valid number expression like the regex
   if (isString(param)) {
@@ -32,7 +32,7 @@ export function convertToValidExpression(param) {
   // if the param is a number
   if (Number.isInteger(param)) {
     returnValue = {
-      operator: '=',
+      operator: '==',
       number: param,
     };
   }
