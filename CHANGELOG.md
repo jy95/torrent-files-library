@@ -1,3 +1,13 @@
+# Changelog
+
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/jy95/torrent-files-library/compare/v1.2.3...v1.2.4) (2018-01-21)
+
+
+### Fix
+
+* Fix automatic changelog config ([fa3c5ff3a15c160edc450835c2919a35722fb5fb](https://github.com/jy95/torrent-files-library/commit/fa3c5ff3a15c160edc450835c2919a35722fb5fb))
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/jy95/torrent-files-library/compare/v1.2.2...v1.2.3) (2018-01-21)
 
@@ -55,7 +65,7 @@
 * wrong boolean for hasPathsProvidedByUser ([c8c5fa1985dd206499bd8e5af08b043290b93299](https://github.com/jy95/torrent-files-library/commit/c8c5fa1985dd206499bd8e5af08b043290b93299))
 
 <a name="1.2.0"></a>
-# [1.2.0](https://github.com/jy95/torrent-files-library/compare/v1.1.0...v1.2.0) (2017-09-08)
+## [1.2.0](https://github.com/jy95/torrent-files-library/compare/v1.1.0...v1.2.0) (2017-09-08)
 
 
 ### Feat
@@ -71,7 +81,7 @@
 * Add missing tests for events ([0047fca9efd76bd51580128926c1c6bd7a412c73](https://github.com/jy95/torrent-files-library/commit/0047fca9efd76bd51580128926c1c6bd7a412c73))
 
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/jy95/torrent-files-library/compare/v1.0.4...v1.1.0) (2017-09-08)
+## [1.1.0](https://github.com/jy95/torrent-files-library/compare/v1.0.4...v1.1.0) (2017-09-08)
 
 
 ### Chore
@@ -184,7 +194,7 @@
 * Changelog missing at release ([1f06fdb24009aba9da1f52e77057265b9ef5c9ee](https://github.com/jy95/torrent-files-library/commit/1f06fdb24009aba9da1f52e77057265b9ef5c9ee))
 
 <a name="1.0.0"></a>
-# 1.0.0 (2017-08-29)
+## 1.0.0 (2017-08-29)
 
 ### CI
 

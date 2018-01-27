@@ -1,192 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | torrent-files-library</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="torrent-files-library"><meta property="twitter:description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"></head>
+<body class="layout-container" data-ice="rootContainer">
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-<body>
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jy95/torrent-files-library.git"><img width="20px" src="./image/github.png"></a></header>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TorrentLibrary.html">TorrentLibrary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.createFromJSON">createFromJSON</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#.listVideosExtension">listVideosExtension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#addNewPath">addNewPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#hasPathsProvidedByUser">hasPathsProvidedByUser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#removeOldFiles">removeOldFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#scan">scan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TorrentLibrary.html#toJSON">toJSON</a></span></li><li class="nav-heading">Externals</li><li class="nav-heading"><span class="nav-item-type type-external">E</span><span class="nav-item-name"><a href="external-Promise.html">Promise</a></span></li><li class="nav-heading">Events</li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:addNewPath">addNewPath</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:error_in_function">error_in_function</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:missing_parameter">missing_parameter</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:removeOldFiles">removeOldFiles</a></span></li><li class="nav-heading"><span class="nav-item-type type-event">E</span><span class="nav-item-name"><a href="TorrentLibrary.html#event:scan">scan</a></span></li>
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#removeOldFiles">Events#removeOldFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#scan">Events#scan</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-types">docs/types</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StorageVar">StorageVar</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StoreVar">StoreVar</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#filters">filters</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultBooleanProperties">excludeDefaultBooleanProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByBoolean">filterByBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultBooleanProperties">filterDefaultBooleanProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToValidExpression">convertToValidExpression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
+</ul>
+</div>
 </nav>
 
-<div id="main">
-    
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>torrent-files-library <a href="https://travis-ci.org/jy95/torrent-files-library"><img src="https://img.shields.io/travis/jy95/torrent-files-library.svg" alt="Build Status"></a>  <a href="https://coveralls.io/github/jy95/torrent-files-library?branch=master"><img src="https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg" alt="Coveralls branch"></a> <a href="https://david-dm.org/jy95/torrent-files-library"><img src="https://img.shields.io/david/jy95/torrent-files-library.svg" alt="Dependency Status"></a>  <a href="https://david-dm.org/jy95/torrent-files-library?type=dev"><img src="https://img.shields.io/david/dev/jy95/torrent-files-library.svg" alt="Dev Dependency Status"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a></h1><blockquote>
-<p>Enables to get a library of downloaded torrent files (movie or tv show) from directories</p>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="torrent-files-library--a-href--https---travis-ci-org-jy95-torrent-files-library---img-src--https---img-shields-io-travis-jy95-torrent-files-library-svg--alt--build-status----a----a-href--https---coveralls-io-github-jy95-torrent-files-library-branch-master---img-src--https---img-shields-io-coveralls-jy95-torrent-files-library-master-svg--alt--coveralls-branch----a---a-href--https---david-dm-org-jy95-torrent-files-library---img-src--https---img-shields-io-david-jy95-torrent-files-library-svg--alt--dependency-status----a----a-href--https---david-dm-org-jy95-torrent-files-library-type-dev---img-src--https---img-shields-io-david-dev-jy95-torrent-files-library-svg--alt--dev-dependency-status----a---a-href--https---opensource-org-licenses-mit---img-src--https---img-shields-io-badge-license-mit-yellow-svg--alt--license--mit----a----a-href--https---github-com-semantic-release-semantic-release---img-src--https---img-shields-io-badge--20-20-f0-9f-93-a6-f0-9f-9a-80-semantic--release-e10079-svg--alt--semantic-release----a---a-href--https---gitter-im-torrent-files-library--lobby-utm-source-badge-amp-utm-medium-badge-amp-utm-campaign-pr-badge-amp-utm-content-badge---img-src--https---badges-gitter-im-torrent-files-library--lobby-svg--alt--join-the-chat-at-https---gitter-im-torrent-files-library--lobby----a----a-href--https---greenkeeper-io----img-src--https---badges-greenkeeper-io-jy95-torrent-files-library-svg--alt--greenkeeper-badge----a-">torrent-files-library <a href="https://travis-ci.org/jy95/torrent-files-library"><img src="https://img.shields.io/travis/jy95/torrent-files-library.svg" alt="Build Status"></a>  <a href="https://coveralls.io/github/jy95/torrent-files-library?branch=master"><img src="https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg" alt="Coveralls branch"></a> <a href="https://david-dm.org/jy95/torrent-files-library"><img src="https://img.shields.io/david/jy95/torrent-files-library.svg" alt="Dependency Status"></a>  <a href="https://david-dm.org/jy95/torrent-files-library?type=dev"><img src="https://img.shields.io/david/dev/jy95/torrent-files-library.svg" alt="Dev Dependency Status"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a> <a href="https://gitter.im/torrent-files-library-/Lobby?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/torrent-files-library-/Lobby.svg" alt="Join the chat at https://gitter.im/torrent-files-library-/Lobby"></a>  <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/jy95/torrent-files-library.svg" alt="Greenkeeper badge"></a></h1><blockquote>
+<p>Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions</p>
 </blockquote>
-<h1>Table of Contents</h1><ul>
-<li><a href="#get-category-for-each-file">Get category for each file</a></li>
-<li><a href="#list-found-movies">List found movies</a></li>
-<li><a href="#list-each-tv-serie">List each tv serie</a></li>
+<h2 id="installation">Installation</h2><p>For npm users :</p>
+<pre><code class="lang-shell"><code class="source-code prettyprint">$ npm install --save torrent-files-library</code>
+</code></pre>
+<p>for Yarn :</p>
+<pre><code class="lang-shell"><code class="source-code prettyprint">$ yarn add torrent-files-library</code>
+</code></pre>
+<h2 id="what-to-do-with-this-library--">What to do with this library ?</h2><p>A lot of things :</p>
+<ul>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html">List found movies</a></li>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html">List each found tv serie</a></li>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html">Get category for each file</a></li>
+<li>Filtering stuff<ul>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html">Filter movies based on search parameters</a></li>
+<li>[Filter tv-shown based on search parameters] : Work in progress</li>
 </ul>
-<h3 id="get-category-for-each-file">
-    Get category for each file
-</h3>
-
-<pre class="prettyprint source lang-js"><code>const TorrentLibrary = require(&quot;torrent-files-library&quot;);
-
-let paths = [
-    &quot;D:\\DDL\\FILMS&quot;, // a path where I can find both movies and tv-series
-    &quot;D:\\DDL\\SERIES TV\\Le juge et le pilote&quot; // a path where I can find episodes of a tv-serie
-];
-
-// create an instance
-let libInstance = new TorrentLibrary();
-
-// add these paths inside this lib
-libInstance
-    .addNewPath(...paths)
-    .then( (message) => {
-        console.log(message);
-        return libInstance.scan();
-    })
-    .then( (otherMessage) => {
-        console.log(otherMessage);
-
-        setTimeout(function(){
-            // display the found files and their category
-            libInstance
-                .allFilesWithCategory
-                .forEach(function(value,key){
-                    console.log(key + &quot; : &quot; + value);
-                });
-        }, 1000);
-    })
-    .catch( (err) => {
-        console.log(err.message);
-    });</code></pre><p><img src="https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/fileMapping.png" alt="fileMappingDemo"></p>
-<h3 id="list-found-movies">
-    List found movies
-</h3>
-
-<pre class="prettyprint source lang-js"><code>const TorrentLibrary = require(&quot;torrent-files-library&quot;);
-
-let paths = [
-    &quot;D:\\DDL\\FILMS&quot;, // a path where I can find both movies and tv-series
-    &quot;D:\\DDL\\SERIES TV\\Le juge et le pilote&quot; // a path where I can find episodes of a tv-serie
-];
-
-// create an instance
-let libInstance = new TorrentLibrary();
-
-// add these paths inside this lib
-libInstance
-    .addNewPath(...paths)
-    .then( (message) => {
-        console.log(message);
-        return libInstance.scan();
-    })
-    .then( (otherMessage) => {
-        console.log(otherMessage);
-        console.log(&quot;I found these movie(s) : &quot;);
-        setTimeout(function(){
-            // display the found movie(s)
-            for (let movie of libInstance.allMovies) {
-                console.log(movie.title + ((movie.year) ? &quot; - &quot; + movie.year : &quot;&quot;) + &quot; at &quot; + movie.filePath );
-            }
-        }, 1000);
-    })
-    .catch( (err) => {
-        console.log(err.message);
-    });</code></pre><p><img src="https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundMovies.png" alt="foundMovies"></p>
-<h3 id="list-each-tv-serie">
-    List each tv serie
-</h3>
-
-<pre class="prettyprint source lang-js"><code>const TorrentLibrary = require(&quot;torrent-files-library&quot;);
-
-let paths = [
-    &quot;D:/DDL/FILMS&quot;, // a path where I can find both movies and tv-series
-    &quot;D:\\DDL\\SERIES TV\\Le juge et le pilote&quot; // a path where I can find episodes of a tv-serie
-];
-
-// create an instance
-let libInstance = new TorrentLibrary();
-
-// add these paths inside this lib
-libInstance
-    .addNewPath(...paths)
-    .then( (message) => {
-        console.log(message);
-        return libInstance.scan();
-    })
-    .then( (otherMessage) => {
-        console.log(otherMessage);
-        console.log(&quot;I found these tv-series :&quot;);
-        let mapSeries = libInstance.allTvSeries;
-
-        for (let [foundTvShow,episodeSet] of mapSeries.entries() ) {
-            console.log(&quot;\n&quot;+foundTvShow);
-            console.log(&quot;\t Total found episodes : &quot;, episodeSet.size);
-            let foundSeasons = new Set([...episodeSet].map( episode => episode.season));
-            console.log(&quot;\t Found season(s) count : &quot;, foundSeasons.size);
-            for (let seasonNumber of foundSeasons){
-                console.log(&quot;\t\t Season %d&quot;, seasonNumber);
-                let seasonEpisodes = [...episodeSet].filter(episode => episode.season === seasonNumber);
-                console.log(&quot;\t\t\t Season count : &quot; + seasonEpisodes.length);
-                console.log(&quot;\t\t\t Files : &quot;);
-                seasonEpisodes.forEach( episode => console.log(&quot;\t\t\t &quot; + episode.filePath));
-            }
-        }
-
-    })
-    .catch( (err) => {
-        console.log(err.message);
-    });</code></pre><p><img src="https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundTvSeries.png" alt="foundTvSeries"></p>
-<p>More example are coming ...</p></article>
-    </section>
-
-
-
-
-
-
+</li>
+</ul>
+<p>Don&apos;t hesitate to suggest new features : it is always worthy :)</p>
+<h2 id="documentation">Documentation</h2><p>For more examples and API details, see <a href="https://jy95.github.io/torrent-files-library/">API documentation with manual</a></p>
+<h2 id="test">Test</h2><pre><code class="lang-shell"><code class="source-code prettyprint">npm test</code>
+</code></pre>
+<p>To generate a test coverage report:</p>
+<pre><code class="lang-shell"><code class="source-code prettyprint">npm run coverage</code>
+</code></pre>
+<h2 id="contributing">Contributing</h2><ul>
+<li>If you&apos;re unsure if a feature would make a good addition, you can always <a href="https://github.com/jy95/torrent-files-library/issues/new">create an issue</a> first.</li>
+<li>We aim for 100% test coverage. Please write tests for any new functionality or changes.</li>
+<li>Any API changes should be fully documented.</li>
+<li>Make sure your code meets our linting standards. Run <code>npm run lint</code> to check your code.</li>
+<li>Be mindful of others when making suggestions and/or code reviewing.</li>
+</ul>
+</div>
 </div>
 
-<br class="clear">
-
-<footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 22:07:55 GMT+0100 (Romance Standard Time) using the Minami theme.
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
 </body>
 </html>

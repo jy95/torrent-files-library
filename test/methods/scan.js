@@ -4,6 +4,7 @@ import TorrentLibrary from '../../index';
 import { folders } from '../_constants';
 
 // TESTS
+/** @test {TorrentLibrary#scan} */
 test('Scan without user provided paths', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -13,6 +14,7 @@ test('Scan without user provided paths', async (t) => {
   t.truthy(eventSpy.calledOnce, 'Event fired more than once');
 });
 
+/** @test {TorrentLibrary#scan} */
 test('Scan with user provided paths', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();

@@ -2,6 +2,7 @@ import test from 'ava';
 import TorrentLibrary from '../../index';
 import { folders } from '../_constants';
 
+/** @test {TorrentLibrary.createFromJSON} */
 test('create a perfect copy of instance', async (t) => {
   let libInstance = new TorrentLibrary();
   await t.notThrows(libInstance.addNewPath(...folders));

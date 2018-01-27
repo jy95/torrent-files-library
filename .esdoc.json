@@ -1,0 +1,28 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "plugins": [
+    {"name": "esdoc-standard-plugin",
+      "option": {
+        "test": {
+          "source": "./test/",
+          "interfaces": ["test"],
+          "includes": ["\\.js$"],
+          "excludes": ["_constants.js"]
+        },
+        "manual": {
+          "globalIndex": true,
+          "asset": "./manual/assets",
+          "files": [
+            "./manual/examples/getCategoryForEachFile.md",
+            "./manual/examples/listFoundMovies.md",
+            "./manual/examples/listEachTvSerie.md",
+            "./manual/examples/filterMoviesByParameters.md",
+            "./CHANGELOG.md"
+          ]
+        }
+      }
+    },
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}}
+  ]
+}

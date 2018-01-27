@@ -5,6 +5,7 @@ import TorrentLibrary from '../../index';
 import { folders } from '../_constants';
 
 // TESTS
+/** @test {TorrentLibrary#addNewPath} */
 test('missing parameter', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -18,6 +19,7 @@ test('missing parameter', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#addNewPath} */
 test('inexistent Path', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
@@ -32,6 +34,7 @@ test('inexistent Path', async (t) => {
   );
 });
 
+/** @test {TorrentLibrary#addNewPath} */
 test('existent paths', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
