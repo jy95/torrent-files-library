@@ -30,8 +30,8 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="Promise http://bluebirdjs.com/docs/api-reference">*</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="Promise http://bluebirdjs.com/docs/api-reference">*</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
@@ -95,7 +95,7 @@ import { uniq, difference, partition, cloneDeep } from &apos;lodash&apos;;
 
 /**
  * A promise object provided by the bluebird promise library.
- * @external Promise http://bluebirdjs.com/docs/api-reference
+ * @external {Promise} http://bluebirdjs.com/docs/api-reference
  */
 import PromiseLib from &apos;bluebird&apos;;
 
@@ -112,7 +112,7 @@ import videosExtension from &apos;video-extensions&apos;;
 import { parse as nameParser } from &apos;parse-torrent-title&apos;;
 
 /**
- * @external EventEmitter https://nodejs.org/api/events.html#events_class_eventemitter
+ * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter
  */
 import EventEmitter from &apos;events&apos;;
 
@@ -182,6 +182,7 @@ function promisifiedAccess(path) {
 
 /**
  * Class representing the TorrentLibrary
+ * @extends {EventEmitter}
  */
 export default class TorrentLibrary extends EventEmitter {
   /**

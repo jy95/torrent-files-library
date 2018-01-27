@@ -43,7 +43,13 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/listEachTvSerie.html"><a href="manual/listEachTvSerie.html" data-ice="link">List each tv serie</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/listEachTvSerie.html"><a href="manual/listEachTvSerie.html" data-ice="link">List each found tv serie</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/filterMoviesByParameters.html"><a href="manual/filterMoviesByParameters.html" data-ice="link">Filter movies by parameters</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -186,7 +192,7 @@ libInstance
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>List each tv serie</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
+        <div data-ice="card"><h1>List each found tv serie</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
 
 let paths = [
     &quot;D:/DDL/FILMS&quot;, // a path where I can find both movies and tv-series
@@ -228,6 +234,41 @@ libInstance
     });</code>
 </code></pre><p><img src="./manual/asset/foundTvSeries.png" alt="foundTvSeries"></p></div>
         <a data-ice="link" href="manual/listEachTvSerie.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Filter movies by parameters</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
+
+let paths = [
+    &quot;D:/&quot;,
+];
+
+// create an instance
+let libInstance = new TorrentLibrary();
+
+// add these paths inside this lib
+libInstance
+    .addNewPath(...paths)
+    .then( () =&gt; {
+        return libInstance.scan();
+    })
+    .then( () =&gt; {
+        console.log(&apos;Now time to search all remastered movies with year &gt;= 2012 in one of following container avi/mp4&apos;);
+        let filteredSet = libInstance.filterMovies({
+          year: &apos;&gt;=2012&apos;,
+          remastered: true,
+          container: [&apos;avi&apos;, &apos;mp4&apos;],
+        });
+        for (let movie of filteredSet) {
+          console.log(`${movie.title + ((movie.year) ? ` - ${movie.year}` : &apos;&apos;)} at ${movie.filePath}`);
+        }
+    })
+    .catch( (err) =&gt; {
+            console.log(err.message);
+    });</code>
+</code></pre><p><img src="./manual/asset/filterMovies.png" alt="foundTvSeries"></p></div>
+        <a data-ice="link" href="manual/filterMoviesByParameters.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">

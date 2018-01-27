@@ -109,11 +109,10 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="list-each-found-tv-serie">List each found tv serie</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="filter-movies-by-parameters">Filter movies by parameters</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
 
 let paths = [
-    &quot;D:/DDL/FILMS&quot;, // a path where I can find both movies and tv-series
-    &quot;D:\\DDL\\SERIES TV\\Le juge et le pilote&quot; // a path where I can find episodes of a tv-serie
+    &quot;D:/&quot;,
 ];
 
 // create an instance
@@ -122,35 +121,25 @@ let libInstance = new TorrentLibrary();
 // add these paths inside this lib
 libInstance
     .addNewPath(...paths)
-    .then( (message) =&gt; {
-        console.log(message);
+    .then( () =&gt; {
         return libInstance.scan();
     })
-    .then( (otherMessage) =&gt; {
-        console.log(otherMessage);
-        console.log(&quot;I found these tv-series :&quot;);
-        let mapSeries = libInstance.allTvSeries;
-
-        for (let [foundTvShow,episodeSet] of mapSeries.entries() ) {
-            console.log(&quot;\n&quot;+foundTvShow);
-            console.log(&quot;\t Total found episodes : &quot;, episodeSet.size);
-            let foundSeasons = new Set([...episodeSet].map( episode =&gt; episode.season));
-            console.log(&quot;\t Found season(s) count : &quot;, foundSeasons.size);
-            for (let seasonNumber of foundSeasons){
-                console.log(&quot;\t\t Season %d&quot;, seasonNumber);
-                let seasonEpisodes = [...episodeSet].filter(episode =&gt; episode.season === seasonNumber);
-                console.log(&quot;\t\t\t Season count : &quot; + seasonEpisodes.length);
-                console.log(&quot;\t\t\t Files : &quot;);
-                seasonEpisodes.forEach( episode =&gt; console.log(&quot;\t\t\t &quot; + episode.filePath));
-            }
+    .then( () =&gt; {
+        console.log(&apos;Now time to search all remastered movies with year &gt;= 2012 in one of following container avi/mp4&apos;);
+        let filteredSet = libInstance.filterMovies({
+          year: &apos;&gt;=2012&apos;,
+          remastered: true,
+          container: [&apos;avi&apos;, &apos;mp4&apos;],
+        });
+        for (let movie of filteredSet) {
+          console.log(`${movie.title + ((movie.year) ? ` - ${movie.year}` : &apos;&apos;)} at ${movie.filePath}`);
         }
-
     })
     .catch( (err) =&gt; {
-        console.log(err.message);
+            console.log(err.message);
     });</code>
 </code></pre>
-<p><img src="./manual/asset/foundTvSeries.png" alt="foundTvSeries"></p>
+<p><img src="./manual/asset/filterMovies.png" alt="foundTvSeries"></p>
 </div>
 </div>
 

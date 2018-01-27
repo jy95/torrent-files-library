@@ -33,7 +33,7 @@ import { uniq, difference, partition, cloneDeep } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
- * @external Promise http://bluebirdjs.com/docs/api-reference
+ * @external {Promise} http://bluebirdjs.com/docs/api-reference
  */
 import PromiseLib from 'bluebird';
 
@@ -50,7 +50,7 @@ import videosExtension from 'video-extensions';
 import { parse as nameParser } from 'parse-torrent-title';
 
 /**
- * @external EventEmitter https://nodejs.org/api/events.html#events_class_eventemitter
+ * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter
  */
 import EventEmitter from 'events';
 
@@ -120,6 +120,7 @@ function promisifiedAccess(path) {
 
 /**
  * Class representing the TorrentLibrary
+ * @extends {EventEmitter}
  */
 export default class TorrentLibrary extends EventEmitter {
   /**

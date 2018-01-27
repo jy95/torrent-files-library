@@ -17,6 +17,7 @@
             "./manual/examples/getCategoryForEachFile.md",
             "./manual/examples/listFoundMovies.md",
             "./manual/examples/listEachTvSerie.md",
+            "./manual/examples/filterMoviesByParameters.md",
             "./CHANGELOG.md"
           ]
         }

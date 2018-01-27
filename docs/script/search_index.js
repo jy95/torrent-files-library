@@ -480,15 +480,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/torrentlibrary.js~*",
-    "EventEmitter https://nodejs.org/api/events.html#events_class_eventemitter",
-    "src/TorrentLibrary.js~*",
+    "src/torrentlibrary.js~eventemitter",
+    "https://nodejs.org/api/events.html#events_class_eventemitter",
+    "src/TorrentLibrary.js~EventEmitter",
     "external"
   ],
   [
-    "src/torrentlibrary.js~*",
-    "Promise http://bluebirdjs.com/docs/api-reference",
-    "src/TorrentLibrary.js~*",
+    "src/torrentlibrary.js~promise",
+    "http://bluebirdjs.com/docs/api-reference",
+    "src/TorrentLibrary.js~Promise",
     "external"
   ],
   [

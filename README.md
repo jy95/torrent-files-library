@@ -14,54 +14,20 @@ for Yarn :
 $ yarn add torrent-files-library
 ```
 
-## Demo
+## What to do with this library ?
 
-```js
-const TorrentLibrary = require("torrent-files-library");
+A lot of things :
+* [List found movies](https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html)
+* [List each found tv serie](https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html)
+* [Get category for each file](https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html)
+* Filtering stuff
+    * [Filter movies based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html)
+    * [Filter tv-shown based on search parameters] : Work in progress
 
-let paths = [
-    "D:/DDL/FILMS", // a path where I can find both movies and tv-series
-    "D:\\DDL\\SERIES TV\\Le juge et le pilote" // a path where I can find episodes of a tv-serie
-];
-
-// create an instance
-let libInstance = new TorrentLibrary();
-
-// add these paths inside this lib
-libInstance
-    .addNewPath(...paths)
-    .then( (message) => {
-        console.log(message);
-        return libInstance.scan();
-    })
-    .then( (otherMessage) => {
-        console.log(otherMessage);
-        console.log("I found these tv-series :");
-        let mapSeries = libInstance.allTvSeries;
-
-        for (let [foundTvShow,episodeSet] of mapSeries.entries() ) {
-            console.log("\n"+foundTvShow);
-            console.log("\t Total found episodes : ", episodeSet.size);
-            let foundSeasons = new Set([...episodeSet].map( episode => episode.season));
-            console.log("\t Found season(s) count : ", foundSeasons.size);
-            for (let seasonNumber of foundSeasons){
-                console.log("\t\t Season %d", seasonNumber);
-                let seasonEpisodes = [...episodeSet].filter(episode => episode.season === seasonNumber);
-                console.log("\t\t\t Season count : " + seasonEpisodes.length);
-                console.log("\t\t\t Files : ");
-                seasonEpisodes.forEach( episode => console.log("\t\t\t " + episode.filePath));
-            }
-        }
-
-    })
-    .catch( (err) => {
-        console.log(err.message);
-    });
-```
-![foundTvSeries](https://raw.githubusercontent.com/jy95/torrent-files-library/master/demo/foundTvSeries.png)
+Don't hesitate to suggest new features : it is always worthy :)
 
 ## Documentation
-For more examples and API details, see [API documentation](https://jy95.github.io/torrent-files-library/)
+For more examples and API details, see [API documentation with manual](https://jy95.github.io/torrent-files-library/)
 
 ## Test
 

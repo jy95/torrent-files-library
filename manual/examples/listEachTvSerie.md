@@ -1,4 +1,4 @@
-# List each tv serie
+# List each found tv serie
 
 ```js
 const TorrentLibrary = require("torrent-files-library");
