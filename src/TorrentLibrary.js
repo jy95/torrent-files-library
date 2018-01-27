@@ -33,8 +33,7 @@ import { uniq, difference, partition, cloneDeep } from 'lodash';
 
 /**
  * A promise object provided by the bluebird promise library.
- * @external Promise
- * @see {@link http://bluebirdjs.com/docs/api-reference.html}
+ * @external Promise http://bluebirdjs.com/docs/api-reference
  */
 import PromiseLib from 'bluebird';
 
@@ -50,9 +49,10 @@ import videosExtension from 'video-extensions';
  */
 import { parse as nameParser } from 'parse-torrent-title';
 
-import {
-  EventEmitter,
-} from 'events';
+/**
+ * @external EventEmitter https://nodejs.org/api/events.html#events_class_eventemitter
+ */
+import EventEmitter from 'events';
 
 /**
  * Boolean properties filter
@@ -120,10 +120,8 @@ function promisifiedAccess(path) {
 
 /**
  * Class representing the TorrentLibrary
- * @extends EventEmitter
- * @see {@link https://nodejs.org/api/events.html#events_class_eventemitter } for further information.
  */
-class TorrentLibrary extends EventEmitter {
+export default class TorrentLibrary extends EventEmitter {
   /**
      * constant for movie category
      * @since 0.0.0
@@ -146,12 +144,13 @@ class TorrentLibrary extends EventEmitter {
 
   /**
      * Create a TorrentLibrary
+     * @since 1.0.4
      * @param {Object} [config] - the config object
      * @param {(String)} [config.defaultPath=process.cwd()] - the default path
      * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files
-     * @param {(Map.<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category
-     * @param {(Set.<TPN_Extended>)} [config.movies=new Set()] - the movies files
-     * @param {(Map.<string, Set.<TPN_Extended>>)} [config.series=new Map()] - the serie files
+     * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category
+     * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files
+     * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files
      */
   constructor({
     defaultPath = process.cwd()
@@ -166,13 +165,13 @@ class TorrentLibrary extends EventEmitter {
     /**
          * just an easy way to scan the current directory path, if not other paths provided
          * @type  {string}
-         * @default the directory from which you invoked the node command
+         * @since 0.0.0
          */
     this.defaultPath = defaultPath;
     /**
          * the paths where we are looking the media files
          * @type {String[]}
-         * @default []
+         * @since 0.0.0
          * @example
          * // after have added some paths ...
          * [ "D:\somePath", "D:\anotherPath" ]
@@ -181,6 +180,7 @@ class TorrentLibrary extends EventEmitter {
     /**
          * The variable where we store all kind of media files found in paths
          * @type {StoreVar}
+         * @since 0.0.0
          */
     this.stores = new Map([
       [TorrentLibrary.MOVIES_TYPE, movies],
@@ -189,6 +189,7 @@ class TorrentLibrary extends EventEmitter {
     /**
          * Mapping filepath => category
          * @type {Map<string,string>}
+         * @since 0.0.0
          * @example
          * { "D:\somePath\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV" => TorrentLibrary.MOVIES_TYPE }
          */
@@ -548,6 +549,7 @@ class TorrentLibrary extends EventEmitter {
      * @param {(TPN_Extended[])} json.movies - the movies files
      * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
+     * @since 1.2.0
      * @return {TorrentLibrary} an TorrentLibrary instance
      * @example
      * // creates an new instance from another one
@@ -581,6 +583,7 @@ class TorrentLibrary extends EventEmitter {
    * Filter the movies based on search parameters
    * @param {searchParameters} searchParameters - search parameters.
    * @return {Set<TPN_Extended>} the filtered movie set
+   * @since 1.3.0
    */
   filterMovies(searchParameters = {
     // boolean properties
@@ -657,5 +660,3 @@ class TorrentLibrary extends EventEmitter {
     return result;
   }
 }
-
-export default TorrentLibrary;

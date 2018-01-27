@@ -11,7 +11,7 @@ test('Constant MOVIES_TYPE', (t) => {
   );
 });
 
-/** @test {TorrentLibrary.TV_SERIES_TYP} */
+/** @test {TorrentLibrary.TV_SERIES_TYPE} */
 test('Constant TV_SERIES', (t) => {
   t.is(
     TorrentLibrary.TV_SERIES_TYPE,

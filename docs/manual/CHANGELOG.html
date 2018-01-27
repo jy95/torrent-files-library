@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | torrent-files-library</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="torrent-files-library"><meta property="twitter:description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jy95/torrent-files-library.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/getCategoryForEachFile.html"><a href="manual/getCategoryForEachFile.html" data-ice="link">Get category for each file</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/listFoundMovies.html"><a href="manual/listFoundMovies.html" data-ice="link">List found movies</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/listEachTvSerie.html"><a href="manual/listEachTvSerie.html" data-ice="link">List each tv serie</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-3---v1-2-4--1-2-4--a---2018-01-21-" data-ice="link">1.2.4 (2018-01-21)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-2---v1-2-3--1-2-3--a---2018-01-21-" data-ice="link">1.2.3 (2018-01-21)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#chore" data-ice="link">Chore</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#perf" data-ice="link">Perf</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#style" data-ice="link">Style</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-1---v1-2-2--1-2-2--a---2017-12-23-" data-ice="link">1.2.2 (2017-12-23)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#chore" data-ice="link">Chore</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#ci" data-ice="link">CI</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#refactor" data-ice="link">Refactor</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-0---v1-2-1--1-2-1--a---2017-09-10-" data-ice="link">1.2.1 (2017-09-10)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-1-0---v1-2-0--1-2-0--a---2017-09-08-" data-ice="link">1.2.0 (2017-09-08)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#feat" data-ice="link">Feat</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#style" data-ice="link">Style</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-4---v1-1-0--1-1-0--a---2017-09-08-" data-ice="link">1.1.0 (2017-09-08)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#chore" data-ice="link">Chore</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#feat" data-ice="link">Feat</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#style" data-ice="link">Style</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-3---v1-0-4--1-0-4--a---2017-09-06-" data-ice="link">1.0.4 (2017-09-06)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#chore" data-ice="link">Chore</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#perf" data-ice="link">Perf</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-2---v1-0-3--1-0-3--a---2017-09-03-" data-ice="link">1.0.3 (2017-09-03)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#feat" data-ice="link">Feat</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#perf" data-ice="link">Perf</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#refactor" data-ice="link">Refactor</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-1---v1-0-2--1-0-2--a---2017-08-30-" data-ice="link">1.0.2 (2017-08-30)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#refactor" data-ice="link">Refactor</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-0---v1-0-1--1-0-1--a---2017-08-29-" data-ice="link">1.0.1 (2017-08-29)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-0--2017-08-29-" data-ice="link">1.0.0 (2017-08-29)</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#ci" data-ice="link">CI</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#docs" data-ice="link">Docs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#feat" data-ice="link">Feat</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#fix" data-ice="link">Fix</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#test" data-ice="link">Test</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="changelog">Changelog</h1><p><a name="1.2.4"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-3---v1-2-4--1-2-4--a---2018-01-21-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.2.3...v1.2.4">1.2.4</a> (2018-01-21)</h2><h3 id="fix">Fix</h3><ul>
+<li>Fix automatic changelog config (<a href="https://github.com/jy95/torrent-files-library/commit/fa3c5ff3a15c160edc450835c2919a35722fb5fb">fa3c5ff3a15c160edc450835c2919a35722fb5fb</a>)</li>
+</ul>
+<p><a name="1.2.3"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-2---v1-2-3--1-2-3--a---2018-01-21-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.2.2...v1.2.3">1.2.3</a> (2018-01-21)</h2><h3 id="chore">Chore</h3><ul>
+<li>Remove osx build on travis CI (too slow) (<a href="https://github.com/jy95/torrent-files-library/commit/0be825b82d2101b288f45800b889696ea9aef808">0be825b82d2101b288f45800b889696ea9aef808</a>)</li>
+<li>Update dependancies (<a href="https://github.com/jy95/torrent-files-library/commit/bf7971527d40dd5c53c6713b365e89daf2d61084">bf7971527d40dd5c53c6713b365e89daf2d61084</a>)</li>
+<li>Update dependancies to fix security issues of marked (<a href="https://github.com/jy95/torrent-files-library/commit/59060d89f8598edee730fa16c6f636e6f1e25c04">59060d89f8598edee730fa16c6f636e6f1e25c04</a>)</li>
+<li>Update semantic-release preset regex (<a href="https://github.com/jy95/torrent-files-library/commit/e2b839e4b02cfc7c97f6aea2444141f049162172">e2b839e4b02cfc7c97f6aea2444141f049162172</a>)</li>
+</ul>
+<h3 id="docs">Docs</h3><ul>
+<li>Add automatic changelog.md (<a href="https://github.com/jy95/torrent-files-library/commit/6ff3328347f021b205fb4a5676ba4661b4eb3256">6ff3328347f021b205fb4a5676ba4661b4eb3256</a>)</li>
+</ul>
+<h3 id="perf">Perf</h3><ul>
+<li>Remove comments from lib version (<a href="https://github.com/jy95/torrent-files-library/commit/e54318a617b7cda1ce7d8be15d86482ba9d1aa18">e54318a617b7cda1ce7d8be15d86482ba9d1aa18</a>)</li>
+</ul>
+<h3 id="style">Style</h3><ul>
+<li>Add the emoji to github (<a href="https://github.com/jy95/torrent-files-library/commit/b993c360d374272fbdc189b438c2fe2fcfc0f9e6">b993c360d374272fbdc189b438c2fe2fcfc0f9e6</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Drop mocha unit tests (<a href="https://github.com/jy95/torrent-files-library/commit/b0897b360f3d304dbb1090ddf2bfa5c75b6049c4">b0897b360f3d304dbb1090ddf2bfa5c75b6049c4</a>)</li>
+<li>Fix code coverage (<a href="https://github.com/jy95/torrent-files-library/commit/270a8b77f35486498da9b318d5091f8fed2c085f">270a8b77f35486498da9b318d5091f8fed2c085f</a>)</li>
+</ul>
+<p><a name="1.2.2"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-1---v1-2-2--1-2-2--a---2017-12-23-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.2.1...v1.2.2">1.2.2</a> (2017-12-23)</h2><h3 id="chore">Chore</h3><ul>
+<li>Breaking change of semantic-release (<a href="https://github.com/jy95/torrent-files-library/commit/55af47fbd75387b090aa07e0d6fc67c57994ac75">55af47fbd75387b090aa07e0d6fc67c57994ac75</a>), closes <a href="https://github.com//github.com/semantic-release/semantic-release/issues/572/issues/issuecomment-353631426">/github.com/semantic-release/semantic-release/issues/572#issuecomment-353631426</a></li>
+<li>Make cleaning stuff (<a href="https://github.com/jy95/torrent-files-library/commit/6ca25601f7d348ae4022a3f79d6936b098254980">6ca25601f7d348ae4022a3f79d6936b098254980</a>)</li>
+<li>Mocha V4 - compilers deprecation (<a href="https://github.com/jy95/torrent-files-library/commit/55378fadbff964b8d4fc6b5559cffef424c132b0">55378fadbff964b8d4fc6b5559cffef424c132b0</a>)</li>
+<li>Update lock file (<a href="https://github.com/jy95/torrent-files-library/commit/5ec79c595ae1816c353a1da1f5a16220a9aca527">5ec79c595ae1816c353a1da1f5a16220a9aca527</a>)</li>
+<li>Use semantic-release plugins only (<a href="https://github.com/jy95/torrent-files-library/commit/e61c88efc6107cbf865b3e4851a0ef6cdd00a55e">e61c88efc6107cbf865b3e4851a0ef6cdd00a55e</a>)</li>
+</ul>
+<h3 id="ci">CI</h3><ul>
+<li>Added Greenkeeper lockfile (<a href="https://github.com/jy95/torrent-files-library/commit/f86ac271b3884832094092b524b4ca832cc6d112">f86ac271b3884832094092b524b4ca832cc6d112</a>)</li>
+</ul>
+<h3 id="refactor">Refactor</h3><ul>
+<li>Remove emoji for sgcrc (<a href="https://github.com/jy95/torrent-files-library/commit/4d8a6237d697a054c1828a56948c6eabf93c5689">4d8a6237d697a054c1828a56948c6eabf93c5689</a>)</li>
+</ul>
+<p><a name="1.2.1"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-2-0---v1-2-1--1-2-1--a---2017-09-10-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.2.0...v1.2.1">1.2.1</a> (2017-09-10)</h2><h3 id="fix">Fix</h3><ul>
+<li>wrong boolean for hasPathsProvidedByUser (<a href="https://github.com/jy95/torrent-files-library/commit/c8c5fa1985dd206499bd8e5af08b043290b93299">c8c5fa1985dd206499bd8e5af08b043290b93299</a>)</li>
+</ul>
+<p><a name="1.2.0"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-1-0---v1-2-0--1-2-0--a---2017-09-08-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.1.0...v1.2.0">1.2.0</a> (2017-09-08)</h2><h3 id="feat">Feat</h3><ul>
+<li>createFromJSON - create an instance with toJSON (<a href="https://github.com/jy95/torrent-files-library/commit/a69fcee4b234b12de5229d14819ebff43fab996a">a69fcee4b234b12de5229d14819ebff43fab996a</a>)</li>
+</ul>
+<h3 id="style">Style</h3><ul>
+<li>Fix babel syntax for coverage (<a href="https://github.com/jy95/torrent-files-library/commit/2a8eadf0323755c1fa7bdcdacb057a0de7c3e381">2a8eadf0323755c1fa7bdcdacb057a0de7c3e381</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Add missing tests for events (<a href="https://github.com/jy95/torrent-files-library/commit/0047fca9efd76bd51580128926c1c6bd7a412c73">0047fca9efd76bd51580128926c1c6bd7a412c73</a>)</li>
+</ul>
+<p><a name="1.1.0"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-4---v1-1-0--1-1-0--a---2017-09-08-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.0.4...v1.1.0">1.1.0</a> (2017-09-08)</h2><h3 id="chore">Chore</h3><ul>
+<li>change event error to error_in_function (<a href="https://github.com/jy95/torrent-files-library/commit/cd689f4ea4c7c8dd6afd84251259c256471f0477">cd689f4ea4c7c8dd6afd84251259c256471f0477</a>)</li>
+<li>remove sinonjs (<a href="https://github.com/jy95/torrent-files-library/commit/9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4">9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4</a>)</li>
+</ul>
+<h3 id="docs">Docs</h3><ul>
+<li>explain default params value in constructor (<a href="https://github.com/jy95/torrent-files-library/commit/1be4e825ea75506cab0903a5b7c87bd4dbac4896">1be4e825ea75506cab0903a5b7c87bd4dbac4896</a>)</li>
+<li>separate jsdoc into another files (<a href="https://github.com/jy95/torrent-files-library/commit/cb29a027a0acdc941d5f8ab35da636ac9b34ffed">cb29a027a0acdc941d5f8ab35da636ac9b34ffed</a>)</li>
+</ul>
+<h3 id="feat">Feat</h3><ul>
+<li>Support events listeners (<a href="https://github.com/jy95/torrent-files-library/commit/9461036818649b2e85dc0b8068ac926b33a3c617">9461036818649b2e85dc0b8068ac926b33a3c617</a>)</li>
+</ul>
+<h3 id="style">Style</h3><ul>
+<li>Trying to fix unhandeld promise (<a href="https://github.com/jy95/torrent-files-library/commit/2f7a487a33dbe07eac47d176c3771c3dc7c89ce4">2f7a487a33dbe07eac47d176c3771c3dc7c89ce4</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Added tests for events  (<a href="https://github.com/jy95/torrent-files-library/commit/78c9fe3bceac9474fd1d77641802b65c2768fbe0">78c9fe3bceac9474fd1d77641802b65c2768fbe0</a>)</li>
+</ul>
+<p><a name="1.0.4"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-3---v1-0-4--1-0-4--a---2017-09-06-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.0.3...v1.0.4">1.0.4</a> (2017-09-06)</h2><h3 id="chore">Chore</h3><ul>
+<li>Correct the wrong property for releaseRules (<a href="https://github.com/jy95/torrent-files-library/commit/b2f17c402bf8a2451a3b32ab06259e5bc162ba58">b2f17c402bf8a2451a3b32ab06259e5bc162ba58</a>)</li>
+</ul>
+<h3 id="docs">Docs</h3><ul>
+<li>change example in readme.md (<a href="https://github.com/jy95/torrent-files-library/commit/a5a7e23836e7f165248d0c0d668256c623633d75">a5a7e23836e7f165248d0c0d668256c623633d75</a>)</li>
+<li>fix filemapping png file mess up (<a href="https://github.com/jy95/torrent-files-library/commit/94337e1dcff8702aa59f9121528ef89fc5ce23b1">94337e1dcff8702aa59f9121528ef89fc5ce23b1</a>)</li>
+<li>Fix png files mess up (<a href="https://github.com/jy95/torrent-files-library/commit/faf9c7acd8af0841fe7c152a53843be65723d710">faf9c7acd8af0841fe7c152a53843be65723d710</a>)</li>
+<li>replace gif by png (<a href="https://github.com/jy95/torrent-files-library/commit/0d08dab62159d48d8c0d4dec014d21323171b8af">0d08dab62159d48d8c0d4dec014d21323171b8af</a>)</li>
+</ul>
+<h3 id="perf">Perf</h3><ul>
+<li>overload constructor (<a href="https://github.com/jy95/torrent-files-library/commit/9e091c31f4228e170004d966219b5a3e50817ba4">9e091c31f4228e170004d966219b5a3e50817ba4</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Fix coverage default params missed (<a href="https://github.com/jy95/torrent-files-library/commit/088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9">088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9</a>)</li>
+</ul>
+<p><a name="1.0.3"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-2---v1-0-3--1-0-3--a---2017-09-03-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.0.2...v1.0.3">1.0.3</a> (2017-09-03)</h2><h3 id="docs">Docs</h3><ul>
+<li>Add an new example (<a href="https://github.com/jy95/torrent-files-library/commit/a9d0084b732f4d7ceb0abb6626e41f16f904902d">a9d0084b732f4d7ceb0abb6626e41f16f904902d</a>)</li>
+<li>create CODE_OF_CONDUCT.md (<a href="https://github.com/jy95/torrent-files-library/commit/56b88c6089ffabcafb78287b540127ba324c4d32">56b88c6089ffabcafb78287b540127ba324c4d32</a>)</li>
+<li>updated docs (<a href="https://github.com/jy95/torrent-files-library/commit/afef9f743d25f1dd8b6b283152e492de09c3e25a">afef9f743d25f1dd8b6b283152e492de09c3e25a</a>)</li>
+<li>updated docs (<a href="https://github.com/jy95/torrent-files-library/commit/25edc16bc41070c21faa8ca1ad70b5abee1e35ae">25edc16bc41070c21faa8ca1ad70b5abee1e35ae</a>)</li>
+<li>Updated docs (<a href="https://github.com/jy95/torrent-files-library/commit/3cb9b519ea3b2a73eea92952baea98244d3fad37">3cb9b519ea3b2a73eea92952baea98244d3fad37</a>)</li>
+</ul>
+<h3 id="feat">Feat</h3><ul>
+<li>initial removeOldFiles method implementation (<a href="https://github.com/jy95/torrent-files-library/commit/a5d21f84110e215da086718060a2b42e91521f45">a5d21f84110e215da086718060a2b42e91521f45</a>)</li>
+<li>toJSON() custom implementation (<a href="https://github.com/jy95/torrent-files-library/commit/ca7a0cadbda175f39a0fa4386b5728ca38c50647">ca7a0cadbda175f39a0fa4386b5728ca38c50647</a>)</li>
+</ul>
+<h3 id="fix">Fix</h3><ul>
+<li>Correct getters that uses reference instead of values (<a href="https://github.com/jy95/torrent-files-library/commit/064d79edcc0a7619a1cb8d68c7d6e0433834ddab">064d79edcc0a7619a1cb8d68c7d6e0433834ddab</a>)</li>
+<li>make JSON test cross platform (<a href="https://github.com/jy95/torrent-files-library/commit/e8dd44b8264a399255b7f3fcecfc94a976f3e5c0">e8dd44b8264a399255b7f3fcecfc94a976f3e5c0</a>)</li>
+</ul>
+<h3 id="perf">Perf</h3><ul>
+<li>modified releaseRules for release (<a href="https://github.com/jy95/torrent-files-library/commit/3a775c071ea57021bbcfca7587351349895c0d52">3a775c071ea57021bbcfca7587351349895c0d52</a>)</li>
+<li>promisify addNewFiles (<a href="https://github.com/jy95/torrent-files-library/commit/ffdf72a28941abedfc186f6cf5e6fb09ee83621d">ffdf72a28941abedfc186f6cf5e6fb09ee83621d</a>)</li>
+<li>Replace torrent name parser lib by an new one (<a href="https://github.com/jy95/torrent-files-library/commit/5c428a003acb81987b35841af78d5012f6a5c8bd">5c428a003acb81987b35841af78d5012f6a5c8bd</a>)</li>
+</ul>
+<h3 id="refactor">Refactor</h3><ul>
+<li>Add keywords to package.json and code style for docs (<a href="https://github.com/jy95/torrent-files-library/commit/b9714f33e9d264d733b3ad3662fa09126afbe441">b9714f33e9d264d733b3ad3662fa09126afbe441</a>)</li>
+<li>Make removeOldFiles method public (<a href="https://github.com/jy95/torrent-files-library/commit/8887d71938abe1b61fe74ec1ff4743b88e7b9446">8887d71938abe1b61fe74ec1ff4743b88e7b9446</a>)</li>
+<li>Rewrited test code (<a href="https://github.com/jy95/torrent-files-library/commit/a252b833471e41086d2258acafb63e2fef794325">a252b833471e41086d2258acafb63e2fef794325</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Add tests for removeOldFiles (<a href="https://github.com/jy95/torrent-files-library/commit/0b1edebffe7c18251ddd5cd6e148bc07233fc8f5">0b1edebffe7c18251ddd5cd6e148bc07233fc8f5</a>)</li>
+<li>Correct tests that uses reference instead of values (<a href="https://github.com/jy95/torrent-files-library/commit/49a2a1d053480a19d31926893b3f314d17c95a76">49a2a1d053480a19d31926893b3f314d17c95a76</a>)</li>
+</ul>
+<p><a name="1.0.2"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-1---v1-0-2--1-0-2--a---2017-08-30-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.0.1...v1.0.2">1.0.2</a> (2017-08-30)</h2><h3 id="docs">Docs</h3><ul>
+<li>Make docs great (<a href="https://github.com/jy95/torrent-files-library/commit/b30d60e385b45dbb6396cc19dab2f4366df9bb39">b30d60e385b45dbb6396cc19dab2f4366df9bb39</a>)</li>
+</ul>
+<h3 id="fix">Fix</h3><ul>
+<li>Bug (this.timeout) due to rewrited test code (<a href="https://github.com/jy95/torrent-files-library/commit/46713737549820edde50657e5523c4099bf44478">46713737549820edde50657e5523c4099bf44478</a>)</li>
+</ul>
+<h3 id="refactor">Refactor</h3><ul>
+<li>Rewrited code to match ESLint rules (<a href="https://github.com/jy95/torrent-files-library/commit/deb0d85d2ab31337f1d4561612f0753609acdad6">deb0d85d2ab31337f1d4561612f0753609acdad6</a>)</li>
+<li>Rewrited tests code to match ESLint rules (<a href="https://github.com/jy95/torrent-files-library/commit/39cc30c856358fa918346b199e2bfc4dd5bc0899">39cc30c856358fa918346b199e2bfc4dd5bc0899</a>)</li>
+</ul>
+<p><a name="1.0.1"></a></p>
+<h2 id="-a-href--https---github-com-jy95-torrent-files-library-compare-v1-0-0---v1-0-1--1-0-1--a---2017-08-29-"><a href="https://github.com/jy95/torrent-files-library/compare/v1.0.0...v1.0.1">1.0.1</a> (2017-08-29)</h2><h3 id="fix">Fix</h3><ul>
+<li>Changelog missing at release (<a href="https://github.com/jy95/torrent-files-library/commit/1f06fdb24009aba9da1f52e77057265b9ef5c9ee">1f06fdb24009aba9da1f52e77057265b9ef5c9ee</a>)</li>
+</ul>
+<p><a name="1.0.0"></a></p>
+<h2 id="1-0-0--2017-08-29-">1.0.0 (2017-08-29)</h2><h3 id="ci">CI</h3><ul>
+<li>Fix missing coverage (<a href="https://github.com/jy95/torrent-files-library/commit/ac3f3612c3e087f01435247056561c048c02f419">ac3f3612c3e087f01435247056561c048c02f419</a>)</li>
+<li>Fix out of date NPM version used by travis CI (<a href="https://github.com/jy95/torrent-files-library/commit/33408730e5303035a8949f7f469faddd1c72ef96">33408730e5303035a8949f7f469faddd1c72ef96</a>)</li>
+<li>Replace Travis build Node.Js 4 for latest Node.Js release (<a href="https://github.com/jy95/torrent-files-library/commit/747a9e5d50376b6740635181bbe05ff45cb97bb8">747a9e5d50376b6740635181bbe05ff45cb97bb8</a>)</li>
+<li>Set engines in package.json + readd job for Node.Js 6 (<a href="https://github.com/jy95/torrent-files-library/commit/2f60592e058edec2d17d051babc762dd3284496e">2f60592e058edec2d17d051babc762dd3284496e</a>)</li>
+<li>Trying to set CI for semantic-release (<a href="https://github.com/jy95/torrent-files-library/commit/e4403e5409b46ad585f91558c6e952e308e3172f">e4403e5409b46ad585f91558c6e952e308e3172f</a>)</li>
+</ul>
+<h3 id="docs">Docs</h3><ul>
+<li>add example : how to use it ? (<a href="https://github.com/jy95/torrent-files-library/commit/49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc">49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc</a>)</li>
+<li>Add JSDoc documentation (<a href="https://github.com/jy95/torrent-files-library/commit/a2853159762783914cf069d8e74856302353b427">a2853159762783914cf069d8e74856302353b427</a>)</li>
+<li>Explain how this lib will handle analysis (<a href="https://github.com/jy95/torrent-files-library/commit/0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819">0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819</a>)</li>
+<li>Improve Documentation (<a href="https://github.com/jy95/torrent-files-library/commit/5a429318fedbbf723020936b63547b7f648c46e5">5a429318fedbbf723020936b63547b7f648c46e5</a>)</li>
+<li>Include an gif example for library (<a href="https://github.com/jy95/torrent-files-library/commit/131711cdf617ff5aeed1ad67f176dbc0c9fb0275">131711cdf617ff5aeed1ad67f176dbc0c9fb0275</a>)</li>
+<li>Updated demo gifs (<a href="https://github.com/jy95/torrent-files-library/commit/556ccfdd817ad5415a7c57ac8fa92072a858a61f">556ccfdd817ad5415a7c57ac8fa92072a858a61f</a>)</li>
+</ul>
+<h3 id="feat">Feat</h3><ul>
+<li>Scan Implemented (<a href="https://github.com/jy95/torrent-files-library/commit/46ebf9376ae5823622784734f75cd2d133a9a25b">46ebf9376ae5823622784734f75cd2d133a9a25b</a>)</li>
+<li>use normalize method from path (node) for paths (<a href="https://github.com/jy95/torrent-files-library/commit/d3f9baffbbc546e58dcdc3d5efe6952874bc48e7">d3f9baffbbc546e58dcdc3d5efe6952874bc48e7</a>)</li>
+</ul>
+<h3 id="fix">Fix</h3><ul>
+<li>.gitgnore mess up with lib folder (<a href="https://github.com/jy95/torrent-files-library/commit/da30f778a9d8ae936327e49b78b229214eb32d55">da30f778a9d8ae936327e49b78b229214eb32d55</a>)</li>
+<li>Fix Mocha bug with multiple jobs (<a href="https://github.com/jy95/torrent-files-library/commit/318fab20f72dee0c3d899486c89d1fa36e7ec31f">318fab20f72dee0c3d899486c89d1fa36e7ec31f</a>)</li>
+<li>Fix promisified access (<a href="https://github.com/jy95/torrent-files-library/commit/c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0">c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0</a>)</li>
+<li>prepublish =&gt; prepare in NPM5 (<a href="https://github.com/jy95/torrent-files-library/commit/80c2633ec6623d0f26971a1b83ce08202b3ea2d0">80c2633ec6623d0f26971a1b83ce08202b3ea2d0</a>)</li>
+</ul>
+<h3 id="test">Test</h3><ul>
+<li>Add first test (<a href="https://github.com/jy95/torrent-files-library/commit/5e89b605c571a3c4c7d227afbb325858aa6198c8">5e89b605c571a3c4c7d227afbb325858aa6198c8</a>)</li>
+<li>Add missing test for scan (<a href="https://github.com/jy95/torrent-files-library/commit/a189a47ae6564b197d261a584d0dbbaad2965192">a189a47ae6564b197d261a584d0dbbaad2965192</a>)</li>
+<li>Add sub tests for scan() method (<a href="https://github.com/jy95/torrent-files-library/commit/36ed79a08d9f79e89869ed8ee603060edfff2878">36ed79a08d9f79e89869ed8ee603060edfff2878</a>)</li>
+</ul>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

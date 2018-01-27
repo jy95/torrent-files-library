@@ -24,17 +24,43 @@
  * @property {(boolean)} [retail] - retail ?
  * @property {(boolean)} [remastered] - remastered ?
  * @property {(string)} [source] - the source
+ * @example
+ * {
+ *         "container":"avi",
+ *         "source":"webrip",
+ *         "codec":"xvid",
+ *         "season":4,
+ *         "episode":14,
+ *         "language":"french",
+ *         "title":"The Blacklist"
+ * }
  */
 
 /**
  * The extended TPN object
  * @typedef {TPN} TPN_Extended
  * @property {string} filePath - additionnal property useful for this library
+ * @example
+ * {
+ *         "container":"avi",
+ *         "source":"webrip",
+ *         "codec":"xvid",
+ *         "season":4,
+ *         "episode":14,
+ *         "language":"french",
+ *         "title":"The Blacklist",
+ *         "filePath":"D:\\workspaceNodeJs\\torrent-files-library\\test\\folder2\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi"
+ * }
  */
 
 /**
- * The variable where we store all kind of media files found in paths
- * @typedef {Map<string, {( Set<TPN_Extended>| Map<string,Set<TPN_Extended>> )}>} StoreVar
+ * The sub way to store all kind of media files found in paths
+ * @typedef {Set<TPN_Extended>| Map<string,Set<TPN_Extended>} StorageVar
+ */
+
+/**
+ * The master variable where we store all kind of media files found in paths
+ * @typedef {Map<string, StorageVar>} StoreVar
  * @example
  * // An example of the variable after the scan method
  * [
@@ -79,6 +105,8 @@
  * @typedef {Object} numberExpressionObject
  * @property {string} operator The operator for matching process
  * @property {number} number  The extracted number for matching process
+ * @example
+ * { operator: '>=' , number: 5 }
  */
 
 /**

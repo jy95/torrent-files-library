@@ -7,7 +7,18 @@
         "test": {
           "source": "./test/",
           "interfaces": ["test"],
+          "includes": ["\\.js$"],
           "excludes": ["_constants.js"]
+        },
+        "manual": {
+          "globalIndex": true,
+          "asset": "./manual/assets",
+          "files": [
+            "./manual/examples/getCategoryForEachFile.md",
+            "./manual/examples/listFoundMovies.md",
+            "./manual/examples/listEachTvSerie.md",
+            "./CHANGELOG.md"
+          ]
         }
       }
     },

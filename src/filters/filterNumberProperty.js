@@ -88,7 +88,7 @@ export function excludeDefaultNumberProperties(searchObject) {
 
 /**
  * Filter the set based on string properties
- * @param {TPN[]} set The TPN set
+ * @param {Set<TPN>} set The TPN set
  * @param {Map<string, numberExpressionObject>} propertiesMap The map from filterDefaultStringProperties
  * @return {Set<TPN>} the filtered set
  */

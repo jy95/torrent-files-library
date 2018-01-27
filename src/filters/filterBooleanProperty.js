@@ -36,7 +36,7 @@ export function excludeDefaultBooleanProperties(searchObject) {
 
 /**
  * Filter the set based on boolean properties
- * @param {TPN[]} set The TPN set
+ * @param {Set<TPN>} set The TPN set
  * @param {Map<string, boolean>} propertiesMap The map from filterDefaultBooleanProperties
  * @return {Set<TPN>} the filtered set
  */
