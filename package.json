@@ -40,6 +40,8 @@
     "url": "https://github.com/jy95/torrent-files-library.git"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^1.0.0",
+    "@semantic-release/git": "^3.0.0",
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -55,8 +57,8 @@
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
     "nyc": "^11.4.1",
-    "semantic-release": "^12.2.4",
-    "sinon": "^4.2.0"
+    "semantic-release": "^12.4.1",
+    "sinon": "^4.2.2"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
