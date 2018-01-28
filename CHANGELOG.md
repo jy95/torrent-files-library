@@ -1,7 +1,28 @@
 # Changelog
 
+<a name="1.4.0"></a>
+## [1.4.0](https://github.com/jy95/torrent-files-library/compare/v1.3.0...v1.4.0) (2018-01-28)
+
+
+### Chore
+
+* Little quick fix for coverage ([1a6ba396c9f39ef0cb991d550c609d0c1994208d](https://github.com/jy95/torrent-files-library/commit/1a6ba396c9f39ef0cb991d550c609d0c1994208d))
+* Restore automatic release ([83d6417a271eb5b43d05a0262328435d371e2624](https://github.com/jy95/torrent-files-library/commit/83d6417a271eb5b43d05a0262328435d371e2624))
+
+### Docs
+
+* update CHANGELOG.md ([ab61d824a2dcaf8875e7b1b84a7fd76c866b1799](https://github.com/jy95/torrent-files-library/commit/ab61d824a2dcaf8875e7b1b84a7fd76c866b1799))
+
+### Feat
+
+* Provide a custom parsing function for the lib ([352cc87b682e0652dd5b98bfc975ea1406fc28b8](https://github.com/jy95/torrent-files-library/commit/352cc87b682e0652dd5b98bfc975ea1406fc28b8))
+
+### Perf
+
+* Use bind this for Bluebird promise to prevent dummy variable ([ba2da45a52d4f77e0622afd46e3fe4d86ff14d58](https://github.com/jy95/torrent-files-library/commit/ba2da45a52d4f77e0622afd46e3fe4d86ff14d58))
+
 <a name="1.3.0"></a>
-# [1.3.0](https://github.com/jy95/torrent-files-library/compare/v1.2.4...v1.3.0) (2018-01-27)
+## [1.3.0](https://github.com/jy95/torrent-files-library/compare/v1.2.4...v1.3.0) (2018-01-27)
 
 ### Chore
 

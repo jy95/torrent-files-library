@@ -168,6 +168,12 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "",
+    "test-file/test/methods/createFromJSON.js.html#lineNumber28",
+    "empty instance(s)",
+    "test"
+  ],
+  [
     "torrentlibrary#addnewpath src/torrentlibrary.js~torrentlibrary#addnewpath,torrentlibrary#addnewpath",
     "test-file/test/methods/addNewPath.js.html#lineNumber38",
     "existent paths",

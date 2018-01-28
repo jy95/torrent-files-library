@@ -2,6 +2,6 @@
   "presets": ["env"],
   "plugins": ["transform-object-rest-spread"],
   "ignore": [
-    "src/docs/*.js"
+    "src/docs/**/*.js"
   ]
 }
