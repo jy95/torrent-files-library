@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 5672,
+  "end": 6389,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 151,
+      "line": 168,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 5672,
+    "end": 6389,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 151,
+        "line": 168,
         "column": 0
       }
     },
@@ -174,6 +174,22 @@
             "column": 3
           }
         }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\r\n * A parsing function to be used with this lib\r\n * @typedef {Function} customParsingFunction\r\n * @param {string} title - The file name\r\n * @return {TPN} the result\r\n * @example\r\n * // default parser used in this lib\r\n * const parser = require(\"parse-torrent-title\").parser;\r\n * @example\r\n * // extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage\r\n * const ptt = require(\"parse-torrent-title\");\r\n * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n * const parser = ptt.parse;\r\n * @example\r\n * // original parser used in this lib : https://github.com/jy95/torrent-name-parser\r\n * const parser = require('torrent-name-parser');\r\n ",
+        "start": 5672,
+        "end": 6387,
+        "loc": {
+          "start": {
+            "line": 151,
+            "column": 0
+          },
+          "end": {
+            "line": 167,
+            "column": 3
+          }
+        }
       }
     ]
   },
@@ -318,6 +334,22 @@
         },
         "end": {
           "line": 149,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * A parsing function to be used with this lib\r\n * @typedef {Function} customParsingFunction\r\n * @param {string} title - The file name\r\n * @return {TPN} the result\r\n * @example\r\n * // default parser used in this lib\r\n * const parser = require(\"parse-torrent-title\").parser;\r\n * @example\r\n * // extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage\r\n * const ptt = require(\"parse-torrent-title\");\r\n * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n * const parser = ptt.parse;\r\n * @example\r\n * // original parser used in this lib : https://github.com/jy95/torrent-name-parser\r\n * const parser = require('torrent-name-parser');\r\n ",
+      "start": 5672,
+      "end": 6387,
+      "loc": {
+        "start": {
+          "line": 151,
+          "column": 0
+        },
+        "end": {
+          "line": 167,
           "column": 3
         }
       }
@@ -469,6 +501,22 @@
       }
     },
     {
+      "type": "CommentBlock",
+      "value": "*\r\n * A parsing function to be used with this lib\r\n * @typedef {Function} customParsingFunction\r\n * @param {string} title - The file name\r\n * @return {TPN} the result\r\n * @example\r\n * // default parser used in this lib\r\n * const parser = require(\"parse-torrent-title\").parser;\r\n * @example\r\n * // extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage\r\n * const ptt = require(\"parse-torrent-title\");\r\n * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n * const parser = ptt.parse;\r\n * @example\r\n * // original parser used in this lib : https://github.com/jy95/torrent-name-parser\r\n * const parser = require('torrent-name-parser');\r\n ",
+      "start": 5672,
+      "end": 6387,
+      "loc": {
+        "start": {
+          "line": 151,
+          "column": 0
+        },
+        "end": {
+          "line": 167,
+          "column": 3
+        }
+      }
+    },
+    {
       "type": {
         "label": "eof",
         "beforeExpr": false,
@@ -481,15 +529,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 5672,
-      "end": 5672,
+      "start": 6389,
+      "end": 6389,
       "loc": {
         "start": {
-          "line": 151,
+          "line": 168,
           "column": 0
         },
         "end": {
-          "line": 151,
+          "line": 168,
           "column": 0
         }
       }

@@ -44,8 +44,9 @@ import PromiseLib from 'bluebird';
 import videosExtension from 'video-extensions';
 
 /**
- * Parser for media files name
- * @see {@link https://github.com/clement-escolano/parse-torrent-title}
+ * Default Parser for media files name
+ * @type {customParsingFunction}
+ * @external {nameParser} https://github.com/clement-escolano/parse-torrent-title
  */
 import { parse as nameParser } from 'parse-torrent-title';
 
@@ -152,17 +153,28 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category
      * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files
      * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files
-     */
-  constructor({
-    defaultPath = process.cwd()
-    /* istanbul ignore next: tired of writing tests */,
-    paths = [] /* istanbul ignore next: tired of writing tests */,
-    allFilesWithCategory = new Map()
-    /* istanbul ignore next: tired of writing tests */,
-    movies = new Set() /* istanbul ignore next: tired of writing tests */,
-    series = new Map() /* istanbul ignore next: tired of writing tests */,
-  } = {} /* istanbul ignore next: tired of writing tests */) {
+     * @param {customParsingFunction} [parser=nameParser] - The parsing function to be used with this lib ;
+     * default is function parse from parse-torrent-title package
+   */
+  constructor(
+    {
+      defaultPath = process.cwd()
+      /* istanbul ignore next: tired of writing tests */,
+      paths = [] /* istanbul ignore next: tired of writing tests */,
+      allFilesWithCategory = new Map()
+      /* istanbul ignore next: tired of writing tests */,
+      movies = new Set() /* istanbul ignore next: tired of writing tests */,
+      series = new Map() /* istanbul ignore next: tired of writing tests */,
+    } = {} /* istanbul ignore next: tired of writing tests */,
+    parser = nameParser /* istanbul ignore next: tired of writing tests */,
+  ) {
     super();
+    /**
+     * The parsing function to be used with this lib
+     * @since 1.4.0
+     * @type {customParsingFunction}
+     */
+    this.parser = parser;
     /**
          * just an easy way to scan the current directory path, if not other paths provided
          * @type  {string}
@@ -220,7 +232,7 @@ export default class TorrentLibrary extends EventEmitter {
           for (const file of newFiles) {
             // get data from nameParser lib
             // what we need is only the basename, not the full path
-            const jsonFile = nameParser(basename(file));
+            const jsonFile = this.parser(basename(file));
             // extend this object in order to be used by this library
             Object.assign(jsonFile, { filePath: file });
             // find out which type of this file
@@ -272,7 +284,6 @@ export default class TorrentLibrary extends EventEmitter {
           this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
           resolve();
         } catch (err) {
-          /* istanbul ignore next */
           reject(err);
         }
       }).bind(true);
@@ -362,13 +373,11 @@ export default class TorrentLibrary extends EventEmitter {
         .then(files => this.addNewFiles(files)).then(() => {
           this.emit('scan', { files: foundFiles });
           resolve('Scanning completed');
-        }).catch(/* istanbul ignore next */ (err) => {
-        /* istanbul ignore next */
+        }).catch((err) => {
           this.emit('error_in_function', {
             functionName: 'scan',
             error: err.message,
           });
-          /* istanbul ignore next */
           reject(err);
         });
     }).bind(this);
@@ -409,7 +418,7 @@ export default class TorrentLibrary extends EventEmitter {
         // for the tv-series, a bit more complicated
         // first step : find the unique tv series of these files
         const tvSeriesShows = uniq(processData[0]
-          .map(file => nameParser(basename(file)).title));
+          .map(file => this.parser(basename(file)).title));
 
         // second step : foreach each series in tvSeriesShows
         const newTvSeriesMap = this.allTvSeries;
@@ -437,14 +446,11 @@ export default class TorrentLibrary extends EventEmitter {
           message: 'The files have been deleted from the library',
           files,
         });
-        /* istanbul ignore next */
       } catch (err) {
-        /* istanbul ignore next */
         this.emit('error_in_function', {
           functionName: 'removeOldFiles',
           error: err.message,
         });
-        /* istanbul ignore next */
         reject(err);
       }
     }).bind(this);
@@ -544,6 +550,7 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category
      * @param {(TPN_Extended[])} json.movies - the movies files
      * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files
+     * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
      * @since 1.2.0
      * @return {TorrentLibrary} an TorrentLibrary instance
@@ -552,8 +559,18 @@ export default class TorrentLibrary extends EventEmitter {
      *   const createdInstance = TorrentLibrary.createFromJSON(
      *      JSON.parse(libInstance.toJSON()),
      *   );
+     * @example
+     * // As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions
+     * // If you want an extra field to be populated
+     * const ptt = require("parse-torrent-title");
+     * ptt.addHandler("part", /Part[. ]([0-9])/i, { type: "integer" });
+     * // creates an new instance from another one; with custom parser
+     *   const createdInstance = TorrentLibrary.createFromJSON(
+     *      JSON.parse(libInstance.toJSON()),
+     *      ptt.parse
+     *   );
      */
-  static createFromJSON(json) {
+  static createFromJSON(json, parser = nameParser) {
     let config = json;
     // transform the param
     /* istanbul ignore else */
@@ -572,7 +589,7 @@ export default class TorrentLibrary extends EventEmitter {
       }
       config.series = createdMap;
     }
-    return new TorrentLibrary(config);
+    return new TorrentLibrary(config, parser);
   }
 
   /**

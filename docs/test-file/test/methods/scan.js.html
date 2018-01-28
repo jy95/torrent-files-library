@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/clement-escolano/parse-torrent-title">nameParser</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
@@ -42,6 +43,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
@@ -62,6 +64,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">test/methods/scan.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import test from &apos;ava&apos;;
 import * as sinon from &apos;sinon&apos;;
+import { parse as nameParser } from &apos;parse-torrent-title&apos;;
 import TorrentLibrary from &apos;../../index&apos;;
 import { folders } from &apos;../_constants&apos;;
 
@@ -88,6 +91,28 @@ test(&apos;Scan with user provided paths&apos;, async (t) =&gt; {
   t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
 });
 
+// test to handle default parameters
+test(&apos;Scan with user provided paths and custom parser&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary({}, nameParser);
+  libInstance.on(&apos;scan&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.notThrows(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+});
+
+test(&apos;Scan with user provided paths and wrong custom parser&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary({}, {});
+  libInstance.on(&apos;error_in_function&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.throws(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+});
 </code></pre>
 
 </div>

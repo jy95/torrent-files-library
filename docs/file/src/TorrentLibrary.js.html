@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/clement-escolano/parse-torrent-title">nameParser</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
@@ -42,6 +43,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
@@ -106,8 +108,9 @@ import PromiseLib from &apos;bluebird&apos;;
 import videosExtension from &apos;video-extensions&apos;;
 
 /**
- * Parser for media files name
- * @see {@link https://github.com/clement-escolano/parse-torrent-title}
+ * Default Parser for media files name
+ * @type {customParsingFunction}
+ * @external {nameParser} https://github.com/clement-escolano/parse-torrent-title
  */
 import { parse as nameParser } from &apos;parse-torrent-title&apos;;
 
@@ -214,17 +217,28 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(Map&lt;string,string&gt;)} [config.allFilesWithCategory=new Map()] - Mapping filepath =&gt; category
      * @param {(Set&lt;TPN_Extended&gt;)} [config.movies=new Set()] - the movies files
      * @param {(Map&lt;string, Set&lt;TPN_Extended&gt;&gt;)} [config.series=new Map()] - the serie files
-     */
-  constructor({
-    defaultPath = process.cwd()
-    /* istanbul ignore next: tired of writing tests */,
-    paths = [] /* istanbul ignore next: tired of writing tests */,
-    allFilesWithCategory = new Map()
-    /* istanbul ignore next: tired of writing tests */,
-    movies = new Set() /* istanbul ignore next: tired of writing tests */,
-    series = new Map() /* istanbul ignore next: tired of writing tests */,
-  } = {} /* istanbul ignore next: tired of writing tests */) {
+     * @param {customParsingFunction} [parser=nameParser] - The parsing function to be used with this lib ;
+     * default is function parse from parse-torrent-title package
+   */
+  constructor(
+    {
+      defaultPath = process.cwd()
+      /* istanbul ignore next: tired of writing tests */,
+      paths = [] /* istanbul ignore next: tired of writing tests */,
+      allFilesWithCategory = new Map()
+      /* istanbul ignore next: tired of writing tests */,
+      movies = new Set() /* istanbul ignore next: tired of writing tests */,
+      series = new Map() /* istanbul ignore next: tired of writing tests */,
+    } = {} /* istanbul ignore next: tired of writing tests */,
+    parser = nameParser /* istanbul ignore next: tired of writing tests */,
+  ) {
     super();
+    /**
+     * The parsing function to be used with this lib
+     * @since 1.4.0
+     * @type {customParsingFunction}
+     */
+    this.parser = parser;
     /**
          * just an easy way to scan the current directory path, if not other paths provided
          * @type  {string}
@@ -264,12 +278,10 @@ export default class TorrentLibrary extends EventEmitter {
          * @param {string[]} files An array of filePath
          */
     this.addNewFiles = function addNewFiles(files) {
-      const that = this;
-
       return new PromiseLib((resolve, reject) =&gt; {
         try {
           // find the new files to be added
-          const alreadyFoundFiles = [...that.categoryForFile.keys()];
+          const alreadyFoundFiles = [...this.categoryForFile.keys()];
           const newFiles = difference(files, alreadyFoundFiles);
 
           // temp var for new files before adding them to stores var
@@ -277,14 +289,14 @@ export default class TorrentLibrary extends EventEmitter {
           const tvSeriesSet = new Set();
 
           // get previous result of stores var
-          let newMovies = that.allMovies;
-          const newTvSeries = that.allTvSeries;
+          let newMovies = this.allMovies;
+          const newTvSeries = this.allTvSeries;
 
           // process each file
           for (const file of newFiles) {
             // get data from nameParser lib
             // what we need is only the basename, not the full path
-            const jsonFile = nameParser(basename(file));
+            const jsonFile = this.parser(basename(file));
             // extend this object in order to be used by this library
             Object.assign(jsonFile, { filePath: file });
             // find out which type of this file
@@ -293,7 +305,7 @@ export default class TorrentLibrary extends EventEmitter {
                 (checkProperties(jsonFile, [&apos;season&apos;, &apos;episode&apos;]))
                   ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;
             // add it in found files
-            that.categoryForFile.set(file, fileCategory);
+            this.categoryForFile.set(file, fileCategory);
             // also in temp var
             if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {
               moviesSet.add(jsonFile);
@@ -332,14 +344,13 @@ export default class TorrentLibrary extends EventEmitter {
             });
 
           // updates the stores var
-          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
-          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
+          this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);
+          this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);
           resolve();
         } catch (err) {
-          /* istanbul ignore next */
           reject(err);
         }
-      });
+      }).bind(true);
     };
   }
 
@@ -378,22 +389,21 @@ export default class TorrentLibrary extends EventEmitter {
       return missingParam();
     }
 
-    const that = this;
     return new PromiseLib(((resolve, reject) =&gt; {
       PromiseLib.map(paths, path =&gt; promisifiedAccess(path)).then(() =&gt; {
         // keep only unique paths
         // use normalize for cross platform&apos;s code
-        that.paths = uniq([...that.paths, ...paths.map(normalize)]);
-        that.emit(&apos;addNewPath&apos;, { paths: that.paths });
+        this.paths = uniq([...this.paths, ...paths.map(normalize)]);
+        this.emit(&apos;addNewPath&apos;, { paths: this.paths });
         resolve(&apos;All paths were added!&apos;);
       }).catch((e) =&gt; {
-        that.emit(&apos;error_in_function&apos;, {
+        this.emit(&apos;error_in_function&apos;, {
           functionName: &apos;addNewPath&apos;,
           error: e.message,
         });
         reject(e);
       });
-    }));
+    })).bind(this);
   }
 
   /**
@@ -421,23 +431,20 @@ export default class TorrentLibrary extends EventEmitter {
       .paths((this.paths.length === 0) ? this.defaultPath : this.paths)
       .ext(videosExtension)
       .find();
-    const that = this;
 
     return new PromiseLib((resolve, reject) =&gt; {
       foundFiles
-        .then(files =&gt; that.addNewFiles(files)).then(() =&gt; {
-          that.emit(&apos;scan&apos;, { files: foundFiles });
+        .then(files =&gt; this.addNewFiles(files)).then(() =&gt; {
+          this.emit(&apos;scan&apos;, { files: foundFiles });
           resolve(&apos;Scanning completed&apos;);
-        }).catch(/* istanbul ignore next */ (err) =&gt; {
-        /* istanbul ignore next */
-          that.emit(&apos;error_in_function&apos;, {
+        }).catch((err) =&gt; {
+          this.emit(&apos;error_in_function&apos;, {
             functionName: &apos;scan&apos;,
             error: err.message,
           });
-          /* istanbul ignore next */
           reject(err);
         });
-    });
+    }).bind(this);
   }
 
 
@@ -458,28 +465,27 @@ export default class TorrentLibrary extends EventEmitter {
      * @emits Events#error_in_function
      */
   removeOldFiles(...files) {
-    const that = this;
     return new PromiseLib((resolve, reject) =&gt; {
       try {
         // get the data to handle this case
         // in the first group, we got all the tv series files and in the second, the movies
         const processData = partition(files, file =&gt;
-          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
+          this.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);
 
         // for movies, just an easy removal
-        that.stores.set(
+        this.stores.set(
           TorrentLibrary.MOVIES_TYPE,
-          new Set([...that.allMovies]
+          new Set([...this.allMovies]
             .filter(movie =&gt; !(processData[1].includes(movie.filePath)))),
         );
 
         // for the tv-series, a bit more complicated
         // first step : find the unique tv series of these files
         const tvSeriesShows = uniq(processData[0]
-          .map(file =&gt; nameParser(basename(file)).title));
+          .map(file =&gt; this.parser(basename(file)).title));
 
         // second step : foreach each series in tvSeriesShows
-        const newTvSeriesMap = that.allTvSeries;
+        const newTvSeriesMap = this.allTvSeries;
 
         for (const serie of tvSeriesShows) {
           // get the set for this serie
@@ -493,28 +499,25 @@ export default class TorrentLibrary extends EventEmitter {
         }
 
         // save the updated map
-        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
+        this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);
 
         // remove the mapping
         files.forEach((file) =&gt; {
-          that.categoryForFile.delete(file);
+          this.categoryForFile.delete(file);
         });
-        that.emit(&apos;removeOldFiles&apos;, { files });
+        this.emit(&apos;removeOldFiles&apos;, { files });
         resolve({
           message: &apos;The files have been deleted from the library&apos;,
           files,
         });
-        /* istanbul ignore next */
       } catch (err) {
-        /* istanbul ignore next */
-        that.emit(&apos;error_in_function&apos;, {
+        this.emit(&apos;error_in_function&apos;, {
           functionName: &apos;removeOldFiles&apos;,
           error: err.message,
         });
-        /* istanbul ignore next */
         reject(err);
       }
-    });
+    }).bind(this);
   }
 
   /**
@@ -611,6 +614,7 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(Array.&lt;Array.&lt;String,String&gt;&gt;)} json.allFilesWithCategory - Mapping filepath =&gt; category
      * @param {(TPN_Extended[])} json.movies - the movies files
      * @param {(Array.&lt;Array.&lt;String,TPN_Extended[]&gt;&gt;)} json.tv-series - the serie files
+     * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use
      * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
      * @since 1.2.0
      * @return {TorrentLibrary} an TorrentLibrary instance
@@ -619,8 +623,18 @@ export default class TorrentLibrary extends EventEmitter {
      *   const createdInstance = TorrentLibrary.createFromJSON(
      *      JSON.parse(libInstance.toJSON()),
      *   );
+     * @example
+     * // As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions
+     * // If you want an extra field to be populated
+     * const ptt = require(&quot;parse-torrent-title&quot;);
+     * ptt.addHandler(&quot;part&quot;, /Part[. ]([0-9])/i, { type: &quot;integer&quot; });
+     * // creates an new instance from another one; with custom parser
+     *   const createdInstance = TorrentLibrary.createFromJSON(
+     *      JSON.parse(libInstance.toJSON()),
+     *      ptt.parse
+     *   );
      */
-  static createFromJSON(json) {
+  static createFromJSON(json, parser = nameParser) {
     let config = json;
     // transform the param
     /* istanbul ignore else */
@@ -639,7 +653,7 @@ export default class TorrentLibrary extends EventEmitter {
       }
       config.series = createdMap;
     }
-    return new TorrentLibrary(config);
+    return new TorrentLibrary(config, parser);
   }
 
   /**

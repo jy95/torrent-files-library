@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 34,
-  "actualCount": 34,
+  "expectCount": 35,
+  "actualCount": 35,
   "files": {
     "src/filters/filterBooleanProperty.js": {
       "expectCount": 3,
@@ -19,8 +19,8 @@
       "undocumentLines": []
     },
     "src/TorrentLibrary.js": {
-      "expectCount": 22,
-      "actualCount": 22,
+      "expectCount": 23,
+      "actualCount": 23,
       "undocumentLines": []
     }
   }

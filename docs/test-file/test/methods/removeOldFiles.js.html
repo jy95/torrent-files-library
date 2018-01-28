@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/clement-escolano/parse-torrent-title">nameParser</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
@@ -42,6 +43,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
@@ -65,7 +67,7 @@ import path from &apos;path&apos;;
 import * as sinon from &apos;sinon&apos;;
 import { parse as nameParser } from &apos;parse-torrent-title&apos;;
 import TorrentLibrary from &apos;../../index&apos;;
-import { files, folders } from &apos;../_constants&apos;;
+import { files, folders, expectedJson } from &apos;../_constants&apos;;
 
 /** @test {TorrentLibrary#removeOldFiles} */
 test(&apos;Should not be able to remove not present files&apos;, async (t) =&gt; {
@@ -178,6 +180,16 @@ test(&apos;Should be able to remove multiples files : Tv-serie&apos;, async (t) 
     allFilesWithoutIt,
     &apos;The tv-series episodes should have all been removed!&apos;,
   );
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+});
+
+// test to handle default parameters
+test(&apos;Should not be able to remove files : wrong custom parser&apos;, async (t) =&gt; {
+  let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});
+  let eventSpy = sinon.spy();
+  libInstance.on(&apos;error_in_function&apos;, eventSpy);
+  await t.throws(libInstance.removeOldFiles(...files));
   t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
   t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
 });

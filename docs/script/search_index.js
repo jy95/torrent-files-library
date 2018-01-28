@@ -85,13 +85,25 @@ window.esdocSearchIndex = [
   ],
   [
     "torrentlibrary#scan src/torrentlibrary.js~torrentlibrary#scan,torrentlibrary#scan",
-    "test-file/test/methods/scan.js.html#lineNumber18",
+    "test-file/test/methods/scan.js.html#lineNumber19",
     "Scan with user provided paths",
     "test"
   ],
   [
+    "",
+    "test-file/test/methods/scan.js.html#lineNumber31",
+    "Scan with user provided paths and custom parser",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/methods/scan.js.html#lineNumber42",
+    "Scan with user provided paths and wrong custom parser",
+    "test"
+  ],
+  [
     "torrentlibrary#scan src/torrentlibrary.js~torrentlibrary#scan,torrentlibrary#scan",
-    "test-file/test/methods/scan.js.html#lineNumber8",
+    "test-file/test/methods/scan.js.html#lineNumber9",
     "Scan without user provided paths",
     "test"
   ],
@@ -111,6 +123,12 @@ window.esdocSearchIndex = [
     "torrentlibrary#removeoldfiles src/torrentlibrary.js~torrentlibrary#removeoldfiles,torrentlibrary#removeoldfiles",
     "test-file/test/methods/removeOldFiles.js.html#lineNumber96",
     "Should be able to remove multiples files : Tv-serie",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/methods/removeOldFiles.js.html#lineNumber124",
+    "Should not be able to remove files : wrong custom parser",
     "test"
   ],
   [
@@ -168,14 +186,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "torrentlibrary#allmovies src/torrentlibrary.js~torrentlibrary#allmovies,torrentlibrary#allmovies",
-    "test-file/test/getters/allMovies.js.html#lineNumber9",
+    "torrentlibrary#allfileswithcategory src/torrentlibrary.js~torrentlibrary#allfileswithcategory,torrentlibrary#allfileswithcategory",
+    "test-file/test/getters/allFilesWithCategory.js.html#lineNumber8",
     "result after scan()",
     "test"
   ],
   [
-    "torrentlibrary#allfileswithcategory src/torrentlibrary.js~torrentlibrary#allfileswithcategory,torrentlibrary#allfileswithcategory",
-    "test-file/test/getters/allFilesWithCategory.js.html#lineNumber8",
+    "torrentlibrary#allmovies src/torrentlibrary.js~torrentlibrary#allmovies,torrentlibrary#allmovies",
+    "test-file/test/getters/allMovies.js.html#lineNumber9",
     "result after scan()",
     "test"
   ],
@@ -546,6 +564,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/torrentlibrary.js~torrentlibrary#parser",
+    "class/src/TorrentLibrary.js~TorrentLibrary.html#instance-member-parser",
+    "src/TorrentLibrary.js~TorrentLibrary#parser",
+    "member"
+  ],
+  [
     "src/torrentlibrary.js~torrentlibrary#paths",
     "class/src/TorrentLibrary.js~TorrentLibrary.html#instance-member-paths",
     "src/TorrentLibrary.js~TorrentLibrary#paths",
@@ -598,6 +622,12 @@ window.esdocSearchIndex = [
     "class/src/TorrentLibrary.js~TorrentLibrary.html#static-method-listVideosExtension",
     "src/TorrentLibrary.js~TorrentLibrary.listVideosExtension",
     "method"
+  ],
+  [
+    "src/torrentlibrary.js~nameparser",
+    "https://github.com/clement-escolano/parse-torrent-title",
+    "src/TorrentLibrary.js~nameParser",
+    "external"
   ],
   [
     "src/docs/events/events.js",
@@ -669,6 +699,12 @@ window.esdocSearchIndex = [
     "src/docs/types/types.js~additionalproperties",
     "typedef/index.html#static-typedef-additionalProperties",
     "src/docs/types/types.js~additionalProperties",
+    "typedef"
+  ],
+  [
+    "src/docs/types/types.js~customparsingfunction",
+    "typedef/index.html#static-typedef-customParsingFunction",
+    "src/docs/types/types.js~customParsingFunction",
     "typedef"
   ],
   [

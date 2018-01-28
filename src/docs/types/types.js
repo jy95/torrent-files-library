@@ -148,3 +148,20 @@
  * @property {additionalProperties[]} [additionalProperties=[]] - additional Properties
  */
 
+/**
+ * A parsing function to be used with this lib
+ * @typedef {Function} customParsingFunction
+ * @param {string} title - The file name
+ * @return {TPN} the result
+ * @example
+ * // default parser used in this lib
+ * const parser = require("parse-torrent-title").parser;
+ * @example
+ * // extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage
+ * const ptt = require("parse-torrent-title");
+ * ptt.addHandler("part", /Part[. ]([0-9])/i, { type: "integer" });
+ * const parser = ptt.parse;
+ * @example
+ * // original parser used in this lib : https://github.com/jy95/torrent-name-parser
+ * const parser = require('torrent-name-parser');
+ */
