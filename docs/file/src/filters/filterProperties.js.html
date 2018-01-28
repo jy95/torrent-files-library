@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/filters/filterProperties.js | torrent-files-library</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="torrent-files-library"><meta property="twitter:description" content="Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jy95/torrent-files-library.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/clement-escolano/parse-torrent-title">nameParser</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#removeOldFiles">Events#removeOldFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#scan">Events#scan</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-types">docs/types</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StorageVar">StorageVar</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StoreVar">StoreVar</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#filters">filters</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultBooleanProperties">excludeDefaultBooleanProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByBoolean">filterByBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultBooleanProperties">filterDefaultBooleanProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToValidExpression">convertToValidExpression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/filters/filterProperties.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint-disable no-useless-escape,max-len */
+/**
+ * Boolean properties filter
+ */
+import {
+  filterDefaultBooleanProperties,
+  filterByBoolean,
+  excludeDefaultBooleanProperties,
+} from &apos;./filterBooleanProperty&apos;;
+
+/**
+ * Number properties filter
+ */
+import {
+  convertToValidExpression,
+  excludeDefaultNumberProperties,
+  filterDefaultNumberProperties,
+  filterByNumber,
+} from &apos;./filterNumberProperty&apos;;
+
+/**
+ * String properties filter
+ */
+import {
+  excludeDefaultStringProperties,
+  filterDefaultStringProperties,
+  filterByString,
+} from &apos;./filterStringProperty&apos;;
+
+/**
+ * Handle searchParameters provided by user to maps
+ * @param {searchParameters} searchParameters - search parameters.
+ * @return {{booleanFieldsSearchMap: Map&lt;string, boolean&gt;, numberFieldsSearchMap: Map&lt;string, numberExpressionObject&gt;, stringFieldsSearchMap: Map&lt;string, string|string[]&gt;}} an object that contains mapped properties for search
+ */
+function mapProperties(searchParameters) {
+  // organize search based on field type : boolean - string - number
+  const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);
+  let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);
+
+  const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);
+  leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);
+
+  const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);
+  leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);
+
+  let { additionalProperties } = leftSearchParameters;
+  // add the optional new properties , optionally provided by user
+  /* istanbul ignore else */
+  if (additionalProperties !== undefined) {
+    additionalProperties
+      .filter(newProperty =&gt; newProperty.type === &apos;boolean&apos;)
+      .forEach((newProperty) =&gt; {
+        booleanFieldsSearchMap.set(newProperty.name, newProperty.value);
+      });
+
+    additionalProperties
+      .filter(newProperty =&gt; newProperty.type === &apos;number&apos;)
+      .forEach((newProperty) =&gt; {
+        let expression = convertToValidExpression(newProperty.value);
+        /* istanbul ignore else */
+        if (expression !== undefined) {
+          numberFieldsSearchMap.set(newProperty.name, expression);
+        }
+      });
+
+    additionalProperties
+      .filter(newProperty =&gt; newProperty.type === &apos;string&apos;)
+      .forEach((newProperty) =&gt; {
+        stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
+      });
+  }
+
+  return {
+    booleanFieldsSearchMap,
+    numberFieldsSearchMap,
+    stringFieldsSearchMap,
+  };
+}
+
+/**
+ * Filter the movies based on search parameters
+ * @param {searchParameters} searchParameters - search parameters.
+ * @param {Set&lt;TPN_Extended&gt;} allMovies - the movies set
+ * @return {Set&lt;TPN&gt;} the filtered movie set
+ */
+export function filterMoviesByProperties(searchParameters, allMovies) {
+  const {
+    booleanFieldsSearchMap, stringFieldsSearchMap,
+    numberFieldsSearchMap,
+  } = mapProperties(searchParameters);
+  const propertiesWithAllProperties
+    = [booleanFieldsSearchMap, stringFieldsSearchMap, numberFieldsSearchMap];
+  let result = allMovies;
+  [filterByBoolean, filterByString, filterByNumber]
+    .forEach((filterFunction, index) =&gt; {
+      result = filterFunction(result, propertiesWithAllProperties[index]);
+    });
+  return result;
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

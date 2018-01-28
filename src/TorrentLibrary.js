@@ -56,32 +56,9 @@ import { parse as nameParser } from 'parse-torrent-title';
 import EventEmitter from 'events';
 
 /**
- * Boolean properties filter
+ * Filter Properties for filterMovies function
  */
-import {
-  filterDefaultBooleanProperties,
-  filterByBoolean,
-  excludeDefaultBooleanProperties,
-} from './filters/filterBooleanProperty';
-
-/**
- * Number properties filter
- */
-import {
-  convertToValidExpression,
-  excludeDefaultNumberProperties,
-  filterDefaultNumberProperties,
-  filterByNumber,
-} from './filters/filterNumberProperty';
-
-/**
- * String properties filter
- */
-import {
-  excludeDefaultStringProperties,
-  filterDefaultStringProperties,
-  filterByString,
-} from './filters/filterStringProperty';
+import { filterMoviesByProperties, filterTvSeriesByProperties } from './filters/filterProperties';
 
 /**
  * check if an object has these properties and they are not undefined
@@ -595,7 +572,7 @@ export default class TorrentLibrary extends EventEmitter {
   /**
    * Filter the movies based on search parameters
    * @param {searchParameters} searchParameters - search parameters.
-   * @return {Set<TPN_Extended>} the filtered movie set
+   * @return {Set<TPN>} the filtered movie set
    * @since 1.3.0
    */
   filterMovies(searchParameters = {
@@ -625,51 +602,43 @@ export default class TorrentLibrary extends EventEmitter {
     // new properties
     additionalProperties: [],
   }) {
-    // organize search based on field type : boolean - string - number
-    // eslint-disable-next-line max-len
-    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);
-    // eslint-disable-next-line max-len
-    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);
-
-    // eslint-disable-next-line max-len
-    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);
-    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);
-
-    // eslint-disable-next-line max-len
-    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);
-    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);
-
-    let { additionalProperties } = leftSearchParameters;
-    // add the optional new properties , optionally provided by user
-    /* istanbul ignore else */
-    if (additionalProperties !== undefined) {
-      additionalProperties
-        .filter(newProperty => newProperty.type === 'boolean')
-        .forEach((newProperty) => {
-          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);
-        });
-
-      additionalProperties
-        .filter(newProperty => newProperty.type === 'number')
-        .forEach((newProperty) => {
-          let expression = convertToValidExpression(newProperty.value);
-          /* istanbul ignore else */
-          if (expression !== undefined) {
-            numberFieldsSearchMap.set(newProperty.name, expression);
-          }
-        });
-
-      additionalProperties
-        .filter(newProperty => newProperty.type === 'string')
-        .forEach((newProperty) => {
-          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
-        });
-    }
-
     // apply params based on types
-    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);
-    result = filterByNumber(result, numberFieldsSearchMap);
-    result = filterByString(result, stringFieldsSearchMap);
-    return result;
+    return filterMoviesByProperties(searchParameters, this.allMovies);
+  }
+
+  /**
+   * Filter the tv-series based on search parameters
+   * @param {searchParameters} searchParameters - search parameters.
+   * @return {(Map<string, Set<TPN>>)} the filtered movie set
+   * @since 1.5.0
+   */
+  filterTvSeries(searchParameters = {
+    // boolean properties
+    extended: undefined,
+    unrated: undefined,
+    proper: undefined,
+    repack: undefined,
+    convert: undefined,
+    hardcoded: undefined,
+    retail: undefined,
+    remastered: undefined,
+    // number properties
+    season: undefined,
+    episode: undefined,
+    year: undefined,
+    // string properties
+    title: undefined,
+    resolution: undefined,
+    codec: undefined,
+    audio: undefined,
+    group: undefined,
+    region: undefined,
+    container: undefined,
+    language: undefined,
+    source: undefined,
+    // new properties
+    additionalProperties: [],
+  }) {
+    return filterTvSeriesByProperties(searchParameters, this.allTvSeries);
   }
 }
