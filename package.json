@@ -57,7 +57,7 @@
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
     "nyc": "^11.4.1",
-    "semantic-release": "^12.4.1",
+    "semantic-release": "^13.0.2",
     "sinon": "^4.2.2"
   },
   "dependencies": {
