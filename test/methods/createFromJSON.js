@@ -23,3 +23,9 @@ test('create a perfect copy of instance', async (t) => {
     libInstance.allTvSeries, 'allTvSeries different',
   );
 });
+
+// dummy test for ES6 code coverage
+test('empty instance(s)', async (t) => {
+  TorrentLibrary.createFromJSON({});
+  t.pass();
+});
