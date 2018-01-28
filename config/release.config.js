@@ -1,4 +1,4 @@
-/* eslint-disable no-useless-escape */
+/* eslint-disable no-useless-escape,max-len */
 module.exports = {
   analyzeCommits: {
     preset: 'eslint',
@@ -23,4 +23,8 @@ module.exports = {
       ],
     },
   },
+  verifyConditions:
+    ['@semantic-release/changelog', '@semantic-release/npm', '@semantic-release/git', '@semantic-release/github'],
+  publish:
+    ['@semantic-release/changelog', '@semantic-release/npm', '@semantic-release/git', '@semantic-release/github'],
 };

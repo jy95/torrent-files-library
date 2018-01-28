@@ -748,7 +748,7 @@
     "__docId__": 54,
     "kind": "file",
     "name": "src/docs/types/types.js",
-    "content": "// ESDoc custom typedef\r\n\r\n/**\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n * @example\r\n * {\r\n *         \"container\":\"avi\",\r\n *         \"source\":\"webrip\",\r\n *         \"codec\":\"xvid\",\r\n *         \"season\":4,\r\n *         \"episode\":14,\r\n *         \"language\":\"french\",\r\n *         \"title\":\"The Blacklist\"\r\n * }\r\n */\r\n\r\n/**\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n * @example\r\n * {\r\n *         \"container\":\"avi\",\r\n *         \"source\":\"webrip\",\r\n *         \"codec\":\"xvid\",\r\n *         \"season\":4,\r\n *         \"episode\":14,\r\n *         \"language\":\"french\",\r\n *         \"title\":\"The Blacklist\",\r\n *         \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n * }\r\n */\r\n\r\n/**\r\n * The sub way to store all kind of media files found in paths\r\n * @typedef {Set<TPN_Extended>| Map<string,Set<TPN_Extended>} StorageVar\r\n */\r\n\r\n/**\r\n * The master variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, StorageVar>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n */\r\n\r\n/**\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n */\r\n\r\n/**\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n * @example\r\n * { operator: '>=' , number: 5 }\r\n */\r\n\r\n/**\r\n * allows user to provide custom filtering stuff\r\n * @typedef {Object} additionalProperties\r\n * @property {string} type Filter type - Possible values are 'number' , 'string' , 'number'\r\n * @property {string} name The requested property\r\n * @property {boolean|string|string[]|number|numberSearchSyntax} value The requested value\r\n * @example\r\n * { type: 'number', name: 'AnotherField2', value: '<=25' }\r\n * { type: 'boolean', name: 'AnotherField', value: true }\r\n * { type: 'number', name: 'AnotherField2', value: 25 }\r\n * { type: 'string', name: 'AnotherField', value: ['NothingExists', 'NothingExists'] }\r\n */\r\n\r\n/**\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n * @property {additionalProperties[]} [additionalProperties=[]] - additional Properties\r\n */\r\n\r\n",
+    "content": "// ESDoc custom typedef\r\n\r\n/**\r\n * The result of parsing file name\r\n * @typedef {Object} TPN\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n * @property {(string)} title - The file title\r\n * @property {(number)} [season] - The season number\r\n * @property {(number)} [episode] - The episode number\r\n * @property {(number)} [year] - The year\r\n * @property {(string)} [resolution] - The resolution\r\n * @property {(string)} [codec] - The codec\r\n * @property {(string)} [audio] - The audio\r\n * @property {(string)} [group] - The group that releases this file\r\n * @property {(string)} [region] - The region\r\n * @property {(string)} [container] - The container\r\n * @property {(string)} [language] - The file language\r\n * @property {(boolean)} [extended] - extended ?\r\n * @property {(boolean)} [unrated] - unrated ?\r\n * @property {(boolean)} [proper] - proper ?\r\n * @property {(boolean)} [repack] - repack ?\r\n * @property {(boolean)} [convert] - convert ?\r\n * @property {(boolean)} [hardcoded] - hardcoded ?\r\n * @property {(boolean)} [retail] - retail ?\r\n * @property {(boolean)} [remastered] - remastered ?\r\n * @property {(string)} [source] - the source\r\n * @example\r\n * {\r\n *         \"container\":\"avi\",\r\n *         \"source\":\"webrip\",\r\n *         \"codec\":\"xvid\",\r\n *         \"season\":4,\r\n *         \"episode\":14,\r\n *         \"language\":\"french\",\r\n *         \"title\":\"The Blacklist\"\r\n * }\r\n */\r\n\r\n/**\r\n * The extended TPN object\r\n * @typedef {TPN} TPN_Extended\r\n * @property {string} filePath - additionnal property useful for this library\r\n * @example\r\n * {\r\n *         \"container\":\"avi\",\r\n *         \"source\":\"webrip\",\r\n *         \"codec\":\"xvid\",\r\n *         \"season\":4,\r\n *         \"episode\":14,\r\n *         \"language\":\"french\",\r\n *         \"title\":\"The Blacklist\",\r\n *         \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n * }\r\n */\r\n\r\n/**\r\n * The sub way to store all kind of media files found in paths\r\n * @typedef {Set<TPN_Extended>| Map<string,Set<TPN_Extended>} StorageVar\r\n */\r\n\r\n/**\r\n * The master variable where we store all kind of media files found in paths\r\n * @typedef {Map<string, StorageVar>} StoreVar\r\n * @example\r\n * // An example of the variable after the scan method\r\n * [\r\n *      \"MOVIES\" : [\r\n *         {\r\n *            \"year\": 2014,\r\n *            \"resolution\": '1080p',\r\n *            \"source\": 'brrip',\r\n *            \"codec\": 'x264',\r\n *            \"container\": 'mkv',\r\n *            \"title\": 'Captain Russia The Summer Soldier',\r\n *            \"filePath\": \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\"\r\n *         }\r\n *      ],\r\n *      \"TV_SERIES\" : [\r\n *          \"The Blacklist\" : [\r\n *              {\r\n *                  \"season\": 4,\r\n *                  \"episode\": 21,\r\n *                  \"source\": \"webrip\",\r\n *                  \"codec\": \"xvid\",\r\n *                  \"container\": \"avi\",\r\n *                  \"language\": \"french\"\r\n *                  \"filePath\" : \"D:\\somePath\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n *              }\r\n *          ]\r\n *      ]\r\n * ]\r\n */\r\n\r\n/**\r\n * The search syntax for number properties : a operator follows by a number\r\n * @typedef {string} numberSearchSyntax\r\n * @example\r\n * '<=25'\r\n * @example\r\n * '=25'\r\n */\r\n\r\n/**\r\n * Number expression for number filtering\r\n * @typedef {Object} numberExpressionObject\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n * @example\r\n * { operator: '>=' , number: 5 }\r\n */\r\n\r\n/**\r\n * allows user to provide custom filtering stuff\r\n * @typedef {Object} additionalProperties\r\n * @property {string} type Filter type - Possible values are 'number' , 'string' , 'number'\r\n * @property {string} name The requested property\r\n * @property {boolean|string|string[]|number|numberSearchSyntax} value The requested value\r\n * @example\r\n * { type: 'number', name: 'AnotherField2', value: '<=25' }\r\n * { type: 'boolean', name: 'AnotherField', value: true }\r\n * { type: 'number', name: 'AnotherField2', value: 25 }\r\n * { type: 'string', name: 'AnotherField', value: ['NothingExists', 'NothingExists'] }\r\n */\r\n\r\n/**\r\n * search parameters object\r\n * @typedef {Object} searchParameters - search parameters.\r\n * @property {boolean} [extended=undefined] - extended ?\r\n * @property {boolean} [unrated=undefined] - unrated ?\r\n * @property {boolean} [proper=undefined] - proper ?\r\n * @property {boolean} [repack=undefined] - repack ?\r\n * @property {boolean} [convert=undefined] - convert ?\r\n * @property {boolean} [hardcoded=undefined] - hardcoded ?\r\n * @property {boolean} [retail=undefined] - retail ?\r\n * @property {boolean} [remastered=undefined] - remastered ?\r\n * @property {number|numberSearchSyntax} [season=undefined] - the season\r\n * @property {number|numberSearchSyntax} [episode=undefined] - the episode\r\n * @property {number|numberSearchSyntax} [year=undefined] - the year\r\n * @property {string|string[]} [title=undefined] - the title\r\n * @property {string|string[]} [resolution=undefined] - the resolution\r\n * @property {string|string[]} [codec=undefined] - the codec\r\n * @property {string|string[]} [audio=undefined] - the audio\r\n * @property {string|string[]} [group=undefined] - the group\r\n * @property {string|string[]} [region=undefined] - the region\r\n * @property {string|string[]} [container=undefined] - the container\r\n * @property {string|string[]} [language=undefined] - the language\r\n * @property {string|string[]} [source=undefined] - the source\r\n * @property {additionalProperties[]} [additionalProperties=[]] - additional Properties\r\n */\r\n\r\n/**\r\n * A parsing function to be used with this lib\r\n * @typedef {Function} customParsingFunction\r\n * @param {string} title - The file name\r\n * @return {TPN} the result\r\n * @example\r\n * // default parser used in this lib\r\n * const parser = require(\"parse-torrent-title\").parser;\r\n * @example\r\n * // extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage\r\n * const ptt = require(\"parse-torrent-title\");\r\n * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n * const parser = ptt.parse;\r\n * @example\r\n * // original parser used in this lib : https://github.com/jy95/torrent-name-parser\r\n * const parser = require('torrent-name-parser');\r\n */\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/src/docs/types/types.js",
     "access": "public",
@@ -1453,6 +1453,48 @@
   },
   {
     "__docId__": 63,
+    "kind": "typedef",
+    "name": "customParsingFunction",
+    "memberof": "src/docs/types/types.js",
+    "static": true,
+    "longname": "src/docs/types/types.js~customParsingFunction",
+    "access": "public",
+    "description": "A parsing function to be used with this lib",
+    "examples": [
+      "// default parser used in this lib\nconst parser = require(\"parse-torrent-title\").parser;",
+      "// extended default parser as explained here : https://github.com/clement-escolano/parse-torrent-title#advanced-usage\nconst ptt = require(\"parse-torrent-title\");\nptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\nconst parser = ptt.parse;",
+      "// original parser used in this lib : https://github.com/jy95/torrent-name-parser\nconst parser = require('torrent-name-parser');"
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": "The file name"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "TPN"
+      ],
+      "spread": false,
+      "description": "the result"
+    },
+    "type": {
+      "types": [
+        "Function"
+      ],
+      "optional": false,
+      "name": "customParsingFunction"
+    }
+  },
+  {
+    "__docId__": 64,
     "kind": "file",
     "name": "src/filters/filterBooleanProperty.js",
     "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, boolean>} the result map\r\n */\r\nexport function filterDefaultBooleanProperties(searchObject) {\r\n  const {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [extended, unrated, proper,\r\n    repack, convert, hardcoded, retail, remastered];\r\n  const propertiesNames = ['extended', 'unrated', 'proper', 'repack', 'convert',\r\n    'hardcoded', 'retail', 'remastered'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    // eslint-disable-next-line max-len\r\n    if (val === true || val === false) { propertiesMap.set(propertiesNames[index], val); }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default boolean properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultBooleanProperties(searchObject) {\r\n  let {\r\n    extended, unrated, proper, repack, convert, hardcoded, retail, remastered,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter the set based on boolean properties\r\n * @param {Set<TPN>} set The TPN set\r\n * @param {Map<string, boolean>} propertiesMap The map from filterDefaultBooleanProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByBoolean(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => TPN[val[0]] === val[1])\r\n      , [...set],\r\n    ));\r\n}\r\n",
@@ -1463,7 +1505,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "function",
     "name": "filterDefaultBooleanProperties",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1499,7 +1541,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 66,
     "kind": "function",
     "name": "excludeDefaultBooleanProperties",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1535,7 +1577,7 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "function",
     "name": "filterByBoolean",
     "memberof": "src/filters/filterBooleanProperty.js",
@@ -1581,7 +1623,7 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
     "kind": "file",
     "name": "src/filters/filterNumberProperty.js",
     "content": "/**\r\n * Convert the param to valid expression object for filter function\r\n * @param {number|numberSearchSyntax} param The param to be converted\r\n * @return {Object} If valid, returns a object. If not, returns undefined\r\n * @property {string} operator The operator for matching process\r\n * @property {number} number  The extracted number for matching process\r\n * @example\r\n * // returns { operator: '==' , number: 5 }\r\n * convertToValidExpression(5);\r\n * @example\r\n * // returns { operator: '>=' , number: 5 }\r\n * convertToValidExpression(\">5\");\r\n * @example\r\n * // returns undefined\r\n * convertToValidExpression(undefined);\r\n */\r\nexport function convertToValidExpression(param) {\r\n  const validExpression = /^(==|>|<|>=|<=)(\\d+)$/;\r\n  let returnValue;\r\n  // if it is a valid number expression like the regex\r\n  if (validExpression.test(param)) {\r\n    let result = param.match(validExpression);\r\n    returnValue = {\r\n      operator: result[1],\r\n      number: Number(result[2]),\r\n    };\r\n  }\r\n  // if the param is a number\r\n  if (Number.isInteger(param)) {\r\n    returnValue = {\r\n      operator: '==',\r\n      number: param,\r\n    };\r\n  }\r\n  return returnValue;\r\n}\r\n\r\n/**\r\n * Filter function for filterByNumber\r\n * @param {string} property The property to be checked\r\n * @param {Object} expressionObject The object from convertToValidExpression\r\n * @param {string} expressionObject.operator The operator for matching process\r\n * @param {number} expressionObject.number  The extracted number for matching process\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction resolveExpression(property, expressionObject, object) {\r\n  let { operator, number } = expressionObject;\r\n  // No : eval is not all evil but you should know what you are doing\r\n  // eslint-disable-next-line no-eval\r\n  return eval(`${object[property]}${operator}${number}`);\r\n}\r\n\r\n/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, numberExpressionObject>} the result map\r\n */\r\nexport function filterDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [season, episode, year];\r\n  const propertiesNames = ['season', 'episode', 'year'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], convertToValidExpression(val));\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default number properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultNumberProperties(searchObject) {\r\n  const {\r\n    season, episode, year,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {Set<TPN>} set The TPN set\r\n * @param {Map<string, numberExpressionObject>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByNumber(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => resolveExpression(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
@@ -1592,7 +1634,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 68,
+    "__docId__": 69,
     "kind": "function",
     "name": "convertToValidExpression",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1656,7 +1698,7 @@
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 70,
     "kind": "function",
     "name": "resolveExpression",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1733,7 +1775,7 @@
     "ignore": true
   },
   {
-    "__docId__": 70,
+    "__docId__": 71,
     "kind": "function",
     "name": "filterDefaultNumberProperties",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1769,7 +1811,7 @@
     }
   },
   {
-    "__docId__": 71,
+    "__docId__": 72,
     "kind": "function",
     "name": "excludeDefaultNumberProperties",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1805,7 +1847,7 @@
     }
   },
   {
-    "__docId__": 72,
+    "__docId__": 73,
     "kind": "function",
     "name": "filterByNumber",
     "memberof": "src/filters/filterNumberProperty.js",
@@ -1851,7 +1893,7 @@
     }
   },
   {
-    "__docId__": 73,
+    "__docId__": 74,
     "kind": "file",
     "name": "src/filters/filterStringProperty.js",
     "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, string|string[]>} the result map\r\n */\r\nexport function filterDefaultStringProperties(searchObject) {\r\n  const {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [title, resolution, codec, audio, group,\r\n    region, container, language, source];\r\n  const propertiesNames = ['title', 'resolution', 'codec', 'audio', 'group',\r\n    'region', 'container', 'language', 'source'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], val);\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default string properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultStringProperties(searchObject) {\r\n  let {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter function for filterByString\r\n * @param {string} property The property to be checked\r\n * @param {string[]|string} expected The expected result\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction filterFunctionByType(property, expected, object) {\r\n  if (Array.isArray(expected)) { return expected.includes(object[property]); }\r\n  return object[property] === expected;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {Set<TPN>} set The TPN set\r\n * @param {Map<string, string|string[]>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByString(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => filterFunctionByType(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
@@ -1862,7 +1904,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 74,
+    "__docId__": 75,
     "kind": "function",
     "name": "filterDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1898,7 +1940,7 @@
     }
   },
   {
-    "__docId__": 75,
+    "__docId__": 76,
     "kind": "function",
     "name": "excludeDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1934,7 +1976,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 77,
     "kind": "function",
     "name": "filterFunctionByType",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1992,7 +2034,7 @@
     "ignore": true
   },
   {
-    "__docId__": 77,
+    "__docId__": 78,
     "kind": "function",
     "name": "filterByString",
     "memberof": "src/filters/filterStringProperty.js",
@@ -2038,10 +2080,10 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 79,
     "kind": "file",
     "name": "src/TorrentLibrary.js",
-    "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external {Promise} http://bluebirdjs.com/docs/api-reference\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Parser for media files name\r\n * @see {@link https://github.com/clement-escolano/parse-torrent-title}\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\n/**\r\n * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter\r\n */\r\nimport EventEmitter from 'events';\r\n\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filters/filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filters/filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filters/filterStringProperty';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends {EventEmitter}\r\n */\r\nexport default class TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @since 1.0.4\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     */\r\n  constructor({\r\n    defaultPath = process.cwd()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    paths = [] /* istanbul ignore next: tired of writing tests */,\r\n    allFilesWithCategory = new Map()\r\n    /* istanbul ignore next: tired of writing tests */,\r\n    movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n    series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n  } = {} /* istanbul ignore next: tired of writing tests */) {\r\n    super();\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @since 0.0.0\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @since 0.0.0\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         * @since 0.0.0\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @since 0.0.0\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      const that = this;\r\n\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...that.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = that.allMovies;\r\n          const newTvSeries = that.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = nameParser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            that.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          that.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        }\r\n      });\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    const that = this;\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        that.paths = uniq([...that.paths, ...paths.map(normalize)]);\r\n        that.emit('addNewPath', { paths: that.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        that.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    }));\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n    const that = this;\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => that.addNewFiles(files)).then(() => {\r\n          that.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch(/* istanbul ignore next */ (err) => {\r\n        /* istanbul ignore next */\r\n          that.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          /* istanbul ignore next */\r\n          reject(err);\r\n        });\r\n    });\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    const that = this;\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          that.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        that.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...that.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => nameParser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = that.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        that.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          that.categoryForFile.delete(file);\r\n        });\r\n        that.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n        /* istanbul ignore next */\r\n      } catch (err) {\r\n        /* istanbul ignore next */\r\n        that.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        /* istanbul ignore next */\r\n        reject(err);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example\r\n     * @since 1.2.0\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     */\r\n  static createFromJSON(json) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN_Extended>} the filtered movie set\r\n   * @since 1.3.0\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // organize search based on field type : boolean - string - number\r\n    // eslint-disable-next-line max-len\r\n    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n    // eslint-disable-next-line max-len\r\n    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n    let { additionalProperties } = leftSearchParameters;\r\n    // add the optional new properties , optionally provided by user\r\n    /* istanbul ignore else */\r\n    if (additionalProperties !== undefined) {\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'boolean')\r\n        .forEach((newProperty) => {\r\n          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'number')\r\n        .forEach((newProperty) => {\r\n          let expression = convertToValidExpression(newProperty.value);\r\n          /* istanbul ignore else */\r\n          if (expression !== undefined) {\r\n            numberFieldsSearchMap.set(newProperty.name, expression);\r\n          }\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'string')\r\n        .forEach((newProperty) => {\r\n          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n        });\r\n    }\r\n\r\n    // apply params based on types\r\n    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);\r\n    result = filterByNumber(result, numberFieldsSearchMap);\r\n    result = filterByString(result, stringFieldsSearchMap);\r\n    return result;\r\n  }\r\n}\r\n",
+    "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external {Promise} http://bluebirdjs.com/docs/api-reference\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Default Parser for media files name\r\n * @type {customParsingFunction}\r\n * @external {nameParser} https://github.com/clement-escolano/parse-torrent-title\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\n/**\r\n * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter\r\n */\r\nimport EventEmitter from 'events';\r\n\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filters/filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filters/filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filters/filterStringProperty';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends {EventEmitter}\r\n */\r\nexport default class TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @since 1.0.4\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The parsing function to be used with this lib ;\r\n     * default is function parse from parse-torrent-title package\r\n   */\r\n  constructor(\r\n    {\r\n      defaultPath = process.cwd()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      paths = [] /* istanbul ignore next: tired of writing tests */,\r\n      allFilesWithCategory = new Map()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n      series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n    } = {} /* istanbul ignore next: tired of writing tests */,\r\n    parser = nameParser /* istanbul ignore next: tired of writing tests */,\r\n  ) {\r\n    super();\r\n    /**\r\n     * The parsing function to be used with this lib\r\n     * @since 1.4.0\r\n     * @type {customParsingFunction}\r\n     */\r\n    this.parser = parser;\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @since 0.0.0\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @since 0.0.0\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         * @since 0.0.0\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @since 0.0.0\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...this.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = this.allMovies;\r\n          const newTvSeries = this.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = this.parser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            this.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          reject(err);\r\n        }\r\n      }).bind(true);\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        this.paths = uniq([...this.paths, ...paths.map(normalize)]);\r\n        this.emit('addNewPath', { paths: this.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        this.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    })).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => this.addNewFiles(files)).then(() => {\r\n          this.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch((err) => {\r\n          this.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          reject(err);\r\n        });\r\n    }).bind(this);\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          this.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        this.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...this.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => this.parser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = this.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          this.categoryForFile.delete(file);\r\n        });\r\n        this.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n      } catch (err) {\r\n        this.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        reject(err);\r\n      }\r\n    }).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example\r\n     * @since 1.2.0\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     * @example\r\n     * // As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions\r\n     * // If you want an extra field to be populated\r\n     * const ptt = require(\"parse-torrent-title\");\r\n     * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n     * // creates an new instance from another one; with custom parser\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *      ptt.parse\r\n     *   );\r\n     */\r\n  static createFromJSON(json, parser = nameParser) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config, parser);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN_Extended>} the filtered movie set\r\n   * @since 1.3.0\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // organize search based on field type : boolean - string - number\r\n    // eslint-disable-next-line max-len\r\n    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n    // eslint-disable-next-line max-len\r\n    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n    let { additionalProperties } = leftSearchParameters;\r\n    // add the optional new properties , optionally provided by user\r\n    /* istanbul ignore else */\r\n    if (additionalProperties !== undefined) {\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'boolean')\r\n        .forEach((newProperty) => {\r\n          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'number')\r\n        .forEach((newProperty) => {\r\n          let expression = convertToValidExpression(newProperty.value);\r\n          /* istanbul ignore else */\r\n          if (expression !== undefined) {\r\n            numberFieldsSearchMap.set(newProperty.name, expression);\r\n          }\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'string')\r\n        .forEach((newProperty) => {\r\n          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n        });\r\n    }\r\n\r\n    // apply params based on types\r\n    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);\r\n    result = filterByNumber(result, numberFieldsSearchMap);\r\n    result = filterByString(result, stringFieldsSearchMap);\r\n    return result;\r\n  }\r\n}\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/src/TorrentLibrary.js",
     "access": "public",
@@ -2049,7 +2091,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 79,
+    "__docId__": 80,
     "kind": "external",
     "name": "Promise",
     "externalLink": "http://bluebirdjs.com/docs/api-reference",
@@ -2061,7 +2103,27 @@
     "lineNumber": 38
   },
   {
-    "__docId__": 80,
+    "__docId__": 81,
+    "kind": "external",
+    "name": "nameParser",
+    "externalLink": "https://github.com/clement-escolano/parse-torrent-title",
+    "memberof": "src/TorrentLibrary.js",
+    "static": true,
+    "longname": "src/TorrentLibrary.js~nameParser",
+    "access": "public",
+    "description": "Default Parser for media files name",
+    "lineNumber": 51,
+    "type": {
+      "nullable": null,
+      "types": [
+        "customParsingFunction"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 82,
     "kind": "external",
     "name": "EventEmitter",
     "externalLink": "https://nodejs.org/api/events.html#events_class_eventemitter",
@@ -2070,10 +2132,10 @@
     "longname": "src/TorrentLibrary.js~EventEmitter",
     "access": "public",
     "description": "",
-    "lineNumber": 55
+    "lineNumber": 56
   },
   {
-    "__docId__": 81,
+    "__docId__": 83,
     "kind": "function",
     "name": "checkProperties",
     "memberof": "src/TorrentLibrary.js",
@@ -2086,7 +2148,7 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": null,
     "description": "check if an object has these properties and they are not undefined",
-    "lineNumber": 91,
+    "lineNumber": 92,
     "params": [
       {
         "nullable": null,
@@ -2120,7 +2182,7 @@
     "ignore": true
   },
   {
-    "__docId__": 82,
+    "__docId__": 84,
     "kind": "function",
     "name": "missingParam",
     "memberof": "src/TorrentLibrary.js",
@@ -2133,7 +2195,7 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": null,
     "description": "rejected promise when someone doesn't provide",
-    "lineNumber": 99,
+    "lineNumber": 100,
     "return": {
       "nullable": null,
       "types": [
@@ -2146,7 +2208,7 @@
     "ignore": true
   },
   {
-    "__docId__": 83,
+    "__docId__": 85,
     "kind": "function",
     "name": "promisifiedAccess",
     "memberof": "src/TorrentLibrary.js",
@@ -2162,7 +2224,7 @@
     "see": [
       "{@link https://github.com/petkaantonov/bluebird/issues/1442}"
     ],
-    "lineNumber": 112,
+    "lineNumber": 113,
     "unknown": [
       {
         "tagName": "@returns",
@@ -2192,7 +2254,7 @@
     "ignore": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 86,
     "kind": "class",
     "name": "TorrentLibrary",
     "memberof": "src/TorrentLibrary.js",
@@ -2203,14 +2265,14 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": "TorrentLibrary",
     "description": "Class representing the TorrentLibrary",
-    "lineNumber": 125,
+    "lineNumber": 126,
     "interface": false,
     "extends": [
       "EventEmitter"
     ]
   },
   {
-    "__docId__": 85,
+    "__docId__": 87,
     "kind": "get",
     "name": "MOVIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2220,7 +2282,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary.MOVIES_TYPE",
     "access": "public",
     "description": "constant for movie category",
-    "lineNumber": 132,
+    "lineNumber": 133,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2232,7 +2294,7 @@
     }
   },
   {
-    "__docId__": 86,
+    "__docId__": 88,
     "kind": "get",
     "name": "TV_SERIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2242,7 +2304,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary.TV_SERIES_TYPE",
     "access": "public",
     "description": "constant for tv series category",
-    "lineNumber": 142,
+    "lineNumber": 143,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2254,7 +2316,7 @@
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 89,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2264,7 +2326,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#constructor",
     "access": "public",
     "description": "Create a TorrentLibrary",
-    "lineNumber": 156,
+    "lineNumber": 159,
     "since": "1.0.4",
     "params": [
       {
@@ -2336,11 +2398,43 @@
         "defaultRaw": "new Map()",
         "name": "config.series",
         "description": "the serie files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "customParsingFunction"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "nameParser",
+        "defaultRaw": "nameParser",
+        "name": "parser",
+        "description": "The parsing function to be used with this lib ;\ndefault is function parse from parse-torrent-title package"
       }
     ]
   },
   {
-    "__docId__": 88,
+    "__docId__": 90,
+    "kind": "member",
+    "name": "parser",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#parser",
+    "access": "public",
+    "description": "The parsing function to be used with this lib",
+    "lineNumber": 177,
+    "since": "1.4.0",
+    "type": {
+      "nullable": null,
+      "types": [
+        "customParsingFunction"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 91,
     "kind": "member",
     "name": "defaultPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2348,7 +2442,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#defaultPath",
     "access": "public",
     "description": "just an easy way to scan the current directory path, if not other paths provided",
-    "lineNumber": 171,
+    "lineNumber": 183,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2360,7 +2454,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 92,
     "kind": "member",
     "name": "paths",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2371,7 +2465,7 @@
     "examples": [
       "// after have added some paths ...\n[ \"D:\\somePath\", \"D:\\anotherPath\" ]"
     ],
-    "lineNumber": 180,
+    "lineNumber": 192,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2383,7 +2477,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 93,
     "kind": "member",
     "name": "stores",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2391,7 +2485,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#stores",
     "access": "public",
     "description": "The variable where we store all kind of media files found in paths",
-    "lineNumber": 186,
+    "lineNumber": 198,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2403,7 +2497,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 94,
     "kind": "member",
     "name": "categoryForFile",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2414,7 +2508,7 @@
     "examples": [
       "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
     ],
-    "lineNumber": 197,
+    "lineNumber": 209,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2426,7 +2520,7 @@
     }
   },
   {
-    "__docId__": 92,
+    "__docId__": 95,
     "kind": "method",
     "name": "listVideosExtension",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2439,7 +2533,7 @@
     "examples": [
       "// Returns [..., 'webm', 'wmv']\nTorrentLibrary.listVideosExtension()"
     ],
-    "lineNumber": 292,
+    "lineNumber": 301,
     "since": "0.0.0",
     "return": {
       "nullable": null,
@@ -2452,7 +2546,7 @@
     "params": []
   },
   {
-    "__docId__": 93,
+    "__docId__": 96,
     "kind": "method",
     "name": "addNewPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2465,7 +2559,7 @@
     "examples": [
       "// return resolved Promise \"All paths were added!\"\nTorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");"
     ],
-    "lineNumber": 310,
+    "lineNumber": 319,
     "since": "0.0.0",
     "params": [
       {
@@ -2509,7 +2603,7 @@
     ]
   },
   {
-    "__docId__": 94,
+    "__docId__": 98,
     "kind": "method",
     "name": "hasPathsProvidedByUser",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2522,7 +2616,7 @@
     "examples": [
       "TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\nTorrentLibraryInstance.hasPathsProvidedByUser() // TRUE"
     ],
-    "lineNumber": 345,
+    "lineNumber": 353,
     "since": "0.0.0",
     "unknown": [
       {
@@ -2541,7 +2635,7 @@
     "params": []
   },
   {
-    "__docId__": 95,
+    "__docId__": 99,
     "kind": "method",
     "name": "scan",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2551,7 +2645,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#scan",
     "access": "public",
     "description": "Scans the paths in search for new files to be added inside this lib",
-    "lineNumber": 357,
+    "lineNumber": 365,
     "since": "0.0.0",
     "return": {
       "nullable": null,
@@ -2578,7 +2672,7 @@
     "params": []
   },
   {
-    "__docId__": 96,
+    "__docId__": 100,
     "kind": "method",
     "name": "removeOldFiles",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2591,7 +2685,7 @@
     "examples": [
       "// with multiples files\nTorrentLibraryInstance.removeOldFiles(\n   \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\n   \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n)"
     ],
-    "lineNumber": 398,
+    "lineNumber": 403,
     "since": "1.0.3",
     "params": [
       {
@@ -2629,7 +2723,7 @@
     ]
   },
   {
-    "__docId__": 97,
+    "__docId__": 101,
     "kind": "get",
     "name": "allMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2642,7 +2736,7 @@
     "examples": [
       "// an JSON stringified example of this method\n[\n {\n  \"year\":2012,\n  \"source\":\"dvdrip\",\n  \"codec\":\"xvid\",\n  \"group\":\"-www.zone-telechargement.ws.avi\",\n  \"container\":\"avi\",\n  \"language\":\"truefrench\",\n  \"title\":\"Bad Ass\",\n  \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\n }\n]"
     ],
-    "lineNumber": 477,
+    "lineNumber": 478,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2654,7 +2748,7 @@
     }
   },
   {
-    "__docId__": 98,
+    "__docId__": 102,
     "kind": "get",
     "name": "allTvSeries",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2667,7 +2761,7 @@
     "examples": [
       "// an JSON stringified example of this method\n{\n\"The Blacklist\":[\n   {\n     \"season\":4,\n     \"episode\":21,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n  },\n  {\n     \"season\":4,\n     \"episode\":14,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\n  }\n]\n}"
     ],
-    "lineNumber": 512,
+    "lineNumber": 513,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2679,7 +2773,7 @@
     }
   },
   {
-    "__docId__": 99,
+    "__docId__": 103,
     "kind": "get",
     "name": "allFilesWithCategory",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2692,7 +2786,7 @@
     "examples": [
       "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
     ],
-    "lineNumber": 523,
+    "lineNumber": 524,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2704,7 +2798,7 @@
     }
   },
   {
-    "__docId__": 100,
+    "__docId__": 104,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2717,7 +2811,7 @@
     "see": [
       "{@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}"
     ],
-    "lineNumber": 533,
+    "lineNumber": 534,
     "since": "1.0.3",
     "return": {
       "nullable": null,
@@ -2730,7 +2824,7 @@
     "params": []
   },
   {
-    "__docId__": 101,
+    "__docId__": 105,
     "kind": "method",
     "name": "createFromJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2741,12 +2835,13 @@
     "access": "public",
     "description": "Creates an instance of TorrentLibrary",
     "examples": [
-      "// creates an new instance from another one\n  const createdInstance = TorrentLibrary.createFromJSON(\n     JSON.parse(libInstance.toJSON()),\n  );"
+      "// creates an new instance from another one\n  const createdInstance = TorrentLibrary.createFromJSON(\n     JSON.parse(libInstance.toJSON()),\n  );",
+      "// As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions\n// If you want an extra field to be populated\nconst ptt = require(\"parse-torrent-title\");\nptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\n// creates an new instance from another one; with custom parser\n  const createdInstance = TorrentLibrary.createFromJSON(\n     JSON.parse(libInstance.toJSON()),\n     ptt.parse\n  );"
     ],
     "see": [
       "{@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example"
     ],
-    "lineNumber": 561,
+    "lineNumber": 573,
     "since": "1.2.0",
     "params": [
       {
@@ -2798,6 +2893,18 @@
         "optional": false,
         "name": "json.tv-series",
         "description": "the serie files"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "customParsingFunction"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "nameParser",
+        "defaultRaw": "nameParser",
+        "name": "parser",
+        "description": "The custom parser you want to use"
       }
     ],
     "return": {
@@ -2810,7 +2917,7 @@
     }
   },
   {
-    "__docId__": 102,
+    "__docId__": 106,
     "kind": "method",
     "name": "filterMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2820,7 +2927,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#filterMovies",
     "access": "public",
     "description": "Filter the movies based on search parameters",
-    "lineNumber": 589,
+    "lineNumber": 601,
     "since": "1.3.0",
     "params": [
       {
@@ -2853,7 +2960,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"torrent-files-library\",\n  \"version\": \"0.0.0-development\",\n  \"description\": \"Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\",\n  \"main\": \"index.js\",\n  \"files\": [\n    \"index.js\",\n    \"lib/\"\n  ],\n  \"scripts\": {\n    \"semantic-release\": \"semantic-release -e ./config/release.config.js\",\n    \"compile\": \"babel -d lib/ src/ --source-maps both --no-comments\",\n    \"prepare\": \"npm run compile\",\n    \"test\": \"nyc ava\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"coverage-html\": \"nyc report --reporter=html\",\n    \"generate-docs\": \"node_modules/.bin/jsdoc --configure config/.jsdoc.json --verbose\",\n    \"esdoc\": \"node_modules/.bin/esdoc\",\n    \"lint\": \"./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix\"\n  },\n  \"engines\": {\n    \"node\": \">=6\",\n    \"npm\": \">=5\"\n  },\n  \"keywords\": [\n    \"torrent\",\n    \"library\",\n    \"parser\",\n    \"torrent file\",\n    \"torrent files\",\n    \"parse torrent\",\n    \"parse torrent file\",\n    \"parse torrent files\",\n    \"parse torrent name\",\n    \"torrent library\"\n  ],\n  \"author\": \"jy95\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/jy95/torrent-files-library.git\"\n  },\n  \"devDependencies\": {\n    \"ava\": \"^0.24.0\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"conventional-changelog-eslint\": \"^0.3.0\",\n    \"coveralls\": \"^3.0.0\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.16.0\",\n    \"eslint-config-airbnb-base\": \"^12.0.2\",\n    \"eslint-plugin-import\": \"^2.8.0\",\n    \"nyc\": \"^11.4.1\",\n    \"semantic-release\": \"^12.2.4\",\n    \"sinon\": \"^4.2.0\"\n  },\n  \"dependencies\": {\n    \"bluebird\": \"^3.5.1\",\n    \"filehound\": \"^1.16.2\",\n    \"lodash\": \"^4.17.4\",\n    \"parse-torrent-title\": \"^1.1.0\",\n    \"video-extensions\": \"^1.1.0\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"torrent-files-library\",\n  \"version\": \"0.0.0-development\",\n  \"description\": \"Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\",\n  \"main\": \"index.js\",\n  \"files\": [\n    \"index.js\",\n    \"lib/\"\n  ],\n  \"scripts\": {\n    \"semantic-release\": \"semantic-release -e ./config/release.config.js\",\n    \"compile\": \"babel -d lib/ src/ --source-maps both --no-comments\",\n    \"prepare\": \"npm run compile\",\n    \"test\": \"nyc ava\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"coverage-html\": \"nyc report --reporter=html\",\n    \"esdoc\": \"node_modules/.bin/esdoc\",\n    \"lint\": \"./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix\"\n  },\n  \"engines\": {\n    \"node\": \">=6\",\n    \"npm\": \">=5\"\n  },\n  \"keywords\": [\n    \"torrent\",\n    \"library\",\n    \"parser\",\n    \"torrent file\",\n    \"torrent files\",\n    \"parse torrent\",\n    \"parse torrent file\",\n    \"parse torrent files\",\n    \"parse torrent name\",\n    \"torrent library\"\n  ],\n  \"author\": \"jy95\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/jy95/torrent-files-library.git\"\n  },\n  \"devDependencies\": {\n    \"@semantic-release/changelog\": \"^1.0.0\",\n    \"@semantic-release/git\": \"^3.0.0\",\n    \"ava\": \"^0.25.0\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"conventional-changelog-eslint\": \"^0.3.0\",\n    \"coveralls\": \"^3.0.0\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.16.0\",\n    \"eslint-config-airbnb-base\": \"^12.0.2\",\n    \"eslint-plugin-import\": \"^2.8.0\",\n    \"nyc\": \"^11.4.1\",\n    \"semantic-release\": \"^12.4.1\",\n    \"sinon\": \"^4.2.2\"\n  },\n  \"dependencies\": {\n    \"bluebird\": \"^3.5.1\",\n    \"filehound\": \"^1.16.2\",\n    \"lodash\": \"^4.17.4\",\n    \"parse-torrent-title\": \"^1.1.0\",\n    \"video-extensions\": \"^1.1.0\"\n  }\n}\n",
     "longname": "D:\\workspaceNodeJs\\torrent-files-library\\package.json",
     "name": "package.json",
     "static": true,
@@ -2910,12 +3017,12 @@
     "kind": "manual",
     "longname": "D:\\workspaceNodeJs\\torrent-files-library\\CHANGELOG.md",
     "name": "./CHANGELOG.md",
-    "content": "# Changelog\r\n\r\n<a name=\"1.2.4\"></a>\r\n## [1.2.4](https://github.com/jy95/torrent-files-library/compare/v1.2.3...v1.2.4) (2018-01-21)\r\n\r\n\r\n### Fix\r\n\r\n* Fix automatic changelog config ([fa3c5ff3a15c160edc450835c2919a35722fb5fb](https://github.com/jy95/torrent-files-library/commit/fa3c5ff3a15c160edc450835c2919a35722fb5fb))\r\n\r\n<a name=\"1.2.3\"></a>\r\n## [1.2.3](https://github.com/jy95/torrent-files-library/compare/v1.2.2...v1.2.3) (2018-01-21)\r\n\r\n\r\n### Chore\r\n\r\n* Remove osx build on travis CI (too slow) ([0be825b82d2101b288f45800b889696ea9aef808](https://github.com/jy95/torrent-files-library/commit/0be825b82d2101b288f45800b889696ea9aef808))\r\n* Update dependancies ([bf7971527d40dd5c53c6713b365e89daf2d61084](https://github.com/jy95/torrent-files-library/commit/bf7971527d40dd5c53c6713b365e89daf2d61084))\r\n* Update dependancies to fix security issues of marked ([59060d89f8598edee730fa16c6f636e6f1e25c04](https://github.com/jy95/torrent-files-library/commit/59060d89f8598edee730fa16c6f636e6f1e25c04))\r\n* Update semantic-release preset regex ([e2b839e4b02cfc7c97f6aea2444141f049162172](https://github.com/jy95/torrent-files-library/commit/e2b839e4b02cfc7c97f6aea2444141f049162172))\r\n\r\n### Docs\r\n\r\n* Add automatic changelog.md ([6ff3328347f021b205fb4a5676ba4661b4eb3256](https://github.com/jy95/torrent-files-library/commit/6ff3328347f021b205fb4a5676ba4661b4eb3256))\r\n\r\n### Perf\r\n\r\n* Remove comments from lib version ([e54318a617b7cda1ce7d8be15d86482ba9d1aa18](https://github.com/jy95/torrent-files-library/commit/e54318a617b7cda1ce7d8be15d86482ba9d1aa18))\r\n\r\n### Style\r\n\r\n* Add the emoji to github ([b993c360d374272fbdc189b438c2fe2fcfc0f9e6](https://github.com/jy95/torrent-files-library/commit/b993c360d374272fbdc189b438c2fe2fcfc0f9e6))\r\n\r\n### Test\r\n\r\n* Drop mocha unit tests ([b0897b360f3d304dbb1090ddf2bfa5c75b6049c4](https://github.com/jy95/torrent-files-library/commit/b0897b360f3d304dbb1090ddf2bfa5c75b6049c4))\r\n* Fix code coverage ([270a8b77f35486498da9b318d5091f8fed2c085f](https://github.com/jy95/torrent-files-library/commit/270a8b77f35486498da9b318d5091f8fed2c085f))\r\n\r\n<a name=\"1.2.2\"></a>\r\n## [1.2.2](https://github.com/jy95/torrent-files-library/compare/v1.2.1...v1.2.2) (2017-12-23)\r\n\r\n\r\n### Chore\r\n\r\n* Breaking change of semantic-release ([55af47fbd75387b090aa07e0d6fc67c57994ac75](https://github.com/jy95/torrent-files-library/commit/55af47fbd75387b090aa07e0d6fc67c57994ac75)), closes [/github.com/semantic-release/semantic-release/issues/572#issuecomment-353631426](https://github.com//github.com/semantic-release/semantic-release/issues/572/issues/issuecomment-353631426)\r\n* Make cleaning stuff ([6ca25601f7d348ae4022a3f79d6936b098254980](https://github.com/jy95/torrent-files-library/commit/6ca25601f7d348ae4022a3f79d6936b098254980))\r\n* Mocha V4 - compilers deprecation ([55378fadbff964b8d4fc6b5559cffef424c132b0](https://github.com/jy95/torrent-files-library/commit/55378fadbff964b8d4fc6b5559cffef424c132b0))\r\n* Update lock file ([5ec79c595ae1816c353a1da1f5a16220a9aca527](https://github.com/jy95/torrent-files-library/commit/5ec79c595ae1816c353a1da1f5a16220a9aca527))\r\n* Use semantic-release plugins only ([e61c88efc6107cbf865b3e4851a0ef6cdd00a55e](https://github.com/jy95/torrent-files-library/commit/e61c88efc6107cbf865b3e4851a0ef6cdd00a55e))\r\n\r\n### CI\r\n\r\n* Added Greenkeeper lockfile ([f86ac271b3884832094092b524b4ca832cc6d112](https://github.com/jy95/torrent-files-library/commit/f86ac271b3884832094092b524b4ca832cc6d112))\r\n\r\n### Refactor\r\n\r\n* Remove emoji for sgcrc ([4d8a6237d697a054c1828a56948c6eabf93c5689](https://github.com/jy95/torrent-files-library/commit/4d8a6237d697a054c1828a56948c6eabf93c5689))\r\n\r\n<a name=\"1.2.1\"></a>\r\n## [1.2.1](https://github.com/jy95/torrent-files-library/compare/v1.2.0...v1.2.1) (2017-09-10)\r\n\r\n\r\n### Fix\r\n\r\n* wrong boolean for hasPathsProvidedByUser ([c8c5fa1985dd206499bd8e5af08b043290b93299](https://github.com/jy95/torrent-files-library/commit/c8c5fa1985dd206499bd8e5af08b043290b93299))\r\n\r\n<a name=\"1.2.0\"></a>\r\n## [1.2.0](https://github.com/jy95/torrent-files-library/compare/v1.1.0...v1.2.0) (2017-09-08)\r\n\r\n\r\n### Feat\r\n\r\n* createFromJSON - create an instance with toJSON ([a69fcee4b234b12de5229d14819ebff43fab996a](https://github.com/jy95/torrent-files-library/commit/a69fcee4b234b12de5229d14819ebff43fab996a))\r\n\r\n### Style\r\n\r\n* Fix babel syntax for coverage ([2a8eadf0323755c1fa7bdcdacb057a0de7c3e381](https://github.com/jy95/torrent-files-library/commit/2a8eadf0323755c1fa7bdcdacb057a0de7c3e381))\r\n\r\n### Test\r\n\r\n* Add missing tests for events ([0047fca9efd76bd51580128926c1c6bd7a412c73](https://github.com/jy95/torrent-files-library/commit/0047fca9efd76bd51580128926c1c6bd7a412c73))\r\n\r\n<a name=\"1.1.0\"></a>\r\n## [1.1.0](https://github.com/jy95/torrent-files-library/compare/v1.0.4...v1.1.0) (2017-09-08)\r\n\r\n\r\n### Chore\r\n\r\n* change event error to error_in_function ([cd689f4ea4c7c8dd6afd84251259c256471f0477](https://github.com/jy95/torrent-files-library/commit/cd689f4ea4c7c8dd6afd84251259c256471f0477))\r\n* remove sinonjs ([9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4](https://github.com/jy95/torrent-files-library/commit/9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4))\r\n\r\n### Docs\r\n\r\n* explain default params value in constructor ([1be4e825ea75506cab0903a5b7c87bd4dbac4896](https://github.com/jy95/torrent-files-library/commit/1be4e825ea75506cab0903a5b7c87bd4dbac4896))\r\n* separate jsdoc into another files ([cb29a027a0acdc941d5f8ab35da636ac9b34ffed](https://github.com/jy95/torrent-files-library/commit/cb29a027a0acdc941d5f8ab35da636ac9b34ffed))\r\n\r\n### Feat\r\n\r\n* Support events listeners ([9461036818649b2e85dc0b8068ac926b33a3c617](https://github.com/jy95/torrent-files-library/commit/9461036818649b2e85dc0b8068ac926b33a3c617))\r\n\r\n### Style\r\n\r\n* Trying to fix unhandeld promise ([2f7a487a33dbe07eac47d176c3771c3dc7c89ce4](https://github.com/jy95/torrent-files-library/commit/2f7a487a33dbe07eac47d176c3771c3dc7c89ce4))\r\n\r\n### Test\r\n\r\n* Added tests for events  ([78c9fe3bceac9474fd1d77641802b65c2768fbe0](https://github.com/jy95/torrent-files-library/commit/78c9fe3bceac9474fd1d77641802b65c2768fbe0))\r\n\r\n<a name=\"1.0.4\"></a>\r\n## [1.0.4](https://github.com/jy95/torrent-files-library/compare/v1.0.3...v1.0.4) (2017-09-06)\r\n\r\n\r\n### Chore\r\n\r\n* Correct the wrong property for releaseRules ([b2f17c402bf8a2451a3b32ab06259e5bc162ba58](https://github.com/jy95/torrent-files-library/commit/b2f17c402bf8a2451a3b32ab06259e5bc162ba58))\r\n\r\n### Docs\r\n\r\n* change example in readme.md ([a5a7e23836e7f165248d0c0d668256c623633d75](https://github.com/jy95/torrent-files-library/commit/a5a7e23836e7f165248d0c0d668256c623633d75))\r\n* fix filemapping png file mess up ([94337e1dcff8702aa59f9121528ef89fc5ce23b1](https://github.com/jy95/torrent-files-library/commit/94337e1dcff8702aa59f9121528ef89fc5ce23b1))\r\n* Fix png files mess up ([faf9c7acd8af0841fe7c152a53843be65723d710](https://github.com/jy95/torrent-files-library/commit/faf9c7acd8af0841fe7c152a53843be65723d710))\r\n* replace gif by png ([0d08dab62159d48d8c0d4dec014d21323171b8af](https://github.com/jy95/torrent-files-library/commit/0d08dab62159d48d8c0d4dec014d21323171b8af))\r\n\r\n### Perf\r\n\r\n* overload constructor ([9e091c31f4228e170004d966219b5a3e50817ba4](https://github.com/jy95/torrent-files-library/commit/9e091c31f4228e170004d966219b5a3e50817ba4))\r\n\r\n### Test\r\n\r\n* Fix coverage default params missed ([088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9](https://github.com/jy95/torrent-files-library/commit/088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9))\r\n\r\n<a name=\"1.0.3\"></a>\r\n## [1.0.3](https://github.com/jy95/torrent-files-library/compare/v1.0.2...v1.0.3) (2017-09-03)\r\n\r\n\r\n### Docs\r\n\r\n* Add an new example ([a9d0084b732f4d7ceb0abb6626e41f16f904902d](https://github.com/jy95/torrent-files-library/commit/a9d0084b732f4d7ceb0abb6626e41f16f904902d))\r\n* create CODE_OF_CONDUCT.md ([56b88c6089ffabcafb78287b540127ba324c4d32](https://github.com/jy95/torrent-files-library/commit/56b88c6089ffabcafb78287b540127ba324c4d32))\r\n* updated docs ([afef9f743d25f1dd8b6b283152e492de09c3e25a](https://github.com/jy95/torrent-files-library/commit/afef9f743d25f1dd8b6b283152e492de09c3e25a))\r\n* updated docs ([25edc16bc41070c21faa8ca1ad70b5abee1e35ae](https://github.com/jy95/torrent-files-library/commit/25edc16bc41070c21faa8ca1ad70b5abee1e35ae))\r\n* Updated docs ([3cb9b519ea3b2a73eea92952baea98244d3fad37](https://github.com/jy95/torrent-files-library/commit/3cb9b519ea3b2a73eea92952baea98244d3fad37))\r\n\r\n### Feat\r\n\r\n* initial removeOldFiles method implementation ([a5d21f84110e215da086718060a2b42e91521f45](https://github.com/jy95/torrent-files-library/commit/a5d21f84110e215da086718060a2b42e91521f45))\r\n* toJSON() custom implementation ([ca7a0cadbda175f39a0fa4386b5728ca38c50647](https://github.com/jy95/torrent-files-library/commit/ca7a0cadbda175f39a0fa4386b5728ca38c50647))\r\n\r\n### Fix\r\n\r\n* Correct getters that uses reference instead of values ([064d79edcc0a7619a1cb8d68c7d6e0433834ddab](https://github.com/jy95/torrent-files-library/commit/064d79edcc0a7619a1cb8d68c7d6e0433834ddab))\r\n* make JSON test cross platform ([e8dd44b8264a399255b7f3fcecfc94a976f3e5c0](https://github.com/jy95/torrent-files-library/commit/e8dd44b8264a399255b7f3fcecfc94a976f3e5c0))\r\n\r\n### Perf\r\n\r\n* modified releaseRules for release ([3a775c071ea57021bbcfca7587351349895c0d52](https://github.com/jy95/torrent-files-library/commit/3a775c071ea57021bbcfca7587351349895c0d52))\r\n* promisify addNewFiles ([ffdf72a28941abedfc186f6cf5e6fb09ee83621d](https://github.com/jy95/torrent-files-library/commit/ffdf72a28941abedfc186f6cf5e6fb09ee83621d))\r\n* Replace torrent name parser lib by an new one ([5c428a003acb81987b35841af78d5012f6a5c8bd](https://github.com/jy95/torrent-files-library/commit/5c428a003acb81987b35841af78d5012f6a5c8bd))\r\n\r\n### Refactor\r\n\r\n* Add keywords to package.json and code style for docs ([b9714f33e9d264d733b3ad3662fa09126afbe441](https://github.com/jy95/torrent-files-library/commit/b9714f33e9d264d733b3ad3662fa09126afbe441))\r\n* Make removeOldFiles method public ([8887d71938abe1b61fe74ec1ff4743b88e7b9446](https://github.com/jy95/torrent-files-library/commit/8887d71938abe1b61fe74ec1ff4743b88e7b9446))\r\n* Rewrited test code ([a252b833471e41086d2258acafb63e2fef794325](https://github.com/jy95/torrent-files-library/commit/a252b833471e41086d2258acafb63e2fef794325))\r\n\r\n### Test\r\n\r\n* Add tests for removeOldFiles ([0b1edebffe7c18251ddd5cd6e148bc07233fc8f5](https://github.com/jy95/torrent-files-library/commit/0b1edebffe7c18251ddd5cd6e148bc07233fc8f5))\r\n* Correct tests that uses reference instead of values ([49a2a1d053480a19d31926893b3f314d17c95a76](https://github.com/jy95/torrent-files-library/commit/49a2a1d053480a19d31926893b3f314d17c95a76))\r\n\r\n<a name=\"1.0.2\"></a>\r\n## [1.0.2](https://github.com/jy95/torrent-files-library/compare/v1.0.1...v1.0.2) (2017-08-30)\r\n\r\n\r\n### Docs\r\n\r\n* Make docs great ([b30d60e385b45dbb6396cc19dab2f4366df9bb39](https://github.com/jy95/torrent-files-library/commit/b30d60e385b45dbb6396cc19dab2f4366df9bb39))\r\n\r\n### Fix\r\n\r\n* Bug (this.timeout) due to rewrited test code ([46713737549820edde50657e5523c4099bf44478](https://github.com/jy95/torrent-files-library/commit/46713737549820edde50657e5523c4099bf44478))\r\n\r\n### Refactor\r\n\r\n* Rewrited code to match ESLint rules ([deb0d85d2ab31337f1d4561612f0753609acdad6](https://github.com/jy95/torrent-files-library/commit/deb0d85d2ab31337f1d4561612f0753609acdad6))\r\n* Rewrited tests code to match ESLint rules ([39cc30c856358fa918346b199e2bfc4dd5bc0899](https://github.com/jy95/torrent-files-library/commit/39cc30c856358fa918346b199e2bfc4dd5bc0899))\r\n\r\n<a name=\"1.0.1\"></a>\r\n## [1.0.1](https://github.com/jy95/torrent-files-library/compare/v1.0.0...v1.0.1) (2017-08-29)\r\n\r\n\r\n### Fix\r\n\r\n* Changelog missing at release ([1f06fdb24009aba9da1f52e77057265b9ef5c9ee](https://github.com/jy95/torrent-files-library/commit/1f06fdb24009aba9da1f52e77057265b9ef5c9ee))\r\n\r\n<a name=\"1.0.0\"></a>\r\n## 1.0.0 (2017-08-29)\r\n\r\n### CI\r\n\r\n* Fix missing coverage ([ac3f3612c3e087f01435247056561c048c02f419](https://github.com/jy95/torrent-files-library/commit/ac3f3612c3e087f01435247056561c048c02f419))\r\n* Fix out of date NPM version used by travis CI ([33408730e5303035a8949f7f469faddd1c72ef96](https://github.com/jy95/torrent-files-library/commit/33408730e5303035a8949f7f469faddd1c72ef96))\r\n* Replace Travis build Node.Js 4 for latest Node.Js release ([747a9e5d50376b6740635181bbe05ff45cb97bb8](https://github.com/jy95/torrent-files-library/commit/747a9e5d50376b6740635181bbe05ff45cb97bb8))\r\n* Set engines in package.json + readd job for Node.Js 6 ([2f60592e058edec2d17d051babc762dd3284496e](https://github.com/jy95/torrent-files-library/commit/2f60592e058edec2d17d051babc762dd3284496e))\r\n* Trying to set CI for semantic-release ([e4403e5409b46ad585f91558c6e952e308e3172f](https://github.com/jy95/torrent-files-library/commit/e4403e5409b46ad585f91558c6e952e308e3172f))\r\n\r\n### Docs\r\n\r\n* add example : how to use it ? ([49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc](https://github.com/jy95/torrent-files-library/commit/49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc))\r\n* Add JSDoc documentation ([a2853159762783914cf069d8e74856302353b427](https://github.com/jy95/torrent-files-library/commit/a2853159762783914cf069d8e74856302353b427))\r\n* Explain how this lib will handle analysis ([0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819](https://github.com/jy95/torrent-files-library/commit/0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819))\r\n* Improve Documentation ([5a429318fedbbf723020936b63547b7f648c46e5](https://github.com/jy95/torrent-files-library/commit/5a429318fedbbf723020936b63547b7f648c46e5))\r\n* Include an gif example for library ([131711cdf617ff5aeed1ad67f176dbc0c9fb0275](https://github.com/jy95/torrent-files-library/commit/131711cdf617ff5aeed1ad67f176dbc0c9fb0275))\r\n* Updated demo gifs ([556ccfdd817ad5415a7c57ac8fa92072a858a61f](https://github.com/jy95/torrent-files-library/commit/556ccfdd817ad5415a7c57ac8fa92072a858a61f))\r\n\r\n### Feat\r\n\r\n* Scan Implemented ([46ebf9376ae5823622784734f75cd2d133a9a25b](https://github.com/jy95/torrent-files-library/commit/46ebf9376ae5823622784734f75cd2d133a9a25b))\r\n* use normalize method from path (node) for paths ([d3f9baffbbc546e58dcdc3d5efe6952874bc48e7](https://github.com/jy95/torrent-files-library/commit/d3f9baffbbc546e58dcdc3d5efe6952874bc48e7))\r\n\r\n### Fix\r\n\r\n* .gitgnore mess up with lib folder ([da30f778a9d8ae936327e49b78b229214eb32d55](https://github.com/jy95/torrent-files-library/commit/da30f778a9d8ae936327e49b78b229214eb32d55))\r\n* Fix Mocha bug with multiple jobs ([318fab20f72dee0c3d899486c89d1fa36e7ec31f](https://github.com/jy95/torrent-files-library/commit/318fab20f72dee0c3d899486c89d1fa36e7ec31f))\r\n* Fix promisified access ([c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0](https://github.com/jy95/torrent-files-library/commit/c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0))\r\n* prepublish => prepare in NPM5 ([80c2633ec6623d0f26971a1b83ce08202b3ea2d0](https://github.com/jy95/torrent-files-library/commit/80c2633ec6623d0f26971a1b83ce08202b3ea2d0))\r\n\r\n### Test\r\n\r\n* Add first test ([5e89b605c571a3c4c7d227afbb325858aa6198c8](https://github.com/jy95/torrent-files-library/commit/5e89b605c571a3c4c7d227afbb325858aa6198c8))\r\n* Add missing test for scan ([a189a47ae6564b197d261a584d0dbbaad2965192](https://github.com/jy95/torrent-files-library/commit/a189a47ae6564b197d261a584d0dbbaad2965192))\r\n* Add sub tests for scan() method ([36ed79a08d9f79e89869ed8ee603060edfff2878](https://github.com/jy95/torrent-files-library/commit/36ed79a08d9f79e89869ed8ee603060edfff2878))\r\n",
+    "content": "# Changelog\r\n\r\n<a name=\"1.3.0\"></a>\r\n# [1.3.0](https://github.com/jy95/torrent-files-library/compare/v1.2.4...v1.3.0) (2018-01-27)\r\n\r\n### Chore\r\n\r\n* Ava cannot transpile helpers yet ([02757f69ac990f2860906582c4e36f0596595168](https://github.com/jy95/torrent-files-library/commit/02757f69ac990f2860906582c4e36f0596595168))\r\n* npm update ([f543feb877aef286110313b806c0206c2673ef00](https://github.com/jy95/torrent-files-library/commit/f543feb877aef286110313b806c0206c2673ef00))\r\n* Remove automatic changelog ([72e2b5fdf16b6c3b7d411ee332144d66f9d09160](https://github.com/jy95/torrent-files-library/commit/72e2b5fdf16b6c3b7d411ee332144d66f9d09160))\r\n* remove jsdoc script ([098428e1a9792a95bcb561cabac39b38336c6458](https://github.com/jy95/torrent-files-library/commit/098428e1a9792a95bcb561cabac39b38336c6458))\r\n\r\n### Docs\r\n\r\n* Add missing docs for additionalProperties ([eca4eb4b9afaf4a794f8ebbb22002854ca7d58ae](https://github.com/jy95/torrent-files-library/commit/eca4eb4b9afaf4a794f8ebbb22002854ca7d58ae))\r\n* Add missing docs for functions ([e60f576f989ed3192e7d6042b6ec7c12455050fa](https://github.com/jy95/torrent-files-library/commit/e60f576f989ed3192e7d6042b6ec7c12455050fa))\r\n* Docs completely rewritten for ESdoc ([583c007450c03269650f1fdbb76035584d217df3](https://github.com/jy95/torrent-files-library/commit/583c007450c03269650f1fdbb76035584d217df3))\r\n* Readme and examples ([bcd257f329671cc1989715a813aa477eca9143ab](https://github.com/jy95/torrent-files-library/commit/bcd257f329671cc1989715a813aa477eca9143ab))\r\n* WIP: Docs rewritten in ESDOC ([8d502d88886e6e6652328cca1a8c8317e4cc44ce](https://github.com/jy95/torrent-files-library/commit/8d502d88886e6e6652328cca1a8c8317e4cc44ce))\r\n\r\n### Feat\r\n\r\n* filterMovies ([c6cb3f52593c5516fffcd604c958243fb766bb26](https://github.com/jy95/torrent-files-library/commit/c6cb3f52593c5516fffcd604c958243fb766bb26))\r\n\r\n### Fix\r\n\r\n* Eval and = symbol in filterNumberProperty ([84695f10a39d4c52586e1e7c2433e73617adca00](https://github.com/jy95/torrent-files-library/commit/84695f10a39d4c52586e1e7c2433e73617adca00))\r\n* Fix founds bugs in filterMovies ([09e00ad584bb19bbcf39911f43745eabefa9075a](https://github.com/jy95/torrent-files-library/commit/09e00ad584bb19bbcf39911f43745eabefa9075a))\r\n\r\n### Test\r\n\r\n* Add unit tests for filterMovies ([42d3b94ff8b26d732f95e2a98ac0840f52c85202](https://github.com/jy95/torrent-files-library/commit/42d3b94ff8b26d732f95e2a98ac0840f52c85202))\r\n* Make expectedJson more generic ([f0465f0b0ee31614a5959160cce2aeb552226c88](https://github.com/jy95/torrent-files-library/commit/f0465f0b0ee31614a5959160cce2aeb552226c88))\r\n\r\n\r\n<a name=\"1.2.4\"></a>\r\n## [1.2.4](https://github.com/jy95/torrent-files-library/compare/v1.2.3...v1.2.4) (2018-01-21)\r\n\r\n\r\n### Fix\r\n\r\n* Fix automatic changelog config ([fa3c5ff3a15c160edc450835c2919a35722fb5fb](https://github.com/jy95/torrent-files-library/commit/fa3c5ff3a15c160edc450835c2919a35722fb5fb))\r\n\r\n<a name=\"1.2.3\"></a>\r\n## [1.2.3](https://github.com/jy95/torrent-files-library/compare/v1.2.2...v1.2.3) (2018-01-21)\r\n\r\n\r\n### Chore\r\n\r\n* Remove osx build on travis CI (too slow) ([0be825b82d2101b288f45800b889696ea9aef808](https://github.com/jy95/torrent-files-library/commit/0be825b82d2101b288f45800b889696ea9aef808))\r\n* Update dependancies ([bf7971527d40dd5c53c6713b365e89daf2d61084](https://github.com/jy95/torrent-files-library/commit/bf7971527d40dd5c53c6713b365e89daf2d61084))\r\n* Update dependancies to fix security issues of marked ([59060d89f8598edee730fa16c6f636e6f1e25c04](https://github.com/jy95/torrent-files-library/commit/59060d89f8598edee730fa16c6f636e6f1e25c04))\r\n* Update semantic-release preset regex ([e2b839e4b02cfc7c97f6aea2444141f049162172](https://github.com/jy95/torrent-files-library/commit/e2b839e4b02cfc7c97f6aea2444141f049162172))\r\n\r\n### Docs\r\n\r\n* Add automatic changelog.md ([6ff3328347f021b205fb4a5676ba4661b4eb3256](https://github.com/jy95/torrent-files-library/commit/6ff3328347f021b205fb4a5676ba4661b4eb3256))\r\n\r\n### Perf\r\n\r\n* Remove comments from lib version ([e54318a617b7cda1ce7d8be15d86482ba9d1aa18](https://github.com/jy95/torrent-files-library/commit/e54318a617b7cda1ce7d8be15d86482ba9d1aa18))\r\n\r\n### Style\r\n\r\n* Add the emoji to github ([b993c360d374272fbdc189b438c2fe2fcfc0f9e6](https://github.com/jy95/torrent-files-library/commit/b993c360d374272fbdc189b438c2fe2fcfc0f9e6))\r\n\r\n### Test\r\n\r\n* Drop mocha unit tests ([b0897b360f3d304dbb1090ddf2bfa5c75b6049c4](https://github.com/jy95/torrent-files-library/commit/b0897b360f3d304dbb1090ddf2bfa5c75b6049c4))\r\n* Fix code coverage ([270a8b77f35486498da9b318d5091f8fed2c085f](https://github.com/jy95/torrent-files-library/commit/270a8b77f35486498da9b318d5091f8fed2c085f))\r\n\r\n<a name=\"1.2.2\"></a>\r\n## [1.2.2](https://github.com/jy95/torrent-files-library/compare/v1.2.1...v1.2.2) (2017-12-23)\r\n\r\n\r\n### Chore\r\n\r\n* Breaking change of semantic-release ([55af47fbd75387b090aa07e0d6fc67c57994ac75](https://github.com/jy95/torrent-files-library/commit/55af47fbd75387b090aa07e0d6fc67c57994ac75)), closes [/github.com/semantic-release/semantic-release/issues/572#issuecomment-353631426](https://github.com//github.com/semantic-release/semantic-release/issues/572/issues/issuecomment-353631426)\r\n* Make cleaning stuff ([6ca25601f7d348ae4022a3f79d6936b098254980](https://github.com/jy95/torrent-files-library/commit/6ca25601f7d348ae4022a3f79d6936b098254980))\r\n* Mocha V4 - compilers deprecation ([55378fadbff964b8d4fc6b5559cffef424c132b0](https://github.com/jy95/torrent-files-library/commit/55378fadbff964b8d4fc6b5559cffef424c132b0))\r\n* Update lock file ([5ec79c595ae1816c353a1da1f5a16220a9aca527](https://github.com/jy95/torrent-files-library/commit/5ec79c595ae1816c353a1da1f5a16220a9aca527))\r\n* Use semantic-release plugins only ([e61c88efc6107cbf865b3e4851a0ef6cdd00a55e](https://github.com/jy95/torrent-files-library/commit/e61c88efc6107cbf865b3e4851a0ef6cdd00a55e))\r\n\r\n### CI\r\n\r\n* Added Greenkeeper lockfile ([f86ac271b3884832094092b524b4ca832cc6d112](https://github.com/jy95/torrent-files-library/commit/f86ac271b3884832094092b524b4ca832cc6d112))\r\n\r\n### Refactor\r\n\r\n* Remove emoji for sgcrc ([4d8a6237d697a054c1828a56948c6eabf93c5689](https://github.com/jy95/torrent-files-library/commit/4d8a6237d697a054c1828a56948c6eabf93c5689))\r\n\r\n<a name=\"1.2.1\"></a>\r\n## [1.2.1](https://github.com/jy95/torrent-files-library/compare/v1.2.0...v1.2.1) (2017-09-10)\r\n\r\n\r\n### Fix\r\n\r\n* wrong boolean for hasPathsProvidedByUser ([c8c5fa1985dd206499bd8e5af08b043290b93299](https://github.com/jy95/torrent-files-library/commit/c8c5fa1985dd206499bd8e5af08b043290b93299))\r\n\r\n<a name=\"1.2.0\"></a>\r\n## [1.2.0](https://github.com/jy95/torrent-files-library/compare/v1.1.0...v1.2.0) (2017-09-08)\r\n\r\n\r\n### Feat\r\n\r\n* createFromJSON - create an instance with toJSON ([a69fcee4b234b12de5229d14819ebff43fab996a](https://github.com/jy95/torrent-files-library/commit/a69fcee4b234b12de5229d14819ebff43fab996a))\r\n\r\n### Style\r\n\r\n* Fix babel syntax for coverage ([2a8eadf0323755c1fa7bdcdacb057a0de7c3e381](https://github.com/jy95/torrent-files-library/commit/2a8eadf0323755c1fa7bdcdacb057a0de7c3e381))\r\n\r\n### Test\r\n\r\n* Add missing tests for events ([0047fca9efd76bd51580128926c1c6bd7a412c73](https://github.com/jy95/torrent-files-library/commit/0047fca9efd76bd51580128926c1c6bd7a412c73))\r\n\r\n<a name=\"1.1.0\"></a>\r\n## [1.1.0](https://github.com/jy95/torrent-files-library/compare/v1.0.4...v1.1.0) (2017-09-08)\r\n\r\n\r\n### Chore\r\n\r\n* change event error to error_in_function ([cd689f4ea4c7c8dd6afd84251259c256471f0477](https://github.com/jy95/torrent-files-library/commit/cd689f4ea4c7c8dd6afd84251259c256471f0477))\r\n* remove sinonjs ([9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4](https://github.com/jy95/torrent-files-library/commit/9118a7c7bfeac2dc1cd11f0b28e483b777ed5fb4))\r\n\r\n### Docs\r\n\r\n* explain default params value in constructor ([1be4e825ea75506cab0903a5b7c87bd4dbac4896](https://github.com/jy95/torrent-files-library/commit/1be4e825ea75506cab0903a5b7c87bd4dbac4896))\r\n* separate jsdoc into another files ([cb29a027a0acdc941d5f8ab35da636ac9b34ffed](https://github.com/jy95/torrent-files-library/commit/cb29a027a0acdc941d5f8ab35da636ac9b34ffed))\r\n\r\n### Feat\r\n\r\n* Support events listeners ([9461036818649b2e85dc0b8068ac926b33a3c617](https://github.com/jy95/torrent-files-library/commit/9461036818649b2e85dc0b8068ac926b33a3c617))\r\n\r\n### Style\r\n\r\n* Trying to fix unhandeld promise ([2f7a487a33dbe07eac47d176c3771c3dc7c89ce4](https://github.com/jy95/torrent-files-library/commit/2f7a487a33dbe07eac47d176c3771c3dc7c89ce4))\r\n\r\n### Test\r\n\r\n* Added tests for events  ([78c9fe3bceac9474fd1d77641802b65c2768fbe0](https://github.com/jy95/torrent-files-library/commit/78c9fe3bceac9474fd1d77641802b65c2768fbe0))\r\n\r\n<a name=\"1.0.4\"></a>\r\n## [1.0.4](https://github.com/jy95/torrent-files-library/compare/v1.0.3...v1.0.4) (2017-09-06)\r\n\r\n\r\n### Chore\r\n\r\n* Correct the wrong property for releaseRules ([b2f17c402bf8a2451a3b32ab06259e5bc162ba58](https://github.com/jy95/torrent-files-library/commit/b2f17c402bf8a2451a3b32ab06259e5bc162ba58))\r\n\r\n### Docs\r\n\r\n* change example in readme.md ([a5a7e23836e7f165248d0c0d668256c623633d75](https://github.com/jy95/torrent-files-library/commit/a5a7e23836e7f165248d0c0d668256c623633d75))\r\n* fix filemapping png file mess up ([94337e1dcff8702aa59f9121528ef89fc5ce23b1](https://github.com/jy95/torrent-files-library/commit/94337e1dcff8702aa59f9121528ef89fc5ce23b1))\r\n* Fix png files mess up ([faf9c7acd8af0841fe7c152a53843be65723d710](https://github.com/jy95/torrent-files-library/commit/faf9c7acd8af0841fe7c152a53843be65723d710))\r\n* replace gif by png ([0d08dab62159d48d8c0d4dec014d21323171b8af](https://github.com/jy95/torrent-files-library/commit/0d08dab62159d48d8c0d4dec014d21323171b8af))\r\n\r\n### Perf\r\n\r\n* overload constructor ([9e091c31f4228e170004d966219b5a3e50817ba4](https://github.com/jy95/torrent-files-library/commit/9e091c31f4228e170004d966219b5a3e50817ba4))\r\n\r\n### Test\r\n\r\n* Fix coverage default params missed ([088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9](https://github.com/jy95/torrent-files-library/commit/088e1a94b5cd2fc955f7cea527f4fd2a7bb30fb9))\r\n\r\n<a name=\"1.0.3\"></a>\r\n## [1.0.3](https://github.com/jy95/torrent-files-library/compare/v1.0.2...v1.0.3) (2017-09-03)\r\n\r\n\r\n### Docs\r\n\r\n* Add an new example ([a9d0084b732f4d7ceb0abb6626e41f16f904902d](https://github.com/jy95/torrent-files-library/commit/a9d0084b732f4d7ceb0abb6626e41f16f904902d))\r\n* create CODE_OF_CONDUCT.md ([56b88c6089ffabcafb78287b540127ba324c4d32](https://github.com/jy95/torrent-files-library/commit/56b88c6089ffabcafb78287b540127ba324c4d32))\r\n* updated docs ([afef9f743d25f1dd8b6b283152e492de09c3e25a](https://github.com/jy95/torrent-files-library/commit/afef9f743d25f1dd8b6b283152e492de09c3e25a))\r\n* updated docs ([25edc16bc41070c21faa8ca1ad70b5abee1e35ae](https://github.com/jy95/torrent-files-library/commit/25edc16bc41070c21faa8ca1ad70b5abee1e35ae))\r\n* Updated docs ([3cb9b519ea3b2a73eea92952baea98244d3fad37](https://github.com/jy95/torrent-files-library/commit/3cb9b519ea3b2a73eea92952baea98244d3fad37))\r\n\r\n### Feat\r\n\r\n* initial removeOldFiles method implementation ([a5d21f84110e215da086718060a2b42e91521f45](https://github.com/jy95/torrent-files-library/commit/a5d21f84110e215da086718060a2b42e91521f45))\r\n* toJSON() custom implementation ([ca7a0cadbda175f39a0fa4386b5728ca38c50647](https://github.com/jy95/torrent-files-library/commit/ca7a0cadbda175f39a0fa4386b5728ca38c50647))\r\n\r\n### Fix\r\n\r\n* Correct getters that uses reference instead of values ([064d79edcc0a7619a1cb8d68c7d6e0433834ddab](https://github.com/jy95/torrent-files-library/commit/064d79edcc0a7619a1cb8d68c7d6e0433834ddab))\r\n* make JSON test cross platform ([e8dd44b8264a399255b7f3fcecfc94a976f3e5c0](https://github.com/jy95/torrent-files-library/commit/e8dd44b8264a399255b7f3fcecfc94a976f3e5c0))\r\n\r\n### Perf\r\n\r\n* modified releaseRules for release ([3a775c071ea57021bbcfca7587351349895c0d52](https://github.com/jy95/torrent-files-library/commit/3a775c071ea57021bbcfca7587351349895c0d52))\r\n* promisify addNewFiles ([ffdf72a28941abedfc186f6cf5e6fb09ee83621d](https://github.com/jy95/torrent-files-library/commit/ffdf72a28941abedfc186f6cf5e6fb09ee83621d))\r\n* Replace torrent name parser lib by an new one ([5c428a003acb81987b35841af78d5012f6a5c8bd](https://github.com/jy95/torrent-files-library/commit/5c428a003acb81987b35841af78d5012f6a5c8bd))\r\n\r\n### Refactor\r\n\r\n* Add keywords to package.json and code style for docs ([b9714f33e9d264d733b3ad3662fa09126afbe441](https://github.com/jy95/torrent-files-library/commit/b9714f33e9d264d733b3ad3662fa09126afbe441))\r\n* Make removeOldFiles method public ([8887d71938abe1b61fe74ec1ff4743b88e7b9446](https://github.com/jy95/torrent-files-library/commit/8887d71938abe1b61fe74ec1ff4743b88e7b9446))\r\n* Rewrited test code ([a252b833471e41086d2258acafb63e2fef794325](https://github.com/jy95/torrent-files-library/commit/a252b833471e41086d2258acafb63e2fef794325))\r\n\r\n### Test\r\n\r\n* Add tests for removeOldFiles ([0b1edebffe7c18251ddd5cd6e148bc07233fc8f5](https://github.com/jy95/torrent-files-library/commit/0b1edebffe7c18251ddd5cd6e148bc07233fc8f5))\r\n* Correct tests that uses reference instead of values ([49a2a1d053480a19d31926893b3f314d17c95a76](https://github.com/jy95/torrent-files-library/commit/49a2a1d053480a19d31926893b3f314d17c95a76))\r\n\r\n<a name=\"1.0.2\"></a>\r\n## [1.0.2](https://github.com/jy95/torrent-files-library/compare/v1.0.1...v1.0.2) (2017-08-30)\r\n\r\n\r\n### Docs\r\n\r\n* Make docs great ([b30d60e385b45dbb6396cc19dab2f4366df9bb39](https://github.com/jy95/torrent-files-library/commit/b30d60e385b45dbb6396cc19dab2f4366df9bb39))\r\n\r\n### Fix\r\n\r\n* Bug (this.timeout) due to rewrited test code ([46713737549820edde50657e5523c4099bf44478](https://github.com/jy95/torrent-files-library/commit/46713737549820edde50657e5523c4099bf44478))\r\n\r\n### Refactor\r\n\r\n* Rewrited code to match ESLint rules ([deb0d85d2ab31337f1d4561612f0753609acdad6](https://github.com/jy95/torrent-files-library/commit/deb0d85d2ab31337f1d4561612f0753609acdad6))\r\n* Rewrited tests code to match ESLint rules ([39cc30c856358fa918346b199e2bfc4dd5bc0899](https://github.com/jy95/torrent-files-library/commit/39cc30c856358fa918346b199e2bfc4dd5bc0899))\r\n\r\n<a name=\"1.0.1\"></a>\r\n## [1.0.1](https://github.com/jy95/torrent-files-library/compare/v1.0.0...v1.0.1) (2017-08-29)\r\n\r\n\r\n### Fix\r\n\r\n* Changelog missing at release ([1f06fdb24009aba9da1f52e77057265b9ef5c9ee](https://github.com/jy95/torrent-files-library/commit/1f06fdb24009aba9da1f52e77057265b9ef5c9ee))\r\n\r\n<a name=\"1.0.0\"></a>\r\n## 1.0.0 (2017-08-29)\r\n\r\n### CI\r\n\r\n* Fix missing coverage ([ac3f3612c3e087f01435247056561c048c02f419](https://github.com/jy95/torrent-files-library/commit/ac3f3612c3e087f01435247056561c048c02f419))\r\n* Fix out of date NPM version used by travis CI ([33408730e5303035a8949f7f469faddd1c72ef96](https://github.com/jy95/torrent-files-library/commit/33408730e5303035a8949f7f469faddd1c72ef96))\r\n* Replace Travis build Node.Js 4 for latest Node.Js release ([747a9e5d50376b6740635181bbe05ff45cb97bb8](https://github.com/jy95/torrent-files-library/commit/747a9e5d50376b6740635181bbe05ff45cb97bb8))\r\n* Set engines in package.json + readd job for Node.Js 6 ([2f60592e058edec2d17d051babc762dd3284496e](https://github.com/jy95/torrent-files-library/commit/2f60592e058edec2d17d051babc762dd3284496e))\r\n* Trying to set CI for semantic-release ([e4403e5409b46ad585f91558c6e952e308e3172f](https://github.com/jy95/torrent-files-library/commit/e4403e5409b46ad585f91558c6e952e308e3172f))\r\n\r\n### Docs\r\n\r\n* add example : how to use it ? ([49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc](https://github.com/jy95/torrent-files-library/commit/49b9d53d7cbd9e947f876b4c74ea9630a6a38bfc))\r\n* Add JSDoc documentation ([a2853159762783914cf069d8e74856302353b427](https://github.com/jy95/torrent-files-library/commit/a2853159762783914cf069d8e74856302353b427))\r\n* Explain how this lib will handle analysis ([0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819](https://github.com/jy95/torrent-files-library/commit/0b94dbe6f512b82a0bd1fd39ba42f5e450fd9819))\r\n* Improve Documentation ([5a429318fedbbf723020936b63547b7f648c46e5](https://github.com/jy95/torrent-files-library/commit/5a429318fedbbf723020936b63547b7f648c46e5))\r\n* Include an gif example for library ([131711cdf617ff5aeed1ad67f176dbc0c9fb0275](https://github.com/jy95/torrent-files-library/commit/131711cdf617ff5aeed1ad67f176dbc0c9fb0275))\r\n* Updated demo gifs ([556ccfdd817ad5415a7c57ac8fa92072a858a61f](https://github.com/jy95/torrent-files-library/commit/556ccfdd817ad5415a7c57ac8fa92072a858a61f))\r\n\r\n### Feat\r\n\r\n* Scan Implemented ([46ebf9376ae5823622784734f75cd2d133a9a25b](https://github.com/jy95/torrent-files-library/commit/46ebf9376ae5823622784734f75cd2d133a9a25b))\r\n* use normalize method from path (node) for paths ([d3f9baffbbc546e58dcdc3d5efe6952874bc48e7](https://github.com/jy95/torrent-files-library/commit/d3f9baffbbc546e58dcdc3d5efe6952874bc48e7))\r\n\r\n### Fix\r\n\r\n* .gitgnore mess up with lib folder ([da30f778a9d8ae936327e49b78b229214eb32d55](https://github.com/jy95/torrent-files-library/commit/da30f778a9d8ae936327e49b78b229214eb32d55))\r\n* Fix Mocha bug with multiple jobs ([318fab20f72dee0c3d899486c89d1fa36e7ec31f](https://github.com/jy95/torrent-files-library/commit/318fab20f72dee0c3d899486c89d1fa36e7ec31f))\r\n* Fix promisified access ([c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0](https://github.com/jy95/torrent-files-library/commit/c5d2cbf2413f7d2b53e47bafe2d17f211e6c22b0))\r\n* prepublish => prepare in NPM5 ([80c2633ec6623d0f26971a1b83ce08202b3ea2d0](https://github.com/jy95/torrent-files-library/commit/80c2633ec6623d0f26971a1b83ce08202b3ea2d0))\r\n\r\n### Test\r\n\r\n* Add first test ([5e89b605c571a3c4c7d227afbb325858aa6198c8](https://github.com/jy95/torrent-files-library/commit/5e89b605c571a3c4c7d227afbb325858aa6198c8))\r\n* Add missing test for scan ([a189a47ae6564b197d261a584d0dbbaad2965192](https://github.com/jy95/torrent-files-library/commit/a189a47ae6564b197d261a584d0dbbaad2965192))\r\n* Add sub tests for scan() method ([36ed79a08d9f79e89869ed8ee603060edfff2878](https://github.com/jy95/torrent-files-library/commit/36ed79a08d9f79e89869ed8ee603060edfff2878))\r\n",
     "static": true,
     "access": "public"
   },
   {
-    "__docId__": 103,
+    "__docId__": 107,
     "kind": "testFile",
     "name": "test/getters/allFilesWithCategory.js",
     "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allFilesWithCategory} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [files[2], TorrentLibrary.MOVIES_TYPE],\r\n      [files[0], TorrentLibrary.TV_SERIES_TYPE],\r\n      [files[1], TorrentLibrary.TV_SERIES_TYPE],\r\n    ]),\r\n    libInstance.allFilesWithCategory,\r\n    'Not the same',\r\n  );\r\n});\r\n",
@@ -2926,7 +3033,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 104,
+    "__docId__": 108,
     "kind": "test",
     "name": "test0",
     "testId": 0,
@@ -2942,7 +3049,7 @@
     ]
   },
   {
-    "__docId__": 105,
+    "__docId__": 109,
     "kind": "testFile",
     "name": "test/getters/allMovies.js",
     "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allMovies} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.allMovies,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
@@ -2953,7 +3060,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 106,
+    "__docId__": 110,
     "kind": "test",
     "name": "test1",
     "testId": 1,
@@ -2969,7 +3076,7 @@
     ]
   },
   {
-    "__docId__": 107,
+    "__docId__": 111,
     "kind": "testFile",
     "name": "test/getters/allTvSeries.js",
     "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allTvSeries} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.allTvSeries,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
@@ -2980,7 +3087,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 108,
+    "__docId__": 112,
     "kind": "test",
     "name": "test2",
     "testId": 2,
@@ -2996,7 +3103,7 @@
     ]
   },
   {
-    "__docId__": 109,
+    "__docId__": 113,
     "kind": "testFile",
     "name": "test/getters/constants.js",
     "content": "import test from 'ava';\r\nimport videosExtension from 'video-extensions';\r\nimport TorrentLibrary from '../../index';\r\n\r\n/** @test {TorrentLibrary.MOVIES_TYPE} */\r\ntest('Constant MOVIES_TYPE', (t) => {\r\n  t.is(\r\n    TorrentLibrary.MOVIES_TYPE,\r\n    'MOVIES',\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary.TV_SERIES_TYPE} */\r\ntest('Constant TV_SERIES', (t) => {\r\n  t.is(\r\n    TorrentLibrary.TV_SERIES_TYPE,\r\n    'TV_SERIES',\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary.listVideosExtension} */\r\ntest('List of videos extension', (t) => {\r\n  t.is(\r\n    TorrentLibrary.listVideosExtension(),\r\n    videosExtension,\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n",
@@ -3007,7 +3114,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 110,
+    "__docId__": 114,
     "kind": "test",
     "name": "test3",
     "testId": 3,
@@ -3023,7 +3130,7 @@
     ]
   },
   {
-    "__docId__": 111,
+    "__docId__": 115,
     "kind": "test",
     "name": "test4",
     "testId": 4,
@@ -3039,7 +3146,7 @@
     ]
   },
   {
-    "__docId__": 112,
+    "__docId__": 116,
     "kind": "test",
     "name": "test5",
     "testId": 5,
@@ -3055,7 +3162,7 @@
     ]
   },
   {
-    "__docId__": 113,
+    "__docId__": 117,
     "kind": "testFile",
     "name": "test/methods/addNewPath.js",
     "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('missing parameter', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('missing_parameter', eventSpy);\r\n  await t.throws(libInstance.addNewPath());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('inexistent Path', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.addNewPath(path.join(__dirname, 'wrongPath')));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('existent paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('addNewPath', eventSpy);\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    true, 'The path should be added',\r\n  );\r\n});\r\n\r\n",
@@ -3066,7 +3173,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 114,
+    "__docId__": 118,
     "kind": "test",
     "name": "test6",
     "testId": 6,
@@ -3082,7 +3189,7 @@
     ]
   },
   {
-    "__docId__": 115,
+    "__docId__": 119,
     "kind": "test",
     "name": "test7",
     "testId": 7,
@@ -3098,7 +3205,7 @@
     ]
   },
   {
-    "__docId__": 116,
+    "__docId__": 120,
     "kind": "test",
     "name": "test8",
     "testId": 8,
@@ -3114,7 +3221,7 @@
     ]
   },
   {
-    "__docId__": 117,
+    "__docId__": 121,
     "kind": "testFile",
     "name": "test/methods/createFromJSON.js",
     "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary.createFromJSON} */\r\ntest('create a perfect copy of instance', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const jsonFromLib = JSON.parse(libInstance.toJSON());\r\n  const createdInstance = TorrentLibrary.createFromJSON(jsonFromLib);\r\n  t.deepEqual(\r\n    createdInstance.allFilesWithCategory,\r\n    libInstance.allFilesWithCategory,\r\n    'allFilesWithCategory different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allMovies,\r\n    libInstance.allMovies, 'allMovies different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allTvSeries,\r\n    libInstance.allTvSeries, 'allTvSeries different',\r\n  );\r\n});\r\n",
@@ -3125,7 +3232,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 118,
+    "__docId__": 122,
     "kind": "test",
     "name": "test9",
     "testId": 9,
@@ -3141,7 +3248,7 @@
     ]
   },
   {
-    "__docId__": 119,
+    "__docId__": 123,
     "kind": "testFile",
     "name": "test/methods/filterMovies.js",
     "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport path from 'path';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('Should work without parameters', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies(),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default boolean parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      remastered: true,\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      extended: true,\r\n      unrated: true,\r\n      proper: true,\r\n      repack: true,\r\n      convert: true,\r\n      hardcoded: true,\r\n      retail: true,\r\n      remastered: true,\r\n      additionalProperties: [\r\n        { type: 'boolean', name: 'AnotherField', value: true },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default number parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      year: 2012,\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      year: '>=2012',\r\n      additionalProperties: [\r\n        { type: 'number', name: \"whateverFieldThatDoesn'tExist\", value: '<50' },\r\n        { type: 'number', name: 'AnotherField', value: undefined },\r\n        { type: 'number', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'number', name: 'AnotherField3', value: '>25' },\r\n        { type: 'number', name: 'AnotherField4', value: '==25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default string parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      title: 'Bad Ass',\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      title: 'Bad Ass',\r\n      additionalProperties: [\r\n        {\r\n          type: 'string',\r\n          name: 'whateverField',\r\n          value: ['NothingExists'],\r\n        },\r\n        {\r\n          type: 'string',\r\n          name: 'AnotherField',\r\n          value: ['NothingExists', 'NothingExists'],\r\n        },\r\n        { type: 'string', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'string', name: 'AnotherField3', value: '>25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n",
@@ -3152,7 +3259,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 120,
+    "__docId__": 124,
     "kind": "test",
     "name": "test10",
     "testId": 10,
@@ -3168,7 +3275,7 @@
     ]
   },
   {
-    "__docId__": 121,
+    "__docId__": 125,
     "kind": "test",
     "name": "test11",
     "testId": 11,
@@ -3184,7 +3291,7 @@
     ]
   },
   {
-    "__docId__": 122,
+    "__docId__": 126,
     "kind": "test",
     "name": "test12",
     "testId": 12,
@@ -3200,7 +3307,7 @@
     ]
   },
   {
-    "__docId__": 123,
+    "__docId__": 127,
     "kind": "test",
     "name": "test13",
     "testId": 13,
@@ -3216,10 +3323,10 @@
     ]
   },
   {
-    "__docId__": 124,
+    "__docId__": 128,
     "kind": "testFile",
     "name": "test/methods/removeOldFiles.js",
-    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should not be able to remove not present files', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const wrongFile = path.join(\r\n    __dirname, 'folder1',\r\n    'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi',\r\n  );\r\n  const allFiles = libInstance.allFilesWithCategory;\r\n  const expectedTvSeriesMap = libInstance.allTvSeries;\r\n  await t.notThrows(libInstance.removeOldFiles(wrongFile));\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFiles,\r\n    'Nothing should have changed!',\r\n  );\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    expectedTvSeriesMap,\r\n    'Nothing should have changed!',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove a movie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutMovie = libInstance.allFilesWithCategory;\r\n  // files[2] ; Bad Ass\r\n  allFilesWithoutMovie.delete(files[2]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[2] ; Bad Ass\r\n  await t.notThrows(libInstance.removeOldFiles(files[2]));\r\n  t.deepEqual(\r\n    libInstance.allMovies,\r\n    new Set(),\r\n    'The movie should have been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutMovie,\r\n    'The movie should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove an tv-serie episode', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n  // files[1] ; The.Blacklist.S04E21\r\n  allFilesWithoutIt.delete(files[1]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[1] ; The.Blacklist.S04E21\r\n  await t.notThrows(libInstance.removeOldFiles(files[1]));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    'The tv-series should still exist!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episode should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove multiples files : Tv-serie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n\r\n  allFilesWithoutIt.delete(files[1]);\r\n  allFilesWithoutIt.delete(files[0]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  await t.notThrows(libInstance.removeOldFiles(...files.slice(0, 2)));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map(),\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
+    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders, expectedJson } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should not be able to remove not present files', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const wrongFile = path.join(\r\n    __dirname, 'folder1',\r\n    'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi',\r\n  );\r\n  const allFiles = libInstance.allFilesWithCategory;\r\n  const expectedTvSeriesMap = libInstance.allTvSeries;\r\n  await t.notThrows(libInstance.removeOldFiles(wrongFile));\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFiles,\r\n    'Nothing should have changed!',\r\n  );\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    expectedTvSeriesMap,\r\n    'Nothing should have changed!',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove a movie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutMovie = libInstance.allFilesWithCategory;\r\n  // files[2] ; Bad Ass\r\n  allFilesWithoutMovie.delete(files[2]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[2] ; Bad Ass\r\n  await t.notThrows(libInstance.removeOldFiles(files[2]));\r\n  t.deepEqual(\r\n    libInstance.allMovies,\r\n    new Set(),\r\n    'The movie should have been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutMovie,\r\n    'The movie should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove an tv-serie episode', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n  // files[1] ; The.Blacklist.S04E21\r\n  allFilesWithoutIt.delete(files[1]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[1] ; The.Blacklist.S04E21\r\n  await t.notThrows(libInstance.removeOldFiles(files[1]));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    'The tv-series should still exist!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episode should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove multiples files : Tv-serie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n\r\n  allFilesWithoutIt.delete(files[1]);\r\n  allFilesWithoutIt.delete(files[0]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  await t.notThrows(libInstance.removeOldFiles(...files.slice(0, 2)));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map(),\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\ntest('Should not be able to remove files : wrong custom parser', async (t) => {\r\n  let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});\r\n  let eventSpy = sinon.spy();\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.removeOldFiles(...files));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/removeOldFiles.js",
     "access": null,
@@ -3227,7 +3334,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 125,
+    "__docId__": 129,
     "kind": "test",
     "name": "test14",
     "testId": 14,
@@ -3243,7 +3350,7 @@
     ]
   },
   {
-    "__docId__": 126,
+    "__docId__": 130,
     "kind": "test",
     "name": "test15",
     "testId": 15,
@@ -3259,7 +3366,7 @@
     ]
   },
   {
-    "__docId__": 127,
+    "__docId__": 131,
     "kind": "test",
     "name": "test16",
     "testId": 16,
@@ -3275,7 +3382,7 @@
     ]
   },
   {
-    "__docId__": 128,
+    "__docId__": 132,
     "kind": "test",
     "name": "test17",
     "testId": 17,
@@ -3291,10 +3398,23 @@
     ]
   },
   {
-    "__docId__": 129,
+    "__docId__": 133,
+    "kind": "test",
+    "name": "test18",
+    "testId": 18,
+    "memberof": "test/methods/removeOldFiles.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/removeOldFiles.js~test18",
+    "access": null,
+    "description": "Should not be able to remove files : wrong custom parser",
+    "lineNumber": 124
+  },
+  {
+    "__docId__": 134,
     "kind": "testFile",
     "name": "test/methods/scan.js",
-    "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan without user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n",
+    "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan without user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\ntest('Scan with user provided paths and custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, nameParser);\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\ntest('Scan with user provided paths and wrong custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, {});\r\n  libInstance.on('error_in_function', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.throws(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/scan.js",
     "access": null,
@@ -3302,23 +3422,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 130,
-    "kind": "test",
-    "name": "test18",
-    "testId": 18,
-    "memberof": "test/methods/scan.js",
-    "testDepth": 0,
-    "static": true,
-    "longname": "test/methods/scan.js~test18",
-    "access": null,
-    "description": "Scan without user provided paths",
-    "lineNumber": 8,
-    "testTargets": [
-      "TorrentLibrary#scan"
-    ]
-  },
-  {
-    "__docId__": 131,
+    "__docId__": 135,
     "kind": "test",
     "name": "test19",
     "testId": 19,
@@ -3327,14 +3431,56 @@
     "static": true,
     "longname": "test/methods/scan.js~test19",
     "access": null,
-    "description": "Scan with user provided paths",
-    "lineNumber": 18,
+    "description": "Scan without user provided paths",
+    "lineNumber": 9,
     "testTargets": [
       "TorrentLibrary#scan"
     ]
   },
   {
-    "__docId__": 132,
+    "__docId__": 136,
+    "kind": "test",
+    "name": "test20",
+    "testId": 20,
+    "memberof": "test/methods/scan.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/scan.js~test20",
+    "access": null,
+    "description": "Scan with user provided paths",
+    "lineNumber": 19,
+    "testTargets": [
+      "TorrentLibrary#scan"
+    ]
+  },
+  {
+    "__docId__": 137,
+    "kind": "test",
+    "name": "test21",
+    "testId": 21,
+    "memberof": "test/methods/scan.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/scan.js~test21",
+    "access": null,
+    "description": "Scan with user provided paths and custom parser",
+    "lineNumber": 31
+  },
+  {
+    "__docId__": 138,
+    "kind": "test",
+    "name": "test22",
+    "testId": 22,
+    "memberof": "test/methods/scan.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/scan.js~test22",
+    "access": null,
+    "description": "Scan with user provided paths and wrong custom parser",
+    "lineNumber": 42
+  },
+  {
+    "__docId__": 139,
     "kind": "testFile",
     "name": "test/methods/toJSON.js",
     "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { expectedJson, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#toJSON} */\r\ntest('return a valid stringified JSON', async (t) => {\r\n  const expectedJsonString = JSON.stringify(expectedJson);\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const dataFromInstance = libInstance.toJSON();\r\n  t.deepEqual(\r\n    JSON.stringify(JSON.parse(dataFromInstance)),\r\n    expectedJsonString,\r\n    'Not the same JSON',\r\n  );\r\n});\r\n",
@@ -3345,14 +3491,14 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 133,
+    "__docId__": 140,
     "kind": "test",
-    "name": "test20",
-    "testId": 20,
+    "name": "test23",
+    "testId": 23,
     "memberof": "test/methods/toJSON.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/toJSON.js~test20",
+    "longname": "test/methods/toJSON.js~test23",
     "access": null,
     "description": "return a valid stringified JSON",
     "lineNumber": 6,

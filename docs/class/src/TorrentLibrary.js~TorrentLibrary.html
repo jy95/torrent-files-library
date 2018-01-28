@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://bluebirdjs.com/docs/api-reference">Promise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/clement-escolano/parse-torrent-title">nameParser</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#docs-events">docs/events</a><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#addNewPath">Events#addNewPath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#error_in_function">Events#error_in_function</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events#missing_parameter">Events#missing_parameter</a></span></span></li>
@@ -42,6 +43,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-additionalProperties">additionalProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberExpressionObject">numberExpressionObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-numberSearchSyntax">numberSearchSyntax</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></span></li>
@@ -60,13 +62,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import TorrentLibrary from &apos;<span><a href="file/src/TorrentLibrary.js.html#lineNumber125">torrent-files-library/src/TorrentLibrary.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import TorrentLibrary from &apos;<span><a href="file/src/TorrentLibrary.js.html#lineNumber126">torrent-files-library/src/TorrentLibrary.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/TorrentLibrary.js.html#lineNumber125">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/TorrentLibrary.js.html#lineNumber126">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -182,7 +184,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#static-method-createFromJSON">createFromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#static-method-createFromJSON">createFromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, parser: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span>): <span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span>
         </p>
       </div>
       <div>
@@ -247,7 +249,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(config: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(config: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, parser: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span>)</span>
         </p>
       </div>
       <div>
@@ -412,6 +414,35 @@
     <td>
       
       <span class="since" data-ice="since">since 0.0.0</span>
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-member-parser">parser</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The parsing function to be used with this lib</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      <span class="since" data-ice="since">since 1.4.0</span>
     </td>
   </tr>
 <tr data-ice="target">
@@ -673,7 +704,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber132">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber133">source</a></span></span>
     </span>
   </h3>
 
@@ -723,7 +754,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber142">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
@@ -772,11 +803,11 @@
     
     
     
-    <span class="code" data-ice="name">createFromJSON</span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span>
+    <span class="code" data-ice="name">createFromJSON</span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, parser: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span>): <span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html">TorrentLibrary</a></span></span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.2.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber561">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber573">source</a></span></span>
     </span>
   </h3>
 
@@ -831,6 +862,14 @@
       <td data-ice="description"><p>the serie files</p>
 </td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">parser</td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: nameParser</li></ul></td>
+      <td data-ice="description"><p>The custom parser you want to use</p>
+</td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -869,6 +908,18 @@
      JSON.parse(libInstance.toJSON()),
   );</code></pre>
     </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">// As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions
+// If you want an extra field to be populated
+const ptt = require(&quot;parse-torrent-title&quot;);
+ptt.addHandler(&quot;part&quot;, /Part[. ]([0-9])/i, { type: &quot;integer&quot; });
+// creates an new instance from another one; with custom parser
+  const createdInstance = TorrentLibrary.createFromJSON(
+     JSON.parse(libInstance.toJSON()),
+     ptt.parse
+  );</code></pre>
+    </div>
 </div>
 
   <div data-ice="tests">
@@ -894,7 +945,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber292">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber301">source</a></span></span>
     </span>
   </h3>
 
@@ -964,11 +1015,11 @@ TorrentLibrary.listVideosExtension()</code></pre>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(config: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(config: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, parser: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span>)</span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.4</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber156">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber159">source</a></span></span>
     </span>
   </h3>
 
@@ -1035,6 +1086,15 @@ TorrentLibrary.listVideosExtension()</code></pre>
       <td data-ice="description"><p>the serie files</p>
 </td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">parser</td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: nameParser</li></ul></td>
+      <td data-ice="description"><p>The parsing function to be used with this lib ;
+default is function parse from parse-torrent-title package</p>
+</td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -1072,7 +1132,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber523">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber524">source</a></span></span>
     </span>
   </h3>
 
@@ -1129,7 +1189,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber477">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber478">source</a></span></span>
     </span>
   </h3>
 
@@ -1198,7 +1258,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber512">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber513">source</a></span></span>
     </span>
   </h3>
 
@@ -1279,7 +1339,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber197">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber209">source</a></span></span>
     </span>
   </h3>
 
@@ -1330,7 +1390,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber171">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber183">source</a></span></span>
     </span>
   </h3>
 
@@ -1338,6 +1398,50 @@ TorrentLibrary.listVideosExtension()</code></pre>
   
   
   <div data-ice="description"><p>just an easy way to scan the current directory path, if not other paths provided</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-parser">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">parser</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-customParsingFunction">customParsingFunction</a></span></span>
+    <span class="right-info">
+      
+      <span class="since" data-ice="since">since 1.4.0</span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber177">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The parsing function to be used with this lib</p>
 </div>
 
   
@@ -1374,7 +1478,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber180">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber192">source</a></span></span>
     </span>
   </h3>
 
@@ -1426,7 +1530,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber186">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber198">source</a></span></span>
     </span>
   </h3>
 
@@ -1473,7 +1577,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber310">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber319">source</a></span></span>
     </span>
   </h3>
 
@@ -1587,7 +1691,7 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.3.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber589">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber601">source</a></span></span>
     </span>
   </h3>
 
@@ -1670,7 +1774,7 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber345">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber353">source</a></span></span>
     </span>
   </h3>
 
@@ -1735,7 +1839,7 @@ TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.3</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber398">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber403">source</a></span></span>
     </span>
   </h3>
 
@@ -1848,7 +1952,7 @@ TorrentLibraryInstance.removeOldFiles(
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber357">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber365">source</a></span></span>
     </span>
   </h3>
 
@@ -1910,8 +2014,8 @@ On error the promise will be rejected with an Error object from sub modules<br><
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber8">Scan without user provided paths</a></span></li>
-<li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber18">Scan with user provided paths</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber9">Scan without user provided paths</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber19">Scan with user provided paths</a></span></li>
 </ul>
   </div>
 
@@ -1930,7 +2034,7 @@ On error the promise will be rejected with an Error object from sub modules<br><
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.3</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber533">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber534">source</a></span></span>
     </span>
   </h3>
 

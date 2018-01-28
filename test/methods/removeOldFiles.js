@@ -3,7 +3,7 @@ import path from 'path';
 import * as sinon from 'sinon';
 import { parse as nameParser } from 'parse-torrent-title';
 import TorrentLibrary from '../../index';
-import { files, folders } from '../_constants';
+import { files, folders, expectedJson } from '../_constants';
 
 /** @test {TorrentLibrary#removeOldFiles} */
 test('Should not be able to remove not present files', async (t) => {
@@ -116,6 +116,16 @@ test('Should be able to remove multiples files : Tv-serie', async (t) => {
     allFilesWithoutIt,
     'The tv-series episodes should have all been removed!',
   );
+  t.truthy(eventSpy.called, 'Event did not fire.');
+  t.truthy(eventSpy.calledOnce, 'Event fired more than once');
+});
+
+// test to handle default parameters
+test('Should not be able to remove files : wrong custom parser', async (t) => {
+  let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});
+  let eventSpy = sinon.spy();
+  libInstance.on('error_in_function', eventSpy);
+  await t.throws(libInstance.removeOldFiles(...files));
   t.truthy(eventSpy.called, 'Event did not fire.');
   t.truthy(eventSpy.calledOnce, 'Event fired more than once');
 });
