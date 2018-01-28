@@ -1,5 +1,38 @@
 # Changelog
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/jy95/torrent-files-library/compare/v1.2.4...v1.3.0) (2018-01-27)
+
+### Chore
+
+* Ava cannot transpile helpers yet ([02757f69ac990f2860906582c4e36f0596595168](https://github.com/jy95/torrent-files-library/commit/02757f69ac990f2860906582c4e36f0596595168))
+* npm update ([f543feb877aef286110313b806c0206c2673ef00](https://github.com/jy95/torrent-files-library/commit/f543feb877aef286110313b806c0206c2673ef00))
+* Remove automatic changelog ([72e2b5fdf16b6c3b7d411ee332144d66f9d09160](https://github.com/jy95/torrent-files-library/commit/72e2b5fdf16b6c3b7d411ee332144d66f9d09160))
+* remove jsdoc script ([098428e1a9792a95bcb561cabac39b38336c6458](https://github.com/jy95/torrent-files-library/commit/098428e1a9792a95bcb561cabac39b38336c6458))
+
+### Docs
+
+* Add missing docs for additionalProperties ([eca4eb4b9afaf4a794f8ebbb22002854ca7d58ae](https://github.com/jy95/torrent-files-library/commit/eca4eb4b9afaf4a794f8ebbb22002854ca7d58ae))
+* Add missing docs for functions ([e60f576f989ed3192e7d6042b6ec7c12455050fa](https://github.com/jy95/torrent-files-library/commit/e60f576f989ed3192e7d6042b6ec7c12455050fa))
+* Docs completely rewritten for ESdoc ([583c007450c03269650f1fdbb76035584d217df3](https://github.com/jy95/torrent-files-library/commit/583c007450c03269650f1fdbb76035584d217df3))
+* Readme and examples ([bcd257f329671cc1989715a813aa477eca9143ab](https://github.com/jy95/torrent-files-library/commit/bcd257f329671cc1989715a813aa477eca9143ab))
+* WIP: Docs rewritten in ESDOC ([8d502d88886e6e6652328cca1a8c8317e4cc44ce](https://github.com/jy95/torrent-files-library/commit/8d502d88886e6e6652328cca1a8c8317e4cc44ce))
+
+### Feat
+
+* filterMovies ([c6cb3f52593c5516fffcd604c958243fb766bb26](https://github.com/jy95/torrent-files-library/commit/c6cb3f52593c5516fffcd604c958243fb766bb26))
+
+### Fix
+
+* Eval and = symbol in filterNumberProperty ([84695f10a39d4c52586e1e7c2433e73617adca00](https://github.com/jy95/torrent-files-library/commit/84695f10a39d4c52586e1e7c2433e73617adca00))
+* Fix founds bugs in filterMovies ([09e00ad584bb19bbcf39911f43745eabefa9075a](https://github.com/jy95/torrent-files-library/commit/09e00ad584bb19bbcf39911f43745eabefa9075a))
+
+### Test
+
+* Add unit tests for filterMovies ([42d3b94ff8b26d732f95e2a98ac0840f52c85202](https://github.com/jy95/torrent-files-library/commit/42d3b94ff8b26d732f95e2a98ac0840f52c85202))
+* Make expectedJson more generic ([f0465f0b0ee31614a5959160cce2aeb552226c88](https://github.com/jy95/torrent-files-library/commit/f0465f0b0ee31614a5959160cce2aeb552226c88))
+
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/jy95/torrent-files-library/compare/v1.2.3...v1.2.4) (2018-01-21)
 
