@@ -12,7 +12,7 @@ A lot of things :
     * [Filter movies based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html)
     * [Filter tv-shown based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterTvSeriesByParameters.html)
 * Miscellaneous purposes
-    * [Create custom playlist(s)](https://jy95.github.io/torrent-files-library/manual/createPlaylists.html)
+    * [Create custom playlist(s)](https://jy95.github.io/torrent-files-library/manual/createPlaylist.html)
 * ...
 
 Don't hesitate to suggest new features : it is always worthy :)
