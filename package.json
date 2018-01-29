@@ -1,6 +1,6 @@
 {
   "name": "torrent-files-library",
-  "version": "0.0.0-development",
+  "version": "1.5.0",
   "description": "Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions",
   "main": "index.js",
   "files": [

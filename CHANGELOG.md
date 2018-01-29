@@ -1,3 +1,17 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/jy95/torrent-files-library/compare/v1.4.0...v1.5.0) (2018-01-29)
+
+
+### Docs
+
+* CHANGELOG.md updated for esdoc ([424ff29a916abb70b00402c622d6f591bfd97f99](https://github.com/jy95/torrent-files-library/commit/424ff29a916abb70b00402c622d6f591bfd97f99))
+* Docs typo ([c63cce07c8134012c832322bc84c49cc55a9dca1](https://github.com/jy95/torrent-files-library/commit/c63cce07c8134012c832322bc84c49cc55a9dca1))
+* Updated docs ([66e76145212cc3b0aca7c34671df53dac296aa5e](https://github.com/jy95/torrent-files-library/commit/66e76145212cc3b0aca7c34671df53dac296aa5e))
+
+### Feat
+
+* filterTvSeries - Filter tv series by search parameters ([c2dbfd4c4fa0427ec388de7299b99ad0f1fa4631](https://github.com/jy95/torrent-files-library/commit/c2dbfd4c4fa0427ec388de7299b99ad0f1fa4631))
+
 # Changelog
 
 <a name="1.4.0"></a>
