@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -120,32 +122,10 @@ import { parse as nameParser } from &apos;parse-torrent-title&apos;;
 import EventEmitter from &apos;events&apos;;
 
 /**
- * Boolean properties filter
+ * Filter Properties for filterMovies function
  */
-import {
-  filterDefaultBooleanProperties,
-  filterByBoolean,
-  excludeDefaultBooleanProperties,
-} from &apos;./filters/filterBooleanProperty&apos;;
-
-/**
- * Number properties filter
- */
-import {
-  convertToValidExpression,
-  excludeDefaultNumberProperties,
-  filterDefaultNumberProperties,
-  filterByNumber,
-} from &apos;./filters/filterNumberProperty&apos;;
-
-/**
- * String properties filter
- */
-import {
-  excludeDefaultStringProperties,
-  filterDefaultStringProperties,
-  filterByString,
-} from &apos;./filters/filterStringProperty&apos;;
+import { filterMoviesByProperties, filterTvSeriesByProperties }
+  from &apos;./filters/filterProperties&apos;;
 
 /**
  * check if an object has these properties and they are not undefined
@@ -592,7 +572,7 @@ export default class TorrentLibrary extends EventEmitter {
   /**
      * Returns an JSON stringified of the current state
      * @since 1.0.3
-     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}
+     * @see {@link https://github.com/jy95/torrent-files-library/blob/master/test/fixtures/example.json}
      * @return {string} json - the JSON stringified
      */
   toJSON() {
@@ -615,7 +595,7 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(TPN_Extended[])} json.movies - the movies files
      * @param {(Array.&lt;Array.&lt;String,TPN_Extended[]&gt;&gt;)} json.tv-series - the serie files
      * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use
-     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json} for an param example
      * @since 1.2.0
      * @return {TorrentLibrary} an TorrentLibrary instance
      * @example
@@ -659,7 +639,7 @@ export default class TorrentLibrary extends EventEmitter {
   /**
    * Filter the movies based on search parameters
    * @param {searchParameters} searchParameters - search parameters.
-   * @return {Set&lt;TPN_Extended&gt;} the filtered movie set
+   * @return {Set&lt;TPN&gt;} the filtered movie set
    * @since 1.3.0
    */
   filterMovies(searchParameters = {
@@ -689,52 +669,44 @@ export default class TorrentLibrary extends EventEmitter {
     // new properties
     additionalProperties: [],
   }) {
-    // organize search based on field type : boolean - string - number
-    // eslint-disable-next-line max-len
-    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);
-    // eslint-disable-next-line max-len
-    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);
-
-    // eslint-disable-next-line max-len
-    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);
-    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);
-
-    // eslint-disable-next-line max-len
-    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);
-    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);
-
-    let { additionalProperties } = leftSearchParameters;
-    // add the optional new properties , optionally provided by user
-    /* istanbul ignore else */
-    if (additionalProperties !== undefined) {
-      additionalProperties
-        .filter(newProperty =&gt; newProperty.type === &apos;boolean&apos;)
-        .forEach((newProperty) =&gt; {
-          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);
-        });
-
-      additionalProperties
-        .filter(newProperty =&gt; newProperty.type === &apos;number&apos;)
-        .forEach((newProperty) =&gt; {
-          let expression = convertToValidExpression(newProperty.value);
-          /* istanbul ignore else */
-          if (expression !== undefined) {
-            numberFieldsSearchMap.set(newProperty.name, expression);
-          }
-        });
-
-      additionalProperties
-        .filter(newProperty =&gt; newProperty.type === &apos;string&apos;)
-        .forEach((newProperty) =&gt; {
-          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);
-        });
-    }
-
     // apply params based on types
-    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);
-    result = filterByNumber(result, numberFieldsSearchMap);
-    result = filterByString(result, stringFieldsSearchMap);
-    return result;
+    return filterMoviesByProperties(searchParameters, this.allMovies);
+  }
+
+  /**
+   * Filter the tv-series based on search parameters
+   * @param {searchParameters} searchParameters - search parameters.
+   * @return {(Map&lt;string, Set&lt;TPN&gt;&gt;)} the filtered movie set
+   * @since 1.5.0
+   */
+  filterTvSeries(searchParameters = {
+    // boolean properties
+    extended: undefined,
+    unrated: undefined,
+    proper: undefined,
+    repack: undefined,
+    convert: undefined,
+    hardcoded: undefined,
+    retail: undefined,
+    remastered: undefined,
+    // number properties
+    season: undefined,
+    episode: undefined,
+    year: undefined,
+    // string properties
+    title: undefined,
+    resolution: undefined,
+    codec: undefined,
+    audio: undefined,
+    group: undefined,
+    region: undefined,
+    container: undefined,
+    language: undefined,
+    source: undefined,
+    // new properties
+    additionalProperties: [],
+  }) {
+    return filterTvSeriesByProperties(searchParameters, this.allTvSeries);
   }
 }
 </code></pre>

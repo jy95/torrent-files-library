@@ -58,7 +58,8 @@ import EventEmitter from 'events';
 /**
  * Filter Properties for filterMovies function
  */
-import { filterMoviesByProperties, filterTvSeriesByProperties } from './filters/filterProperties';
+import { filterMoviesByProperties, filterTvSeriesByProperties }
+  from './filters/filterProperties';
 
 /**
  * check if an object has these properties and they are not undefined
@@ -505,7 +506,7 @@ export default class TorrentLibrary extends EventEmitter {
   /**
      * Returns an JSON stringified of the current state
      * @since 1.0.3
-     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}
+     * @see {@link https://github.com/jy95/torrent-files-library/blob/master/test/fixtures/example.json}
      * @return {string} json - the JSON stringified
      */
   toJSON() {
@@ -528,7 +529,7 @@ export default class TorrentLibrary extends EventEmitter {
      * @param {(TPN_Extended[])} json.movies - the movies files
      * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files
      * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use
-     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example
+     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json} for an param example
      * @since 1.2.0
      * @return {TorrentLibrary} an TorrentLibrary instance
      * @example

@@ -18,6 +18,8 @@
             "./manual/examples/listFoundMovies.md",
             "./manual/examples/listEachTvSerie.md",
             "./manual/examples/filterMoviesByParameters.md",
+            "./manual/examples/filterTvSeriesByParameters.md",
+            "./manual/examples/createPlaylist.md",
             "./CHANGELOG.md"
           ]
         }

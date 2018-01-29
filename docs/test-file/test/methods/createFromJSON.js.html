@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -89,6 +91,7 @@ test(&apos;create a perfect copy of instance&apos;, async (t) =&gt; {
 });
 
 // dummy test for ES6 code coverage
+/** @test {TorrentLibrary.createFromJSON} */
 test(&apos;empty instance(s)&apos;, async (t) =&gt; {
   TorrentLibrary.createFromJSON({});
   t.pass();

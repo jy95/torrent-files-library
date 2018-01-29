@@ -55,6 +55,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -160,6 +161,37 @@ export function filterMoviesByProperties(searchParameters, allMovies) {
     .forEach((filterFunction, index) =&gt; {
       result = filterFunction(result, propertiesWithAllProperties[index]);
     });
+  return result;
+}
+
+/**
+ * Filter the tv series based on search parameters
+ * @param {searchParameters} searchParameters - search parameters.
+ * @param {(Map&lt;string, Set&lt;TPN&gt;&gt;)} allTvSeries - the tvSeries map
+ * @return {(Map&lt;string, Set&lt;TPN&gt;&gt;)} the filtered tvSeries map
+ */
+export function filterTvSeriesByProperties(searchParameters, allTvSeries) {
+  const {
+    booleanFieldsSearchMap, stringFieldsSearchMap,
+    numberFieldsSearchMap,
+  } = mapProperties(searchParameters);
+  const propertiesWithAllProperties
+    = [booleanFieldsSearchMap, stringFieldsSearchMap, numberFieldsSearchMap];
+  let result = allTvSeries;
+  // filtering stuff
+  // it also removes all entries that have an empty Set so that we can clearly see only valid things
+
+  [filterByBoolean, filterByString, filterByNumber]
+    .forEach((filterFunction, index) =&gt; {
+      result = new Map(Array
+        .from(
+          result.entries(),
+          ([showName, showSet]) =&gt; [showName, filterFunction(showSet, propertiesWithAllProperties[index])],
+        )
+        // eslint-disable-next-line no-unused-vars
+        .filter(([showName, showSet]) =&gt; showSet.size &gt; 0));
+    });
+
   return result;
 }
 </code></pre>

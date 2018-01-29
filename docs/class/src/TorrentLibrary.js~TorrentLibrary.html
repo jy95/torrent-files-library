@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -62,13 +64,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import TorrentLibrary from &apos;<span><a href="file/src/TorrentLibrary.js.html#lineNumber126">torrent-files-library/src/TorrentLibrary.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import TorrentLibrary from &apos;<span><a href="file/src/TorrentLibrary.js.html#lineNumber104">torrent-files-library/src/TorrentLibrary.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/TorrentLibrary.js.html#lineNumber126">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/TorrentLibrary.js.html#lineNumber104">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -553,7 +555,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterMovies">filterMovies</a></span></span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterMovies">filterMovies</a></span></span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -566,6 +568,35 @@
     <td>
       
       <span class="since" data-ice="since">since 1.3.0</span>
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries">filterTvSeries</a></span></span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Filter the tv-series based on search parameters</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      <span class="since" data-ice="since">since 1.5.0</span>
     </td>
   </tr>
 <tr data-ice="target">
@@ -704,7 +735,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber111">source</a></span></span>
     </span>
   </h3>
 
@@ -754,7 +785,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber121">source</a></span></span>
     </span>
   </h3>
 
@@ -807,7 +838,7 @@
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.2.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber573">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber551">source</a></span></span>
     </span>
   </h3>
 
@@ -926,11 +957,12 @@ ptt.addHandler(&quot;part&quot;, /Part[. ]([0-9])/i, { type: &quot;integer&quot;
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/methods/createFromJSON.js.html#lineNumber6">create a perfect copy of instance</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/methods/createFromJSON.js.html#lineNumber29">empty instance(s)</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/createFromJSON.js.html#lineNumber6">create a perfect copy of instance</a></span></li>
 </ul>
   </div>
 
-  <div data-ice="see"><h4>See:</h4><ul><li><span><span>https://github.com/jy95/torrent-files-library/tree/master/test/example.json</span> for an param example</span></li></ul></div>
+  <div data-ice="see"><h4>See:</h4><ul><li><span><span>https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json</span> for an param example</span></li></ul></div>
   
 </div>
 <div class="detail" data-ice="detail">
@@ -945,7 +977,7 @@ ptt.addHandler(&quot;part&quot;, /Part[. ]([0-9])/i, { type: &quot;integer&quot;
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber301">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber279">source</a></span></span>
     </span>
   </h3>
 
@@ -1019,7 +1051,7 @@ TorrentLibrary.listVideosExtension()</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.4</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber159">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber137">source</a></span></span>
     </span>
   </h3>
 
@@ -1132,7 +1164,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber524">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber502">source</a></span></span>
     </span>
   </h3>
 
@@ -1170,7 +1202,7 @@ default is function parse from parse-torrent-title package</p>
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/getters/allFilesWithCategory.js.html#lineNumber8">result after scan()</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/getters/allFilesWithCategory.js.html#lineNumber8">Should correctly detect the category of each file</a></span></li>
 </ul>
   </div>
 
@@ -1189,7 +1221,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber478">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber456">source</a></span></span>
     </span>
   </h3>
 
@@ -1239,7 +1271,7 @@ default is function parse from parse-torrent-title package</p>
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/getters/allMovies.js.html#lineNumber9">result after scan()</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/getters/allMovies.js.html#lineNumber9">Returns the movies</a></span></li>
 </ul>
   </div>
 
@@ -1258,7 +1290,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber513">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber491">source</a></span></span>
     </span>
   </h3>
 
@@ -1320,7 +1352,7 @@ default is function parse from parse-torrent-title package</p>
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/getters/allTvSeries.js.html#lineNumber9">result after scan()</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/getters/allTvSeries.js.html#lineNumber9">Returns the tv-shows</a></span></li>
 </ul>
   </div>
 
@@ -1339,7 +1371,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber209">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber187">source</a></span></span>
     </span>
   </h3>
 
@@ -1390,7 +1422,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber183">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber161">source</a></span></span>
     </span>
   </h3>
 
@@ -1434,7 +1466,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.4.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber177">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber155">source</a></span></span>
     </span>
   </h3>
 
@@ -1478,7 +1510,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber192">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber170">source</a></span></span>
     </span>
   </h3>
 
@@ -1530,7 +1562,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber198">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber176">source</a></span></span>
     </span>
   </h3>
 
@@ -1577,7 +1609,7 @@ default is function parse from parse-torrent-title package</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber319">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber297">source</a></span></span>
     </span>
   </h3>
 
@@ -1671,7 +1703,7 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     <ul>
       
     <li data-ice="test"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber9">missing parameter</a></span></li>
-<li data-ice="test"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber23">inexistent Path</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber23">Not an existent path</a></span></li>
 <li data-ice="test"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber38">existent paths</a></span></li>
 </ul>
   </div>
@@ -1687,11 +1719,11 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     
     
     
-    <span class="code" data-ice="name">filterMovies</span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span>&gt;</span>
+    <span class="code" data-ice="name">filterMovies</span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;</span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.3.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber601">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber579">source</a></span></span>
     </span>
   </h3>
 
@@ -1728,7 +1760,7 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN_Extended">TPN_Extended</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;</td>
           <td class="return-desc" data-ice="returnDescription"><p>the filtered movie set</p>
 </td>
         </tr>
@@ -1763,6 +1795,89 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-filterTvSeries">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">filterTvSeries</span><span class="code" data-ice="signature">(searchParameters: <span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;&gt;</span>
+    <span class="right-info">
+      
+      <span class="since" data-ice="since">since 1.5.0</span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber616">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Filter the tv-series based on search parameters</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">searchParameters</td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-searchParameters">searchParameters</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>search parameters.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></span>&lt;<span><a href="typedef/index.html#static-typedef-TPN">TPN</a></span>&gt;&gt;</td>
+          <td class="return-desc" data-ice="returnDescription"><p>the filtered movie set</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber9">Should work without parameters</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber37">default boolean parameters search</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber69">default number parameters search</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber117">default string parameters search</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-hasPathsProvidedByUser">
     <span class="access" data-ice="access">public</span>
     
@@ -1774,7 +1889,7 @@ TorrentLibraryInstance.addNewPath(&quot;C:\Users\jy95\Desktop\New folder&quot;,&
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber353">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber331">source</a></span></span>
     </span>
   </h3>
 
@@ -1839,7 +1954,7 @@ TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE</code></pre>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.3</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber403">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber381">source</a></span></span>
     </span>
   </h3>
 
@@ -1934,6 +2049,7 @@ TorrentLibraryInstance.removeOldFiles(
 <li data-ice="test"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber33">Should be able to remove a movie</a></span></li>
 <li data-ice="test"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber61">Should be able to remove an tv-serie episode</a></span></li>
 <li data-ice="test"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber96">Should be able to remove multiples files : Tv-serie</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber125">Should not be able to remove files : wrong custom parser</a></span></li>
 </ul>
   </div>
 
@@ -1952,7 +2068,7 @@ TorrentLibraryInstance.removeOldFiles(
     <span class="right-info">
       
       <span class="since" data-ice="since">since 0.0.0</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber365">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber343">source</a></span></span>
     </span>
   </h3>
 
@@ -2016,6 +2132,8 @@ On error the promise will be rejected with an Error object from sub modules<br><
       
     <li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber9">Scan without user provided paths</a></span></li>
 <li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber19">Scan with user provided paths</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber32">Scan with user provided paths and custom parser</a></span></li>
+<li data-ice="test"><span><a href="test-file/test/methods/scan.js.html#lineNumber44">Scan with user provided paths and wrong custom parser</a></span></li>
 </ul>
   </div>
 
@@ -2034,7 +2152,7 @@ On error the promise will be rejected with an Error object from sub modules<br><
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.3</span>
-      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber534">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TorrentLibrary.js.html#lineNumber512">source</a></span></span>
     </span>
   </h3>
 
@@ -2082,7 +2200,7 @@ On error the promise will be rejected with an Error object from sub modules<br><
 </ul>
   </div>
 
-  <div data-ice="see"><h4>See:</h4><ul><li><span><span>https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json</span></span></li></ul></div>
+  <div data-ice="see"><h4>See:</h4><ul><li><span><span>https://github.com/jy95/torrent-files-library/blob/master/test/fixtures/example.json</span></span></li></ul></div>
   
 </div>
 </div>

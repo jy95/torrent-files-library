@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -84,7 +86,7 @@ test(&apos;missing parameter&apos;, async (t) =&gt; {
 });
 
 /** @test {TorrentLibrary#addNewPath} */
-test(&apos;inexistent Path&apos;, async (t) =&gt; {
+test(&apos;Not an existent path&apos;, async (t) =&gt; {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
 

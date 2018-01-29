@@ -20,7 +20,7 @@ test('missing parameter', async (t) => {
 });
 
 /** @test {TorrentLibrary#addNewPath} */
-test('inexistent Path', async (t) => {
+test('Not an existent path', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary();
 

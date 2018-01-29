@@ -28,6 +28,7 @@ test('Scan with user provided paths', async (t) => {
 });
 
 // test to handle default parameters
+/** @test {TorrentLibrary#scan} */
 test('Scan with user provided paths and custom parser', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary({}, nameParser);
@@ -39,6 +40,7 @@ test('Scan with user provided paths and custom parser', async (t) => {
   t.truthy(eventSpy.calledOnce, 'Event fired more than once');
 });
 
+/** @test {TorrentLibrary#scan} */
 test('Scan with user provided paths and wrong custom parser', async (t) => {
   let eventSpy = sinon.spy();
   let libInstance = new TorrentLibrary({}, {});

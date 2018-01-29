@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -64,25 +66,33 @@
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="torrent-files-library--a-href--https---travis-ci-org-jy95-torrent-files-library---img-src--https---img-shields-io-travis-jy95-torrent-files-library-svg--alt--build-status----a----a-href--https---coveralls-io-github-jy95-torrent-files-library-branch-master---img-src--https---img-shields-io-coveralls-jy95-torrent-files-library-master-svg--alt--coveralls-branch----a---a-href--https---david-dm-org-jy95-torrent-files-library---img-src--https---img-shields-io-david-jy95-torrent-files-library-svg--alt--dependency-status----a----a-href--https---david-dm-org-jy95-torrent-files-library-type-dev---img-src--https---img-shields-io-david-dev-jy95-torrent-files-library-svg--alt--dev-dependency-status----a---a-href--https---opensource-org-licenses-mit---img-src--https---img-shields-io-badge-license-mit-yellow-svg--alt--license--mit----a----a-href--https---github-com-semantic-release-semantic-release---img-src--https---img-shields-io-badge--20-20-f0-9f-93-a6-f0-9f-9a-80-semantic--release-e10079-svg--alt--semantic-release----a---a-href--https---gitter-im-torrent-files-library--lobby-utm-source-badge-amp-utm-medium-badge-amp-utm-campaign-pr-badge-amp-utm-content-badge---img-src--https---badges-gitter-im-torrent-files-library--lobby-svg--alt--join-the-chat-at-https---gitter-im-torrent-files-library--lobby----a----a-href--https---greenkeeper-io----img-src--https---badges-greenkeeper-io-jy95-torrent-files-library-svg--alt--greenkeeper-badge----a-">torrent-files-library <a href="https://travis-ci.org/jy95/torrent-files-library"><img src="https://img.shields.io/travis/jy95/torrent-files-library.svg" alt="Build Status"></a>  <a href="https://coveralls.io/github/jy95/torrent-files-library?branch=master"><img src="https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg" alt="Coveralls branch"></a> <a href="https://david-dm.org/jy95/torrent-files-library"><img src="https://img.shields.io/david/jy95/torrent-files-library.svg" alt="Dependency Status"></a>  <a href="https://david-dm.org/jy95/torrent-files-library?type=dev"><img src="https://img.shields.io/david/dev/jy95/torrent-files-library.svg" alt="Dev Dependency Status"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a> <a href="https://gitter.im/torrent-files-library-/Lobby?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/torrent-files-library-/Lobby.svg" alt="Join the chat at https://gitter.im/torrent-files-library-/Lobby"></a>  <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/jy95/torrent-files-library.svg" alt="Greenkeeper badge"></a></h1><blockquote>
 <p>Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions</p>
 </blockquote>
+<h2 id="what-to-do-with-this-library--">What to do with this library ?</h2><p>A lot of things :</p>
+<ul>
+<li>Basic listing purposes :<ul>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html">List found movies</a></li>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html">List each found tv serie</a></li>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html">Detect the category of each file</a></li>
+</ul>
+</li>
+<li>Filtering purposes :<ul>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html">Filter movies based on search parameters</a></li>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/filterTvSeriesByParameters.html">Filter tv-shown based on search parameters</a></li>
+</ul>
+</li>
+<li>Miscellaneous purposes<ul>
+<li><a href="https://jy95.github.io/torrent-files-library/manual/createPlaylists.html">Create custom playlist(s)</a></li>
+</ul>
+</li>
+<li>...</li>
+</ul>
+<p>Don&apos;t hesitate to suggest new features : it is always worthy :)</p>
+<h2 id="documentation">Documentation</h2><p>For more examples and API details, see <a href="https://jy95.github.io/torrent-files-library/">API documentation with manual</a></p>
 <h2 id="installation">Installation</h2><p>For npm users :</p>
 <pre><code class="lang-shell"><code class="source-code prettyprint">$ npm install --save torrent-files-library</code>
 </code></pre>
 <p>for Yarn :</p>
 <pre><code class="lang-shell"><code class="source-code prettyprint">$ yarn add torrent-files-library</code>
 </code></pre>
-<h2 id="what-to-do-with-this-library--">What to do with this library ?</h2><p>A lot of things :</p>
-<ul>
-<li><a href="https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html">List found movies</a></li>
-<li><a href="https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html">List each found tv serie</a></li>
-<li><a href="https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html">Get category for each file</a></li>
-<li>Filtering stuff<ul>
-<li><a href="https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html">Filter movies based on search parameters</a></li>
-<li>[Filter tv-shown based on search parameters] : Work in progress</li>
-</ul>
-</li>
-</ul>
-<p>Don&apos;t hesitate to suggest new features : it is always worthy :)</p>
-<h2 id="documentation">Documentation</h2><p>For more examples and API details, see <a href="https://jy95.github.io/torrent-files-library/">API documentation with manual</a></p>
 <h2 id="test">Test</h2><pre><code class="lang-shell"><code class="source-code prettyprint">npm test</code>
 </code></pre>
 <p>To generate a test coverage report:</p>

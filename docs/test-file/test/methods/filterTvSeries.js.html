@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">src/docs/events/events.js | torrent-files-library</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">test/methods/filterTvSeries.js | torrent-files-library</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -63,59 +63,176 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/docs/events/events.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// events
+<div class="content" data-ice="content"><h1 data-ice="title">test/methods/filterTvSeries.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import test from &apos;ava&apos;;
+import * as sinon from &apos;sinon&apos;;
+import { parse as nameParser } from &apos;parse-torrent-title&apos;;
+import path from &apos;path&apos;;
+import TorrentLibrary from &apos;../../index&apos;;
+import { files, folders } from &apos;../_constants&apos;;
 
-/**
- * missing_parameter event
- * @typedef {Object} Events#missing_parameter
- * @property {string} functionName - Indicates the function name when the error occurs.
- * @example
- * TorrentLibraryInstance.on(&apos;missing_parameter&apos;,function(callback){
- *      console.log(&apos;Parameter is missing in &apos; + callback.functionName);
- * })
- */
+/** @test {TorrentLibrary#filterTvSeries} */
+test(&apos;Should work without parameters&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary();
+  libInstance.on(&apos;scan&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.notThrows(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+  t.deepEqual(
+    new Map([
+      [nameParser(path.basename(files[0])).title, new Set([
+        Object.assign(
+          nameParser(path.basename(files[0])),
+          { filePath: files[0] },
+        ),
+        Object.assign(
+          nameParser(path.basename(files[1])),
+          { filePath: files[1] },
+        ),
+      ])],
+    ]),
+    libInstance.filterTvSeries(),
+    &apos;Not the same&apos;,
+  );
+});
 
-/**
- * error_in_function event
- * @typedef {Object} Events#error_in_function
- * @property {string} functionName - Indicates the function name when the error occurs.
- * @property {string} error - The error message got by error.message
- * @example
- * TorrentLibraryInstance.on(&apos;error_in_function&apos;,function(callback){
- *      console.log(&apos;Function &apos; + callback.functionName + &apos; has the following error : &apos; + callback.error);
- * })
- */
+/** @test {TorrentLibrary#filterTvSeries} */
+test(&apos;default boolean parameters search&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary();
+  libInstance.on(&apos;scan&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.notThrows(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
 
-/**
- * addNewPath event
- * @typedef {Object} Events#addNewPath
- * @property {...string} paths - all the paths that were added
- * @example
- * TorrentLibraryInstance.on(&apos;addNewPath&apos;,function(callback){
- *      console.log(&apos;The following files were added : &apos; + callback.paths);
- * })
- */
 
-/**
- * scan event
- * @typedef {object} Events#scan
- * @property {...string} files - all the files that were found and added if not yet in lib
- * @example
- * TorrentLibraryInstance.on(&apos;scan&apos;,function(callback){
- *      console.log(&apos;The following files were found : &apos; + callback.files);
- * })
- */
+  // A complex filter that should returns nothing
+  t.deepEqual(
+    new Map(),
+    libInstance.filterTvSeries({
+      extended: true,
+      unrated: true,
+      proper: true,
+      repack: true,
+      convert: true,
+      hardcoded: true,
+      retail: true,
+      remastered: true,
+      additionalProperties: [
+        { type: &apos;boolean&apos;, name: &apos;AnotherField&apos;, value: true },
+      ],
+    }),
+    &apos;Not the same&apos;,
+  );
+});
 
-/**
- * removeOldFiles event
- * @typedef {object}  Events#removeOldFiles
- * @property {...string} files - all the files that were found and removed if not yet in lib
- * @example
- * TorrentLibraryInstance.on(&apos;removeOldFiles&apos;,function(callback){
- *      console.log(&apos;The following files were added : &apos; + callback.files);
- * })
- */
+/** @test {TorrentLibrary#filterTvSeries} */
+test(&apos;default number parameters search&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary();
+  libInstance.on(&apos;scan&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.notThrows(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+
+  // A simple filter that should returns the two tv series that we have
+  t.deepEqual(
+    new Map([
+      [nameParser(path.basename(files[0])).title, new Set([
+        Object.assign(
+          nameParser(path.basename(files[0])),
+          { filePath: files[0] },
+        ),
+        Object.assign(
+          nameParser(path.basename(files[1])),
+          { filePath: files[1] },
+        ),
+      ])],
+    ]),
+    libInstance.filterTvSeries({
+      season: 4,
+    }),
+    &apos;Not the same&apos;,
+  );
+
+  // A complex filter that should returns nothing
+  t.deepEqual(
+    new Map(),
+    libInstance.filterTvSeries({
+      season: &apos;&gt;=4&apos;,
+      additionalProperties: [
+        { type: &apos;number&apos;, name: &quot;whateverFieldThatDoesn&apos;tExist&quot;, value: &apos;&lt;50&apos; },
+        { type: &apos;number&apos;, name: &apos;AnotherField&apos;, value: undefined },
+        { type: &apos;number&apos;, name: &apos;AnotherField2&apos;, value: &apos;&lt;=25&apos; },
+        { type: &apos;number&apos;, name: &apos;AnotherField3&apos;, value: &apos;&gt;25&apos; },
+        { type: &apos;number&apos;, name: &apos;AnotherField4&apos;, value: &apos;==25&apos; },
+      ],
+    }),
+    &apos;Not the same&apos;,
+  );
+});
+
+/** @test {TorrentLibrary#filterTvSeries} */
+test(&apos;default string parameters search&apos;, async (t) =&gt; {
+  let eventSpy = sinon.spy();
+  let libInstance = new TorrentLibrary();
+  libInstance.on(&apos;scan&apos;, eventSpy);
+  // whatever path that should exists
+  await t.notThrows(libInstance.addNewPath(...folders));
+  await t.notThrows(libInstance.scan());
+  t.truthy(eventSpy.called, &apos;Event did not fire.&apos;);
+  t.truthy(eventSpy.calledOnce, &apos;Event fired more than once&apos;);
+
+  // A simple filter that should returns the only movie that we have
+  t.deepEqual(
+    new Map([
+      [nameParser(path.basename(files[0])).title, new Set([
+        Object.assign(
+          nameParser(path.basename(files[0])),
+          { filePath: files[0] },
+        ),
+        Object.assign(
+          nameParser(path.basename(files[1])),
+          { filePath: files[1] },
+        ),
+      ])],
+    ]),
+    libInstance.filterTvSeries({
+      title: &apos;The Blacklist&apos;,
+    }),
+    &apos;Not the same&apos;,
+  );
+
+  // A complex filter that should returns nothing
+  t.deepEqual(
+    new Map(),
+    libInstance.filterTvSeries({
+      title: &apos;The Blacklist&apos;,
+      additionalProperties: [
+        {
+          type: &apos;string&apos;,
+          name: &apos;whateverField&apos;,
+          value: [&apos;NothingExists&apos;],
+        },
+        {
+          type: &apos;string&apos;,
+          name: &apos;AnotherField&apos;,
+          value: [&apos;NothingExists&apos;, &apos;NothingExists&apos;],
+        },
+        { type: &apos;string&apos;, name: &apos;AnotherField2&apos;, value: &apos;&lt;=25&apos; },
+        { type: &apos;string&apos;, name: &apos;AnotherField3&apos;, value: &apos;&gt;25&apos; },
+      ],
+    }),
+    &apos;Not the same&apos;,
+  );
+});
 </code></pre>
 
 </div>

@@ -66,6 +66,18 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "torrent-files-library/src/filters/filterproperties.js~filtermoviesbyproperties",
+    "function/index.html#static-function-filterMoviesByProperties",
+    "<span>filterMoviesByProperties</span> <span class=\"search-result-import-path\">torrent-files-library/src/filters/filterProperties.js</span>",
+    "function"
+  ],
+  [
+    "torrent-files-library/src/filters/filterproperties.js~filtertvseriesbyproperties",
+    "function/index.html#static-function-filterTvSeriesByProperties",
+    "<span>filterTvSeriesByProperties</span> <span class=\"search-result-import-path\">torrent-files-library/src/filters/filterProperties.js</span>",
+    "function"
+  ],
+  [
     "torrentlibrary.movies_type src/torrentlibrary.js~torrentlibrary.movies_type,torrentlibrary.movies_type",
     "test-file/test/getters/constants.js.html#lineNumber6",
     "Constant MOVIES_TYPE",
@@ -84,20 +96,38 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "torrentlibrary#addnewpath src/torrentlibrary.js~torrentlibrary#addnewpath,torrentlibrary#addnewpath",
+    "test-file/test/methods/addNewPath.js.html#lineNumber23",
+    "Not an existent path",
+    "test"
+  ],
+  [
+    "torrentlibrary#allmovies src/torrentlibrary.js~torrentlibrary#allmovies,torrentlibrary#allmovies",
+    "test-file/test/getters/allMovies.js.html#lineNumber9",
+    "Returns the movies",
+    "test"
+  ],
+  [
+    "torrentlibrary#alltvseries src/torrentlibrary.js~torrentlibrary#alltvseries,torrentlibrary#alltvseries",
+    "test-file/test/getters/allTvSeries.js.html#lineNumber9",
+    "Returns the tv-shows",
+    "test"
+  ],
+  [
     "torrentlibrary#scan src/torrentlibrary.js~torrentlibrary#scan,torrentlibrary#scan",
     "test-file/test/methods/scan.js.html#lineNumber19",
     "Scan with user provided paths",
     "test"
   ],
   [
-    "",
-    "test-file/test/methods/scan.js.html#lineNumber31",
+    "torrentlibrary#scan src/torrentlibrary.js~torrentlibrary#scan,torrentlibrary#scan",
+    "test-file/test/methods/scan.js.html#lineNumber32",
     "Scan with user provided paths and custom parser",
     "test"
   ],
   [
-    "",
-    "test-file/test/methods/scan.js.html#lineNumber42",
+    "torrentlibrary#scan src/torrentlibrary.js~torrentlibrary#scan,torrentlibrary#scan",
+    "test-file/test/methods/scan.js.html#lineNumber44",
     "Scan with user provided paths and wrong custom parser",
     "test"
   ],
@@ -126,8 +156,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/test/methods/removeOldFiles.js.html#lineNumber124",
+    "torrentlibrary#allfileswithcategory src/torrentlibrary.js~torrentlibrary#allfileswithcategory,torrentlibrary#allfileswithcategory",
+    "test-file/test/getters/allFilesWithCategory.js.html#lineNumber8",
+    "Should correctly detect the category of each file",
+    "test"
+  ],
+  [
+    "torrentlibrary#removeoldfiles src/torrentlibrary.js~torrentlibrary#removeoldfiles,torrentlibrary#removeoldfiles",
+    "test-file/test/methods/removeOldFiles.js.html#lineNumber125",
     "Should not be able to remove files : wrong custom parser",
     "test"
   ],
@@ -135,6 +171,12 @@ window.esdocSearchIndex = [
     "torrentlibrary#removeoldfiles src/torrentlibrary.js~torrentlibrary#removeoldfiles,torrentlibrary#removeoldfiles",
     "test-file/test/methods/removeOldFiles.js.html#lineNumber9",
     "Should not be able to remove not present files",
+    "test"
+  ],
+  [
+    "torrentlibrary#filtertvseries src/torrentlibrary.js~torrentlibrary#filtertvseries,torrentlibrary#filtertvseries",
+    "test-file/test/methods/filterTvSeries.js.html#lineNumber9",
+    "Should work without parameters",
     "test"
   ],
   [
@@ -150,6 +192,12 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "torrentlibrary#filtertvseries src/torrentlibrary.js~torrentlibrary#filtertvseries,torrentlibrary#filtertvseries",
+    "test-file/test/methods/filterTvSeries.js.html#lineNumber37",
+    "default boolean parameters search",
+    "test"
+  ],
+  [
     "torrentlibrary#filtermovies src/torrentlibrary.js~torrentlibrary#filtermovies,torrentlibrary#filtermovies",
     "test-file/test/methods/filterMovies.js.html#lineNumber31",
     "default boolean parameters search",
@@ -162,14 +210,26 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "torrentlibrary#filtertvseries src/torrentlibrary.js~torrentlibrary#filtertvseries,torrentlibrary#filtertvseries",
+    "test-file/test/methods/filterTvSeries.js.html#lineNumber69",
+    "default number parameters search",
+    "test"
+  ],
+  [
     "torrentlibrary#filtermovies src/torrentlibrary.js~torrentlibrary#filtermovies,torrentlibrary#filtermovies",
     "test-file/test/methods/filterMovies.js.html#lineNumber118",
     "default string parameters search",
     "test"
   ],
   [
-    "",
-    "test-file/test/methods/createFromJSON.js.html#lineNumber28",
+    "torrentlibrary#filtertvseries src/torrentlibrary.js~torrentlibrary#filtertvseries,torrentlibrary#filtertvseries",
+    "test-file/test/methods/filterTvSeries.js.html#lineNumber117",
+    "default string parameters search",
+    "test"
+  ],
+  [
+    "torrentlibrary.createfromjson src/torrentlibrary.js~torrentlibrary.createfromjson,torrentlibrary.createfromjson",
+    "test-file/test/methods/createFromJSON.js.html#lineNumber29",
     "empty instance(s)",
     "test"
   ],
@@ -181,32 +241,8 @@ window.esdocSearchIndex = [
   ],
   [
     "torrentlibrary#addnewpath src/torrentlibrary.js~torrentlibrary#addnewpath,torrentlibrary#addnewpath",
-    "test-file/test/methods/addNewPath.js.html#lineNumber23",
-    "inexistent Path",
-    "test"
-  ],
-  [
-    "torrentlibrary#addnewpath src/torrentlibrary.js~torrentlibrary#addnewpath,torrentlibrary#addnewpath",
     "test-file/test/methods/addNewPath.js.html#lineNumber9",
     "missing parameter",
-    "test"
-  ],
-  [
-    "torrentlibrary#allfileswithcategory src/torrentlibrary.js~torrentlibrary#allfileswithcategory,torrentlibrary#allfileswithcategory",
-    "test-file/test/getters/allFilesWithCategory.js.html#lineNumber8",
-    "result after scan()",
-    "test"
-  ],
-  [
-    "torrentlibrary#allmovies src/torrentlibrary.js~torrentlibrary#allmovies,torrentlibrary#allmovies",
-    "test-file/test/getters/allMovies.js.html#lineNumber9",
-    "result after scan()",
-    "test"
-  ],
-  [
-    "torrentlibrary#alltvseries src/torrentlibrary.js~torrentlibrary#alltvseries,torrentlibrary#alltvseries",
-    "test-file/test/getters/allTvSeries.js.html#lineNumber9",
-    "result after scan()",
     "test"
   ],
   [
@@ -564,6 +600,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/torrentlibrary.js~torrentlibrary#filtertvseries",
+    "class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries",
+    "src/TorrentLibrary.js~TorrentLibrary#filterTvSeries",
+    "method"
+  ],
+  [
     "src/torrentlibrary.js~torrentlibrary#haspathsprovidedbyuser",
     "class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-hasPathsProvidedByUser",
     "src/TorrentLibrary.js~TorrentLibrary#hasPathsProvidedByUser",
@@ -744,6 +786,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/filters/filterproperties.js",
+    "file/src/filters/filterProperties.js.html",
+    "src/filters/filterProperties.js",
+    "file"
+  ],
+  [
     "src/filters/filterstringproperty.js",
     "file/src/filters/filterStringProperty.js.html",
     "src/filters/filterStringProperty.js",
@@ -789,6 +837,12 @@ window.esdocSearchIndex = [
     "test/methods/filtermovies.js",
     "test-file/test/methods/filterMovies.js.html",
     "test/methods/filterMovies.js",
+    "testFile"
+  ],
+  [
+    "test/methods/filtertvseries.js",
+    "test-file/test/methods/filterTvSeries.js.html",
+    "test/methods/filterTvSeries.js",
     "testFile"
   ],
   [

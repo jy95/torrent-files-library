@@ -121,6 +121,7 @@ test('Should be able to remove multiples files : Tv-serie', async (t) => {
 });
 
 // test to handle default parameters
+/** @test {TorrentLibrary#removeOldFiles} */
 test('Should not be able to remove files : wrong custom parser', async (t) => {
   let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});
   let eventSpy = sinon.spy();

@@ -6,7 +6,7 @@ import { files, folders } from '../_constants';
 
 // TESTS
 /** @test {TorrentLibrary#allTvSeries} */
-test('result after scan()', async (t) => {
+test('Returns the tv-shows', async (t) => {
   let libInstance = new TorrentLibrary();
   await t.notThrows(libInstance.addNewPath(...folders));
   await t.notThrows(libInstance.scan());

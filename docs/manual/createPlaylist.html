@@ -132,10 +132,12 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="filter-movies-by-parameters">Filter movies by parameters</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="create-custom-playlist-s-">Create custom playlist(s)</h1><pre><code class="lang-js"><code class="source-code prettyprint">const TorrentLibrary = require(&quot;torrent-files-library&quot;);
+const m3u = require(&apos;m3u&apos;); // a basic playlist writer (in m3u format)
 
 let paths = [
-    &quot;D:/&quot;,
+    &apos;D:/DDL/SERIES TV/Le juge et le pilote&apos;,
+    &apos;D:/DDL/ANIME&apos;,
 ];
 
 // create an instance
@@ -144,25 +146,44 @@ let libInstance = new TorrentLibrary();
 // add these paths inside this lib
 libInstance
     .addNewPath(...paths)
-    .then( () =&gt; {
-        return libInstance.scan();
-    })
-    .then( () =&gt; {
-        console.log(&apos;Now time to search all remastered movies with year &gt;= 2012 in one of following container avi/mp4&apos;);
-        let filteredSet = libInstance.filterMovies({
-          year: &apos;&gt;=2012&apos;,
-          remastered: true,
-          container: [&apos;avi&apos;, &apos;mp4&apos;],
+    .then(() =&gt; libInstance.scan())
+    .then(() =&gt; {
+        console.log(&apos;Now time to search all episodes &lt;=5 in season 1 of Hardcastle And McCormick / Assassination Classroom , in one of following container avi/mp4&apos;);
+        let filteredMap = libInstance.filterTvSeries({
+            title: [&apos;Hardcastle And McCormick&apos;, &apos;Assassination Classroom&apos;],
+            season: 1,
+            episode: &apos;&lt;=5&apos;,
+            container: [&apos;avi&apos;, &apos;mp4&apos;],
         });
-        for (let movie of filteredSet) {
-          console.log(`${movie.title + ((movie.year) ? ` - ${movie.year}` : &apos;&apos;)} at ${movie.filePath}`);
+        var writer = m3u.writer();
+        for (let [foundTvShow, episodeSet] of filteredMap.entries()) {
+            let foundSeasons = new Set([...episodeSet].map(episode =&gt; episode.season));
+            for (let seasonNumber of foundSeasons) {
+                writer.comment(`${foundTvShow} - Season ${seasonNumber}`);
+                let seasonEpisodes = [...episodeSet].filter(episode =&gt; episode.season === seasonNumber);
+                seasonEpisodes.forEach(episode =&gt; writer.file(`${episode.filePath}`));
+            }
         }
+        let m3uAsString = writer.toString();
+        // save this result into a *.m3u file , using fs.writeFile or whatever you want to do that
+        // ...
     })
-    .catch( (err) =&gt; {
-            console.log(err.message);
+    .catch((err) =&gt; {
+        console.log(err.message);
     });</code>
 </code></pre>
-<p><img src="./manual/asset/filterMovies.png" alt="filterMovies"></p>
+<pre><code class="lang-m3u"><code class="source-code prettyprint"># Assassination Classroom - Season 1
+D:\DDL\ANIME\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\Assassination.Classroom.S01E01.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4
+D:\DDL\ANIME\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\Assassination.Classroom.S01E02.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4
+D:\DDL\ANIME\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\Assassination.Classroom.S01E03.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4
+D:\DDL\ANIME\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\Assassination.Classroom.S01E04.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4
+D:\DDL\ANIME\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\Assassination.Classroom.S01E05.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4
+# Hardcastle And McCormick - Season 1
+D:\DDL\SERIES TV\Le juge et le pilote\Saison 1\Hardcastle.And.McCormick.1x01.Le.Monstre.D_acier.avi
+D:\DDL\SERIES TV\Le juge et le pilote\Saison 1\Hardcastle.And.McCormick.1x03.Le.Canard.De.Cristal.avi
+D:\DDL\SERIES TV\Le juge et le pilote\Saison 1\Hardcastle.And.McCormick.1x04.Je.Ne.Sais.Pas.Ou.Je.Vais.Mais.J.y.Vais..avi
+D:\DDL\SERIES TV\Le juge et le pilote\Saison 1\Hardcastle.And.McCormick.1x05.La.Veuve.Noire..avi</code>
+</code></pre>
 </div>
 </div>
 

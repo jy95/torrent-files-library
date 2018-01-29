@@ -25,6 +25,7 @@ test('create a perfect copy of instance', async (t) => {
 });
 
 // dummy test for ES6 code coverage
+/** @test {TorrentLibrary.createFromJSON} */
 test('empty instance(s)', async (t) => {
   TorrentLibrary.createFromJSON({});
   t.pass();

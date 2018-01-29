@@ -32,4 +32,4 @@ libInstance
     });
 ```
 
-![foundTvSeries](asset/filterMovies.png)
+![filterMovies](asset/filterMovies.png)

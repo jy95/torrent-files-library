@@ -5,7 +5,7 @@ import { files, folders } from '../_constants';
 
 // TESTS
 /** @test {TorrentLibrary#allFilesWithCategory} */
-test('result after scan()', async (t) => {
+test('Should correctly detect the category of each file', async (t) => {
   let libInstance = new TorrentLibrary();
   await t.notThrows(libInstance.addNewPath(...folders));
   await t.notThrows(libInstance.scan());

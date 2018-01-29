@@ -1895,6 +1895,146 @@
   {
     "__docId__": 74,
     "kind": "file",
+    "name": "src/filters/filterProperties.js",
+    "content": "/* eslint-disable no-useless-escape,max-len */\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filterStringProperty';\r\n\r\n/**\r\n * Handle searchParameters provided by user to maps\r\n * @param {searchParameters} searchParameters - search parameters.\r\n * @return {{booleanFieldsSearchMap: Map<string, boolean>, numberFieldsSearchMap: Map<string, numberExpressionObject>, stringFieldsSearchMap: Map<string, string|string[]>}} an object that contains mapped properties for search\r\n */\r\nfunction mapProperties(searchParameters) {\r\n  // organize search based on field type : boolean - string - number\r\n  const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n  let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n  const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n  leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n  const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n  leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n  let { additionalProperties } = leftSearchParameters;\r\n  // add the optional new properties , optionally provided by user\r\n  /* istanbul ignore else */\r\n  if (additionalProperties !== undefined) {\r\n    additionalProperties\r\n      .filter(newProperty => newProperty.type === 'boolean')\r\n      .forEach((newProperty) => {\r\n        booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n      });\r\n\r\n    additionalProperties\r\n      .filter(newProperty => newProperty.type === 'number')\r\n      .forEach((newProperty) => {\r\n        let expression = convertToValidExpression(newProperty.value);\r\n        /* istanbul ignore else */\r\n        if (expression !== undefined) {\r\n          numberFieldsSearchMap.set(newProperty.name, expression);\r\n        }\r\n      });\r\n\r\n    additionalProperties\r\n      .filter(newProperty => newProperty.type === 'string')\r\n      .forEach((newProperty) => {\r\n        stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n      });\r\n  }\r\n\r\n  return {\r\n    booleanFieldsSearchMap,\r\n    numberFieldsSearchMap,\r\n    stringFieldsSearchMap,\r\n  };\r\n}\r\n\r\n/**\r\n * Filter the movies based on search parameters\r\n * @param {searchParameters} searchParameters - search parameters.\r\n * @param {Set<TPN_Extended>} allMovies - the movies set\r\n * @return {Set<TPN>} the filtered movie set\r\n */\r\nexport function filterMoviesByProperties(searchParameters, allMovies) {\r\n  const {\r\n    booleanFieldsSearchMap, stringFieldsSearchMap,\r\n    numberFieldsSearchMap,\r\n  } = mapProperties(searchParameters);\r\n  const propertiesWithAllProperties\r\n    = [booleanFieldsSearchMap, stringFieldsSearchMap, numberFieldsSearchMap];\r\n  let result = allMovies;\r\n  [filterByBoolean, filterByString, filterByNumber]\r\n    .forEach((filterFunction, index) => {\r\n      result = filterFunction(result, propertiesWithAllProperties[index]);\r\n    });\r\n  return result;\r\n}\r\n\r\n/**\r\n * Filter the tv series based on search parameters\r\n * @param {searchParameters} searchParameters - search parameters.\r\n * @param {(Map<string, Set<TPN>>)} allTvSeries - the tvSeries map\r\n * @return {(Map<string, Set<TPN>>)} the filtered tvSeries map\r\n */\r\nexport function filterTvSeriesByProperties(searchParameters, allTvSeries) {\r\n  const {\r\n    booleanFieldsSearchMap, stringFieldsSearchMap,\r\n    numberFieldsSearchMap,\r\n  } = mapProperties(searchParameters);\r\n  const propertiesWithAllProperties\r\n    = [booleanFieldsSearchMap, stringFieldsSearchMap, numberFieldsSearchMap];\r\n  let result = allTvSeries;\r\n  // filtering stuff\r\n  // it also removes all entries that have an empty Set so that we can clearly see only valid things\r\n\r\n  [filterByBoolean, filterByString, filterByNumber]\r\n    .forEach((filterFunction, index) => {\r\n      result = new Map(Array\r\n        .from(\r\n          result.entries(),\r\n          ([showName, showSet]) => [showName, filterFunction(showSet, propertiesWithAllProperties[index])],\r\n        )\r\n        // eslint-disable-next-line no-unused-vars\r\n        .filter(([showName, showSet]) => showSet.size > 0));\r\n    });\r\n\r\n  return result;\r\n}\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/src/filters/filterProperties.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "mapProperties",
+    "memberof": "src/filters/filterProperties.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterProperties.js~mapProperties",
+    "access": "public",
+    "export": false,
+    "importPath": "torrent-files-library/src/filters/filterProperties.js",
+    "importStyle": null,
+    "description": "Handle searchParameters provided by user to maps",
+    "lineNumber": 35,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchParameters",
+        "description": "search parameters."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "{booleanFieldsSearchMap: Map<string, boolean>, numberFieldsSearchMap: Map<string, numberExpressionObject>, stringFieldsSearchMap: Map<string, string|string[]>}"
+      ],
+      "spread": false,
+      "description": "an object that contains mapped properties for search"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "function",
+    "name": "filterMoviesByProperties",
+    "memberof": "src/filters/filterProperties.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterProperties.js~filterMoviesByProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterProperties.js",
+    "importStyle": "{filterMoviesByProperties}",
+    "description": "Filter the movies based on search parameters",
+    "lineNumber": 86,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchParameters",
+        "description": "search parameters."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Set<TPN_Extended>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "allMovies",
+        "description": "the movies set"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Set<TPN>"
+      ],
+      "spread": false,
+      "description": "the filtered movie set"
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "filterTvSeriesByProperties",
+    "memberof": "src/filters/filterProperties.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/filters/filterProperties.js~filterTvSeriesByProperties",
+    "access": "public",
+    "export": true,
+    "importPath": "torrent-files-library/src/filters/filterProperties.js",
+    "importStyle": "{filterTvSeriesByProperties}",
+    "description": "Filter the tv series based on search parameters",
+    "lineNumber": 107,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchParameters",
+        "description": "search parameters."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Map<string, Set<TPN>>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "allTvSeries",
+        "description": "the tvSeries map"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Map<string, Set<TPN>>"
+      ],
+      "spread": false,
+      "description": "the filtered tvSeries map"
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "file",
     "name": "src/filters/filterStringProperty.js",
     "content": "/**\r\n * Provides a map with valid default properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {Map<string, string|string[]>} the result map\r\n */\r\nexport function filterDefaultStringProperties(searchObject) {\r\n  const {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n  } = searchObject;\r\n\r\n\r\n  const propertiesArray = [title, resolution, codec, audio, group,\r\n    region, container, language, source];\r\n  const propertiesNames = ['title', 'resolution', 'codec', 'audio', 'group',\r\n    'region', 'container', 'language', 'source'];\r\n\r\n  return propertiesArray.reduce((propertiesMap, val, index) => {\r\n    if (val !== undefined) {\r\n      propertiesMap.set(propertiesNames[index], val);\r\n    }\r\n    return propertiesMap;\r\n  }, new Map());\r\n}\r\n\r\n/**\r\n * Remove the default string properties\r\n * @param {searchParameters} searchObject - search parameters\r\n * @return {searchParameters} searchParameters without these properties\r\n */\r\nexport function excludeDefaultStringProperties(searchObject) {\r\n  let {\r\n    title, resolution, codec, audio, group, region, container, language, source,\r\n    ...rest\r\n  } = searchObject;\r\n  return rest;\r\n}\r\n\r\n/**\r\n * Filter function for filterByString\r\n * @param {string} property The property to be checked\r\n * @param {string[]|string} expected The expected result\r\n * @param {TPN} object the object to be checked\r\n * @return {boolean} the result\r\n */\r\nfunction filterFunctionByType(property, expected, object) {\r\n  if (Array.isArray(expected)) { return expected.includes(object[property]); }\r\n  return object[property] === expected;\r\n}\r\n\r\n/**\r\n * Filter the set based on string properties\r\n * @param {Set<TPN>} set The TPN set\r\n * @param {Map<string, string|string[]>} propertiesMap The map from filterDefaultStringProperties\r\n * @return {Set<TPN>} the filtered set\r\n */\r\nexport function filterByString(set, propertiesMap) {\r\n  // first step : get an array so that we can do filter/reduce stuff\r\n  // second step : iterate the propertiesMap and do filter and return the filtered array\r\n  // val[0] : the key ; val[1] : the value\r\n  return new Set(Array\r\n    .from(propertiesMap.entries())\r\n    .reduce(\r\n      // eslint-disable-next-line max-len\r\n      (currentMoviesArray, val) => currentMoviesArray.filter(TPN => filterFunctionByType(val[0], val[1], TPN))\r\n      , [...set],\r\n    ));\r\n}\r\n",
     "static": true,
@@ -1904,7 +2044,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 75,
+    "__docId__": 79,
     "kind": "function",
     "name": "filterDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1940,7 +2080,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 80,
     "kind": "function",
     "name": "excludeDefaultStringProperties",
     "memberof": "src/filters/filterStringProperty.js",
@@ -1976,7 +2116,7 @@
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 81,
     "kind": "function",
     "name": "filterFunctionByType",
     "memberof": "src/filters/filterStringProperty.js",
@@ -2034,7 +2174,7 @@
     "ignore": true
   },
   {
-    "__docId__": 78,
+    "__docId__": 82,
     "kind": "function",
     "name": "filterByString",
     "memberof": "src/filters/filterStringProperty.js",
@@ -2080,10 +2220,10 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 83,
     "kind": "file",
     "name": "src/TorrentLibrary.js",
-    "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external {Promise} http://bluebirdjs.com/docs/api-reference\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Default Parser for media files name\r\n * @type {customParsingFunction}\r\n * @external {nameParser} https://github.com/clement-escolano/parse-torrent-title\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\n/**\r\n * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter\r\n */\r\nimport EventEmitter from 'events';\r\n\r\n/**\r\n * Boolean properties filter\r\n */\r\nimport {\r\n  filterDefaultBooleanProperties,\r\n  filterByBoolean,\r\n  excludeDefaultBooleanProperties,\r\n} from './filters/filterBooleanProperty';\r\n\r\n/**\r\n * Number properties filter\r\n */\r\nimport {\r\n  convertToValidExpression,\r\n  excludeDefaultNumberProperties,\r\n  filterDefaultNumberProperties,\r\n  filterByNumber,\r\n} from './filters/filterNumberProperty';\r\n\r\n/**\r\n * String properties filter\r\n */\r\nimport {\r\n  excludeDefaultStringProperties,\r\n  filterDefaultStringProperties,\r\n  filterByString,\r\n} from './filters/filterStringProperty';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends {EventEmitter}\r\n */\r\nexport default class TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @since 1.0.4\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The parsing function to be used with this lib ;\r\n     * default is function parse from parse-torrent-title package\r\n   */\r\n  constructor(\r\n    {\r\n      defaultPath = process.cwd()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      paths = [] /* istanbul ignore next: tired of writing tests */,\r\n      allFilesWithCategory = new Map()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n      series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n    } = {} /* istanbul ignore next: tired of writing tests */,\r\n    parser = nameParser /* istanbul ignore next: tired of writing tests */,\r\n  ) {\r\n    super();\r\n    /**\r\n     * The parsing function to be used with this lib\r\n     * @since 1.4.0\r\n     * @type {customParsingFunction}\r\n     */\r\n    this.parser = parser;\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @since 0.0.0\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @since 0.0.0\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         * @since 0.0.0\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @since 0.0.0\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...this.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = this.allMovies;\r\n          const newTvSeries = this.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = this.parser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            this.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          reject(err);\r\n        }\r\n      }).bind(true);\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        this.paths = uniq([...this.paths, ...paths.map(normalize)]);\r\n        this.emit('addNewPath', { paths: this.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        this.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    })).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => this.addNewFiles(files)).then(() => {\r\n          this.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch((err) => {\r\n          this.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          reject(err);\r\n        });\r\n    }).bind(this);\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          this.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        this.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...this.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => this.parser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = this.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          this.categoryForFile.delete(file);\r\n        });\r\n        this.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n      } catch (err) {\r\n        this.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        reject(err);\r\n      }\r\n    }).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example\r\n     * @since 1.2.0\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     * @example\r\n     * // As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions\r\n     * // If you want an extra field to be populated\r\n     * const ptt = require(\"parse-torrent-title\");\r\n     * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n     * // creates an new instance from another one; with custom parser\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *      ptt.parse\r\n     *   );\r\n     */\r\n  static createFromJSON(json, parser = nameParser) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config, parser);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN_Extended>} the filtered movie set\r\n   * @since 1.3.0\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // organize search based on field type : boolean - string - number\r\n    // eslint-disable-next-line max-len\r\n    const booleanFieldsSearchMap = filterDefaultBooleanProperties(searchParameters);\r\n    // eslint-disable-next-line max-len\r\n    let leftSearchParameters = excludeDefaultBooleanProperties(searchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const numberFieldsSearchMap = filterDefaultNumberProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultNumberProperties(leftSearchParameters);\r\n\r\n    // eslint-disable-next-line max-len\r\n    const stringFieldsSearchMap = filterDefaultStringProperties(leftSearchParameters);\r\n    leftSearchParameters = excludeDefaultStringProperties(leftSearchParameters);\r\n\r\n    let { additionalProperties } = leftSearchParameters;\r\n    // add the optional new properties , optionally provided by user\r\n    /* istanbul ignore else */\r\n    if (additionalProperties !== undefined) {\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'boolean')\r\n        .forEach((newProperty) => {\r\n          booleanFieldsSearchMap.set(newProperty.name, newProperty.value);\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'number')\r\n        .forEach((newProperty) => {\r\n          let expression = convertToValidExpression(newProperty.value);\r\n          /* istanbul ignore else */\r\n          if (expression !== undefined) {\r\n            numberFieldsSearchMap.set(newProperty.name, expression);\r\n          }\r\n        });\r\n\r\n      additionalProperties\r\n        .filter(newProperty => newProperty.type === 'string')\r\n        .forEach((newProperty) => {\r\n          stringFieldsSearchMap.set(newProperty.name, [...newProperty.value]);\r\n        });\r\n    }\r\n\r\n    // apply params based on types\r\n    let result = filterByBoolean(this.allMovies, booleanFieldsSearchMap);\r\n    result = filterByNumber(result, numberFieldsSearchMap);\r\n    result = filterByString(result, stringFieldsSearchMap);\r\n    return result;\r\n  }\r\n}\r\n",
+    "content": "/**\r\n * module for exploring directories\r\n * @see {@link https://nspragg.github.io/filehound/}\r\n */\r\nimport FileHound from 'filehound';\r\n\r\n/**\r\n * Access method from module fs (node) with constants\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback}\r\n * @see {@link https://nodejs.org/api/fs.html#fs_fs_constants_1}\r\n */\r\nimport {\r\n  access,\r\n  constants as FsConstants,\r\n} from 'fs';\r\n\r\n/**\r\n * Basename and normalize methods from module path (node)\r\n * @see {@link https://nodejs.org/api/path.html#path_path_basename_path_ext}\r\n * @see {@link https://nodejs.org/api/path.html#path_path_normalize_path}\r\n */\r\nimport { basename, normalize } from 'path';\r\n\r\n\r\n/**\r\n * uniq and difference methods from Lodash\r\n * @see {@link https://lodash.com/docs/4.17.4#uniq}\r\n * @see {@link https://lodash.com/docs/4.17.4#difference}\r\n * @see {@link https://lodash.com/docs/4.17.4#partition}\r\n * @see {@link https://lodash.com/docs/4.17.4#cloneDeep}\r\n */\r\nimport { uniq, difference, partition, cloneDeep } from 'lodash';\r\n\r\n/**\r\n * A promise object provided by the bluebird promise library.\r\n * @external {Promise} http://bluebirdjs.com/docs/api-reference\r\n */\r\nimport PromiseLib from 'bluebird';\r\n\r\n/**\r\n * List of video file extensions\r\n * @see {@link https://github.com/sindresorhus/video-extensions}\r\n */\r\nimport videosExtension from 'video-extensions';\r\n\r\n/**\r\n * Default Parser for media files name\r\n * @type {customParsingFunction}\r\n * @external {nameParser} https://github.com/clement-escolano/parse-torrent-title\r\n */\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\n\r\n/**\r\n * @external {EventEmitter} https://nodejs.org/api/events.html#events_class_eventemitter\r\n */\r\nimport EventEmitter from 'events';\r\n\r\n/**\r\n * Filter Properties for filterMovies function\r\n */\r\nimport { filterMoviesByProperties, filterTvSeriesByProperties }\r\n  from './filters/filterProperties';\r\n\r\n/**\r\n * check if an object has these properties and they are not undefined\r\n * @param {Object} obj The object\r\n * @param {Array} properties The properties array\r\n * @return {boolean} The result\r\n */\r\nfunction checkProperties(obj, properties) {\r\n  return properties.every(x => x in obj && obj[x]);\r\n}\r\n\r\n/**\r\n * rejected promise when someone doesn't provide\r\n * @return {Promise} The rejected promise\r\n */\r\nfunction missingParam() {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    reject(new Error('Missing parameter'));\r\n  }));\r\n}\r\n\r\n/**\r\n * Bluebird seems to have an issue with fs.access - Workaround function\r\n * @private\r\n * @param {string} path a path\r\n * @returns {Promise} an Promise object resolved or rejected\r\n * @see {@link https://github.com/petkaantonov/bluebird/issues/1442}\r\n */\r\nfunction promisifiedAccess(path) {\r\n  return new PromiseLib(((resolve, reject) => {\r\n    access(path, FsConstants.F_OK | FsConstants.R_OK, (err) => {\r\n      if (err) reject(err);\r\n      resolve();\r\n    });\r\n  }));\r\n}\r\n\r\n/**\r\n * Class representing the TorrentLibrary\r\n * @extends {EventEmitter}\r\n */\r\nexport default class TorrentLibrary extends EventEmitter {\r\n  /**\r\n     * constant for movie category\r\n     * @since 0.0.0\r\n     * @type {string}\r\n     * @static\r\n     */\r\n  static get MOVIES_TYPE() {\r\n    return 'MOVIES';\r\n  }\r\n\r\n  /**\r\n     * constant for tv series category\r\n     * @type {string}\r\n     * @since 0.0.0\r\n     * @static\r\n     */\r\n  static get TV_SERIES_TYPE() {\r\n    return 'TV_SERIES';\r\n  }\r\n\r\n  /**\r\n     * Create a TorrentLibrary\r\n     * @since 1.0.4\r\n     * @param {Object} [config] - the config object\r\n     * @param {(String)} [config.defaultPath=process.cwd()] - the default path\r\n     * @param {(String[])} [config.paths=[]] - the paths where we are looking the media files\r\n     * @param {(Map<string,string>)} [config.allFilesWithCategory=new Map()] - Mapping filepath => category\r\n     * @param {(Set<TPN_Extended>)} [config.movies=new Set()] - the movies files\r\n     * @param {(Map<string, Set<TPN_Extended>>)} [config.series=new Map()] - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The parsing function to be used with this lib ;\r\n     * default is function parse from parse-torrent-title package\r\n   */\r\n  constructor(\r\n    {\r\n      defaultPath = process.cwd()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      paths = [] /* istanbul ignore next: tired of writing tests */,\r\n      allFilesWithCategory = new Map()\r\n      /* istanbul ignore next: tired of writing tests */,\r\n      movies = new Set() /* istanbul ignore next: tired of writing tests */,\r\n      series = new Map() /* istanbul ignore next: tired of writing tests */,\r\n    } = {} /* istanbul ignore next: tired of writing tests */,\r\n    parser = nameParser /* istanbul ignore next: tired of writing tests */,\r\n  ) {\r\n    super();\r\n    /**\r\n     * The parsing function to be used with this lib\r\n     * @since 1.4.0\r\n     * @type {customParsingFunction}\r\n     */\r\n    this.parser = parser;\r\n    /**\r\n         * just an easy way to scan the current directory path, if not other paths provided\r\n         * @type  {string}\r\n         * @since 0.0.0\r\n         */\r\n    this.defaultPath = defaultPath;\r\n    /**\r\n         * the paths where we are looking the media files\r\n         * @type {String[]}\r\n         * @since 0.0.0\r\n         * @example\r\n         * // after have added some paths ...\r\n         * [ \"D:\\somePath\", \"D:\\anotherPath\" ]\r\n         */\r\n    this.paths = paths;\r\n    /**\r\n         * The variable where we store all kind of media files found in paths\r\n         * @type {StoreVar}\r\n         * @since 0.0.0\r\n         */\r\n    this.stores = new Map([\r\n      [TorrentLibrary.MOVIES_TYPE, movies],\r\n      [TorrentLibrary.TV_SERIES_TYPE, series],\r\n    ]);\r\n    /**\r\n         * Mapping filepath => category\r\n         * @type {Map<string,string>}\r\n         * @since 0.0.0\r\n         * @example\r\n         * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n         */\r\n    this.categoryForFile = allFilesWithCategory;\r\n    /**\r\n         * Private method for adding new files\r\n         * @private\r\n         * @returns {Promise} an resolved or reject promise\r\n         * @param {string[]} files An array of filePath\r\n         */\r\n    this.addNewFiles = function addNewFiles(files) {\r\n      return new PromiseLib((resolve, reject) => {\r\n        try {\r\n          // find the new files to be added\r\n          const alreadyFoundFiles = [...this.categoryForFile.keys()];\r\n          const newFiles = difference(files, alreadyFoundFiles);\r\n\r\n          // temp var for new files before adding them to stores var\r\n          const moviesSet = new Set();\r\n          const tvSeriesSet = new Set();\r\n\r\n          // get previous result of stores var\r\n          let newMovies = this.allMovies;\r\n          const newTvSeries = this.allTvSeries;\r\n\r\n          // process each file\r\n          for (const file of newFiles) {\r\n            // get data from nameParser lib\r\n            // what we need is only the basename, not the full path\r\n            const jsonFile = this.parser(basename(file));\r\n            // extend this object in order to be used by this library\r\n            Object.assign(jsonFile, { filePath: file });\r\n            // find out which type of this file\r\n            // if it has not undefined properties (season and episode) => TV_SERIES , otherwise MOVIE\r\n            const fileCategory =\r\n                (checkProperties(jsonFile, ['season', 'episode']))\r\n                  ? TorrentLibrary.TV_SERIES_TYPE : TorrentLibrary.MOVIES_TYPE;\r\n            // add it in found files\r\n            this.categoryForFile.set(file, fileCategory);\r\n            // also in temp var\r\n            if (fileCategory !== TorrentLibrary.TV_SERIES_TYPE) {\r\n              moviesSet.add(jsonFile);\r\n            } else {\r\n              tvSeriesSet.add(jsonFile);\r\n            }\r\n          }\r\n\r\n          // add the movies into newMovies\r\n          newMovies = new Set([...newMovies, ...moviesSet]);\r\n\r\n          // add the tv series into newTvSeries\r\n          // First step : find all the series not in newTvSeries and add them to newTvSeries\r\n          difference(\r\n            uniq([...tvSeriesSet].map(tvSeries => tvSeries.title)),\r\n            ...newTvSeries.keys(),\r\n          ).forEach((tvSeriesToInsert) => {\r\n            newTvSeries.set(tvSeriesToInsert, new Set());\r\n          });\r\n\r\n          // Second step : add the new files into the correct tvSeries Set\r\n          uniq([...tvSeriesSet].map(tvSeries => tvSeries.title))\r\n            .forEach((tvSerie) => {\r\n            // get the current set for this tvSerie\r\n              const currentTvSerie = newTvSeries.get(tvSerie);\r\n\r\n              // find all the episodes in the new one for this serie\r\n              const episodes = [...tvSeriesSet]\r\n                .filter(episode => episode.title === tvSerie);\r\n\r\n              // add them and updates newTvSeries\r\n              newTvSeries.set(\r\n                tvSerie,\r\n                new Set([...currentTvSerie, ...episodes]),\r\n              );\r\n            });\r\n\r\n          // updates the stores var\r\n          this.stores.set(TorrentLibrary.MOVIES_TYPE, newMovies);\r\n          this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeries);\r\n          resolve();\r\n        } catch (err) {\r\n          reject(err);\r\n        }\r\n      }).bind(true);\r\n    };\r\n  }\r\n\r\n  /**\r\n     * Provides the array of files extensions considered to be media extensions\r\n     * @return {string[]} array of files extensions\r\n     * @since 0.0.0\r\n     * @example\r\n     * // Returns [..., 'webm', 'wmv']\r\n     * TorrentLibrary.listVideosExtension()\r\n     */\r\n  static listVideosExtension() {\r\n    return videosExtension;\r\n  }\r\n\r\n  /**\r\n     * Add the path(s) to be analyzed by the library if they exist and are readable\r\n     * @param {...string} paths - A or more path(s)\r\n     * @since 0.0.0\r\n     * @example\r\n     * // return resolved Promise \"All paths were added!\"\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * @return {Promise}  On success the promise will be resolved with \"All paths were added!\"<br>\r\n     * On error the promise will be rejected with an Error object \"Missing parameter\" if the argument is missing<br>\r\n     * or an Error object from fs <br>\r\n     * @emits Events#missing_parameter\r\n     * @emits Events#error_in_function\r\n     * @emits Events#addNewPath\r\n     */\r\n  addNewPath(...paths) {\r\n    // the user should provide us at lest a path\r\n    if (paths.length === 0) {\r\n      this.emit('missing_parameter', {\r\n        functionName: 'addNewPath',\r\n      });\r\n      return missingParam();\r\n    }\r\n\r\n    return new PromiseLib(((resolve, reject) => {\r\n      PromiseLib.map(paths, path => promisifiedAccess(path)).then(() => {\r\n        // keep only unique paths\r\n        // use normalize for cross platform's code\r\n        this.paths = uniq([...this.paths, ...paths.map(normalize)]);\r\n        this.emit('addNewPath', { paths: this.paths });\r\n        resolve('All paths were added!');\r\n      }).catch((e) => {\r\n        this.emit('error_in_function', {\r\n          functionName: 'addNewPath',\r\n          error: e.message,\r\n        });\r\n        reject(e);\r\n      });\r\n    })).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Tell us if the user has provided us paths\r\n     * @since 0.0.0\r\n     * @returns {boolean} Has user provided us paths ?\r\n     * @example\r\n     * TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\r\n     * TorrentLibraryInstance.hasPathsProvidedByUser() // TRUE\r\n     */\r\n  hasPathsProvidedByUser() {\r\n    return this.paths.length !== 0;\r\n  }\r\n\r\n  /**\r\n     * Scans the paths in search for new files to be added inside this lib\r\n     * @since 0.0.0\r\n     * @return {Promise}  On success the promise will be resolved with \"Scanning completed\"<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @emits Events#scan\r\n     * @emits Events#error_in_function\r\n     */\r\n  scan() {\r\n    const foundFiles = FileHound.create()\r\n      .paths((this.paths.length === 0) ? this.defaultPath : this.paths)\r\n      .ext(videosExtension)\r\n      .find();\r\n\r\n    return new PromiseLib((resolve, reject) => {\r\n      foundFiles\r\n        .then(files => this.addNewFiles(files)).then(() => {\r\n          this.emit('scan', { files: foundFiles });\r\n          resolve('Scanning completed');\r\n        }).catch((err) => {\r\n          this.emit('error_in_function', {\r\n            functionName: 'scan',\r\n            error: err.message,\r\n          });\r\n          reject(err);\r\n        });\r\n    }).bind(this);\r\n  }\r\n\r\n\r\n  /**\r\n     * Removes files stored in this library\r\n     * @param {...string} files An array of filePath (for example the keys of allFilesWithCategory)\r\n     * @since 1.0.3\r\n     * @return {Promise} an resolved or rejected promise<br>\r\n     * On success, the resolve will contain an message and the removed filePaths<br>\r\n     * On error the promise will be rejected with an Error object from sub modules<br>\r\n     * @example\r\n     * // with multiples files\r\n     * TorrentLibraryInstance.removeOldFiles(\r\n     *    \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\r\n     *    \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n     * )\r\n     * @emits Events#removeOldFiles\r\n     * @emits Events#error_in_function\r\n     */\r\n  removeOldFiles(...files) {\r\n    return new PromiseLib((resolve, reject) => {\r\n      try {\r\n        // get the data to handle this case\r\n        // in the first group, we got all the tv series files and in the second, the movies\r\n        const processData = partition(files, file =>\r\n          this.categoryForFile.get(file) === TorrentLibrary.TV_SERIES_TYPE);\r\n\r\n        // for movies, just an easy removal\r\n        this.stores.set(\r\n          TorrentLibrary.MOVIES_TYPE,\r\n          new Set([...this.allMovies]\r\n            .filter(movie => !(processData[1].includes(movie.filePath)))),\r\n        );\r\n\r\n        // for the tv-series, a bit more complicated\r\n        // first step : find the unique tv series of these files\r\n        const tvSeriesShows = uniq(processData[0]\r\n          .map(file => this.parser(basename(file)).title));\r\n\r\n        // second step : foreach each series in tvSeriesShows\r\n        const newTvSeriesMap = this.allTvSeries;\r\n\r\n        for (const serie of tvSeriesShows) {\r\n          // get the set for this serie\r\n          const filteredSet = new Set([...newTvSeriesMap.get(serie)]\r\n            .filter(episode =>\r\n              !(processData[0].includes(episode.filePath))));\r\n          // if the filtered set is empty => no more episodes for this series\r\n          if (filteredSet.size === 0) {\r\n            newTvSeriesMap.delete(serie);\r\n          } else newTvSeriesMap.set(serie, filteredSet);\r\n        }\r\n\r\n        // save the updated map\r\n        this.stores.set(TorrentLibrary.TV_SERIES_TYPE, newTvSeriesMap);\r\n\r\n        // remove the mapping\r\n        files.forEach((file) => {\r\n          this.categoryForFile.delete(file);\r\n        });\r\n        this.emit('removeOldFiles', { files });\r\n        resolve({\r\n          message: 'The files have been deleted from the library',\r\n          files,\r\n        });\r\n      } catch (err) {\r\n        this.emit('error_in_function', {\r\n          functionName: 'removeOldFiles',\r\n          error: err.message,\r\n        });\r\n        reject(err);\r\n      }\r\n    }).bind(this);\r\n  }\r\n\r\n  /**\r\n     * Getter for all found movies\r\n     * @since 0.0.0\r\n     * @type {Set<TPN_Extended>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * [\r\n     *  {\r\n     *   \"year\":2012,\r\n     *   \"source\":\"dvdrip\",\r\n     *   \"codec\":\"xvid\",\r\n     *   \"group\":\"-www.zone-telechargement.ws.avi\",\r\n     *   \"container\":\"avi\",\r\n     *   \"language\":\"truefrench\",\r\n     *   \"title\":\"Bad Ass\",\r\n     *   \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\r\n     *  }\r\n     * ]\r\n     */\r\n  get allMovies() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.MOVIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for all found tv-series\r\n     * @since 0.0.0\r\n     * @type {Map<string, Set<TPN_Extended>>}\r\n     * @example\r\n     * // an JSON stringified example of this method\r\n     * {\r\n   * \"The Blacklist\":[\r\n   *    {\r\n   *      \"season\":4,\r\n   *      \"episode\":21,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\r\n   *   },\r\n   *   {\r\n   *      \"season\":4,\r\n   *      \"episode\":14,\r\n   *      \"source\":\"webrip\",\r\n   *      \"codec\":\"xvid\",\r\n   *      \"container\":\"avi\",\r\n   *      \"language\":\"french\",\r\n   *      \"title\":\"The Blacklist\",\r\n   *      \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\r\n   *   }\r\n   * ]\r\n* }\r\n     */\r\n  get allTvSeries() {\r\n    return cloneDeep(this.stores.get(TorrentLibrary.TV_SERIES_TYPE));\r\n  }\r\n\r\n  /**\r\n     * Getter for the mapping between filepaths and category\r\n     * @type {Map<string,string>}\r\n     * @since 0.0.0\r\n     * @example\r\n     * { \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }\r\n     */\r\n  get allFilesWithCategory() {\r\n    return cloneDeep(this.categoryForFile);\r\n  }\r\n\r\n  /**\r\n     * Returns an JSON stringified of the current state\r\n     * @since 1.0.3\r\n     * @see {@link https://github.com/jy95/torrent-files-library/blob/master/test/fixtures/example.json}\r\n     * @return {string} json - the JSON stringified\r\n     */\r\n  toJSON() {\r\n    const tvSeries = this.allTvSeries;\r\n    return `{\r\n    \"paths\":${JSON.stringify([...this.paths])},\r\n    \"allFilesWithCategory\":${JSON.stringify([...this.allFilesWithCategory])},\r\n    \"movies\":${JSON.stringify([...this.allMovies])},\r\n    \"tv-series\":${JSON.stringify([...tvSeries].map(serie =>\r\n    // serie[0] contains the title and [1] the wrong JSON ; let fix it\r\n    [serie[0], [...tvSeries.get(serie[0])]]))}\r\n    }`;\r\n  }\r\n\r\n  /**\r\n     * Creates an instance of TorrentLibrary\r\n     * @param {Object} [json] - the JSON object of toJSON() string\r\n     * @param {(String[])} json.paths - the paths where we are looking the media files\r\n     * @param {(Array.<Array.<String,String>>)} json.allFilesWithCategory - Mapping filepath => category\r\n     * @param {(TPN_Extended[])} json.movies - the movies files\r\n     * @param {(Array.<Array.<String,TPN_Extended[]>>)} json.tv-series - the serie files\r\n     * @param {customParsingFunction} [parser=nameParser] - The custom parser you want to use\r\n     * @see {@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json} for an param example\r\n     * @since 1.2.0\r\n     * @return {TorrentLibrary} an TorrentLibrary instance\r\n     * @example\r\n     * // creates an new instance from another one\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *   );\r\n     * @example\r\n     * // As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions\r\n     * // If you want an extra field to be populated\r\n     * const ptt = require(\"parse-torrent-title\");\r\n     * ptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\r\n     * // creates an new instance from another one; with custom parser\r\n     *   const createdInstance = TorrentLibrary.createFromJSON(\r\n     *      JSON.parse(libInstance.toJSON()),\r\n     *      ptt.parse\r\n     *   );\r\n     */\r\n  static createFromJSON(json, parser = nameParser) {\r\n    let config = json;\r\n    // transform the param\r\n    /* istanbul ignore else */\r\n    if (json.allFilesWithCategory) {\r\n      config.allFilesWithCategory = new Map(json.allFilesWithCategory);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json.movies) {\r\n      config.movies = new Set(json.movies);\r\n    }\r\n    /* istanbul ignore else */\r\n    if (json['tv-series']) {\r\n      let createdMap = new Map();\r\n      for (let [serieTitle, setSerie] of json['tv-series']) {\r\n        createdMap.set(serieTitle, new Set(setSerie));\r\n      }\r\n      config.series = createdMap;\r\n    }\r\n    return new TorrentLibrary(config, parser);\r\n  }\r\n\r\n  /**\r\n   * Filter the movies based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {Set<TPN>} the filtered movie set\r\n   * @since 1.3.0\r\n   */\r\n  filterMovies(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    // apply params based on types\r\n    return filterMoviesByProperties(searchParameters, this.allMovies);\r\n  }\r\n\r\n  /**\r\n   * Filter the tv-series based on search parameters\r\n   * @param {searchParameters} searchParameters - search parameters.\r\n   * @return {(Map<string, Set<TPN>>)} the filtered movie set\r\n   * @since 1.5.0\r\n   */\r\n  filterTvSeries(searchParameters = {\r\n    // boolean properties\r\n    extended: undefined,\r\n    unrated: undefined,\r\n    proper: undefined,\r\n    repack: undefined,\r\n    convert: undefined,\r\n    hardcoded: undefined,\r\n    retail: undefined,\r\n    remastered: undefined,\r\n    // number properties\r\n    season: undefined,\r\n    episode: undefined,\r\n    year: undefined,\r\n    // string properties\r\n    title: undefined,\r\n    resolution: undefined,\r\n    codec: undefined,\r\n    audio: undefined,\r\n    group: undefined,\r\n    region: undefined,\r\n    container: undefined,\r\n    language: undefined,\r\n    source: undefined,\r\n    // new properties\r\n    additionalProperties: [],\r\n  }) {\r\n    return filterTvSeriesByProperties(searchParameters, this.allTvSeries);\r\n  }\r\n}\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/src/TorrentLibrary.js",
     "access": "public",
@@ -2091,7 +2231,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 80,
+    "__docId__": 84,
     "kind": "external",
     "name": "Promise",
     "externalLink": "http://bluebirdjs.com/docs/api-reference",
@@ -2103,7 +2243,7 @@
     "lineNumber": 38
   },
   {
-    "__docId__": 81,
+    "__docId__": 85,
     "kind": "external",
     "name": "nameParser",
     "externalLink": "https://github.com/clement-escolano/parse-torrent-title",
@@ -2123,7 +2263,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 86,
     "kind": "external",
     "name": "EventEmitter",
     "externalLink": "https://nodejs.org/api/events.html#events_class_eventemitter",
@@ -2135,7 +2275,7 @@
     "lineNumber": 56
   },
   {
-    "__docId__": 83,
+    "__docId__": 87,
     "kind": "function",
     "name": "checkProperties",
     "memberof": "src/TorrentLibrary.js",
@@ -2148,7 +2288,7 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": null,
     "description": "check if an object has these properties and they are not undefined",
-    "lineNumber": 92,
+    "lineNumber": 70,
     "params": [
       {
         "nullable": null,
@@ -2182,7 +2322,7 @@
     "ignore": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 88,
     "kind": "function",
     "name": "missingParam",
     "memberof": "src/TorrentLibrary.js",
@@ -2195,7 +2335,7 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": null,
     "description": "rejected promise when someone doesn't provide",
-    "lineNumber": 100,
+    "lineNumber": 78,
     "return": {
       "nullable": null,
       "types": [
@@ -2208,7 +2348,7 @@
     "ignore": true
   },
   {
-    "__docId__": 85,
+    "__docId__": 89,
     "kind": "function",
     "name": "promisifiedAccess",
     "memberof": "src/TorrentLibrary.js",
@@ -2224,7 +2364,7 @@
     "see": [
       "{@link https://github.com/petkaantonov/bluebird/issues/1442}"
     ],
-    "lineNumber": 113,
+    "lineNumber": 91,
     "unknown": [
       {
         "tagName": "@returns",
@@ -2254,7 +2394,7 @@
     "ignore": true
   },
   {
-    "__docId__": 86,
+    "__docId__": 90,
     "kind": "class",
     "name": "TorrentLibrary",
     "memberof": "src/TorrentLibrary.js",
@@ -2265,14 +2405,14 @@
     "importPath": "torrent-files-library/src/TorrentLibrary.js",
     "importStyle": "TorrentLibrary",
     "description": "Class representing the TorrentLibrary",
-    "lineNumber": 126,
+    "lineNumber": 104,
     "interface": false,
     "extends": [
       "EventEmitter"
     ]
   },
   {
-    "__docId__": 87,
+    "__docId__": 91,
     "kind": "get",
     "name": "MOVIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2282,7 +2422,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary.MOVIES_TYPE",
     "access": "public",
     "description": "constant for movie category",
-    "lineNumber": 133,
+    "lineNumber": 111,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2294,7 +2434,7 @@
     }
   },
   {
-    "__docId__": 88,
+    "__docId__": 92,
     "kind": "get",
     "name": "TV_SERIES_TYPE",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2304,7 +2444,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary.TV_SERIES_TYPE",
     "access": "public",
     "description": "constant for tv series category",
-    "lineNumber": 143,
+    "lineNumber": 121,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2316,7 +2456,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 93,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2326,7 +2466,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#constructor",
     "access": "public",
     "description": "Create a TorrentLibrary",
-    "lineNumber": 159,
+    "lineNumber": 137,
     "since": "1.0.4",
     "params": [
       {
@@ -2414,7 +2554,7 @@
     ]
   },
   {
-    "__docId__": 90,
+    "__docId__": 94,
     "kind": "member",
     "name": "parser",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2422,7 +2562,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#parser",
     "access": "public",
     "description": "The parsing function to be used with this lib",
-    "lineNumber": 177,
+    "lineNumber": 155,
     "since": "1.4.0",
     "type": {
       "nullable": null,
@@ -2434,7 +2574,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 95,
     "kind": "member",
     "name": "defaultPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2442,7 +2582,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#defaultPath",
     "access": "public",
     "description": "just an easy way to scan the current directory path, if not other paths provided",
-    "lineNumber": 183,
+    "lineNumber": 161,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2454,7 +2594,7 @@
     }
   },
   {
-    "__docId__": 92,
+    "__docId__": 96,
     "kind": "member",
     "name": "paths",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2465,7 +2605,7 @@
     "examples": [
       "// after have added some paths ...\n[ \"D:\\somePath\", \"D:\\anotherPath\" ]"
     ],
-    "lineNumber": 192,
+    "lineNumber": 170,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2477,7 +2617,7 @@
     }
   },
   {
-    "__docId__": 93,
+    "__docId__": 97,
     "kind": "member",
     "name": "stores",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2485,7 +2625,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#stores",
     "access": "public",
     "description": "The variable where we store all kind of media files found in paths",
-    "lineNumber": 198,
+    "lineNumber": 176,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2497,7 +2637,7 @@
     }
   },
   {
-    "__docId__": 94,
+    "__docId__": 98,
     "kind": "member",
     "name": "categoryForFile",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2508,7 +2648,7 @@
     "examples": [
       "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
     ],
-    "lineNumber": 209,
+    "lineNumber": 187,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2520,7 +2660,7 @@
     }
   },
   {
-    "__docId__": 95,
+    "__docId__": 99,
     "kind": "method",
     "name": "listVideosExtension",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2533,7 +2673,7 @@
     "examples": [
       "// Returns [..., 'webm', 'wmv']\nTorrentLibrary.listVideosExtension()"
     ],
-    "lineNumber": 301,
+    "lineNumber": 279,
     "since": "0.0.0",
     "return": {
       "nullable": null,
@@ -2546,7 +2686,7 @@
     "params": []
   },
   {
-    "__docId__": 96,
+    "__docId__": 100,
     "kind": "method",
     "name": "addNewPath",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2559,7 +2699,7 @@
     "examples": [
       "// return resolved Promise \"All paths were added!\"\nTorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");"
     ],
-    "lineNumber": 319,
+    "lineNumber": 297,
     "since": "0.0.0",
     "params": [
       {
@@ -2603,7 +2743,7 @@
     ]
   },
   {
-    "__docId__": 98,
+    "__docId__": 102,
     "kind": "method",
     "name": "hasPathsProvidedByUser",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2616,7 +2756,7 @@
     "examples": [
       "TorrentLibraryInstance.addNewPath(\"C:\\Users\\jy95\\Desktop\\New folder\",\"C:\\Users\\jy95\\Desktop\\New folder2\");\nTorrentLibraryInstance.hasPathsProvidedByUser() // TRUE"
     ],
-    "lineNumber": 353,
+    "lineNumber": 331,
     "since": "0.0.0",
     "unknown": [
       {
@@ -2635,7 +2775,7 @@
     "params": []
   },
   {
-    "__docId__": 99,
+    "__docId__": 103,
     "kind": "method",
     "name": "scan",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2645,7 +2785,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#scan",
     "access": "public",
     "description": "Scans the paths in search for new files to be added inside this lib",
-    "lineNumber": 365,
+    "lineNumber": 343,
     "since": "0.0.0",
     "return": {
       "nullable": null,
@@ -2672,7 +2812,7 @@
     "params": []
   },
   {
-    "__docId__": 100,
+    "__docId__": 104,
     "kind": "method",
     "name": "removeOldFiles",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2685,7 +2825,7 @@
     "examples": [
       "// with multiples files\nTorrentLibraryInstance.removeOldFiles(\n   \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\",\n   \"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n)"
     ],
-    "lineNumber": 403,
+    "lineNumber": 381,
     "since": "1.0.3",
     "params": [
       {
@@ -2723,7 +2863,7 @@
     ]
   },
   {
-    "__docId__": 101,
+    "__docId__": 105,
     "kind": "get",
     "name": "allMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2736,7 +2876,7 @@
     "examples": [
       "// an JSON stringified example of this method\n[\n {\n  \"year\":2012,\n  \"source\":\"dvdrip\",\n  \"codec\":\"xvid\",\n  \"group\":\"-www.zone-telechargement.ws.avi\",\n  \"container\":\"avi\",\n  \"language\":\"truefrench\",\n  \"title\":\"Bad Ass\",\n  \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\Bad.Ass.2012.LiMiTED.TRUEFRENCH.DVDRiP.XviD-www.zone-telechargement.ws.avi\"\n }\n]"
     ],
-    "lineNumber": 478,
+    "lineNumber": 456,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2748,7 +2888,7 @@
     }
   },
   {
-    "__docId__": 102,
+    "__docId__": 106,
     "kind": "get",
     "name": "allTvSeries",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2761,7 +2901,7 @@
     "examples": [
       "// an JSON stringified example of this method\n{\n\"The Blacklist\":[\n   {\n     \"season\":4,\n     \"episode\":21,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder1\\\\The.Blacklist.S04E21.FRENCH.WEBRip.XviD.avi\"\n  },\n  {\n     \"season\":4,\n     \"episode\":14,\n     \"source\":\"webrip\",\n     \"codec\":\"xvid\",\n     \"container\":\"avi\",\n     \"language\":\"french\",\n     \"title\":\"The Blacklist\",\n     \"filePath\":\"D:\\\\workspaceNodeJs\\\\torrent-files-library\\\\test\\\\folder2\\\\The.Blacklist.S04E14.FRENCH.WEBRip.XviD.avi\"\n  }\n]\n}"
     ],
-    "lineNumber": 513,
+    "lineNumber": 491,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2773,7 +2913,7 @@
     }
   },
   {
-    "__docId__": 103,
+    "__docId__": 107,
     "kind": "get",
     "name": "allFilesWithCategory",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2786,7 +2926,7 @@
     "examples": [
       "{ \"D:\\somePath\\Captain Russia The Summer Soldier (2014) 1080p BrRip x264.MKV\" => TorrentLibrary.MOVIES_TYPE }"
     ],
-    "lineNumber": 524,
+    "lineNumber": 502,
     "since": "0.0.0",
     "type": {
       "nullable": null,
@@ -2798,7 +2938,7 @@
     }
   },
   {
-    "__docId__": 104,
+    "__docId__": 108,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2809,9 +2949,9 @@
     "access": "public",
     "description": "Returns an JSON stringified of the current state",
     "see": [
-      "{@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json}"
+      "{@link https://github.com/jy95/torrent-files-library/blob/master/test/fixtures/example.json}"
     ],
-    "lineNumber": 534,
+    "lineNumber": 512,
     "since": "1.0.3",
     "return": {
       "nullable": null,
@@ -2824,7 +2964,7 @@
     "params": []
   },
   {
-    "__docId__": 105,
+    "__docId__": 109,
     "kind": "method",
     "name": "createFromJSON",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2839,9 +2979,9 @@
       "// As explained there : https://github.com/clement-escolano/parse-torrent-title#regular-expressions\n// If you want an extra field to be populated\nconst ptt = require(\"parse-torrent-title\");\nptt.addHandler(\"part\", /Part[. ]([0-9])/i, { type: \"integer\" });\n// creates an new instance from another one; with custom parser\n  const createdInstance = TorrentLibrary.createFromJSON(\n     JSON.parse(libInstance.toJSON()),\n     ptt.parse\n  );"
     ],
     "see": [
-      "{@link https://github.com/jy95/torrent-files-library/tree/master/test/example.json} for an param example"
+      "{@link https://github.com/jy95/torrent-files-library/tree/master/tests/fixtures/example.json} for an param example"
     ],
-    "lineNumber": 573,
+    "lineNumber": 551,
     "since": "1.2.0",
     "params": [
       {
@@ -2917,7 +3057,7 @@
     }
   },
   {
-    "__docId__": 106,
+    "__docId__": 110,
     "kind": "method",
     "name": "filterMovies",
     "memberof": "src/TorrentLibrary.js~TorrentLibrary",
@@ -2927,7 +3067,7 @@
     "longname": "src/TorrentLibrary.js~TorrentLibrary#filterMovies",
     "access": "public",
     "description": "Filter the movies based on search parameters",
-    "lineNumber": 601,
+    "lineNumber": 579,
     "since": "1.3.0",
     "params": [
       {
@@ -2944,7 +3084,41 @@
     "return": {
       "nullable": null,
       "types": [
-        "Set<TPN_Extended>"
+        "Set<TPN>"
+      ],
+      "spread": false,
+      "description": "the filtered movie set"
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "method",
+    "name": "filterTvSeries",
+    "memberof": "src/TorrentLibrary.js~TorrentLibrary",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/TorrentLibrary.js~TorrentLibrary#filterTvSeries",
+    "access": "public",
+    "description": "Filter the tv-series based on search parameters",
+    "lineNumber": 616,
+    "since": "1.5.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "searchParameters"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchParameters",
+        "description": "search parameters."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Map<string, Set<TPN>>"
       ],
       "spread": false,
       "description": "the filtered movie set"
@@ -2952,7 +3126,7 @@
   },
   {
     "kind": "index",
-    "content": "# torrent-files-library [![Build Status](https://img.shields.io/travis/jy95/torrent-files-library.svg)](https://travis-ci.org/jy95/torrent-files-library)  [![Coveralls branch](https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg)](https://coveralls.io/github/jy95/torrent-files-library?branch=master) [![Dependency Status](https://img.shields.io/david/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library)  [![Dev Dependency Status](https://img.shields.io/david/dev/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Join the chat at https://gitter.im/torrent-files-library-/Lobby](https://badges.gitter.im/torrent-files-library-/Lobby.svg)](https://gitter.im/torrent-files-library-/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  [![Greenkeeper badge](https://badges.greenkeeper.io/jy95/torrent-files-library.svg)](https://greenkeeper.io/)\r\n> Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\r\n\r\n## Installation\r\n\r\nFor npm users :\r\n\r\n```shell\r\n$ npm install --save torrent-files-library\r\n```\r\n\r\nfor Yarn :\r\n```shell\r\n$ yarn add torrent-files-library\r\n```\r\n\r\n## What to do with this library ?\r\n\r\nA lot of things :\r\n* [List found movies](https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html)\r\n* [List each found tv serie](https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html)\r\n* [Get category for each file](https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html)\r\n* Filtering stuff\r\n    * [Filter movies based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html)\r\n    * [Filter tv-shown based on search parameters] : Work in progress\r\n\r\nDon't hesitate to suggest new features : it is always worthy :)\r\n\r\n## Documentation\r\nFor more examples and API details, see [API documentation with manual](https://jy95.github.io/torrent-files-library/)\r\n\r\n## Test\r\n\r\n```shell\r\nnpm test\r\n```\r\n\r\nTo generate a test coverage report:\r\n\r\n```shell\r\nnpm run coverage\r\n```\r\n## Contributing\r\n\r\n* If you're unsure if a feature would make a good addition, you can always [create an issue](https://github.com/jy95/torrent-files-library/issues/new) first.\r\n* We aim for 100% test coverage. Please write tests for any new functionality or changes.\r\n* Any API changes should be fully documented.\r\n* Make sure your code meets our linting standards. Run `npm run lint` to check your code.\r\n* Be mindful of others when making suggestions and/or code reviewing.",
+    "content": "# torrent-files-library [![Build Status](https://img.shields.io/travis/jy95/torrent-files-library.svg)](https://travis-ci.org/jy95/torrent-files-library)  [![Coveralls branch](https://img.shields.io/coveralls/jy95/torrent-files-library/master.svg)](https://coveralls.io/github/jy95/torrent-files-library?branch=master) [![Dependency Status](https://img.shields.io/david/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library)  [![Dev Dependency Status](https://img.shields.io/david/dev/jy95/torrent-files-library.svg)](https://david-dm.org/jy95/torrent-files-library?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Join the chat at https://gitter.im/torrent-files-library-/Lobby](https://badges.gitter.im/torrent-files-library-/Lobby.svg)](https://gitter.im/torrent-files-library-/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  [![Greenkeeper badge](https://badges.greenkeeper.io/jy95/torrent-files-library.svg)](https://greenkeeper.io/)\r\n> Scan directories to build a library of media files (movie or tv show) that follows torrent naming conventions\r\n\r\n## What to do with this library ?\r\n\r\nA lot of things :\r\n* Basic listing purposes :\r\n    * [List found movies](https://jy95.github.io/torrent-files-library/manual/listFoundMovies.html)\r\n    * [List each found tv serie](https://jy95.github.io/torrent-files-library/manual/listEachTvSerie.html)\r\n    * [Detect the category of each file](https://jy95.github.io/torrent-files-library/manual/getCategoryForEachFile.html)\r\n* Filtering purposes :\r\n    * [Filter movies based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterMoviesByParameters.html)\r\n    * [Filter tv-shown based on search parameters](https://jy95.github.io/torrent-files-library/manual/filterTvSeriesByParameters.html)\r\n* Miscellaneous purposes\r\n    * [Create custom playlist(s)](https://jy95.github.io/torrent-files-library/manual/createPlaylists.html)\r\n* ...\r\n\r\nDon't hesitate to suggest new features : it is always worthy :)\r\n\r\n## Documentation\r\nFor more examples and API details, see [API documentation with manual](https://jy95.github.io/torrent-files-library/)\r\n\r\n## Installation\r\n\r\nFor npm users :\r\n\r\n```shell\r\n$ npm install --save torrent-files-library\r\n```\r\n\r\nfor Yarn :\r\n```shell\r\n$ yarn add torrent-files-library\r\n```\r\n\r\n## Test\r\n\r\n```shell\r\nnpm test\r\n```\r\n\r\nTo generate a test coverage report:\r\n\r\n```shell\r\nnpm run coverage\r\n```\r\n## Contributing\r\n\r\n* If you're unsure if a feature would make a good addition, you can always [create an issue](https://github.com/jy95/torrent-files-library/issues/new) first.\r\n* We aim for 100% test coverage. Please write tests for any new functionality or changes.\r\n* Any API changes should be fully documented.\r\n* Make sure your code meets our linting standards. Run `npm run lint` to check your code.\r\n* Be mindful of others when making suggestions and/or code reviewing.",
     "longname": "D:\\workspaceNodeJs\\torrent-files-library\\README.md",
     "name": "./README.md",
     "static": true,
@@ -3009,7 +3183,23 @@
     "kind": "manual",
     "longname": "D:\\workspaceNodeJs\\torrent-files-library\\manual\\examples\\filterMoviesByParameters.md",
     "name": "./manual/examples/filterMoviesByParameters.md",
-    "content": "# Filter movies by parameters\r\n\r\n```js\r\nconst TorrentLibrary = require(\"torrent-files-library\");\r\n\r\nlet paths = [\r\n\t\"D:/\",\r\n];\r\n\r\n// create an instance\r\nlet libInstance = new TorrentLibrary();\r\n\r\n// add these paths inside this lib\r\nlibInstance\r\n\t.addNewPath(...paths)\r\n\t.then( () => {\r\n\t\treturn libInstance.scan();\r\n\t})\r\n\t.then( () => {\r\n        console.log('Now time to search all remastered movies with year >= 2012 in one of following container avi/mp4');\r\n        let filteredSet = libInstance.filterMovies({\r\n          year: '>=2012',\r\n          remastered: true,\r\n          container: ['avi', 'mp4'],\r\n        });\r\n        for (let movie of filteredSet) {\r\n          console.log(`${movie.title + ((movie.year) ? ` - ${movie.year}` : '')} at ${movie.filePath}`);\r\n        }\r\n\t})\r\n\t.catch( (err) => {\r\n    \t\tconsole.log(err.message);\r\n    });\r\n```\r\n\r\n![foundTvSeries](asset/filterMovies.png)",
+    "content": "# Filter movies by parameters\r\n\r\n```js\r\nconst TorrentLibrary = require(\"torrent-files-library\");\r\n\r\nlet paths = [\r\n\t\"D:/\",\r\n];\r\n\r\n// create an instance\r\nlet libInstance = new TorrentLibrary();\r\n\r\n// add these paths inside this lib\r\nlibInstance\r\n\t.addNewPath(...paths)\r\n\t.then( () => {\r\n\t\treturn libInstance.scan();\r\n\t})\r\n\t.then( () => {\r\n        console.log('Now time to search all remastered movies with year >= 2012 in one of following container avi/mp4');\r\n        let filteredSet = libInstance.filterMovies({\r\n          year: '>=2012',\r\n          remastered: true,\r\n          container: ['avi', 'mp4'],\r\n        });\r\n        for (let movie of filteredSet) {\r\n          console.log(`${movie.title + ((movie.year) ? ` - ${movie.year}` : '')} at ${movie.filePath}`);\r\n        }\r\n\t})\r\n\t.catch( (err) => {\r\n    \t\tconsole.log(err.message);\r\n    });\r\n```\r\n\r\n![filterMovies](asset/filterMovies.png)",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "D:\\workspaceNodeJs\\torrent-files-library\\manual\\examples\\filterTvSeriesByParameters.md",
+    "name": "./manual/examples/filterTvSeriesByParameters.md",
+    "content": "# Filter tv series by parameters\r\n\r\n```js\r\nconst TorrentLibrary = require(\"torrent-files-library\");\r\n\r\nlet paths = [\r\n    'D:/DDL/SERIES TV/Le juge et le pilote',\r\n    'D:/DDL/ANIME',\r\n];\r\n\r\n// create an instance\r\nlet libInstance = new TorrentLibrary();\r\n\r\n// add these paths inside this lib\r\nlibInstance\r\n    .addNewPath(...paths)\r\n    .then(() => libInstance.scan())\r\n    .then(() => {\r\n        console.log('Now time to search all episodes <=5 in season 1 of Hardcastle And McCormick / Assassination Classroom , in one of following container avi/mp4');\r\n        let filteredMap = libInstance.filterTvSeries({\r\n            title: ['Hardcastle And McCormick', 'Assassination Classroom'],\r\n            season: 1,\r\n            episode: '<=5',\r\n            container: ['avi', 'mp4'],\r\n        });\r\n        for (let [foundTvShow, episodeSet] of filteredMap.entries()) {\r\n            console.log(`\\n${foundTvShow}`);\r\n            console.log('\\t Total found episodes : ', episodeSet.size);\r\n            let foundSeasons = new Set([...episodeSet].map(episode => episode.season));\r\n            console.log('\\t Found season(s) count : ', foundSeasons.size);\r\n            for (let seasonNumber of foundSeasons) {\r\n                console.log('\\t\\t Season %d', seasonNumber);\r\n                let seasonEpisodes = [...episodeSet].filter(episode => episode.season === seasonNumber);\r\n                console.log(`\\t\\t\\t Season count : ${seasonEpisodes.length}`);\r\n                console.log('\\t\\t\\t Files : ');\r\n                seasonEpisodes.forEach(episode => console.log(`\\t\\t\\t ${episode.filePath}`));\r\n            }\r\n        }\r\n    })\r\n    .catch((err) => {\r\n        console.log(err.message);\r\n    });\r\n```\r\n\r\n![filterTvSeries](asset/filterTvSeries.png)",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "D:\\workspaceNodeJs\\torrent-files-library\\manual\\examples\\createPlaylist.md",
+    "name": "./manual/examples/createPlaylist.md",
+    "content": "# Create custom playlist(s)\r\n\r\n```js\r\nconst TorrentLibrary = require(\"torrent-files-library\");\r\nconst m3u = require('m3u'); // a basic playlist writer (in m3u format)\r\n\r\nlet paths = [\r\n    'D:/DDL/SERIES TV/Le juge et le pilote',\r\n    'D:/DDL/ANIME',\r\n];\r\n\r\n// create an instance\r\nlet libInstance = new TorrentLibrary();\r\n\r\n// add these paths inside this lib\r\nlibInstance\r\n    .addNewPath(...paths)\r\n    .then(() => libInstance.scan())\r\n    .then(() => {\r\n        console.log('Now time to search all episodes <=5 in season 1 of Hardcastle And McCormick / Assassination Classroom , in one of following container avi/mp4');\r\n        let filteredMap = libInstance.filterTvSeries({\r\n            title: ['Hardcastle And McCormick', 'Assassination Classroom'],\r\n            season: 1,\r\n            episode: '<=5',\r\n            container: ['avi', 'mp4'],\r\n        });\r\n        var writer = m3u.writer();\r\n        for (let [foundTvShow, episodeSet] of filteredMap.entries()) {\r\n            let foundSeasons = new Set([...episodeSet].map(episode => episode.season));\r\n            for (let seasonNumber of foundSeasons) {\r\n                writer.comment(`${foundTvShow} - Season ${seasonNumber}`);\r\n                let seasonEpisodes = [...episodeSet].filter(episode => episode.season === seasonNumber);\r\n                seasonEpisodes.forEach(episode => writer.file(`${episode.filePath}`));\r\n            }\r\n        }\r\n        let m3uAsString = writer.toString();\r\n        // save this result into a *.m3u file , using fs.writeFile or whatever you want to do that\r\n        // ...\r\n    })\r\n    .catch((err) => {\r\n        console.log(err.message);\r\n    });\r\n```\r\n\r\n```m3u\r\n# Assassination Classroom - Season 1\r\nD:\\DDL\\ANIME\\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\\Assassination.Classroom.S01E01.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4\r\nD:\\DDL\\ANIME\\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\\Assassination.Classroom.S01E02.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4\r\nD:\\DDL\\ANIME\\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\\Assassination.Classroom.S01E03.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4\r\nD:\\DDL\\ANIME\\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\\Assassination.Classroom.S01E04.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4\r\nD:\\DDL\\ANIME\\Assassination.Classroom.S01.FRENCH.720p.WEB-DL.x264-GODSPACE\\Assassination.Classroom.S01E05.FRENCH.720p.WEB-DL.x264-GODSPACE.mp4\r\n# Hardcastle And McCormick - Season 1\r\nD:\\DDL\\SERIES TV\\Le juge et le pilote\\Saison 1\\Hardcastle.And.McCormick.1x01.Le.Monstre.D_acier.avi\r\nD:\\DDL\\SERIES TV\\Le juge et le pilote\\Saison 1\\Hardcastle.And.McCormick.1x03.Le.Canard.De.Cristal.avi\r\nD:\\DDL\\SERIES TV\\Le juge et le pilote\\Saison 1\\Hardcastle.And.McCormick.1x04.Je.Ne.Sais.Pas.Ou.Je.Vais.Mais.J.y.Vais..avi\r\nD:\\DDL\\SERIES TV\\Le juge et le pilote\\Saison 1\\Hardcastle.And.McCormick.1x05.La.Veuve.Noire..avi\r\n```",
     "static": true,
     "access": "public"
   },
@@ -3022,10 +3212,10 @@
     "access": "public"
   },
   {
-    "__docId__": 107,
+    "__docId__": 112,
     "kind": "testFile",
     "name": "test/getters/allFilesWithCategory.js",
-    "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allFilesWithCategory} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [files[2], TorrentLibrary.MOVIES_TYPE],\r\n      [files[0], TorrentLibrary.TV_SERIES_TYPE],\r\n      [files[1], TorrentLibrary.TV_SERIES_TYPE],\r\n    ]),\r\n    libInstance.allFilesWithCategory,\r\n    'Not the same',\r\n  );\r\n});\r\n",
+    "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allFilesWithCategory} */\r\ntest('Should correctly detect the category of each file', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [files[2], TorrentLibrary.MOVIES_TYPE],\r\n      [files[0], TorrentLibrary.TV_SERIES_TYPE],\r\n      [files[1], TorrentLibrary.TV_SERIES_TYPE],\r\n    ]),\r\n    libInstance.allFilesWithCategory,\r\n    'Not the same',\r\n  );\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/getters/allFilesWithCategory.js",
     "access": null,
@@ -3033,7 +3223,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 108,
+    "__docId__": 113,
     "kind": "test",
     "name": "test0",
     "testId": 0,
@@ -3042,17 +3232,17 @@
     "static": true,
     "longname": "test/getters/allFilesWithCategory.js~test0",
     "access": null,
-    "description": "result after scan()",
+    "description": "Should correctly detect the category of each file",
     "lineNumber": 8,
     "testTargets": [
       "TorrentLibrary#allFilesWithCategory"
     ]
   },
   {
-    "__docId__": 109,
+    "__docId__": 114,
     "kind": "testFile",
     "name": "test/getters/allMovies.js",
-    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allMovies} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.allMovies,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
+    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allMovies} */\r\ntest('Returns the movies', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.allMovies,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/getters/allMovies.js",
     "access": null,
@@ -3060,7 +3250,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 110,
+    "__docId__": 115,
     "kind": "test",
     "name": "test1",
     "testId": 1,
@@ -3069,17 +3259,17 @@
     "static": true,
     "longname": "test/getters/allMovies.js~test1",
     "access": null,
-    "description": "result after scan()",
+    "description": "Returns the movies",
     "lineNumber": 9,
     "testTargets": [
       "TorrentLibrary#allMovies"
     ]
   },
   {
-    "__docId__": 111,
+    "__docId__": 116,
     "kind": "testFile",
     "name": "test/getters/allTvSeries.js",
-    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allTvSeries} */\r\ntest('result after scan()', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.allTvSeries,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
+    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#allTvSeries} */\r\ntest('Returns the tv-shows', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.allTvSeries,\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/getters/allTvSeries.js",
     "access": null,
@@ -3087,7 +3277,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 112,
+    "__docId__": 117,
     "kind": "test",
     "name": "test2",
     "testId": 2,
@@ -3096,14 +3286,14 @@
     "static": true,
     "longname": "test/getters/allTvSeries.js~test2",
     "access": null,
-    "description": "result after scan()",
+    "description": "Returns the tv-shows",
     "lineNumber": 9,
     "testTargets": [
       "TorrentLibrary#allTvSeries"
     ]
   },
   {
-    "__docId__": 113,
+    "__docId__": 118,
     "kind": "testFile",
     "name": "test/getters/constants.js",
     "content": "import test from 'ava';\r\nimport videosExtension from 'video-extensions';\r\nimport TorrentLibrary from '../../index';\r\n\r\n/** @test {TorrentLibrary.MOVIES_TYPE} */\r\ntest('Constant MOVIES_TYPE', (t) => {\r\n  t.is(\r\n    TorrentLibrary.MOVIES_TYPE,\r\n    'MOVIES',\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary.TV_SERIES_TYPE} */\r\ntest('Constant TV_SERIES', (t) => {\r\n  t.is(\r\n    TorrentLibrary.TV_SERIES_TYPE,\r\n    'TV_SERIES',\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary.listVideosExtension} */\r\ntest('List of videos extension', (t) => {\r\n  t.is(\r\n    TorrentLibrary.listVideosExtension(),\r\n    videosExtension,\r\n    'Someone changed this constant value !',\r\n  );\r\n});\r\n",
@@ -3114,7 +3304,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 114,
+    "__docId__": 119,
     "kind": "test",
     "name": "test3",
     "testId": 3,
@@ -3130,7 +3320,7 @@
     ]
   },
   {
-    "__docId__": 115,
+    "__docId__": 120,
     "kind": "test",
     "name": "test4",
     "testId": 4,
@@ -3146,7 +3336,7 @@
     ]
   },
   {
-    "__docId__": 116,
+    "__docId__": 121,
     "kind": "test",
     "name": "test5",
     "testId": 5,
@@ -3162,10 +3352,10 @@
     ]
   },
   {
-    "__docId__": 117,
+    "__docId__": 122,
     "kind": "testFile",
     "name": "test/methods/addNewPath.js",
-    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('missing parameter', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('missing_parameter', eventSpy);\r\n  await t.throws(libInstance.addNewPath());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('inexistent Path', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.addNewPath(path.join(__dirname, 'wrongPath')));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('existent paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('addNewPath', eventSpy);\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    true, 'The path should be added',\r\n  );\r\n});\r\n\r\n",
+    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('missing parameter', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('missing_parameter', eventSpy);\r\n  await t.throws(libInstance.addNewPath());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('Not an existent path', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.addNewPath(path.join(__dirname, 'wrongPath')));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    false, 'No paths by user should be added',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#addNewPath} */\r\ntest('existent paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('addNewPath', eventSpy);\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.is(\r\n    libInstance.hasPathsProvidedByUser(),\r\n    true, 'The path should be added',\r\n  );\r\n});\r\n\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/addNewPath.js",
     "access": null,
@@ -3173,7 +3363,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 118,
+    "__docId__": 123,
     "kind": "test",
     "name": "test6",
     "testId": 6,
@@ -3189,7 +3379,7 @@
     ]
   },
   {
-    "__docId__": 119,
+    "__docId__": 124,
     "kind": "test",
     "name": "test7",
     "testId": 7,
@@ -3198,14 +3388,14 @@
     "static": true,
     "longname": "test/methods/addNewPath.js~test7",
     "access": null,
-    "description": "inexistent Path",
+    "description": "Not an existent path",
     "lineNumber": 23,
     "testTargets": [
       "TorrentLibrary#addNewPath"
     ]
   },
   {
-    "__docId__": 120,
+    "__docId__": 125,
     "kind": "test",
     "name": "test8",
     "testId": 8,
@@ -3221,10 +3411,10 @@
     ]
   },
   {
-    "__docId__": 121,
+    "__docId__": 126,
     "kind": "testFile",
     "name": "test/methods/createFromJSON.js",
-    "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary.createFromJSON} */\r\ntest('create a perfect copy of instance', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const jsonFromLib = JSON.parse(libInstance.toJSON());\r\n  const createdInstance = TorrentLibrary.createFromJSON(jsonFromLib);\r\n  t.deepEqual(\r\n    createdInstance.allFilesWithCategory,\r\n    libInstance.allFilesWithCategory,\r\n    'allFilesWithCategory different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allMovies,\r\n    libInstance.allMovies, 'allMovies different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allTvSeries,\r\n    libInstance.allTvSeries, 'allTvSeries different',\r\n  );\r\n});\r\n\r\n// dummy test for ES6 code coverage\r\ntest('empty instance(s)', async (t) => {\r\n  TorrentLibrary.createFromJSON({});\r\n  t.pass();\r\n});\r\n",
+    "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary.createFromJSON} */\r\ntest('create a perfect copy of instance', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const jsonFromLib = JSON.parse(libInstance.toJSON());\r\n  const createdInstance = TorrentLibrary.createFromJSON(jsonFromLib);\r\n  t.deepEqual(\r\n    createdInstance.allFilesWithCategory,\r\n    libInstance.allFilesWithCategory,\r\n    'allFilesWithCategory different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allMovies,\r\n    libInstance.allMovies, 'allMovies different',\r\n  );\r\n  t.deepEqual(\r\n    createdInstance.allTvSeries,\r\n    libInstance.allTvSeries, 'allTvSeries different',\r\n  );\r\n});\r\n\r\n// dummy test for ES6 code coverage\r\n/** @test {TorrentLibrary.createFromJSON} */\r\ntest('empty instance(s)', async (t) => {\r\n  TorrentLibrary.createFromJSON({});\r\n  t.pass();\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/createFromJSON.js",
     "access": null,
@@ -3232,7 +3422,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 122,
+    "__docId__": 127,
     "kind": "test",
     "name": "test9",
     "testId": 9,
@@ -3248,7 +3438,7 @@
     ]
   },
   {
-    "__docId__": 123,
+    "__docId__": 128,
     "kind": "test",
     "name": "test10",
     "testId": 10,
@@ -3258,10 +3448,13 @@
     "longname": "test/methods/createFromJSON.js~test10",
     "access": null,
     "description": "empty instance(s)",
-    "lineNumber": 28
+    "lineNumber": 29,
+    "testTargets": [
+      "TorrentLibrary.createFromJSON"
+    ]
   },
   {
-    "__docId__": 124,
+    "__docId__": 129,
     "kind": "testFile",
     "name": "test/methods/filterMovies.js",
     "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport path from 'path';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('Should work without parameters', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies(),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default boolean parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      remastered: true,\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      extended: true,\r\n      unrated: true,\r\n      proper: true,\r\n      repack: true,\r\n      convert: true,\r\n      hardcoded: true,\r\n      retail: true,\r\n      remastered: true,\r\n      additionalProperties: [\r\n        { type: 'boolean', name: 'AnotherField', value: true },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default number parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      year: 2012,\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      year: '>=2012',\r\n      additionalProperties: [\r\n        { type: 'number', name: \"whateverFieldThatDoesn'tExist\", value: '<50' },\r\n        { type: 'number', name: 'AnotherField', value: undefined },\r\n        { type: 'number', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'number', name: 'AnotherField3', value: '>25' },\r\n        { type: 'number', name: 'AnotherField4', value: '==25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterMovies} */\r\ntest('default string parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Set([\r\n      Object.assign(\r\n        nameParser(path.basename(files[2])),\r\n        { filePath: files[2] },\r\n      ),\r\n    ]),\r\n    libInstance.filterMovies({\r\n      title: 'Bad Ass',\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Set(),\r\n    libInstance.filterMovies({\r\n      title: 'Bad Ass',\r\n      additionalProperties: [\r\n        {\r\n          type: 'string',\r\n          name: 'whateverField',\r\n          value: ['NothingExists'],\r\n        },\r\n        {\r\n          type: 'string',\r\n          name: 'AnotherField',\r\n          value: ['NothingExists', 'NothingExists'],\r\n        },\r\n        { type: 'string', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'string', name: 'AnotherField3', value: '>25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n",
@@ -3272,7 +3465,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 125,
+    "__docId__": 130,
     "kind": "test",
     "name": "test11",
     "testId": 11,
@@ -3288,7 +3481,7 @@
     ]
   },
   {
-    "__docId__": 126,
+    "__docId__": 131,
     "kind": "test",
     "name": "test12",
     "testId": 12,
@@ -3304,7 +3497,7 @@
     ]
   },
   {
-    "__docId__": 127,
+    "__docId__": 132,
     "kind": "test",
     "name": "test13",
     "testId": 13,
@@ -3320,7 +3513,7 @@
     ]
   },
   {
-    "__docId__": 128,
+    "__docId__": 133,
     "kind": "test",
     "name": "test14",
     "testId": 14,
@@ -3336,10 +3529,85 @@
     ]
   },
   {
-    "__docId__": 129,
+    "__docId__": 134,
+    "kind": "testFile",
+    "name": "test/methods/filterTvSeries.js",
+    "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport path from 'path';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#filterTvSeries} */\r\ntest('Should work without parameters', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.filterTvSeries(),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterTvSeries} */\r\ntest('default boolean parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Map(),\r\n    libInstance.filterTvSeries({\r\n      extended: true,\r\n      unrated: true,\r\n      proper: true,\r\n      repack: true,\r\n      convert: true,\r\n      hardcoded: true,\r\n      retail: true,\r\n      remastered: true,\r\n      additionalProperties: [\r\n        { type: 'boolean', name: 'AnotherField', value: true },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterTvSeries} */\r\ntest('default number parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the two tv series that we have\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.filterTvSeries({\r\n      season: 4,\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Map(),\r\n    libInstance.filterTvSeries({\r\n      season: '>=4',\r\n      additionalProperties: [\r\n        { type: 'number', name: \"whateverFieldThatDoesn'tExist\", value: '<50' },\r\n        { type: 'number', name: 'AnotherField', value: undefined },\r\n        { type: 'number', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'number', name: 'AnotherField3', value: '>25' },\r\n        { type: 'number', name: 'AnotherField4', value: '==25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#filterTvSeries} */\r\ntest('default string parameters search', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n\r\n  // A simple filter that should returns the only movie that we have\r\n  t.deepEqual(\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n        Object.assign(\r\n          nameParser(path.basename(files[1])),\r\n          { filePath: files[1] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    libInstance.filterTvSeries({\r\n      title: 'The Blacklist',\r\n    }),\r\n    'Not the same',\r\n  );\r\n\r\n  // A complex filter that should returns nothing\r\n  t.deepEqual(\r\n    new Map(),\r\n    libInstance.filterTvSeries({\r\n      title: 'The Blacklist',\r\n      additionalProperties: [\r\n        {\r\n          type: 'string',\r\n          name: 'whateverField',\r\n          value: ['NothingExists'],\r\n        },\r\n        {\r\n          type: 'string',\r\n          name: 'AnotherField',\r\n          value: ['NothingExists', 'NothingExists'],\r\n        },\r\n        { type: 'string', name: 'AnotherField2', value: '<=25' },\r\n        { type: 'string', name: 'AnotherField3', value: '>25' },\r\n      ],\r\n    }),\r\n    'Not the same',\r\n  );\r\n});\r\n",
+    "static": true,
+    "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/filterTvSeries.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 135,
+    "kind": "test",
+    "name": "test15",
+    "testId": 15,
+    "memberof": "test/methods/filterTvSeries.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/filterTvSeries.js~test15",
+    "access": null,
+    "description": "Should work without parameters",
+    "lineNumber": 9,
+    "testTargets": [
+      "TorrentLibrary#filterTvSeries"
+    ]
+  },
+  {
+    "__docId__": 136,
+    "kind": "test",
+    "name": "test16",
+    "testId": 16,
+    "memberof": "test/methods/filterTvSeries.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/filterTvSeries.js~test16",
+    "access": null,
+    "description": "default boolean parameters search",
+    "lineNumber": 37,
+    "testTargets": [
+      "TorrentLibrary#filterTvSeries"
+    ]
+  },
+  {
+    "__docId__": 137,
+    "kind": "test",
+    "name": "test17",
+    "testId": 17,
+    "memberof": "test/methods/filterTvSeries.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/filterTvSeries.js~test17",
+    "access": null,
+    "description": "default number parameters search",
+    "lineNumber": 69,
+    "testTargets": [
+      "TorrentLibrary#filterTvSeries"
+    ]
+  },
+  {
+    "__docId__": 138,
+    "kind": "test",
+    "name": "test18",
+    "testId": 18,
+    "memberof": "test/methods/filterTvSeries.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/filterTvSeries.js~test18",
+    "access": null,
+    "description": "default string parameters search",
+    "lineNumber": 117,
+    "testTargets": [
+      "TorrentLibrary#filterTvSeries"
+    ]
+  },
+  {
+    "__docId__": 139,
     "kind": "testFile",
     "name": "test/methods/removeOldFiles.js",
-    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders, expectedJson } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should not be able to remove not present files', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const wrongFile = path.join(\r\n    __dirname, 'folder1',\r\n    'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi',\r\n  );\r\n  const allFiles = libInstance.allFilesWithCategory;\r\n  const expectedTvSeriesMap = libInstance.allTvSeries;\r\n  await t.notThrows(libInstance.removeOldFiles(wrongFile));\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFiles,\r\n    'Nothing should have changed!',\r\n  );\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    expectedTvSeriesMap,\r\n    'Nothing should have changed!',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove a movie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutMovie = libInstance.allFilesWithCategory;\r\n  // files[2] ; Bad Ass\r\n  allFilesWithoutMovie.delete(files[2]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[2] ; Bad Ass\r\n  await t.notThrows(libInstance.removeOldFiles(files[2]));\r\n  t.deepEqual(\r\n    libInstance.allMovies,\r\n    new Set(),\r\n    'The movie should have been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutMovie,\r\n    'The movie should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove an tv-serie episode', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n  // files[1] ; The.Blacklist.S04E21\r\n  allFilesWithoutIt.delete(files[1]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[1] ; The.Blacklist.S04E21\r\n  await t.notThrows(libInstance.removeOldFiles(files[1]));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    'The tv-series should still exist!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episode should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove multiples files : Tv-serie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n\r\n  allFilesWithoutIt.delete(files[1]);\r\n  allFilesWithoutIt.delete(files[0]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  await t.notThrows(libInstance.removeOldFiles(...files.slice(0, 2)));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map(),\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\ntest('Should not be able to remove files : wrong custom parser', async (t) => {\r\n  let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});\r\n  let eventSpy = sinon.spy();\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.removeOldFiles(...files));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
+    "content": "import test from 'ava';\r\nimport path from 'path';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { files, folders, expectedJson } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should not be able to remove not present files', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const wrongFile = path.join(\r\n    __dirname, 'folder1',\r\n    'The.Blacklist.S04E22.FRENCH.WEBRip.XviD.avi',\r\n  );\r\n  const allFiles = libInstance.allFilesWithCategory;\r\n  const expectedTvSeriesMap = libInstance.allTvSeries;\r\n  await t.notThrows(libInstance.removeOldFiles(wrongFile));\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFiles,\r\n    'Nothing should have changed!',\r\n  );\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    expectedTvSeriesMap,\r\n    'Nothing should have changed!',\r\n  );\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove a movie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutMovie = libInstance.allFilesWithCategory;\r\n  // files[2] ; Bad Ass\r\n  allFilesWithoutMovie.delete(files[2]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[2] ; Bad Ass\r\n  await t.notThrows(libInstance.removeOldFiles(files[2]));\r\n  t.deepEqual(\r\n    libInstance.allMovies,\r\n    new Set(),\r\n    'The movie should have been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutMovie,\r\n    'The movie should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove an tv-serie episode', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n  // files[1] ; The.Blacklist.S04E21\r\n  allFilesWithoutIt.delete(files[1]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  // files[1] ; The.Blacklist.S04E21\r\n  await t.notThrows(libInstance.removeOldFiles(files[1]));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map([\r\n      [nameParser(path.basename(files[0])).title, new Set([\r\n        Object.assign(\r\n          nameParser(path.basename(files[0])),\r\n          { filePath: files[0] },\r\n        ),\r\n      ])],\r\n    ]),\r\n    'The tv-series should still exist!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episode should have been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should be able to remove multiples files : Tv-serie', async (t) => {\r\n  let libInstance = new TorrentLibrary();\r\n  let eventSpy = sinon.spy();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const allFilesWithoutIt = libInstance.allFilesWithCategory;\r\n\r\n  allFilesWithoutIt.delete(files[1]);\r\n  allFilesWithoutIt.delete(files[0]);\r\n\r\n  libInstance.on('removeOldFiles', eventSpy);\r\n  await t.notThrows(libInstance.removeOldFiles(...files.slice(0, 2)));\r\n  t.deepEqual(\r\n    libInstance.allTvSeries,\r\n    new Map(),\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n\r\n  t.deepEqual(\r\n    libInstance.allFilesWithCategory,\r\n    allFilesWithoutIt,\r\n    'The tv-series episodes should have all been removed!',\r\n  );\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\n/** @test {TorrentLibrary#removeOldFiles} */\r\ntest('Should not be able to remove files : wrong custom parser', async (t) => {\r\n  let libInstance = TorrentLibrary.createFromJSON(expectedJson, {});\r\n  let eventSpy = sinon.spy();\r\n  libInstance.on('error_in_function', eventSpy);\r\n  await t.throws(libInstance.removeOldFiles(...files));\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/removeOldFiles.js",
     "access": null,
@@ -3347,71 +3615,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 130,
-    "kind": "test",
-    "name": "test15",
-    "testId": 15,
-    "memberof": "test/methods/removeOldFiles.js",
-    "testDepth": 0,
-    "static": true,
-    "longname": "test/methods/removeOldFiles.js~test15",
-    "access": null,
-    "description": "Should not be able to remove not present files",
-    "lineNumber": 9,
-    "testTargets": [
-      "TorrentLibrary#removeOldFiles"
-    ]
-  },
-  {
-    "__docId__": 131,
-    "kind": "test",
-    "name": "test16",
-    "testId": 16,
-    "memberof": "test/methods/removeOldFiles.js",
-    "testDepth": 0,
-    "static": true,
-    "longname": "test/methods/removeOldFiles.js~test16",
-    "access": null,
-    "description": "Should be able to remove a movie",
-    "lineNumber": 33,
-    "testTargets": [
-      "TorrentLibrary#removeOldFiles"
-    ]
-  },
-  {
-    "__docId__": 132,
-    "kind": "test",
-    "name": "test17",
-    "testId": 17,
-    "memberof": "test/methods/removeOldFiles.js",
-    "testDepth": 0,
-    "static": true,
-    "longname": "test/methods/removeOldFiles.js~test17",
-    "access": null,
-    "description": "Should be able to remove an tv-serie episode",
-    "lineNumber": 61,
-    "testTargets": [
-      "TorrentLibrary#removeOldFiles"
-    ]
-  },
-  {
-    "__docId__": 133,
-    "kind": "test",
-    "name": "test18",
-    "testId": 18,
-    "memberof": "test/methods/removeOldFiles.js",
-    "testDepth": 0,
-    "static": true,
-    "longname": "test/methods/removeOldFiles.js~test18",
-    "access": null,
-    "description": "Should be able to remove multiples files : Tv-serie",
-    "lineNumber": 96,
-    "testTargets": [
-      "TorrentLibrary#removeOldFiles"
-    ]
-  },
-  {
-    "__docId__": 134,
+    "__docId__": 140,
     "kind": "test",
     "name": "test19",
     "testId": 19,
@@ -3420,14 +3624,81 @@
     "static": true,
     "longname": "test/methods/removeOldFiles.js~test19",
     "access": null,
-    "description": "Should not be able to remove files : wrong custom parser",
-    "lineNumber": 124
+    "description": "Should not be able to remove not present files",
+    "lineNumber": 9,
+    "testTargets": [
+      "TorrentLibrary#removeOldFiles"
+    ]
   },
   {
-    "__docId__": 135,
+    "__docId__": 141,
+    "kind": "test",
+    "name": "test20",
+    "testId": 20,
+    "memberof": "test/methods/removeOldFiles.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/removeOldFiles.js~test20",
+    "access": null,
+    "description": "Should be able to remove a movie",
+    "lineNumber": 33,
+    "testTargets": [
+      "TorrentLibrary#removeOldFiles"
+    ]
+  },
+  {
+    "__docId__": 142,
+    "kind": "test",
+    "name": "test21",
+    "testId": 21,
+    "memberof": "test/methods/removeOldFiles.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/removeOldFiles.js~test21",
+    "access": null,
+    "description": "Should be able to remove an tv-serie episode",
+    "lineNumber": 61,
+    "testTargets": [
+      "TorrentLibrary#removeOldFiles"
+    ]
+  },
+  {
+    "__docId__": 143,
+    "kind": "test",
+    "name": "test22",
+    "testId": 22,
+    "memberof": "test/methods/removeOldFiles.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/removeOldFiles.js~test22",
+    "access": null,
+    "description": "Should be able to remove multiples files : Tv-serie",
+    "lineNumber": 96,
+    "testTargets": [
+      "TorrentLibrary#removeOldFiles"
+    ]
+  },
+  {
+    "__docId__": 144,
+    "kind": "test",
+    "name": "test23",
+    "testId": 23,
+    "memberof": "test/methods/removeOldFiles.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/methods/removeOldFiles.js~test23",
+    "access": null,
+    "description": "Should not be able to remove files : wrong custom parser",
+    "lineNumber": 125,
+    "testTargets": [
+      "TorrentLibrary#removeOldFiles"
+    ]
+  },
+  {
+    "__docId__": 145,
     "kind": "testFile",
     "name": "test/methods/scan.js",
-    "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan without user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\ntest('Scan with user provided paths and custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, nameParser);\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\ntest('Scan with user provided paths and wrong custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, {});\r\n  libInstance.on('error_in_function', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.throws(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
+    "content": "import test from 'ava';\r\nimport * as sinon from 'sinon';\r\nimport { parse as nameParser } from 'parse-torrent-title';\r\nimport TorrentLibrary from '../../index';\r\nimport { folders } from '../_constants';\r\n\r\n// TESTS\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan without user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary();\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n// test to handle default parameters\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths and custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, nameParser);\r\n  libInstance.on('scan', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n\r\n/** @test {TorrentLibrary#scan} */\r\ntest('Scan with user provided paths and wrong custom parser', async (t) => {\r\n  let eventSpy = sinon.spy();\r\n  let libInstance = new TorrentLibrary({}, {});\r\n  libInstance.on('error_in_function', eventSpy);\r\n  // whatever path that should exists\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.throws(libInstance.scan());\r\n  t.truthy(eventSpy.called, 'Event did not fire.');\r\n  t.truthy(eventSpy.calledOnce, 'Event fired more than once');\r\n});\r\n",
     "static": true,
     "longname": "D:/workspaceNodeJs/torrent-files-library/test/methods/scan.js",
     "access": null,
@@ -3435,14 +3706,14 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 136,
+    "__docId__": 146,
     "kind": "test",
-    "name": "test20",
-    "testId": 20,
+    "name": "test24",
+    "testId": 24,
     "memberof": "test/methods/scan.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/scan.js~test20",
+    "longname": "test/methods/scan.js~test24",
     "access": null,
     "description": "Scan without user provided paths",
     "lineNumber": 9,
@@ -3451,14 +3722,14 @@
     ]
   },
   {
-    "__docId__": 137,
+    "__docId__": 147,
     "kind": "test",
-    "name": "test21",
-    "testId": 21,
+    "name": "test25",
+    "testId": 25,
     "memberof": "test/methods/scan.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/scan.js~test21",
+    "longname": "test/methods/scan.js~test25",
     "access": null,
     "description": "Scan with user provided paths",
     "lineNumber": 19,
@@ -3467,33 +3738,39 @@
     ]
   },
   {
-    "__docId__": 138,
+    "__docId__": 148,
     "kind": "test",
-    "name": "test22",
-    "testId": 22,
+    "name": "test26",
+    "testId": 26,
     "memberof": "test/methods/scan.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/scan.js~test22",
+    "longname": "test/methods/scan.js~test26",
     "access": null,
     "description": "Scan with user provided paths and custom parser",
-    "lineNumber": 31
+    "lineNumber": 32,
+    "testTargets": [
+      "TorrentLibrary#scan"
+    ]
   },
   {
-    "__docId__": 139,
+    "__docId__": 149,
     "kind": "test",
-    "name": "test23",
-    "testId": 23,
+    "name": "test27",
+    "testId": 27,
     "memberof": "test/methods/scan.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/scan.js~test23",
+    "longname": "test/methods/scan.js~test27",
     "access": null,
     "description": "Scan with user provided paths and wrong custom parser",
-    "lineNumber": 42
+    "lineNumber": 44,
+    "testTargets": [
+      "TorrentLibrary#scan"
+    ]
   },
   {
-    "__docId__": 140,
+    "__docId__": 150,
     "kind": "testFile",
     "name": "test/methods/toJSON.js",
     "content": "import test from 'ava';\r\nimport TorrentLibrary from '../../index';\r\nimport { expectedJson, folders } from '../_constants';\r\n\r\n/** @test {TorrentLibrary#toJSON} */\r\ntest('return a valid stringified JSON', async (t) => {\r\n  const expectedJsonString = JSON.stringify(expectedJson);\r\n  let libInstance = new TorrentLibrary();\r\n  await t.notThrows(libInstance.addNewPath(...folders));\r\n  await t.notThrows(libInstance.scan());\r\n  const dataFromInstance = libInstance.toJSON();\r\n  t.deepEqual(\r\n    JSON.stringify(JSON.parse(dataFromInstance)),\r\n    expectedJsonString,\r\n    'Not the same JSON',\r\n  );\r\n});\r\n",
@@ -3504,14 +3781,14 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 141,
+    "__docId__": 151,
     "kind": "test",
-    "name": "test24",
-    "testId": 24,
+    "name": "test28",
+    "testId": 28,
     "memberof": "test/methods/toJSON.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/methods/toJSON.js~test24",
+    "longname": "test/methods/toJSON.js~test28",
     "access": null,
     "description": "return a valid stringified JSON",
     "lineNumber": 6,

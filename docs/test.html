@@ -54,6 +54,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultNumberProperties">excludeDefaultNumberProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByNumber">filterByNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultNumberProperties">filterDefaultNumberProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterMoviesByProperties">filterMoviesByProperties</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterTvSeriesByProperties">filterTvSeriesByProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-excludeDefaultStringProperties">excludeDefaultStringProperties</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterByString">filterByString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterDefaultStringProperties">filterDefaultStringProperties</a></span></span></li>
@@ -71,19 +73,19 @@
   </thead>
 
   <tbody data-ice="tests"><tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allFilesWithCategory.js.html#lineNumber8"><p>result after scan()</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allFilesWithCategory.js.html#lineNumber8"><p>Should correctly detect the category of each file</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-get-allFilesWithCategory">TorrentLibrary#allFilesWithCategory</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allMovies.js.html#lineNumber9"><p>result after scan()</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allMovies.js.html#lineNumber9"><p>Returns the movies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-get-allMovies">TorrentLibrary#allMovies</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allTvSeries.js.html#lineNumber9"><p>result after scan()</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/getters/allTvSeries.js.html#lineNumber9"><p>Returns the tv-shows</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-get-allTvSeries">TorrentLibrary#allTvSeries</a></span></td>
 </tr>
@@ -113,7 +115,7 @@
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber23"><p>inexistent Path</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/addNewPath.js.html#lineNumber23"><p>Not an existent path</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-addNewPath">TorrentLibrary#addNewPath</a></span></td>
 </tr>
@@ -131,9 +133,9 @@
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/createFromJSON.js.html#lineNumber28"><p>empty instance(s)</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/createFromJSON.js.html#lineNumber29"><p>empty instance(s)</p>
 </a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#static-method-createFromJSON">TorrentLibrary.createFromJSON</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
@@ -161,6 +163,30 @@
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber9"><p>Should work without parameters</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries">TorrentLibrary#filterTvSeries</a></span></td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber37"><p>default boolean parameters search</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries">TorrentLibrary#filterTvSeries</a></span></td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber69"><p>default number parameters search</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries">TorrentLibrary#filterTvSeries</a></span></td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/filterTvSeries.js.html#lineNumber117"><p>default string parameters search</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-filterTvSeries">TorrentLibrary#filterTvSeries</a></span></td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
   <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber9"><p>Should not be able to remove not present files</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-removeOldFiles">TorrentLibrary#removeOldFiles</a></span></td>
@@ -185,9 +211,9 @@
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber124"><p>Should not be able to remove files : wrong custom parser</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/removeOldFiles.js.html#lineNumber125"><p>Should not be able to remove files : wrong custom parser</p>
 </a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-removeOldFiles">TorrentLibrary#removeOldFiles</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
@@ -203,15 +229,15 @@
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/scan.js.html#lineNumber31"><p>Scan with user provided paths and custom parser</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/scan.js.html#lineNumber32"><p>Scan with user provided paths and custom parser</p>
 </a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-scan">TorrentLibrary#scan</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/scan.js.html#lineNumber42"><p>Scan with user provided paths and wrong custom parser</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span><a href="test-file/test/methods/scan.js.html#lineNumber44"><p>Scan with user provided paths and wrong custom parser</p>
 </a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testTarget" class="test-target"><span><a href="class/src/TorrentLibrary.js~TorrentLibrary.html#instance-method-scan">TorrentLibrary#scan</a></span></td>
 </tr>
 
 <tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
