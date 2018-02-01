@@ -1,1 +1,4 @@
+# uncompiled files
 src
+# fix for nyc coverage ; should be temporary
+fix-coverage

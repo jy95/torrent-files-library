@@ -21,7 +21,8 @@ before_script:
   - npm prune
 after_success:
   - npm run coverage
-  - travis-deploy-once && npx -p node@8 npm run semantic-release
+  # In order to have production files for release : I should rerun compile in production mode in the master build
+  - travis-deploy-once && npm run prepare && npx -p node@8 npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
