@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "semantic-release": "semantic-release -e ./config/release.config.js",
-    "compile": "babel -d lib/ src/ --source-maps both --no-comments",
+    "compile": "babel -d lib/ src/ --source-maps both",
     "prepare": "npm run compile",
     "test": "nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -40,14 +40,14 @@
     "url": "https://github.com/jy95/torrent-files-library.git"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/register": "^7.0.0-beta.39",
     "@semantic-release/changelog": "^1.0.0",
     "@semantic-release/git": "^3.0.0",
     "ava": "^0.25.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
     "conventional-changelog-eslint": "^1.0.0",
     "coveralls": "^3.0.0",
     "esdoc": "^1.0.4",
