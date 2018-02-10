@@ -1,5 +1,7 @@
+# Changelog
+
 <a name="1.5.0"></a>
-# [1.5.0](https://github.com/jy95/torrent-files-library/compare/v1.4.0...v1.5.0) (2018-01-29)
+## [1.5.0](https://github.com/jy95/torrent-files-library/compare/v1.4.0...v1.5.0) (2018-01-29)
 
 
 ### Docs
@@ -11,8 +13,6 @@
 ### Feat
 
 * filterTvSeries - Filter tv series by search parameters ([c2dbfd4c4fa0427ec388de7299b99ad0f1fa4631](https://github.com/jy95/torrent-files-library/commit/c2dbfd4c4fa0427ec388de7299b99ad0f1fa4631))
-
-# Changelog
 
 <a name="1.4.0"></a>
 ## [1.4.0](https://github.com/jy95/torrent-files-library/compare/v1.3.0...v1.4.0) (2018-01-28)
