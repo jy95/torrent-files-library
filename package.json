@@ -45,8 +45,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/register": "^7.0.0-beta.39",
-    "@semantic-release/changelog": "^1.0.0",
-    "@semantic-release/git": "^3.0.0",
+    "@semantic-release/changelog": "^1.0.1",
+    "@semantic-release/git": "^3.0.1",
     "ava": "^0.25.0",
     "babel-plugin-istanbul": "^4.1.5",
     "conventional-changelog-eslint": "^1.0.0",
@@ -55,17 +55,17 @@
     "esdoc": "^1.0.4",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.8.0",
     "nyc": "^11.4.1",
-    "semantic-release": "^13.1.1",
-    "sinon": "^4.2.2"
+    "semantic-release": "^13.2.0",
+    "sinon": "^4.2.3"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
     "filehound": "^1.16.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "parse-torrent-title": "^1.1.0",
     "video-extensions": "^1.1.0"
   }
