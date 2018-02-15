@@ -1,3 +1,27 @@
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/jy95/torrent-files-library/compare/v1.5.0...v1.5.1) (2018-02-15)
+
+
+### Chore
+
+* Add ESLint messages for greenkeeper ([2c43aafc3b79deaae3e2e70c2caad8e029093c7f](https://github.com/jy95/torrent-files-library/commit/2c43aafc3b79deaae3e2e70c2caad8e029093c7f))
+* Basic set up for Babel 7 ([a447a43d131c112e67c2382ef343a140ef460bcf](https://github.com/jy95/torrent-files-library/commit/a447a43d131c112e67c2382ef343a140ef460bcf))
+* Temp fix for coverage + Babel 7 plugins ([d09ac9ea5403234c66902510aa1e8a5c51e98f56](https://github.com/jy95/torrent-files-library/commit/d09ac9ea5403234c66902510aa1e8a5c51e98f56))
+* update dependancies ([a70212da2e2e14de0bb482eccb426cd0eb660e70](https://github.com/jy95/torrent-files-library/commit/a70212da2e2e14de0bb482eccb426cd0eb660e70))
+* Update devDependency : semantic-release ([fc30411260ff76376b08815d59d842a3dd8286da](https://github.com/jy95/torrent-files-library/commit/fc30411260ff76376b08815d59d842a3dd8286da))
+
+### CI
+
+* Update release message - @semantic-release/git ([217b2838fed0c44ef68f41fd8dc90b8620df2e92](https://github.com/jy95/torrent-files-library/commit/217b2838fed0c44ef68f41fd8dc90b8620df2e92))
+
+### Docs
+
+* Updated Docs ([2ab17a5041118de65257c40372f315171c3098c7](https://github.com/jy95/torrent-files-library/commit/2ab17a5041118de65257c40372f315171c3098c7))
+
+### Perf
+
+* use Babel/minify to make a better build ([6df2740d2e2271169cd736802a147cccf0882e65](https://github.com/jy95/torrent-files-library/commit/6df2740d2e2271169cd736802a147cccf0882e65))
+
 # Changelog
 
 <a name="1.5.0"></a>
