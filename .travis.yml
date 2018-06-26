@@ -17,9 +17,9 @@ os:
 before_install:
   - npm i -g npm@latest
   - npm i -g travis-deploy-once
-  - npm audit fix
 install:
   - npm install
+  - npm audit fix
 before_script:
   - npm prune
 after_success:
