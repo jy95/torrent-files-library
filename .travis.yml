@@ -17,11 +17,16 @@ os:
 before_install:
   - npm i -g npm@latest
   - npm i -g travis-deploy-once
+  - npm install -g greenkeeper-lockfile@latest
 install:
   - npm install
   - npm audit fix
 before_script:
   - npm prune
+  - echo "GreenKeeper lockfile update"
+  - greenkeeper-lockfile-update
+after_script:
+  - greenkeeper-lockfile-upload
 after_success:
   - npm run coverage
   # In order to have production files for release : I should rerun compile in production mode in the master build
