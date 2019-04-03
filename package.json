@@ -75,7 +75,7 @@
     "sinon": "^7.2.4"
   },
   "dependencies": {
-    "bluebird": "^3.5.1",
+    "bluebird": "^3.5.4",
     "filehound": "^1.16.2",
     "lodash": "^4.17.11",
     "parse-torrent-title": "^1.1.0",
