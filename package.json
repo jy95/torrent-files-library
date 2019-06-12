@@ -10,12 +10,13 @@
   "scripts": {
     "semantic-release": "semantic-release -e ./config/release.config.js",
     "compile": "babel -d lib/ src/ --source-maps both",
-    "prepare": "cross-env BABEL_ENV=production npm run compile",
+    "prepare": "npm run snyk-protect; cross-env BABEL_ENV=production npm run compile",
     "test": "cross-env BABEL_ENV=test npm run compile && nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coverage-html": "nyc report --reporter=html",
     "esdoc": "node_modules/.bin/esdoc",
-    "lint": "./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix"
+    "lint": "./node_modules/.bin/eslint -c config/.eslintrc.js ./src ./test --fix",
+    "snyk-protect": "snyk protect"
   },
   "engines": {
     "node": ">=6",
@@ -79,6 +80,8 @@
     "filehound": "^1.16.2",
     "lodash": "^4.17.11",
     "parse-torrent-title": "^1.1.0",
-    "video-extensions": "^1.1.0"
-  }
+    "video-extensions": "^1.1.0",
+    "snyk": "^1.175.3"
+  },
+  "snyk": true
 }
