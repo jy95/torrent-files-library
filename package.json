@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "filehound": "^1.17.3",
+    "filehound": "^1.17.4",
     "lodash": "^4.17.11",
     "parse-torrent-title": "^1.1.0",
     "video-extensions": "^1.1.0"
