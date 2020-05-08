@@ -61,7 +61,7 @@
     "ava": "^0.25.0",
     "babel-plugin-istanbul": "^5.1.1",
     "babel-preset-minify": "^0.5.0",
-    "conventional-changelog-eslint": "^3.0.0",
+    "conventional-changelog-eslint": "^3.0.8",
     "coveralls": "^3.0.0",
     "cross-env": "^6.0.0",
     "esdoc": "^1.0.4",
